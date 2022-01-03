@@ -2,74 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c677bc5-bda7-4690-943b-3fd9e1c086cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/styles/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/notifications/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/notifications/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/notifications/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/notifications/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/products/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/products/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/products/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/tables/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/tables/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/tables/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/editableText/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/editableText/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/editableText/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/clearTable/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/clearTable/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/createTable/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/createTable/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/deleteTable/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/deleteTable/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/decreaseTableProduct/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/decreaseTableProduct/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/deleteProductFromTable/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/deleteProductFromTable/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/increaseTableProduct/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/increaseTableProduct/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/helpers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/products.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/tables.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/types/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/header/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/header/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/productCard/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/productCard/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/table/helpers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/table/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/table/ui.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +72,7 @@
       <workItem from="1641052350762" duration="21937000" />
       <workItem from="1641147315152" duration="8720000" />
       <workItem from="1641194309993" duration="4373000" />
-      <workItem from="1641219979078" duration="10056000" />
+      <workItem from="1641219979078" duration="10408000" />
     </task>
     <servers />
   </component>
