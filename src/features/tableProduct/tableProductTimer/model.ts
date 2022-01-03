@@ -1,0 +1,1 @@
+import { createEvent, forward } from 'effector';import { tablesModel } from '../../../entities/tables';import { ISetTableProductTimerParams } from '../../../shared/api';export const setTableProductTimer = createEvent<ISetTableProductTimerParams>();forward({  from: setTableProductTimer,  to: tablesModel.setTableProductTimerFx,});

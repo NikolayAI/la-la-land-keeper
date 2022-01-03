@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c677bc5-bda7-4690-943b-3fd9e1c086cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/styles/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/notifications/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/notifications/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/notifications/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/notifications/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/products/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/products/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/products/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/tables/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/tables/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/tables/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/editableText/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/editableText/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/editableText/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/handleNotifications/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/createProduct/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/product/deleteProduct/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/clearTable/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/clearTable/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/createTable/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/createTable/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/deleteTable/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/table/deleteTable/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/addProductToTable/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/decreaseTableProduct/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/decreaseTableProduct/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/deleteProductFromTable/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/deleteProductFromTable/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/increaseTableProduct/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/increaseTableProduct/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/tableProduct/tableProductTimer/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/helpers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/products.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/tables.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/types/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/header/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/header/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/productCard/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/productCard/ui.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/table/helpers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/table/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/table/ui.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="22hQuWvqukqeCq0az0GHDjFhQbK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/features/tableProduct" />
+      <recent name="$PROJECT_DIR$/src/features/table" />
+      <recent name="$PROJECT_DIR$/src/features/products" />
+      <recent name="$PROJECT_DIR$/src/widgets/productCard" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/shared/types/index.ts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c677bc5-bda7-4690-943b-3fd9e1c086cd" name="Changes" comment="" />
+      <created>1640287562462</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640287562462</updated>
+      <workItem from="1640287565277" duration="5862000" />
+      <workItem from="1640359394253" duration="17475000" />
+      <workItem from="1640450204557" duration="13206000" />
+      <workItem from="1640529768330" duration="12094000" />
+      <workItem from="1640547515039" duration="2472000" />
+      <workItem from="1640622653169" duration="329000" />
+      <workItem from="1640622990732" duration="4736000" />
+      <workItem from="1640698243686" duration="13288000" />
+      <workItem from="1640967438985" duration="264000" />
+      <workItem from="1641033182515" duration="3130000" />
+      <workItem from="1641037059296" duration="8242000" />
+      <workItem from="1641052350762" duration="21937000" />
+      <workItem from="1641147315152" duration="8720000" />
+      <workItem from="1641194309993" duration="4373000" />
+      <workItem from="1641219979078" duration="10056000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

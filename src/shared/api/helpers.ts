@@ -1,0 +1,1 @@
+import { IProduct, ITable, ITableProduct } from './types';export const createTableBody = ({ id }: { id: string }): ITable => {  return {    id,    title: 'неизвестный стол',    products: {},  };};export const createTableProductBody = (product: IProduct): ITableProduct => {  return {    ...product,    units: 1,    minutesTimer: 0,  };};

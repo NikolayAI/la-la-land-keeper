@@ -1,0 +1,51 @@
+{
+  "tables": {
+    "4b229375-33ba-4e3b-83e2-86ddddc05d46": {
+      "id": "4b229375-33ba-4e3b-83e2-86ddddc05d46",
+      "title": "Фиолетовая пудра",
+      "products": {}
+    }
+  },
+  "products": {
+    "5d259cf5-69aa-4c55-a451-39ba9063eca0": {
+      "id": "5d259cf5-69aa-4c55-a451-39ba9063eca0",
+      "title": "sok",
+      "price": 100,
+      "isPiece": true,
+      "needTimer": false,
+      "eachProductUnitMinutesTimer": 0
+    },
+    "ad0a57d2-84a4-49d6-b675-320e21e186dc": {
+      "id": "ad0a57d2-84a4-49d6-b675-320e21e186dc",
+      "title": "kalian",
+      "price": 1000,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 90
+    },
+    "bb94cc98-fb74-425e-b7cc-66fb35517748": {
+      "id": "bb94cc98-fb74-425e-b7cc-66fb35517748",
+      "title": "arenda fiolet",
+      "price": 1000,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 60
+    },
+    "92e363e7-8826-4e15-bd73-45ab0ec7a8ee": {
+      "id": "92e363e7-8826-4e15-bd73-45ab0ec7a8ee",
+      "title": "bla",
+      "price": 234,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 23
+    },
+    "ca7bc080-8587-4432-91ff-886c1effea34": {
+      "id": "ca7bc080-8587-4432-91ff-886c1effea34",
+      "title": "error",
+      "price": 100,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 5
+    }
+  }
+}

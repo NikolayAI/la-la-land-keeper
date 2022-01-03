@@ -1,0 +1,1 @@
+import { createEvent, forward } from 'effector';import { productsModel } from '../../../entities/products';export const deleteProduct = createEvent<{ id: string }>();forward({  from: deleteProduct,  to: productsModel.deleteProductFx,})

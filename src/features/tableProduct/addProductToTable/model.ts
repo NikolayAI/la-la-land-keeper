@@ -1,0 +1,1 @@
+import { createEvent, forward } from 'effector';import { tablesModel } from '../../../entities/tables';import { IAddProductToTableParams } from '../../../shared/api';export const addProductToTable = createEvent<IAddProductToTableParams>();forward({  from: addProductToTable,  to: tablesModel.addProductFx,});

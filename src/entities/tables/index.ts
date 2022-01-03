@@ -1,0 +1,1 @@
+export * as tablesModel from './model';

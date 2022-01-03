@@ -1,0 +1,1 @@
+export interface ITablesProductsTimersOutOfLimit {  id: string;  products: Record<string, boolean>}
