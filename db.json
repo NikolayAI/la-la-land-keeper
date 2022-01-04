@@ -4,6 +4,11 @@
       "id": "4b229375-33ba-4e3b-83e2-86ddddc05d46",
       "title": "Фиолетовая пудра",
       "products": {}
+    },
+    "176e03e0-1892-41b8-8445-32462b8ac66a": {
+      "id": "176e03e0-1892-41b8-8445-32462b8ac66a",
+      "title": "неизвестный стол",
+      "products": {}
     }
   },
   "products": {
@@ -31,21 +36,21 @@
       "needTimer": true,
       "eachProductUnitMinutesTimer": 60
     },
-    "92e363e7-8826-4e15-bd73-45ab0ec7a8ee": {
-      "id": "92e363e7-8826-4e15-bd73-45ab0ec7a8ee",
-      "title": "bla",
-      "price": 234,
+    "07d0580a-dc7e-46c3-8c28-163ea03d61e9": {
+      "id": "07d0580a-dc7e-46c3-8c28-163ea03d61e9",
+      "title": "error1",
+      "price": 1,
       "isPiece": true,
       "needTimer": true,
-      "eachProductUnitMinutesTimer": 23
+      "eachProductUnitMinutesTimer": 1
     },
-    "ca7bc080-8587-4432-91ff-886c1effea34": {
-      "id": "ca7bc080-8587-4432-91ff-886c1effea34",
-      "title": "error",
-      "price": 100,
+    "2590e493-9db4-4351-b726-c849df765cf8": {
+      "id": "2590e493-9db4-4351-b726-c849df765cf8",
+      "title": "error2",
+      "price": 2,
       "isPiece": true,
       "needTimer": true,
-      "eachProductUnitMinutesTimer": 5
+      "eachProductUnitMinutesTimer": 1
     }
   }
 }
