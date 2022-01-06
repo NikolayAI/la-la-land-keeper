@@ -1,1 +1,1 @@
-export * as tablesModel from './model';
+export * as tablesModel from './model';export * from './ui';
