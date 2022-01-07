@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles/App.css';
 import { Dashboard } from '../pages/dashboard';
-import { handleNotifications } from '../features/notification/handleNotifications';
+import {initHandleNotifications} from '../features/notification/handleNotifications';
 
 function App() {
   return (
@@ -10,8 +10,6 @@ function App() {
   );
 }
 
-const initEffectorUnitsIntoNonModulesFiles = (args: any[]) => {
-};
-initEffectorUnitsIntoNonModulesFiles([handleNotifications]);
+initHandleNotifications();
 
 export default App;

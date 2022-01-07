@@ -1,1 +1,1 @@
-export * as handleNotifications from './model';
+export { initHandleNotifications } from './model';

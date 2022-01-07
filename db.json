@@ -3,38 +3,7 @@
     "4b229375-33ba-4e3b-83e2-86ddddc05d46": {
       "id": "4b229375-33ba-4e3b-83e2-86ddddc05d46",
       "title": "Фиолетовая пудра",
-      "products": {
-        "5d259cf5-69aa-4c55-a451-39ba9063eca0": {
-          "id": "5d259cf5-69aa-4c55-a451-39ba9063eca0",
-          "title": "sok",
-          "price": 100,
-          "isPiece": true,
-          "needTimer": false,
-          "eachProductUnitMinutesTimer": 0,
-          "units": 5,
-          "minutesTimer": 0
-        },
-        "ad0a57d2-84a4-49d6-b675-320e21e186dc": {
-          "id": "ad0a57d2-84a4-49d6-b675-320e21e186dc",
-          "title": "kalian",
-          "price": 1000,
-          "isPiece": true,
-          "needTimer": true,
-          "eachProductUnitMinutesTimer": 90,
-          "units": 1,
-          "minutesTimer": 31
-        },
-        "07d0580a-dc7e-46c3-8c28-163ea03d61e9": {
-          "id": "07d0580a-dc7e-46c3-8c28-163ea03d61e9",
-          "title": "error1",
-          "price": 1,
-          "isPiece": true,
-          "needTimer": true,
-          "eachProductUnitMinutesTimer": 1,
-          "units": 42,
-          "minutesTimer": 53
-        }
-      }
+      "products": {}
     }
   },
   "products": {
