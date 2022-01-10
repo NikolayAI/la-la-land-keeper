@@ -3,7 +3,30 @@
     "4b229375-33ba-4e3b-83e2-86ddddc05d46": {
       "id": "4b229375-33ba-4e3b-83e2-86ddddc05d46",
       "title": "Фиолетовая пудра",
-      "products": {}
+      "products": {
+        "07d0580a-dc7e-46c3-8c28-163ea03d61e9": {
+          "id": "07d0580a-dc7e-46c3-8c28-163ea03d61e9",
+          "title": "error1",
+          "price": 1,
+          "isPiece": true,
+          "needTimer": true,
+          "eachProductUnitMinutesTimer": 1,
+          "units": 1,
+          "minutesTimer": 5,
+          "timerStatus": "stop"
+        },
+        "2590e493-9db4-4351-b726-c849df765cf8": {
+          "id": "2590e493-9db4-4351-b726-c849df765cf8",
+          "title": "error2",
+          "price": 2,
+          "isPiece": true,
+          "needTimer": true,
+          "eachProductUnitMinutesTimer": 1,
+          "units": 1,
+          "minutesTimer": 5,
+          "timerStatus": "stop"
+        }
+      }
     }
   },
   "products": {
