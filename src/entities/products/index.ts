@@ -1,1 +1,1 @@
-export * as productsModel from './model';export * from '../../widgets/productCard/ui';
+export * as productsModel from './model';

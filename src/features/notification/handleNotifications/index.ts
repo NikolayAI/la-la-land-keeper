@@ -1,1 +1,0 @@
-export { initHandleNotifications } from './model';
