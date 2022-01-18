@@ -1,62 +1,56 @@
 {
   "name": "la-la-land-keeper",
   "version": "0.1.0",
-  "private": true,
   "main": "src/index.tsx",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "server": "json-server --watch db.json --port 3001",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' || true",
+    "prettify": "prettier --write 'src/**/*.{js,ts,tsx}'",
+    "test": "jest"
+  },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@mui/icons-material": "^5.2.5",
-    "@mui/material": "^5.2.5",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/json-server": "^0.14.4",
-    "@types/node": "^16.7.13",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^17.0.9",
-    "@types/uuid": "^8.3.3",
+    "@mui/icons-material": "^5.3.0",
+    "@mui/material": "^5.3.0",
     "effector": "^22.1.2",
     "effector-react": "^22.0.6",
-    "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-number-format": "^4.9.0",
-    "react-scripts": "5.0.0",
-    "typescript": "^4.4.2",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.0"
-  },
-  "scripts": {
-    "client": "react-scripts start",
-    "server": "json-server --watch db.json --port 3001",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-number-format": "^4.9.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-react": "^7.16.7"
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.4.0",
+    "css-minimizer-webpack-plugin": "^3.1.1",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.4.7",
+    "json-server": "^0.17.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "prettier": "^2.4.1",
+    "sass": "^1.43.5",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.0",
+    "typescript": "4.5.2",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "webpack-merge": "^5.8.0"
   }
 }
