@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' || true",
     "prettify": "prettier --write 'src/**/*.{js,ts,tsx}'",
-    "test": "jest"
+    "test": "jest --coverage --config=./jest.json"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -29,6 +29,8 @@
     "@types/jest": "^27.4.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/uuid": "^8.3.4",
+    "babel-jest": "^27.4.6",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",

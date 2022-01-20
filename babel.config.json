@@ -9,8 +9,5 @@
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    ["effector/babel-plugin"]
-  ]
+  "plugins": ["effector/babel-plugin"]
 }
