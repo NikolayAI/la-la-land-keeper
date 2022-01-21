@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "main": "src/index.tsx",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "client": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.js",
     "server": "json-server --watch db.json --port 3001",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' || true",
     "prettify": "prettier --write 'src/**/*.{js,ts,tsx}'",
-    "test": "jest --coverage --config=./jest.json"
+    "test": "jest --coverage --config ./jest.json"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

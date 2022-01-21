@@ -1,16 +1,16 @@
 **/.DS_Store
 /node_modules
-/dist
 
 /.pnp
 .pnp.js
 .idea
 
 # testing
-/coverage
+/tests/__coverage__
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
