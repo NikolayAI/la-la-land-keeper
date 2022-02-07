@@ -14,6 +14,14 @@
       "isPiece": true,
       "needTimer": true,
       "eachProductUnitMinutesTimer": 1
+    },
+    "949e810f-91ca-488d-8305-03fa0ffd0682": {
+      "id": "949e810f-91ca-488d-8305-03fa0ffd0682",
+      "title": "qwdwed",
+      "price": 23,
+      "isPiece": true,
+      "needTimer": false,
+      "eachProductUnitMinutesTimer": 0
     }
   }
 }
