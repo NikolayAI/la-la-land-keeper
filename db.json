@@ -22,14 +22,6 @@
       "isPiece": true,
       "needTimer": false,
       "eachProductUnitMinutesTimer": 0
-    },
-    "9a17ab01-468a-4744-8270-756290f8ad88": {
-      "id": "9a17ab01-468a-4744-8270-756290f8ad88",
-      "title": "",
-      "price": 0,
-      "isPiece": true,
-      "needTimer": false,
-      "eachProductUnitMinutesTimer": 0
     }
   }
 }
