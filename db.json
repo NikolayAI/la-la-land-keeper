@@ -7,13 +7,13 @@
     }
   },
   "products": {
-    "94120d98-b45c-4328-a973-9c586c325289": {
-      "id": "94120d98-b45c-4328-a973-9c586c325289",
-      "title": "aedaed",
-      "price": 12,
+    "3e6ed743-24eb-451e-ba9f-9c7339dc3644": {
+      "id": "3e6ed743-24eb-451e-ba9f-9c7339dc3644",
+      "title": "ewqfdf",
+      "price": 23,
       "isPiece": true,
       "needTimer": true,
-      "eachProductUnitMinutesTimer": 1
+      "eachProductUnitMinutesTimer": 23
     }
   }
 }
