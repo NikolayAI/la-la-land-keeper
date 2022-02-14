@@ -1,1 +1,45 @@
-import React from 'react';import { fireEvent, render, screen } from '@testing-library/react';import { DeleteProduct } from './ui';import { deleteProduct, setAnchorElement } from './model';const products = {  1: {    id: '1',    title: 'test',    price: 12,    isPiece: true,    needTimer: true,    eachProductUnitMinutesTimer: 1  },};describe('events', () => {  const setAnchorElementFn = jest.fn();  setAnchorElement.watch(setAnchorElementFn);  const deleteProductFn = jest.fn();  deleteProduct.watch(deleteProductFn);  beforeEach(() => {    setAnchorElementFn.mockReset();    deleteProductFn.mockReset();  })  test('should call setAnchorElement for open form', async () => {    render(<DeleteProduct products={products} />);    fireEvent.click(screen.getByText('Удалить товар'));    expect(setAnchorElementFn).toHaveBeenCalledTimes(1);  });  test('should call setAnchorElement and deleteProduct', async () => {    render(<DeleteProduct products={products} />);    fireEvent.click(screen.getByRole('delete-product-box'));    expect(setAnchorElementFn).toHaveBeenCalledTimes(1);    expect(deleteProductFn).toHaveBeenCalledTimes(1);  });})
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import { DeleteProduct } from './ui';
+import { deleteProduct, setAnchorEl } from './model';
+
+const products = {
+  1: {
+    id: '1',
+    title: 'test',
+    price: 12,
+    isPiece: true,
+    needTimer: true,
+    eachProductUnitMinutesTimer: 1
+  },
+};
+describe('events', () => {
+  const setAnchorElementFn = jest.fn();
+  setAnchorEl.watch(setAnchorElementFn);
+
+  const deleteProductFn = jest.fn();
+  deleteProduct.watch(deleteProductFn);
+
+  beforeEach(() => {
+    setAnchorElementFn.mockReset();
+    deleteProductFn.mockReset();
+  })
+
+  test('should call setAnchorEl for delete product', async () => {
+    render(<DeleteProduct products={products} />);
+
+    fireEvent.click(screen.getByText('Удалить товар'));
+
+    expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call setAnchorEl and deleteProduct', async () => {
+    render(<DeleteProduct products={products} />);
+
+    fireEvent.click(screen.getByRole('delete-product-box'));
+
+    expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
+    expect(deleteProductFn).toHaveBeenCalledTimes(1);
+  });
+})
