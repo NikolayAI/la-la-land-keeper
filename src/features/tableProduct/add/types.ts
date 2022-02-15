@@ -1,0 +1,1 @@
+import { ProductsType } from '../../../shared/api';export interface AddProductToTableProps {  tableId: string;  products: ProductsType;}
