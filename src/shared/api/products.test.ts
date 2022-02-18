@@ -1,0 +1,1 @@
+import { getProducts } from './products';import { products } from '../../../tests/__mocks__/handlers/fixtures';test('should return value', async () => {  const result = await getProducts();  expect(result).toStrictEqual(products);})
