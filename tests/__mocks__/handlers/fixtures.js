@@ -1,1 +1,1 @@
-export const products = {  "test-product-id": {    "id": "test-product-id",    "title": "test product",    "price": 1,    "isPiece": true,    "needTimer": false,    "eachProductUnitMinutesTimer": 0  }}
+export const products = {  'test-product-id': {    id: 'test-product-id',    title: 'test product',    price: 1,    isPiece: true,    needTimer: false,    eachProductUnitMinutesTimer: 0  }}
