@@ -4,22 +4,6 @@
       "id": "5de209d0-f526-4361-80a1-9ab0a4cd46f8",
       "title": "неизвестный стол",
       "products": {}
-    },
-    "27383045-8e83-4f3b-944a-43f4ed0e33db": {
-      "id": "27383045-8e83-4f3b-944a-43f4ed0e33db",
-      "title": "неизвестный стол",
-      "products": {
-        "username": {
-          "0": "a",
-          "1": "d",
-          "2": "m",
-          "3": "i",
-          "4": "n",
-          "units": 1,
-          "minutesTimer": 0,
-          "timerStatus": "play"
-        }
-      }
     }
   },
   "products": {
