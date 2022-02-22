@@ -1,1 +1,1 @@
-export const product = {  id: 'test-product-id',  title: 'test product',  price: 1,  isPiece: true,  needTimer: false,  eachProductUnitMinutesTimer: 0}export const products = {  'test-product-id': product}
+export const product = {  id: 'test-product-id',  title: 'test product',  price: 1,  isPiece: true,  needTimer: false,  eachProductUnitMinutesTimer: 0}export const products = {  'test-product-id': product}export const tables = {  'test-table-id': {    id: 'test-table-id',    title: 'test table',    products: {}  }}
