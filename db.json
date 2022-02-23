@@ -3,7 +3,19 @@
     "5de209d0-f526-4361-80a1-9ab0a4cd46f8": {
       "id": "5de209d0-f526-4361-80a1-9ab0a4cd46f8",
       "title": "неизвестный стол",
-      "products": {}
+      "products": {
+        "33e771fa-c44f-4f91-aff7-c823f84707a1": {
+          "id": "33e771fa-c44f-4f91-aff7-c823f84707a1",
+          "title": "sdcsdf",
+          "price": 1,
+          "isPiece": true,
+          "needTimer": false,
+          "eachProductUnitMinutesTimer": 0,
+          "units": 1,
+          "minutesTimer": 0,
+          "timerStatus": "play"
+        }
+      }
     }
   },
   "products": {
