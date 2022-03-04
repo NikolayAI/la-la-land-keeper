@@ -1,12 +1,16 @@
 import React from 'react';
+import { fork } from 'effector';
+import { Provider } from 'effector-react/scope';
 
 import './styles/App.css';
 import { Dashboard } from '../pages/dashboard';
 
-function App() {
-  return (
-    <Dashboard className="dashboard" />
-  );
-}
+const scope = fork();
 
-export default App;
+export const App = () => {
+  return (
+    <Provider value={scope}>
+      <Dashboard className="dashboard" />
+    </Provider>
+  );
+};
