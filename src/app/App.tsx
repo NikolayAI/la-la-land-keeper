@@ -5,11 +5,9 @@ import { Provider } from 'effector-react/scope';
 import './styles/App.css';
 import { Dashboard } from '../pages/dashboard';
 
-const scope = fork();
-
 export const App = () => {
   return (
-    <Provider value={scope}>
+    <Provider value={fork()}>
       <Dashboard className="dashboard" />
     </Provider>
   );
