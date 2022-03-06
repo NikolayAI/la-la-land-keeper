@@ -4,16 +4,16 @@
       "id": "5de209d0-f526-4361-80a1-9ab0a4cd46f8",
       "title": "неизвестный стол",
       "products": {
-        "33e771fa-c44f-4f91-aff7-c823f84707a1": {
-          "id": "33e771fa-c44f-4f91-aff7-c823f84707a1",
-          "title": "sdcsdf",
-          "price": 1,
+        "a076ee43-a402-4871-880b-ca61190f38b6": {
+          "id": "a076ee43-a402-4871-880b-ca61190f38b6",
+          "title": "fvdrgdh",
+          "price": 12,
           "isPiece": true,
-          "needTimer": false,
-          "eachProductUnitMinutesTimer": 0,
+          "needTimer": true,
+          "eachProductUnitMinutesTimer": 1,
           "units": 1,
-          "minutesTimer": 0,
-          "timerStatus": "play"
+          "minutesTimer": 5,
+          "timerStatus": "stop"
         }
       }
     }
@@ -26,6 +26,14 @@
       "isPiece": true,
       "needTimer": false,
       "eachProductUnitMinutesTimer": 0
+    },
+    "a076ee43-a402-4871-880b-ca61190f38b6": {
+      "id": "a076ee43-a402-4871-880b-ca61190f38b6",
+      "title": "fvdrgdh",
+      "price": 12,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 1
     }
   }
 }
