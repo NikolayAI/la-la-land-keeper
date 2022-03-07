@@ -1,39 +1,27 @@
 {
   "tables": {
-    "5de209d0-f526-4361-80a1-9ab0a4cd46f8": {
-      "id": "5de209d0-f526-4361-80a1-9ab0a4cd46f8",
+    "d5b01a0f-6d51-4de8-9727-9ae04968a248": {
+      "id": "d5b01a0f-6d51-4de8-9727-9ae04968a248",
       "title": "неизвестный стол",
-      "products": {
-        "a076ee43-a402-4871-880b-ca61190f38b6": {
-          "id": "a076ee43-a402-4871-880b-ca61190f38b6",
-          "title": "fvdrgdh",
-          "price": 12,
-          "isPiece": true,
-          "needTimer": true,
-          "eachProductUnitMinutesTimer": 1,
-          "units": 1,
-          "minutesTimer": 5,
-          "timerStatus": "stop"
-        }
-      }
+      "products": {}
     }
   },
   "products": {
-    "33e771fa-c44f-4f91-aff7-c823f84707a1": {
-      "id": "33e771fa-c44f-4f91-aff7-c823f84707a1",
-      "title": "sdcsdf",
-      "price": 1,
-      "isPiece": true,
-      "needTimer": false,
-      "eachProductUnitMinutesTimer": 0
-    },
-    "a076ee43-a402-4871-880b-ca61190f38b6": {
-      "id": "a076ee43-a402-4871-880b-ca61190f38b6",
-      "title": "fvdrgdh",
-      "price": 12,
+    "8eb6728d-d151-4594-abd1-48b3d64dca42": {
+      "id": "8eb6728d-d151-4594-abd1-48b3d64dca42",
+      "title": "some",
+      "price": 13,
       "isPiece": true,
       "needTimer": true,
       "eachProductUnitMinutesTimer": 1
+    },
+    "ada6d9d9-cf7e-444a-bae9-913a60ace991": {
+      "id": "ada6d9d9-cf7e-444a-bae9-913a60ace991",
+      "title": "another",
+      "price": 34,
+      "isPiece": true,
+      "needTimer": true,
+      "eachProductUnitMinutesTimer": 23
     }
   }
 }
