@@ -21,11 +21,6 @@ describe('events', () => {
   const deleteProductFn = jest.fn();
   deleteProduct.watch(deleteProductFn);
 
-  beforeEach(() => {
-    setAnchorElementFn.mockReset();
-    deleteProductFn.mockReset();
-  })
-
   test('should call setAnchorEl for delete product', async () => {
     render(<DeleteProduct products={products} />);
 
