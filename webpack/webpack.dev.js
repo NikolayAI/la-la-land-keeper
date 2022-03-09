@@ -1,5 +1,7 @@
 const { merge } = require('webpack-merge')
 
+const paths = require('./paths')
+
 const common = require('./webpack.common')
 
 module.exports = merge(common, {
@@ -14,6 +16,11 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: [
