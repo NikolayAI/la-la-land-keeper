@@ -17,7 +17,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: [/\.jsx?$/, /\.tsx?$/],
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
