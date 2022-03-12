@@ -1,36 +1,9 @@
 {
   "tables": {
-    "343c8b17-b731-4f9a-ad45-be1decfd7f67": {
-      "id": "343c8b17-b731-4f9a-ad45-be1decfd7f67",
-      "title": "неизвестный стол",
+    "d33cd594-004d-4fce-af90-71e78fa3bf44": {
+      "id": "d33cd594-004d-4fce-af90-71e78fa3bf44",
+      "title": "jhadgjhaed",
       "products": {}
-    },
-    "c5689b70-3d46-495e-bd0d-be1b5e0566dc": {
-      "id": "c5689b70-3d46-495e-bd0d-be1b5e0566dc",
-      "title": "неизвестный стол",
-      "products": {}
-    },
-    "fe6f4e17-78be-43a6-997b-a9be3e52329a": {
-      "id": "fe6f4e17-78be-43a6-997b-a9be3e52329a",
-      "title": "неизвестный стол",
-      "products": {}
-    },
-    "13343caa-fb1a-4502-9085-99cfa90a8c62": {
-      "id": "13343caa-fb1a-4502-9085-99cfa90a8c62",
-      "title": "неизвестный стол",
-      "products": {
-        "ada6d9d9-cf7e-444a-bae9-913a60ace991": {
-          "id": "ada6d9d9-cf7e-444a-bae9-913a60ace991",
-          "title": "another",
-          "price": 34,
-          "isPiece": true,
-          "needTimer": true,
-          "eachProductUnitMinutesTimer": 23,
-          "units": 1,
-          "createdAt": "2022-03-11T17:11:55.276Z",
-          "timerStatus": "stop"
-        }
-      }
     }
   },
   "products": {
