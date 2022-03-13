@@ -28,7 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'la-la-land-keeper',
       favicon: paths.public + '/favicon.ico',
-      template: paths.src + '/template.html',
+      template: paths.public + '/index.html',
       filename: 'index.html',
     }),
   ],
