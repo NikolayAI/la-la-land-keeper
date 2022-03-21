@@ -1,1 +1,2 @@
-export * from './close';export * from './handle';
+export * from './close';
+export * from './handle';

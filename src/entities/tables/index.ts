@@ -1,1 +1,2 @@
-export * as tablesModel from './model';export * from './types';
+export * as tablesModel from './model';
+export * from './types';
