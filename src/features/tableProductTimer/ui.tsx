@@ -89,6 +89,29 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(({
       productId,
       value: TableProductTimerStatuses.PLAY,
     });
+
+    const updateStorage = () => {
+      const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
+      const pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
+      let pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
+      // @ts-ignore
+      pausedTimerCount = new Date() - new Date(pausedAt) + pausedTimerCount;
+
+      setLocalStorage({
+        key: tablesProductsTimersKey,
+        value: {
+          ...timers ?? {},
+          [tableId]: {
+            ...timers[tableId] ?? {},
+            [productId]: {
+              ...timers[tableId]?.[productId] ?? {},
+              pausedTimerCount: pausedTimerCount,
+            }
+          }
+        }
+      });
+    };
+    updateStorage();
   };
 
   return (

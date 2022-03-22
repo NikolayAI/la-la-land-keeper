@@ -5,7 +5,7 @@ import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses
 } from '../api';
-import { getLocalStorage, setLocalStorage } from './localStorage';
+import { getLocalStorage } from './localStorage';
 
 export const tablesProductsTimersKey = 'tablesProductsTimers';
 
@@ -44,33 +44,15 @@ export const useTimer = ({
 
   ref.current.isTimerPlay = isTimerPlay;
 
-  const updateStorage = () => {
-    const timers = getLocalStorage({ key: tablesProductsTimersKey });
-    ref.current.pausedAt = timers[tableId]?.[productId]?.pausedAt ?? null;
-    const pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
-    // @ts-ignore
-    ref.current.pausedTimerCount = (new Date() - new Date(ref.current.pausedAt ?? '')) + pausedTimerCount;
-    setLocalStorage({
-      key: tablesProductsTimersKey,
-      value: {
-        ...timers ?? {},
-        [tableId]: {
-          ...timers[tableId] ?? {},
-          [productId]: {
-            ...timers[tableId]?.[productId] ?? {},
-            pausedTimerCount: ref.current.pausedTimerCount,
-          }
-        }
-      }
-    });
-  };
 
   const calculateTimerCount = () => {
     return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
   };
 
   useEffect(() => {
-    updateStorage();
+    const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
+    ref.current.pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
+    ref.current.pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
 
     setTimer({
       tableId,
@@ -102,6 +84,21 @@ export const useTimer = ({
         clearInterval(ref.current.intervalId);
         ref.current.intervalId = null;
       }
+      // const timers = getLocalStorage({ key: tablesProductsTimersKey });
+      // setLocalStorage({
+      //   key: tablesProductsTimersKey,
+      //   value: {
+      //     ...timers ?? {},
+      //     [tableId]: {
+      //       ...timers[tableId] ?? {},
+      //       [productId]: {
+      //         ...timers[tableId]?.[productId] ?? {},
+      //         pausedAt: null,
+      //         pausedTimerCount: 0,
+      //       }
+      //     }
+      //   }
+      // });
     };
 
   }, [timerStatus]);
