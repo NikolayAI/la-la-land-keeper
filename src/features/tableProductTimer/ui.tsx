@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStore } from 'effector-react';
 import { IconButton } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -58,6 +58,26 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(({
     setTimer,
     interval: 1000,
   });
+
+  useEffect(() => {
+    return () => {
+      const timers = getLocalStorage({ key: tablesProductsTimersKey });
+      setLocalStorage({
+        key: tablesProductsTimersKey,
+        value: {
+          ...timers ?? {},
+          [tableId]: {
+            ...timers[tableId] ?? {},
+            [productId]: {
+              ...timers[tableId]?.[productId] ?? {},
+              pausedAt: null,
+              pausedTimerCount: 0,
+            }
+          }
+        }
+      });
+    }
+  }, [])
 
   const handlePause = () => {
     handleStopTimer({
