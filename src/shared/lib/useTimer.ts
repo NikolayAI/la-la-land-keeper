@@ -46,7 +46,14 @@ export const useTimer = ({
 
 
   const calculateTimerCount = () => {
-    return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
+    if (ref.current.isTimerPlay) {
+      return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
+    }
+    if (!ref.current.isTimerPlay) {
+      // @ts-ignore
+      return dateToSeconds(Number(new Date(ref.current.pausedAt)) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
+    }
+    return 0;
   };
 
   useEffect(() => {
