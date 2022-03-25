@@ -1,4 +1,4 @@
-import { createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 
 import { ISetAnchorElementParams } from './types';
 import { tablesModel } from '../../../entities/tables';
@@ -16,7 +16,12 @@ $anchorEl.on(setAnchorEl, (state, { tableId, element }) => {
   };
 });
 
-forward({
-  from: addProductToTable,
-  to: tablesModel.addProductFx,
+sample({
+  clock: addProductToTable,
+  source: tablesModel.$tables,
+  filter: (tables, { tableId, productId }) => {
+    return !Boolean(tables[tableId]?.products[productId]?.createdAt);
+  },
+  fn: (_, clockPayload) => clockPayload,
+  target: tablesModel.addProductFx,
 });
