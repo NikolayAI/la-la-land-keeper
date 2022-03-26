@@ -18,9 +18,11 @@ export interface ISetTableProductTimerStatusParams extends IAddProductToTablePar
 }
 
 export interface IDecreaseTableProductParams extends IAddProductToTableParams {
+  value: number;
 }
 
 export interface IIncreaseTableProductParams extends IAddProductToTableParams {
+  value: number;
 }
 
 export interface IDeleteProductToTableParams extends IAddProductToTableParams {

@@ -3,19 +3,7 @@
     "d33cd594-004d-4fce-af90-71e78fa3bf44": {
       "id": "d33cd594-004d-4fce-af90-71e78fa3bf44",
       "title": "jhadgjhaed",
-      "products": {
-        "8eb6728d-d151-4594-abd1-48b3d64dca42": {
-          "id": "8eb6728d-d151-4594-abd1-48b3d64dca42",
-          "title": "some",
-          "price": 13,
-          "isPiece": true,
-          "needTimer": true,
-          "eachProductUnitMinutesTimer": 1,
-          "units": 5,
-          "createdAt": "2022-03-25T08:22:55.097Z",
-          "timerStatus": "stop"
-        }
-      }
+      "products": {}
     }
   },
   "products": {

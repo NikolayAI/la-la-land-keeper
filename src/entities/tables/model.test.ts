@@ -78,7 +78,7 @@ test('increaseTableProductFx should calls TablesAPI.increaseTableProduct', async
 
   await allSettled(tablesModel.increaseTableProductFx, {
     scope,
-    params: { tableId: '1', productId: '2' }
+    params: { tableId: '1', productId: '2', value: 1 }
   });
 
   expect(mockIncreaseTableProduct).toHaveBeenCalledTimes(1);
@@ -89,7 +89,7 @@ test('decreaseTableProductFx should calls TablesAPI.decreaseTableProduct', async
 
   await allSettled(tablesModel.decreaseTableProductFx, {
     scope,
-    params: { tableId: '1', productId: '2' }
+    params: { tableId: '1', productId: '2', value: 1 }
   });
 
   expect(mockDecreaseTableProduct).toHaveBeenCalledTimes(1);

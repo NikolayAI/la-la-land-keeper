@@ -77,19 +77,21 @@ export const deleteProductFromTable = async ({
 
 export const increaseTableProduct = async ({
   productId,
-  tableId
+  tableId,
+  value,
 }: IIncreaseTableProductParams) => {
   const tables = await getTables();
-  tables[tableId].products[productId].units += 1;
+  tables[tableId].products[productId].units = value;
   await setTables(tables);
 };
 
 export const decreaseTableProduct = async ({
   productId,
-  tableId
+  tableId,
+  value,
 }: IDecreaseTableProductParams) => {
   const tables = await getTables();
-  tables[tableId].products[productId].units -= 1;
+  tables[tableId].products[productId].units = value;
   await setTables(tables);
 };
 

@@ -58,11 +58,11 @@ deleteProductFx.use(async ({ productId, tableId }) => {
 clearTableFx.use(async ({ tableId }) => {
   await TablesAPI.clearTable({ tableId });
 });
-increaseTableProductFx.use(async ({ productId, tableId }) => {
-  await TablesAPI.increaseTableProduct({ productId, tableId });
+increaseTableProductFx.use(async ({ productId, tableId, value }) => {
+  await TablesAPI.increaseTableProduct({ productId, tableId, value });
 });
-decreaseTableProductFx.use(async ({ productId, tableId }) => {
-  await TablesAPI.decreaseTableProduct({ productId, tableId });
+decreaseTableProductFx.use(async ({ productId, tableId, value }) => {
+  await TablesAPI.decreaseTableProduct({ productId, tableId, value });
 });
 setTableProductTimerStatusFx.use(async ({ productId, tableId, value }) => {
   await TablesAPI.setTableProductTimerStatus({ productId, tableId, value });

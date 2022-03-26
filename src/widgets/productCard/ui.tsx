@@ -51,22 +51,19 @@ export const ProductCard: React.FC<IProductCard> = ({
           </Typography>
         </Grid>
         <Grid item xs={3.5}>
-          {
-            tableProduct.needTimer
-              ? (
-                <TableProductTimer
-                  tables={tables}
-                  tableId={tableId}
-                  productId={tableProduct.id}
-                  createdAt={tableProduct.createdAt}
-                  minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-                  productUnits={tableProduct.units}
-                  setTimer={tablesModel.setTablesProductsTimers}
-                  handleStopTimer={stopTableProductTimer}
-                  handlePlayTimer={playTableProductTimer}
-                />
-              ) : null
-          }
+          {tableProduct.needTimer && (
+            <TableProductTimer
+              tables={tables}
+              tableId={tableId}
+              productId={tableProduct.id}
+              createdAt={tableProduct.createdAt}
+              minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+              productUnits={tableProduct.units}
+              setTimer={tablesModel.setTablesProductsTimers}
+              handleStopTimer={stopTableProductTimer}
+              handlePlayTimer={playTableProductTimer}
+            />
+          )}
         </Grid>
         <Grid item xs={3}>
           {

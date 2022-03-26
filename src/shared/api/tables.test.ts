@@ -16,6 +16,7 @@ import { TableProductTimerStatuses } from './constants';
 
 const tableId = 'test-table-id';
 const productId = 'test-table-product-id';
+const value = 1;
 
 test('getTables should return value', async () => {
   const result = await getTables();
@@ -69,13 +70,13 @@ test('should call deleteProductFromTable', async () => {
 });
 
 test('should call increaseTableProduct', async () => {
-  const result = await increaseTableProduct({ tableId, productId });
+  const result = await increaseTableProduct({ tableId, productId, value });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call decreaseTableProduct', async () => {
-  const result = await decreaseTableProduct({ tableId, productId });
+  const result = await decreaseTableProduct({ tableId, productId, value });
 
   expect(result).toStrictEqual(undefined);
 });

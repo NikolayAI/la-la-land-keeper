@@ -1,11 +1,17 @@
-import { createEvent, forward } from 'effector';
+import { createEvent, sample } from 'effector';
 
 import { tablesModel } from '../../../entities/tables';
 import { IIncreaseTableProductParams } from '../../../shared/api';
 
-export const increaseTableProduct = createEvent<IIncreaseTableProductParams>();
+export const increaseTableProduct = createEvent<Omit<IIncreaseTableProductParams, 'value'>>();
 
-forward({
-  from: increaseTableProduct,
-  to: tablesModel.increaseTableProductFx,
+sample({
+  clock: increaseTableProduct,
+  source: tablesModel.$tables,
+  fn: (tables, {tableId, productId}) => ({
+    tableId,
+    productId,
+    value: tables[tableId]?.products[productId]?.units + 1,
+  }),
+  target: tablesModel.increaseTableProductFx,
 });
