@@ -1,6 +1,6 @@
 import { allSettled, fork } from 'effector';
 
-import { NotificationKinds, notificationsModel } from '.';
+import { NotificationKinds, notificationsModel } from './index';
 
 const params = {
   tableId: '1',

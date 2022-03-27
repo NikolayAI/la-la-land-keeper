@@ -19,7 +19,7 @@ import {
   ISetTableTitleParams,
   TablesAPI,
   TablesType
-} from '../../shared/api';
+} from 'shared/api';
 
 export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
 
@@ -88,7 +88,8 @@ export const $tablesProductsTimersOutOfLimits = combine(
       }
     }
     return result;
-  });
+  }
+);
 
 $tables
   .on(getTablesFx.doneData, (_, tables) => tables);

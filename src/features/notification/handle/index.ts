@@ -1,1 +1,0 @@
-export * as handleNotificationModel from './model';

@@ -1,9 +1,9 @@
 import { allSettled, fork } from 'effector';
 
-import { notificationsModel } from '../../../entities/notifications';
-import { productsModel } from '../../../entities/products';
-import { tablesModel } from '../../../entities/tables';
-import { TableProductTimerStatuses } from '../../../shared/api';
+import { notificationsModel } from './index';
+import { productsModel } from '../../products';
+import { tablesModel } from '../../tables';
+import { TableProductTimerStatuses } from 'shared/api';
 
 test(`tableProductsTimersNotifications should take data when tablesProductsTimersOutOfLimits updated`, async () => {
   const scope = fork({

@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { createProduct, CreateProductModal, openCreateProductModal } from '.';
-import { productsModel } from '../../../entities/products';
+import { productsModel } from 'entities/products';
 
 describe('events', () => {
   const createProductFn = jest.fn();

@@ -6,7 +6,7 @@ import { alpha, Box, Button, MenuItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { $anchorEl, deleteProduct, setAnchorEl } from './model';
-import { ProductsType } from '../../../shared/api';
+import { ProductsType } from 'shared/api';
 
 interface IDeleteProductsList {
   products: ProductsType;

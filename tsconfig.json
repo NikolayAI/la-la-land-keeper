@@ -12,7 +12,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "pretty": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "app/*": ["src/app/*"],
+      "processes/*": ["src/processes/*"],
+      "pages/*": ["src/pages/*"],
+      "widgets/*": ["src/widgets/*"],
+      "features/*": ["src/features/*"],
+      "entities/*": ["src/entities/*"],
+      "shared/*": ["src/shared/*"]
+    }
   },
   "include": ["src"],
   "exclude": [

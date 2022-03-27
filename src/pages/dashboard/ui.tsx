@@ -2,21 +2,21 @@ import React from 'react';
 import { useStore } from 'effector-react';
 
 import { DashBoardGate } from './model';
-import { TablesList } from '../../widgets/table';
-import { Header } from '../../widgets/header';
-import { CreateProductModal, } from '../../features/product';
-import { closeNotification } from '../../features/notification';
-import { tablesModel } from '../../entities/tables';
+import { TablesList } from 'widgets/table';
+import { Header } from 'widgets/header';
+import { CreateProductModal, } from 'features/product';
+import { closeNotification } from 'features/notification';
+import { tablesModel } from 'entities/tables';
 import {
   Notifications,
   notificationsModel
-} from '../../entities/notifications';
+} from 'entities/computed/notifications';
 
-interface DashboardProps {
+interface IDashboardProps {
   className?: string;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ className }) => {
+export const Dashboard: React.FC<IDashboardProps> = ({ className }) => {
   const tablesIds = useStore(tablesModel.$tablesIds);
   const tables = useStore(tablesModel.$tables);
   const tableProductsTimersNotifications = useStore(notificationsModel.$tableProductsTimersNotifications);

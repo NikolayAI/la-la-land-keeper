@@ -1,7 +1,7 @@
 import { createEvent, sample } from 'effector';
 
-import { tablesModel } from '../../../entities/tables';
-import { IDecreaseTableProductParams } from '../../../shared/api';
+import { tablesModel } from 'entities/tables';
+import { IDecreaseTableProductParams } from 'shared/api';
 
 export const decreaseTableProduct = createEvent<Omit<IDecreaseTableProductParams, 'value'>>();
 

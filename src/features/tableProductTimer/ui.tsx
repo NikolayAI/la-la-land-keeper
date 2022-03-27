@@ -7,19 +7,19 @@ import PauseIcon from '@mui/icons-material/Pause';
 import {
   IPlayTableProductTimerParams,
   IStopProductTableTimerParams
-} from '../../features/tableProductTimer';
-import { tablesModel } from '../../entities/tables';
+} from 'features/tableProductTimer';
+import { tablesModel } from 'entities/tables';
 import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
   TablesType
-} from '../../shared/api';
+} from 'shared/api';
 import {
   getLocalStorage,
   setLocalStorage,
   tablesProductsTimersKey,
   useTimer
-} from '../../shared/lib';
+} from 'shared/lib';
 
 interface IProductTimer {
   tables: TablesType;

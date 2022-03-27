@@ -16,11 +16,11 @@ import { useStore } from 'effector-react';
 
 import { calculateTableTotalPrice } from './lib';
 import { ProductCard } from '../productCard';
-import { clearTable, deleteTable, setTableTitle } from '../../features/table';
-import { AddProductToTable } from '../../features/tableProduct';
-import { productsModel } from '../../entities/products';
-import { ProductsType, TablesType } from '../../shared/api';
-import { EditableText } from '../../shared/ui';
+import { clearTable, deleteTable, setTableTitle } from 'features/table';
+import { AddProductToTable } from 'features/tableProduct';
+import { productsModel } from 'entities/products';
+import { ProductsType, TablesType } from 'shared/api';
+import { EditableText } from 'shared/ui';
 
 interface ITable {
   tableId: string;

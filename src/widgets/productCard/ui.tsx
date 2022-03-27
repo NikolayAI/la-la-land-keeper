@@ -10,18 +10,18 @@ import {
   decreaseTableProduct,
   deleteProductFromTable,
   increaseTableProduct
-} from '../../features/tableProduct';
+} from 'features/tableProduct';
 import {
   playTableProductTimer,
   stopTableProductTimer,
   TableProductTimer
-} from '../../features/tableProductTimer';
-import { tablesModel } from '../../entities/tables';
+} from 'features/tableProductTimer';
+import { tablesModel } from 'entities/tables';
 import {
   ITableProduct,
   TableProductTimerStatuses,
   TablesType
-} from '../../shared/api';
+} from 'shared/api';
 
 interface IProductCard {
   tables: TablesType;
@@ -66,52 +66,50 @@ export const ProductCard: React.FC<IProductCard> = ({
           )}
         </Grid>
         <Grid item xs={3}>
-          {
-            tableProduct.isPiece ? (
-              <>
-                <IconButton
-                  role="decrease-table-product-count-button"
-                  color="primary"
-                  size="small"
-                  onClick={() => {
-                    tableProduct.units > 1
-                      ? decreaseTableProduct(changeProductParams)
-                      : deleteProductFromTable(changeProductParams);
-                  }}
-                >
-                  <RemoveIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  color="default"
-                  size="small"
-                  sx={{ cursor: 'default' }}
-                >
-                  {tableProduct.units}
-                </IconButton>
-                <IconButton
-                  role="increase-table-product-count-button"
-                  color="primary"
-                  size="small"
-                  onClick={() => {
-                    increaseTableProduct(changeProductParams);
-                  }}
-                >
-                  <AddIcon fontSize="small" />
-                </IconButton>
-              </>
-            ) : (
+          {tableProduct.isPiece ? (
+            <>
               <IconButton
-                role="delete-table-product-button"
+                role="decrease-table-product-count-button"
                 color="primary"
                 size="small"
                 onClick={() => {
-                  deleteProductFromTable(changeProductParams);
+                  tableProduct.units > 1
+                    ? decreaseTableProduct(changeProductParams)
+                    : deleteProductFromTable(changeProductParams);
                 }}
               >
-                <DeleteIcon fontSize="small" />
+                <RemoveIcon fontSize="small" />
               </IconButton>
-            )
-          }
+              <IconButton
+                color="default"
+                size="small"
+                sx={{ cursor: 'default' }}
+              >
+                {tableProduct.units}
+              </IconButton>
+              <IconButton
+                role="increase-table-product-count-button"
+                color="primary"
+                size="small"
+                onClick={() => {
+                  increaseTableProduct(changeProductParams);
+                }}
+              >
+                <AddIcon fontSize="small" />
+              </IconButton>
+            </>
+          ) : (
+            <IconButton
+              role="delete-table-product-button"
+              color="primary"
+              size="small"
+              onClick={() => {
+                deleteProductFromTable(changeProductParams);
+              }}
+            >
+              <DeleteIcon fontSize="small" />
+            </IconButton>
+          )}
         </Grid>
         <Grid item xs={2}>
           <Typography variant="subtitle1" component="div">

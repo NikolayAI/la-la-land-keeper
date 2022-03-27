@@ -3,7 +3,7 @@ import { createEvent, forward } from 'effector';
 import {
   INotification,
   notificationsModel
-} from '../../../entities/notifications';
+} from 'entities/computed/notifications';
 
 export const closeNotification = createEvent<INotification>();
 

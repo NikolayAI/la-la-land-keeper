@@ -2,8 +2,8 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Header } from './ui';
-import { createTable } from '../../features/table';
-import { openCreateProductModal } from '../../features/product';
+import { createTable } from 'features/table';
+import { openCreateProductModal } from 'features/product';
 
 describe('events', () => {
   const createTableFn = jest.fn();

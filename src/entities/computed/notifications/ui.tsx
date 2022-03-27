@@ -15,23 +15,21 @@ export const Notifications: React.FC<INotificationProps> = React.memo(({
 }) => {
   return (
     <Stack spacing={2} sx={{ width: '100%', position: 'absolute', bottom: 0 }}>
-      {
-        notifications.map(({ kind, message, tableId, productId }) => (
-          <Alert
-            key={`${tableId}-${productId}-${kind}-${message}`}
-            onClose={() => handleCloseNotification({
-              kind,
-              message,
-              tableId,
-              productId
-            })}
-            severity={`${kind}`}
-            sx={{ width: '100%' }}
-          >
-            {message}
-          </Alert>
-        ))
-      }
+      {notifications.map(({ kind, message, tableId, productId }) => (
+        <Alert
+          key={`${tableId}-${productId}-${kind}-${message}`}
+          onClose={() => handleCloseNotification({
+            kind,
+            message,
+            tableId,
+            productId
+          })}
+          severity={`${kind}`}
+          sx={{ width: '100%' }}
+        >
+          {message}
+        </Alert>
+      ))}
     </Stack>
   );
 });

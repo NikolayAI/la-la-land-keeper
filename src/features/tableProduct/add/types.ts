@@ -1,4 +1,4 @@
-import { ProductsType } from '../../../shared/api';
+import { ProductsType } from 'shared/api';
 
 export interface IAddProductToTableProps {
   tableId: string;
