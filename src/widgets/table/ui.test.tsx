@@ -9,7 +9,7 @@ import { tablesModel } from 'entities/tables';
 import {
   products,
   table,
-  tables
+  tables,
 } from '../../../tests/__mocks__/handlers/fixtures';
 
 let scope: Scope;
@@ -30,19 +30,14 @@ describe('events', () => {
 
   beforeEach(() => {
     scope = fork({
-      values: [[tablesModel.$tables, tables]]
+      values: [[tablesModel.$tables, tables]],
     });
   });
 
   test('should call deleteTableFn', async () => {
-    render(
-      <Table
-        tableId={table.id}
-        tables={tables}
-        products={products}
-      />,
-      { wrapper: Wrapper }
-    );
+    render(<Table tableId={table.id} tables={tables} products={products} />, {
+      wrapper: Wrapper,
+    });
 
     fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
 
@@ -50,14 +45,9 @@ describe('events', () => {
   });
 
   test('should call deleteTableFn', async () => {
-    render(
-      <Table
-        tableId={table.id}
-        tables={tables}
-        products={products}
-      />,
-      { wrapper: Wrapper }
-    );
+    render(<Table tableId={table.id} tables={tables} products={products} />, {
+      wrapper: Wrapper,
+    });
 
     fireEvent.click(screen.getByRole(`clear-table-${table.id}-button`));
 
@@ -65,13 +55,7 @@ describe('events', () => {
   });
 
   test('should render Table from TablesList', async () => {
-    render(
-      <TablesList
-        tablesIds={Object.keys(tables)}
-        tables={tables}
-      />,
-      { wrapper: Wrapper }
-    );
+    render(<TablesList />, { wrapper: Wrapper });
 
     const element = screen.getByText(table.title);
 
