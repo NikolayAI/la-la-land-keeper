@@ -3,7 +3,7 @@ import {
   createEffect,
   createEvent,
   createStore,
-  forward
+  forward,
 } from 'effector';
 
 import { TableProductsTimersType } from './types';
@@ -18,21 +18,42 @@ import {
   ISetTablesProductsTimersParams,
   ISetTableTitleParams,
   TablesAPI,
-  TablesType
-} from 'shared/api';
+  TablesType,
+} from '../../shared/api';
 
-export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
+export const setTablesProductsTimers =
+  createEvent<ISetTablesProductsTimersParams>();
 
 export const getTablesFx = createEffect<void, TablesType, Error>();
 export const createTableFx = createEffect<void, void, Error>();
 export const deleteTableFx = createEffect<IDeleteTableParams, void, Error>();
 export const setTitleFx = createEffect<ISetTableTitleParams, void, Error>();
-export const addProductFx = createEffect<IAddProductToTableParams, void, Error>();
-export const deleteProductFx = createEffect<IDeleteProductToTableParams, void, Error>();
+export const addProductFx = createEffect<
+  IAddProductToTableParams,
+  void,
+  Error
+>();
+export const deleteProductFx = createEffect<
+  IDeleteProductToTableParams,
+  void,
+  Error
+>();
 export const clearTableFx = createEffect<IClearTableParams, void, Error>();
-export const increaseTableProductFx = createEffect<IIncreaseTableProductParams, void, Error>();
-export const decreaseTableProductFx = createEffect<IDecreaseTableProductParams, void, Error>();
-export const setTableProductTimerStatusFx = createEffect<ISetTableProductTimerStatusParams, void, Error>();
+export const increaseTableProductFx = createEffect<
+  IIncreaseTableProductParams,
+  void,
+  Error
+>();
+export const decreaseTableProductFx = createEffect<
+  IDecreaseTableProductParams,
+  void,
+  Error
+>();
+export const setTableProductTimerStatusFx = createEffect<
+  ISetTableProductTimerStatusParams,
+  void,
+  Error
+>();
 
 export const $tables = createStore<TablesType>({});
 export const $tablesProductsTimers = createStore<TableProductsTimersType>({});
@@ -91,18 +112,19 @@ export const $tablesProductsTimersOutOfLimits = combine(
   }
 );
 
-$tables
-  .on(getTablesFx.doneData, (_, tables) => tables);
-$tablesProductsTimers
-  .on(setTablesProductsTimers, (state, { tableId, productId, value }) => {
+$tables.on(getTablesFx.doneData, (_, tables) => tables);
+$tablesProductsTimers.on(
+  setTablesProductsTimers,
+  (state, { tableId, productId, value }) => {
     return {
       ...state,
       [tableId]: {
         ...state[tableId],
         [productId]: value,
-      }
+      },
     };
-  });
+  }
+);
 
 forward({
   from: [
@@ -118,5 +140,3 @@ forward({
   ],
   to: getTablesFx,
 });
-
-

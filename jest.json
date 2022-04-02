@@ -2,6 +2,7 @@
   "clearMocks": true,
   "testEnvironment": "jest-environment-jsdom",
   "collectCoverage": true,
+  "timers": "modern",
   "coverageDirectory": "<rootDir>/tests/__coverage__/",
   "collectCoverageFrom": ["./src/**"],
   "coveragePathIgnorePatterns": ["src/index.tsx"],
