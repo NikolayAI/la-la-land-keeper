@@ -4,8 +4,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'effector-react/scope';
 
 import { Table, TablesList } from './ui';
-import { clearTable, deleteTable, setTableTitle } from '@features/table';
-import { tablesModel } from '@entities/tables';
+import { clearTable, deleteTable, setTableTitle } from 'features/table';
+import { tablesModel } from 'entities/tables';
 import { products, table, tables } from '../../../tests/__mocks__/fixtures';
 
 let scope: Scope;

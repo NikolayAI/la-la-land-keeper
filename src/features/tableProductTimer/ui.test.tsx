@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { TableProductTimer } from './ui';
-import { TableProductTimerStatuses } from '@shared/api';
+import { TableProductTimerStatuses } from 'shared/api';
 
 const tablesWithPlayTimerStatus = {
   '1': {

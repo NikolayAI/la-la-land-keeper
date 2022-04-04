@@ -16,7 +16,7 @@ import {
   closeCreateProductModal,
   createProduct,
 } from './model';
-import { productsModel } from '@entities/products';
+import { productsModel } from 'entities/products';
 
 export const CreateProductModal: React.FC = React.memo(() => {
   const isOpen = useStore($isOpenCreateProductModal);

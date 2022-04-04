@@ -1,4 +1,4 @@
-import { TableProductsType } from '@shared/api';
+import { TableProductsType } from 'shared/api';
 
 export const calculateTableTotalPrice = ({
   products,

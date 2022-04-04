@@ -4,8 +4,8 @@ import { allSettled, fork } from 'effector';
 
 import { Dashboard } from './ui';
 import { DashBoardGate } from './model';
-import { productsModel } from '@entities/products';
-import { tablesModel } from '@entities/tables';
+import { productsModel } from 'entities/products';
+import { tablesModel } from 'entities/tables';
 
 test('when page has mounted should open gate', async () => {
   expect(DashBoardGate.status.getState()).toBe(false);

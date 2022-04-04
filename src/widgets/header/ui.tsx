@@ -2,9 +2,9 @@ import React from 'react';
 import { useStore } from 'effector-react';
 import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 
-import { createTable } from '@features/table';
-import { DeleteProduct, openCreateProductModal } from '@features/product';
-import { productsModel } from '@entities/products';
+import { createTable } from 'features/table';
+import { DeleteProduct, openCreateProductModal } from 'features/product';
+import { productsModel } from 'entities/products';
 
 export const Header = React.memo(() => {
   const products = useStore(productsModel.$products);

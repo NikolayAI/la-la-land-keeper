@@ -2,7 +2,7 @@ import { allSettled, fork } from 'effector';
 
 import { productsModel } from '.';
 import { defaultProduct } from './constants';
-import { ProductsAPI } from '@shared/api';
+import { ProductsAPI } from 'shared/api';
 
 const params = {
   id: '1',

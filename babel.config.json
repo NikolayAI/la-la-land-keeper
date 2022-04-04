@@ -1,13 +1,34 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "current"
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
       }
-    }
     ],
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
-  "plugins": ["effector/babel-plugin"]
+  "plugins": [
+    "effector/babel-plugin",
+    [
+      "module-resolver",
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "root": ["./src"],
+        "alias": {
+          "public": "./public",
+          "app": "./app",
+          "processes": "./processes",
+          "pages": "./pages",
+          "widgets": "./widgets",
+          "features": "./features",
+          "entities": "./entities",
+          "shared": "./shared"
+        }
+      }
+    ]
+  ]
 }

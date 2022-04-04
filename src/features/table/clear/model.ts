@@ -1,7 +1,7 @@
 import { createEvent, forward } from 'effector';
 
-import { tablesModel } from '@entities/tables';
-import { IClearTableParams } from '@shared/api';
+import { tablesModel } from 'entities/tables';
+import { IClearTableParams } from 'shared/api';
 
 export const clearTable = createEvent<IClearTableParams>();
 

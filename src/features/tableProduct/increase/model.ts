@@ -1,7 +1,7 @@
 import { createEvent, sample } from 'effector';
 
-import { tablesModel } from '@entities/tables';
-import { IIncreaseTableProductParams } from '@shared/api';
+import { tablesModel } from 'entities/tables';
+import { IIncreaseTableProductParams } from 'shared/api';
 
 export const increaseTableProduct =
   createEvent<Omit<IIncreaseTableProductParams, 'value'>>();

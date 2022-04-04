@@ -49,14 +49,7 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
-      '@assets': paths.public,
-      '@app': paths.app,
-      '@processes': paths.processes,
-      '@pages': paths.pages,
-      '@widgets': paths.widgets,
-      '@features': paths.features,
-      '@entities': paths.entities,
-      '@shared': paths.shared,
+      assets: paths.public,
     },
   },
   performance: {

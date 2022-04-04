@@ -10,18 +10,18 @@ import {
   decreaseTableProduct,
   deleteProductFromTable,
   increaseTableProduct,
-} from '@features/tableProduct';
+} from 'features/tableProduct';
 import {
   playTableProductTimer,
   stopTableProductTimer,
   TableProductTimer,
-} from '@features/tableProductTimer';
-import { tablesModel } from '@entities/tables';
+} from 'features/tableProductTimer';
+import { tablesModel } from 'entities/tables';
 import {
   ITableProduct,
   TableProductTimerStatuses,
   TablesType,
-} from '@shared/api';
+} from 'shared/api';
 
 interface IProductCard {
   tables: TablesType;

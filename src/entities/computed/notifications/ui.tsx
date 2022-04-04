@@ -4,7 +4,7 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useStore } from 'effector-react';
 
 import { INotification } from './types';
-import { notificationsModel } from '@entities/computed/notifications/index';
+import { notificationsModel } from 'entities/computed/notifications/index';
 
 interface INotificationProps {
   handleCloseNotification: (payload: INotification) => void;

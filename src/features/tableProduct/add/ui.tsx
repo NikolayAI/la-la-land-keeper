@@ -7,7 +7,7 @@ import { useStore } from 'effector-react';
 
 import { IAddProductToTableProps } from './types';
 import { $anchorEl, addProductToTable, setAnchorEl } from './model';
-import { IAddProductToTableParams } from '@shared/api';
+import { IAddProductToTableParams } from 'shared/api';
 
 export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
   tableId,

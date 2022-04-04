@@ -4,7 +4,7 @@ import { INotification } from './types';
 import { NotificationKinds } from './constants';
 import { tablesModel } from '../../tables';
 import { productsModel } from '../../products';
-import { TableProductTimerStatuses } from '@shared/api';
+import { TableProductTimerStatuses } from 'shared/api';
 
 export const addNotification = createEvent<INotification>();
 export const deleteNotification =
