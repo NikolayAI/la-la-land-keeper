@@ -1,8 +1,8 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const paths = require('./paths')
+const paths = require('./paths');
 
 module.exports = {
   entry: [paths.src + '/index.tsx'],
@@ -49,17 +49,17 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
-      assets: paths.public,
-      app: paths.app,
-      processes: paths.processes,
-      pages: paths.pages,
-      widgets: paths.widgets,
-      features: paths.features,
-      entities: paths.entities,
-      shared: paths.shared,
+      '@assets': paths.public,
+      '@app': paths.app,
+      '@processes': paths.processes,
+      '@pages': paths.pages,
+      '@widgets': paths.widgets,
+      '@features': paths.features,
+      '@entities': paths.entities,
+      '@shared': paths.shared,
     },
   },
   performance: {
     hints: false,
   },
-}
+};

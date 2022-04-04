@@ -15,17 +15,15 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "app/*": ["src/app/*"],
-      "processes/*": ["src/processes/*"],
-      "pages/*": ["src/pages/*"],
-      "widgets/*": ["src/widgets/*"],
-      "features/*": ["src/features/*"],
-      "entities/*": ["src/entities/*"],
-      "shared/*": ["src/shared/*"]
+      "@app/*": ["src/app/*"],
+      "@processes/*": ["src/processes/*"],
+      "@pages/*": ["src/pages/*"],
+      "@widgets/*": ["src/widgets/*"],
+      "@features/*": ["src/features/*"],
+      "@entities/*": ["src/entities/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
   "include": ["src"],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

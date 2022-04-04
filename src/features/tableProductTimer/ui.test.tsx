@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { TableProductTimer } from './ui';
-import { TableProductTimerStatuses } from 'shared/api';
+import { TableProductTimerStatuses } from '@shared/api';
 
 const tablesWithPlayTimerStatus = {
   '1': {
@@ -19,9 +19,9 @@ const tablesWithPlayTimerStatus = {
         units: 1,
         createdAt: new Date(),
         timerStatus: TableProductTimerStatuses.PLAY,
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 const tablesWithStopTimerStatus = {
@@ -33,10 +33,10 @@ const tablesWithStopTimerStatus = {
       2: {
         ...tablesWithPlayTimerStatus['1'].products['2'],
         timerStatus: TableProductTimerStatuses.STOP,
-      }
-    }
+      },
+    },
   },
-}
+};
 
 describe('events', () => {
   const setTimerFn = jest.fn();

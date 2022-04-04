@@ -4,12 +4,15 @@ import { INotification } from './types';
 import { NotificationKinds } from './constants';
 import { tablesModel } from '../../tables';
 import { productsModel } from '../../products';
-import { TableProductTimerStatuses } from 'shared/api';
+import { TableProductTimerStatuses } from '@shared/api';
 
 export const addNotification = createEvent<INotification>();
-export const deleteNotification = createEvent<Pick<INotification, 'tableId' | 'productId'>>();
+export const deleteNotification =
+  createEvent<Pick<INotification, 'tableId' | 'productId'>>();
 
-export const $tableProductsTimersNotifications = createStore<INotification[]>([]);
+export const $tableProductsTimersNotifications = createStore<INotification[]>(
+  []
+);
 
 $tableProductsTimersNotifications
   .on(addNotification, (state, notification) => {
@@ -33,7 +36,9 @@ sample({
     const result = [];
     for (const tableId in timers) {
       for (const productId in timers[tableId]) {
-        const isTimerPlay = tables[tableId].products[productId].timerStatus === TableProductTimerStatuses.PLAY;
+        const isTimerPlay =
+          tables[tableId].products[productId].timerStatus ===
+          TableProductTimerStatuses.PLAY;
         if (timers[tableId]?.[productId] && isTimerPlay) {
           result.push({
             tableId,

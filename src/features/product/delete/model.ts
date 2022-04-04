@@ -1,6 +1,6 @@
 import { createEvent, createStore, forward } from 'effector';
 
-import { productsModel } from 'entities/products';
+import { productsModel } from '@entities/products';
 
 export const deleteProduct = createEvent<{ id: string }>();
 export const setAnchorEl = createEvent<null | HTMLElement>();

@@ -3,7 +3,7 @@ import { fork } from 'effector';
 import { Provider } from 'effector-react/scope';
 
 import './styles/App.css';
-import { Dashboard } from 'pages/dashboard';
+import { Dashboard } from '@pages/dashboard';
 
 export const App = () => {
   return (

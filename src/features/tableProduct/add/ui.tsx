@@ -7,11 +7,11 @@ import { useStore } from 'effector-react';
 
 import { IAddProductToTableProps } from './types';
 import { $anchorEl, addProductToTable, setAnchorEl } from './model';
-import { IAddProductToTableParams } from 'shared/api';
+import { IAddProductToTableParams } from '@shared/api';
 
 export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
   tableId,
-  products
+  products,
 }) => {
   const anchorEl = useStore($anchorEl)[tableId];
 
@@ -19,7 +19,7 @@ export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
 
   const handleAddProduct = ({
     tableId,
-    productId
+    productId,
   }: IAddProductToTableParams) => {
     addProductToTable({ tableId, productId });
     setAnchorEl({ tableId, element: null });
@@ -30,10 +30,12 @@ export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
       <IconButton
         role={`add-product-to-table-button-${tableId}`}
         color="inherit"
-        onClick={(event) => setAnchorEl({
-          tableId,
-          element: event.currentTarget
-        })}
+        onClick={(event) =>
+          setAnchorEl({
+            tableId,
+            element: event.currentTarget,
+          })
+        }
       >
         <AddIcon />
       </IconButton>
@@ -44,28 +46,28 @@ export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
         onClose={() => setAnchorEl({ tableId, element: null })}
         MenuListProps={{ 'aria-labelledby': `basic-button-${tableId}` }}
       >
-        {
-          Object.keys(products).map((productId) => (
-            <MenuItem
-              key={productId}
-              role="add-product-to-table-menu-item"
-              onClick={() => {
-                handleAddProduct({ tableId, productId });
-              }}
-            >
-              <Box sx={{
+        {Object.keys(products).map((productId) => (
+          <MenuItem
+            key={productId}
+            role="add-product-to-table-menu-item"
+            onClick={() => {
+              handleAddProduct({ tableId, productId });
+            }}
+          >
+            <Box
+              sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: '100%'
-              }}>
-                <span>{products[productId]?.title}</span>
-                <Box sx={{ marginLeft: 4 }}>
-                  <span>{products[productId]?.price} ₽</span>
-                </Box>
+                width: '100%',
+              }}
+            >
+              <span>{products[productId]?.title}</span>
+              <Box sx={{ marginLeft: 4 }}>
+                <span>{products[productId]?.price} ₽</span>
               </Box>
-            </MenuItem>
-          ))
-        }
+            </Box>
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );

@@ -7,15 +7,11 @@ import { ProductCard } from './ui';
 import {
   decreaseTableProduct,
   deleteProductFromTable,
-  increaseTableProduct
-} from 'features/tableProduct';
-import { tablesModel } from 'entities/tables';
-import { TableProductTimerStatuses } from 'shared/api';
-import {
-  table,
-  tableProduct,
-  tables
-} from '../../../tests/__mocks__/handlers/fixtures';
+  increaseTableProduct,
+} from '@features/tableProduct';
+import { tablesModel } from '@entities/tables';
+import { TableProductTimerStatuses } from '@shared/api';
+import { table, tableProduct, tables } from '../../../tests/__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -42,12 +38,12 @@ describe('events', () => {
       [table.id]: {
         ...table,
         products: {
-          [tableProduct.id]: testTableProduct
-        }
-      }
+          [tableProduct.id]: testTableProduct,
+        },
+      },
     };
     scope = fork({
-      values: [[tablesModel.$tables, testTables]]
+      values: [[tablesModel.$tables, testTables]],
     });
 
     render(
@@ -57,7 +53,7 @@ describe('events', () => {
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
       />,
-      { wrapper: Wrapper },
+      { wrapper: Wrapper }
     );
 
     fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
@@ -67,7 +63,7 @@ describe('events', () => {
 
   test('should call deleteProductFromTable', async () => {
     scope = fork({
-      values: [[tablesModel.$tables, tables]]
+      values: [[tablesModel.$tables, tables]],
     });
 
     render(
@@ -77,7 +73,7 @@ describe('events', () => {
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
       />,
-      { wrapper: Wrapper },
+      { wrapper: Wrapper }
     );
 
     fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
@@ -87,7 +83,7 @@ describe('events', () => {
 
   test('should call deleteProductFromTable', async () => {
     scope = fork({
-      values: [[tablesModel.$tables, tables]]
+      values: [[tablesModel.$tables, tables]],
     });
 
     render(
@@ -97,7 +93,7 @@ describe('events', () => {
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
       />,
-      { wrapper: Wrapper },
+      { wrapper: Wrapper }
     );
 
     fireEvent.click(screen.getByRole('increase-table-product-count-button'));
@@ -114,12 +110,12 @@ describe('events', () => {
       [table.id]: {
         ...table,
         products: {
-          [tableProduct.id]: testTableProduct
-        }
-      }
+          [tableProduct.id]: testTableProduct,
+        },
+      },
     };
     scope = fork({
-      values: [[tablesModel.$tables, testTables]]
+      values: [[tablesModel.$tables, testTables]],
     });
 
     render(
@@ -129,7 +125,7 @@ describe('events', () => {
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
       />,
-      { wrapper: Wrapper },
+      { wrapper: Wrapper }
     );
 
     fireEvent.click(screen.getByRole('delete-table-product-button'));

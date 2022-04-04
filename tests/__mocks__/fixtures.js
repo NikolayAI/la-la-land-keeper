@@ -1,4 +1,4 @@
-import { TableProductTimerStatuses } from 'shared/api';
+import { TableProductTimerStatuses } from 'src/shared/api';
 
 export const product = {
   id: 'test-product-id',
@@ -21,7 +21,7 @@ export const tableProduct = {
   needTimer: false,
   eachProductUnitMinutesTimer: 0,
   units: 1,
-  createdAt: new Date(),
+  createdAt: '2022-04-04T09:19:32.064Z',
   timerStatus: TableProductTimerStatuses.PLAY,
 };
 

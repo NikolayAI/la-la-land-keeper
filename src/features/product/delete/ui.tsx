@@ -6,7 +6,7 @@ import { alpha, Box, Button, MenuItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { $anchorEl, deleteProduct, setAnchorEl } from './model';
-import { ProductsType } from 'shared/api';
+import { ProductsType } from '@shared/api';
 
 interface IDeleteProductsList {
   products: ProductsType;
@@ -24,23 +24,21 @@ export const DeleteProduct: React.FC<IDeleteProductsList> = ({ products }) => {
 
   return (
     <>
-      {
-        Object.keys(products).length ? (
-          <Button
-            variant="contained"
-            sx={{
-              my: 2,
-              color: 'white',
-              display: 'block',
-              border: '1px solid white',
-              marginRight: 4
-            }}
-            onClick={(event) => setAnchorEl(event.currentTarget)}
-          >
-            Удалить товар
-          </Button>
-        ) : null
-      }
+      {Object.keys(products).length ? (
+        <Button
+          variant="contained"
+          sx={{
+            my: 2,
+            color: 'white',
+            display: 'block',
+            border: '1px solid white',
+            marginRight: 4,
+          }}
+          onClick={(event) => setAnchorEl(event.currentTarget)}
+        >
+          Удалить товар
+        </Button>
+      ) : null}
       <StyledMenu
         id="demo-customized-menu"
         title="demo-customized-button"
@@ -51,11 +49,13 @@ export const DeleteProduct: React.FC<IDeleteProductsList> = ({ products }) => {
       >
         {Object.keys(products).map((productId) => (
           <MenuItem key={productId} disableRipple>
-            <Box sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '100%'
-            }}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
               <Box
                 sx={{ display: 'flex', alignItems: 'center' }}
                 role="delete-product-box"
@@ -94,7 +94,9 @@ const StyledMenu = styled((props: MenuProps) => (
     marginTop: theme.spacing(1),
     minWidth: 180,
     color:
-      theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+      theme.palette.mode === 'light'
+        ? 'rgb(55, 65, 81)'
+        : theme.palette.grey[300],
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
@@ -109,7 +111,7 @@ const StyledMenu = styled((props: MenuProps) => (
       '&:active': {
         backgroundColor: alpha(
           theme.palette.primary.main,
-          theme.palette.action.selectedOpacity,
+          theme.palette.action.selectedOpacity
         ),
       },
     },

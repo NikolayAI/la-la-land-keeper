@@ -1,8 +1,9 @@
 import {
   ISetTableProductTimerStatusParams,
-  TableProductTimerStatuses
-} from 'shared/api';
+  TableProductTimerStatuses,
+} from '@shared/api';
 
-export interface IPlayTableProductTimerParams extends ISetTableProductTimerStatusParams {
+export interface IPlayTableProductTimerParams
+  extends ISetTableProductTimerStatusParams {
   value: TableProductTimerStatuses.PLAY;
 }

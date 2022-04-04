@@ -8,15 +8,15 @@ import {
   Checkbox,
   FormControlLabel,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 
 import {
   $isOpenCreateProductModal,
   closeCreateProductModal,
-  createProduct
+  createProduct,
 } from './model';
-import { productsModel } from 'entities/products';
+import { productsModel } from '@entities/products';
 
 export const CreateProductModal: React.FC = React.memo(() => {
   const isOpen = useStore($isOpenCreateProductModal);
@@ -44,7 +44,7 @@ export const CreateProductModal: React.FC = React.memo(() => {
             onChange={({ target: { value } }) => {
               productsModel.setProductProperty({
                 key: 'title',
-                value: value
+                value: value,
               });
             }}
             fullWidth
@@ -63,7 +63,7 @@ export const CreateProductModal: React.FC = React.memo(() => {
             onValueChange={({ value }: NumberFormatValues) => {
               productsModel.setProductProperty({
                 key: 'price',
-                value: Number(value)
+                value: Number(value),
               });
             }}
             fullWidth
@@ -75,7 +75,7 @@ export const CreateProductModal: React.FC = React.memo(() => {
             onChange={(_, checked) => {
               productsModel.setProductProperty({
                 key: 'isPiece',
-                value: checked
+                value: checked,
               });
             }}
           />
@@ -87,14 +87,18 @@ export const CreateProductModal: React.FC = React.memo(() => {
             onChange={(_, checked) => {
               productsModel.setProductProperty({
                 key: 'needTimer',
-                value: checked
+                value: checked,
               });
             }}
           />
           {product.needTimer && (
             <NumberFormat
               customInput={TextField}
-              value={product.eachProductUnitMinutesTimer === 0 ? '' : product.eachProductUnitMinutesTimer}
+              value={
+                product.eachProductUnitMinutesTimer === 0
+                  ? ''
+                  : product.eachProductUnitMinutesTimer
+              }
               variant="outlined"
               label="Таймер для 1 ед. товара, мин"
               sx={{ paddingBottom: 2 }}
@@ -103,7 +107,7 @@ export const CreateProductModal: React.FC = React.memo(() => {
               onValueChange={({ value }: NumberFormatValues) => {
                 productsModel.setProductProperty({
                   key: 'eachProductUnitMinutesTimer',
-                  value: Number(value)
+                  value: Number(value),
                 });
               }}
               fullWidth

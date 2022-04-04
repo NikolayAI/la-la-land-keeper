@@ -9,19 +9,19 @@ import { backgroundColors } from './constants';
 import {
   decreaseTableProduct,
   deleteProductFromTable,
-  increaseTableProduct
-} from 'features/tableProduct';
+  increaseTableProduct,
+} from '@features/tableProduct';
 import {
   playTableProductTimer,
   stopTableProductTimer,
-  TableProductTimer
-} from 'features/tableProductTimer';
-import { tablesModel } from 'entities/tables';
+  TableProductTimer,
+} from '@features/tableProductTimer';
+import { tablesModel } from '@entities/tables';
 import {
   ITableProduct,
   TableProductTimerStatuses,
-  TablesType
-} from 'shared/api';
+  TablesType,
+} from '@shared/api';
 
 interface IProductCard {
   tables: TablesType;
@@ -36,13 +36,20 @@ export const ProductCard: React.FC<IProductCard> = ({
   tableProduct,
   timerStatus,
 }) => {
-  const tablesProductsTimersOutOfLimit = useStore(tablesModel.$tablesProductsTimersOutOfLimits);
+  const tablesProductsTimersOutOfLimit = useStore(
+    tablesModel.$tablesProductsTimersOutOfLimits
+  );
   const changeProductParams = { tableId, productId: tableProduct?.id };
-  const isOutOfTimer = tablesProductsTimersOutOfLimit[tableId][tableProduct?.id];
+  const isOutOfTimer =
+    tablesProductsTimersOutOfLimit[tableId][tableProduct?.id];
   return (
     <Paper
       elevation={6}
-      sx={{ backgroundColor: isOutOfTimer ? '#d32f2f' : backgroundColors[timerStatus] }}
+      sx={{
+        backgroundColor: isOutOfTimer
+          ? '#d32f2f'
+          : backgroundColors[timerStatus],
+      }}
     >
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={3.5}>

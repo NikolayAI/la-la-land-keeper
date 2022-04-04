@@ -11,7 +11,7 @@ import {
   setTables,
   setTableTitle,
 } from './tables';
-import { tables } from '../../../tests/__mocks__/handlers/fixtures';
+import { tables } from '../../../tests/__mocks__/fixtures';
 import { TableProductTimerStatuses } from './constants';
 
 const tableId = 'test-table-id';
@@ -45,7 +45,7 @@ test('should call deleteTable', async () => {
 test('should call setTableTitle', async () => {
   const result = await setTableTitle({
     id: tableId,
-    text: 'test table'
+    text: 'test table',
   });
 
   expect(result).toStrictEqual(undefined);

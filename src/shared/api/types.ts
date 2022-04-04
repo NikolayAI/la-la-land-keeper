@@ -9,11 +9,13 @@ export interface IAddProductToTableParams {
   tableId: string;
 }
 
-export interface ISetTablesProductsTimersParams extends IAddProductToTableParams {
+export interface ISetTablesProductsTimersParams
+  extends IAddProductToTableParams {
   value: number;
 }
 
-export interface ISetTableProductTimerStatusParams extends IAddProductToTableParams {
+export interface ISetTableProductTimerStatusParams
+  extends IAddProductToTableParams {
   value: TableProductTimerStatuses;
 }
 
@@ -25,8 +27,7 @@ export interface IIncreaseTableProductParams extends IAddProductToTableParams {
   value: number;
 }
 
-export interface IDeleteProductToTableParams extends IAddProductToTableParams {
-}
+export interface IDeleteProductToTableParams extends IAddProductToTableParams {}
 
 export interface ISetTableTitleParams {
   id: string;
@@ -46,15 +47,15 @@ export interface IProduct {
   eachProductUnitMinutesTimer: number;
 }
 
-export type ProductsType = Record<string, IProduct>
+export type ProductsType = Record<string, IProduct>;
 
 export interface ITableProduct extends IProduct {
   units: number;
-  createdAt: Date;
-  timerStatus: TableProductTimerStatuses
+  createdAt: Date | string;
+  timerStatus: TableProductTimerStatuses;
 }
 
-export type TableProductsType = Record<string, ITableProduct>
+export type TableProductsType = Record<string, ITableProduct>;
 
 export interface ITable {
   id: string;
@@ -62,7 +63,7 @@ export interface ITable {
   products: TableProductsType;
 }
 
-export type TablesType = Record<string, ITable>
+export type TablesType = Record<string, ITable>;
 
 export interface ApplicationData {
   tables: TablesType;

@@ -1,7 +1,7 @@
 import { allSettled, fork } from 'effector';
 
 import { tablesModel } from '../tables';
-import { TablesAPI, TableProductTimerStatuses } from 'shared/api/';
+import { TablesAPI, TableProductTimerStatuses } from '@shared/api/';
 
 const mockCreateTable = jest.spyOn(TablesAPI, 'createTable');
 const mockDeleteTable = jest.spyOn(TablesAPI, 'deleteTable');
