@@ -1,6 +1,7 @@
 {
   "name": "la-la-land-keeper",
   "version": "0.1.0",
+  "private": true,
   "main": "src/index.tsx",
   "scripts": {
     "client": "cross-env NODE_ENV=development webpack serve --progress --config webpack/webpack.dev.js",

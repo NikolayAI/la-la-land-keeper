@@ -26,7 +26,8 @@
           "widgets": "./widgets",
           "features": "./features",
           "entities": "./entities",
-          "shared": "./shared"
+          "shared": "./shared",
+          "tests": "../tests"
         }
       }
     ]

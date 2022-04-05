@@ -11,7 +11,7 @@ import {
 } from 'features/tableProduct';
 import { tablesModel } from 'entities/tables';
 import { TableProductTimerStatuses } from 'shared/api';
-import { table, tableProduct, tables } from '../../../tests/__mocks__/fixtures';
+import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
 
 let scope: Scope;
 
