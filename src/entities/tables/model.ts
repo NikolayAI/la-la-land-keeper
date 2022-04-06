@@ -89,9 +89,7 @@ setTableProductTimerStatusFx.use(async ({ productId, tableId, value }) => {
   await TablesAPI.setTableProductTimerStatus({ productId, tableId, value });
 });
 
-export const $tablesIds = $tables.map((tables) => {
-  return Object.keys(tables);
-});
+export const $tablesIds = combine($tables, (tables) => Object.keys(tables));
 export const $tablesProductsTimersOutOfLimits = combine(
   $tables,
   $tablesProductsTimers,

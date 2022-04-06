@@ -3,6 +3,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "esModuleInterop": true,
     "outDir": "./dist",
     "allowJs": true,

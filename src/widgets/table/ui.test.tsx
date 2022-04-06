@@ -7,6 +7,7 @@ import { Table, TablesList } from './ui';
 import { clearTable, deleteTable, setTableTitle } from 'features/table';
 import { tablesModel } from 'entities/tables';
 import { products, table, tables } from 'tests/__mocks__/fixtures';
+import { productsModel } from 'entities/products';
 
 let scope: Scope;
 
@@ -24,13 +25,11 @@ describe('events', () => {
   const setTableTitleFn = jest.fn();
   setTableTitle.watch(setTableTitleFn);
 
-  beforeEach(() => {
+  test('should call deleteTableFn', async () => {
     scope = fork({
       values: [[tablesModel.$tables, tables]],
     });
-  });
 
-  test('should call deleteTableFn', async () => {
     render(<Table tableId={table.id} tables={tables} products={products} />, {
       wrapper: Wrapper,
     });
@@ -43,6 +42,10 @@ describe('events', () => {
   });
 
   test('should call deleteTableFn', async () => {
+    scope = fork({
+      values: [[tablesModel.$tables, tables]],
+    });
+
     render(<Table tableId={table.id} tables={tables} products={products} />, {
       wrapper: Wrapper,
     });
@@ -55,9 +58,17 @@ describe('events', () => {
   });
 
   test('should render Table from TablesList', async () => {
+    scope = fork({
+      values: [
+        [tablesModel.$tables, tables],
+        [tablesModel.$tablesIds, [tables['test-table-id'].id]],
+        [productsModel.$products, products],
+      ],
+    });
+
     render(<TablesList />, { wrapper: Wrapper });
 
-    const element = screen.getByText(table.title);
+    const element = screen.getByText(tables['test-table-id'].title);
 
     expect(element).toBeDefined();
   });

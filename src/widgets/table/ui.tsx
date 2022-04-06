@@ -132,8 +132,8 @@ export const Table: React.FC<ITable> = React.memo(
 );
 
 export const TablesList: React.FC = () => {
-  const tablesIds = useStore(tablesModel.$tablesIds);
   const tables = useStore(tablesModel.$tables);
+  const tablesIds = useStore(tablesModel.$tablesIds);
   const products = useStore(productsModel.$products);
   return (
     <Grid container spacing={0}>
