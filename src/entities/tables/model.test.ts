@@ -1,30 +1,16 @@
 import { allSettled, fork } from 'effector';
 
 import { tablesModel } from '../tables';
-import { TablesAPI, TableProductTimerStatuses } from 'shared/api/';
+import { TableProductTimerStatuses, TablesAPI } from 'shared/api/';
 
-const mockCreateTable = jest.spyOn(TablesAPI, 'createTable');
-const mockDeleteTable = jest.spyOn(TablesAPI, 'deleteTable');
-const mockSetTableTitle = jest.spyOn(TablesAPI, 'setTableTitle');
-const mockAddProductToTable = jest.spyOn(TablesAPI, 'addProductToTable');
-const mockDeleteProductFromTable = jest.spyOn(
-  TablesAPI,
-  'deleteProductFromTable'
-);
-const mockClearTable = jest.spyOn(TablesAPI, 'clearTable');
-const mockIncreaseTableProduct = jest.spyOn(TablesAPI, 'increaseTableProduct');
-const mockDecreaseTableProduct = jest.spyOn(TablesAPI, 'decreaseTableProduct');
-const mockSetTableProductTimerStatus = jest.spyOn(
-  TablesAPI,
-  'setTableProductTimerStatus'
-);
+jest.mock('shared/api');
 
 test('createTableFx should calls TablesAPI.createTable', async () => {
   const scope = fork();
 
   await allSettled(tablesModel.createTableFx, { scope });
 
-  expect(mockCreateTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.createTable).toHaveBeenCalledTimes(1);
 });
 
 test('deleteTableFx should calls TablesAPI.deleteTable', async () => {
@@ -32,7 +18,7 @@ test('deleteTableFx should calls TablesAPI.deleteTable', async () => {
 
   await allSettled(tablesModel.deleteTableFx, { scope, params: { id: '1' } });
 
-  expect(mockDeleteTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.deleteTable).toHaveBeenCalledTimes(1);
 });
 
 test('setTitleFx should calls TablesAPI.setTableTitle', async () => {
@@ -43,7 +29,7 @@ test('setTitleFx should calls TablesAPI.setTableTitle', async () => {
     params: { id: '1', text: 'test' },
   });
 
-  expect(mockSetTableTitle).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.setTableTitle).toHaveBeenCalledTimes(1);
 });
 
 test('addProductFx should calls TablesAPI.addProductToTable', async () => {
@@ -54,7 +40,7 @@ test('addProductFx should calls TablesAPI.addProductToTable', async () => {
     params: { tableId: '1', productId: '2' },
   });
 
-  expect(mockAddProductToTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.addProductToTable).toHaveBeenCalledTimes(1);
 });
 
 test('deleteProductFx should calls TablesAPI.deleteProductFromTable', async () => {
@@ -65,7 +51,7 @@ test('deleteProductFx should calls TablesAPI.deleteProductFromTable', async () =
     params: { tableId: '1', productId: '2' },
   });
 
-  expect(mockDeleteProductFromTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.deleteProductFromTable).toHaveBeenCalledTimes(1);
 });
 
 test('clearTableFx should calls TablesAPI.clearTable', async () => {
@@ -76,7 +62,7 @@ test('clearTableFx should calls TablesAPI.clearTable', async () => {
     params: { tableId: '1' },
   });
 
-  expect(mockClearTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.clearTable).toHaveBeenCalledTimes(1);
 });
 
 test('increaseTableProductFx should calls TablesAPI.increaseTableProduct', async () => {
@@ -87,7 +73,7 @@ test('increaseTableProductFx should calls TablesAPI.increaseTableProduct', async
     params: { tableId: '1', productId: '2', value: 1 },
   });
 
-  expect(mockIncreaseTableProduct).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.increaseTableProduct).toHaveBeenCalledTimes(1);
 });
 
 test('decreaseTableProductFx should calls TablesAPI.decreaseTableProduct', async () => {
@@ -98,7 +84,7 @@ test('decreaseTableProductFx should calls TablesAPI.decreaseTableProduct', async
     params: { tableId: '1', productId: '2', value: 1 },
   });
 
-  expect(mockDecreaseTableProduct).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.decreaseTableProduct).toHaveBeenCalledTimes(1);
 });
 
 test('setTableProductTimerStatusFx should calls TablesAPI.setTableProductTimerStatus', async () => {
@@ -113,7 +99,7 @@ test('setTableProductTimerStatusFx should calls TablesAPI.setTableProductTimerSt
     },
   });
 
-  expect(mockSetTableProductTimerStatus).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.setTableProductTimerStatus).toHaveBeenCalledTimes(1);
 });
 
 test(`$tablesProductsTimersOutOfLimits should not calculate boolean values`, async () => {

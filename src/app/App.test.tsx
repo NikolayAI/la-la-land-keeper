@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import { App } from './App';
 
-test('should render app', async () => {
+test('should render app', () => {
   render(<App />);
   const linkElement = screen.getByText(/создать стол/i);
   expect(linkElement).toBeDefined();

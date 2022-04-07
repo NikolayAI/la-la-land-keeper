@@ -31,7 +31,7 @@ interface ITable {
 
 export const Table: React.FC<ITable> = React.memo(
   ({ tableId, tables, products }) => {
-    const { title, products: tableProducts } = tables[tableId] ?? {};
+    const { title, products: tableProducts } = tables?.[tableId] ?? {};
     return (
       <Card key={tableId} sx={{ width: 575, margin: 2 }} elevation={6}>
         <CardContent>
@@ -137,15 +137,14 @@ export const TablesList: React.FC = () => {
   const products = useStore(productsModel.$products);
   return (
     <Grid container spacing={0}>
-      {tablesIds.length > 0 &&
-        tablesIds.map((tableId) => (
-          <Table
-            key={tableId}
-            tableId={tableId}
-            tables={tables}
-            products={products}
-          />
-        ))}
+      {tablesIds.map((tableId) => (
+        <Table
+          key={tableId}
+          tableId={tableId}
+          tables={tables}
+          products={products}
+        />
+      ))}
     </Grid>
   );
 };

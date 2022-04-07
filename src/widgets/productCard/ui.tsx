@@ -41,7 +41,7 @@ export const ProductCard: React.FC<IProductCard> = ({
   );
   const changeProductParams = { tableId, productId: tableProduct?.id };
   const isOutOfTimer =
-    tablesProductsTimersOutOfLimit[tableId][tableProduct?.id];
+    tablesProductsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
     <Paper
       elevation={6}

@@ -25,7 +25,7 @@ describe('events', () => {
   const setTableTitleFn = jest.fn();
   setTableTitle.watch(setTableTitleFn);
 
-  test('should call deleteTableFn', async () => {
+  test('should call deleteTableFn', () => {
     scope = fork({
       values: [[tablesModel.$tables, tables]],
     });
@@ -41,7 +41,7 @@ describe('events', () => {
     expect(deleteTableFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call deleteTableFn', async () => {
+  test('should call clearTableFn', () => {
     scope = fork({
       values: [[tablesModel.$tables, tables]],
     });
@@ -57,14 +57,18 @@ describe('events', () => {
     expect(clearTableFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should render Table from TablesList', async () => {
+  test('should render Table from TablesList', () => {
     scope = fork({
       values: [
         [tablesModel.$tables, tables],
-        [tablesModel.$tablesIds, [tables['test-table-id'].id]],
+        // [tablesModel.$tablesIds, [tables['test-table-id'].id]],
         [productsModel.$products, products],
       ],
     });
+
+    console.log('$tables: ', scope.getState(tablesModel.$tables));
+    console.log('$tablesIds: ', scope.getState(tablesModel.$tablesIds));
+    console.log('$products: ', scope.getState(productsModel.$products));
 
     render(<TablesList />, { wrapper: Wrapper });
 
