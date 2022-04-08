@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/scope';
 
@@ -56,7 +56,9 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+    });
 
     expect(decreaseTableProductFn).toHaveBeenCalledTimes(1);
   });
@@ -76,7 +78,9 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+    });
 
     expect(deleteProductFromTableFn).toHaveBeenCalledTimes(1);
   });
@@ -96,7 +100,9 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    fireEvent.click(screen.getByRole('increase-table-product-count-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('increase-table-product-count-button'));
+    });
 
     expect(increaseTableProductFn).toHaveBeenCalledTimes(1);
   });
@@ -128,7 +134,9 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    fireEvent.click(screen.getByRole('delete-table-product-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('delete-table-product-button'));
+    });
 
     expect(deleteProductFromTableFn).toHaveBeenCalledTimes(1);
   });

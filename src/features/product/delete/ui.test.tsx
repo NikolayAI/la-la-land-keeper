@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { DeleteProduct } from './ui';
 import { deleteProduct, setAnchorEl } from './model';
@@ -11,7 +11,7 @@ const products = {
     price: 12,
     isPiece: true,
     needTimer: true,
-    eachProductUnitMinutesTimer: 1
+    eachProductUnitMinutesTimer: 1,
   },
 };
 describe('events', () => {
@@ -24,7 +24,9 @@ describe('events', () => {
   test('should call setAnchorEl for delete product', async () => {
     render(<DeleteProduct products={products} />);
 
-    fireEvent.click(screen.getByText('Удалить товар'));
+    act(() => {
+      fireEvent.click(screen.getByText('Удалить товар'));
+    });
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });
@@ -32,9 +34,11 @@ describe('events', () => {
   test('should call setAnchorEl and deleteProduct', async () => {
     render(<DeleteProduct products={products} />);
 
-    fireEvent.click(screen.getByRole('delete-product-box'));
+    act(() => {
+      fireEvent.click(screen.getByRole('delete-product-box'));
+    });
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
     expect(deleteProductFn).toHaveBeenCalledTimes(1);
   });
-})
+});

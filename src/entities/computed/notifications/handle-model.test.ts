@@ -21,6 +21,14 @@ test(`tableProductsTimersNotifications should take data when tablesProductsTimer
           },
         },
       ],
+      [
+        tablesModel.$tablesProductsTimers,
+        {
+          1: {
+            3: 30,
+          },
+        },
+      ],
     ],
     handlers: [
       [

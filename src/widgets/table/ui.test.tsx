@@ -61,14 +61,9 @@ describe('events', () => {
     scope = fork({
       values: [
         [tablesModel.$tables, tables],
-        // [tablesModel.$tablesIds, [tables['test-table-id'].id]],
         [productsModel.$products, products],
       ],
     });
-
-    console.log('$tables: ', scope.getState(tablesModel.$tables));
-    console.log('$tablesIds: ', scope.getState(tablesModel.$tablesIds));
-    console.log('$products: ', scope.getState(productsModel.$products));
 
     render(<TablesList />, { wrapper: Wrapper });
 

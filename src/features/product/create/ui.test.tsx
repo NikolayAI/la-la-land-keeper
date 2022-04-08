@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { CreateProductModal } from './ui';
 import { createProduct, openCreateProductModal } from './model';
 import { productsModel } from 'entities/products';
+import { act } from 'react-dom/test-utils';
 
 describe('events', () => {
   const createProductFn = jest.fn();
@@ -18,11 +13,11 @@ describe('events', () => {
   const setProductPropertyFn = jest.fn();
   productsModel.setProductProperty.watch(setProductPropertyFn);
 
-  beforeEach(() => {
-    openCreateProductModal();
-  });
-
   test('should call createProduct handler', async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
     act(() => {
@@ -33,6 +28,10 @@ describe('events', () => {
   });
 
   test(`change field "Название товара" should call productsModel.setProductProperty event`, async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
     act(() => {
@@ -45,6 +44,10 @@ describe('events', () => {
   });
 
   test(`change field "Цена за 1 ед. товара, руб" should call productsModel.setProductProperty event`, async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
     act(() => {
@@ -57,6 +60,10 @@ describe('events', () => {
   });
 
   test(`change field "Штучный товар" should call productsModel.setProductProperty event`, async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
     act(() => {
@@ -67,6 +74,10 @@ describe('events', () => {
   });
 
   test(`change field "Нужен таймер товара" should call productsModel.setProductProperty event`, async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
     act(() => {
@@ -79,10 +90,16 @@ describe('events', () => {
   });
 
   test(`change field "Таймер для 1 ед. товара, мин" should call productsModel.setProductProperty event`, async () => {
+    act(() => {
+      openCreateProductModal();
+    });
+
     render(<CreateProductModal />);
 
-    await act(async () => {
+    act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
+    });
+    await act(async () => {
       fireEvent.change(
         await waitFor(() =>
           screen.getByLabelText('Таймер для 1 ед. товара, мин')

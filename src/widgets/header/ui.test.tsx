@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { Header } from './ui';
 import { createTable } from 'features/table';
@@ -15,7 +15,9 @@ describe('events', () => {
   test('should call createTable', async () => {
     render(<Header />);
 
-    fireEvent.click(screen.getByRole('create-table-header-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('create-table-header-button'));
+    });
 
     expect(createTableFn).toHaveBeenCalledTimes(1);
   });
@@ -23,9 +25,11 @@ describe('events', () => {
   test('should call openCreateProductModal', async () => {
     render(<Header />);
 
-    fireEvent.click(
-      screen.getByRole('open-create-product-modal-header-button')
-    );
+    act(() => {
+      fireEvent.click(
+        screen.getByRole('open-create-product-modal-header-button')
+      );
+    });
 
     expect(openCreateProductModalFn).toHaveBeenCalledTimes(1);
   });

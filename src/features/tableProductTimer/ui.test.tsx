@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { TableProductTimer } from './ui';
 import { TableProductTimerStatuses } from 'shared/api';
@@ -58,7 +58,9 @@ describe('events', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('pause-timer-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('pause-timer-button'));
+    });
 
     expect(stopTimerFn).toHaveBeenCalledTimes(1);
   });
@@ -78,7 +80,9 @@ describe('events', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('play-timer-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('play-timer-button'));
+    });
 
     expect(playTimerFn).toHaveBeenCalledTimes(1);
   });

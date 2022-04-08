@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { AddProductToTable } from './ui';
 import { addProductToTable, setAnchorEl } from './model';
@@ -11,9 +11,9 @@ const products = {
     price: 12,
     isPiece: true,
     needTimer: false,
-    eachProductUnitMinutesTimer: 0
-  }
-}
+    eachProductUnitMinutesTimer: 0,
+  },
+};
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
@@ -25,7 +25,9 @@ describe('events', () => {
   test('should call setAnchorElFn for open form', async () => {
     render(<AddProductToTable products={products} tableId="1" />);
 
-    fireEvent.click(screen.getByRole('add-product-to-table-button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('add-product-to-table-button'));
+    });
 
     expect(setAnchorElFn).toHaveBeenCalledTimes(1);
   });
@@ -33,7 +35,9 @@ describe('events', () => {
   test('should call addProductToTable and setAnchorElFn for add product', async () => {
     render(<AddProductToTable products={products} tableId="1" />);
 
-    fireEvent.click(screen.getByRole('add-product-to-table-menu-item'));
+    act(() => {
+      fireEvent.click(screen.getByRole('add-product-to-table-menu-item'));
+    });
 
     expect(addProductToTableFn).toHaveBeenCalledTimes(1);
     expect(setAnchorElFn).toHaveBeenCalledTimes(1);
