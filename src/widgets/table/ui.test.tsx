@@ -1,13 +1,18 @@
 import React from 'react';
 import { fork, Scope } from 'effector';
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { Provider } from 'effector-react/scope';
+import { Provider } from 'effector-react/ssr';
 
 import { Table, TablesList } from './ui';
 import { clearTable, deleteTable, setTableTitle } from 'features/table';
 import { tablesModel } from 'entities/tables';
-import { products, table, tables } from 'tests/__mocks__/fixtures';
 import { productsModel } from 'entities/products';
+import {
+  products,
+  table,
+  tableProduct,
+  tables,
+} from 'tests/__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -26,13 +31,7 @@ describe('events', () => {
   setTableTitle.watch(setTableTitleFn);
 
   test('should call deleteTableFn', () => {
-    scope = fork({
-      values: [[tablesModel.$tables, tables]],
-    });
-
-    render(<Table tableId={table.id} tables={tables} products={products} />, {
-      wrapper: Wrapper,
-    });
+    render(<Table tableId={table.id} tables={tables} products={products} />);
 
     act(() => {
       fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
@@ -42,13 +41,7 @@ describe('events', () => {
   });
 
   test('should call clearTableFn', () => {
-    scope = fork({
-      values: [[tablesModel.$tables, tables]],
-    });
-
-    render(<Table tableId={table.id} tables={tables} products={products} />, {
-      wrapper: Wrapper,
-    });
+    render(<Table tableId={table.id} tables={tables} products={products} />);
 
     act(() => {
       fireEvent.click(screen.getByRole(`clear-table-${table.id}-button`));
@@ -58,12 +51,15 @@ describe('events', () => {
   });
 
   test('should render Table from TablesList', () => {
+    const testTables = JSON.parse(JSON.stringify(tables));
     scope = fork({
       values: [
-        [tablesModel.$tables, tables],
+        [tablesModel.$tables, testTables],
         [productsModel.$products, products],
       ],
     });
+
+    console.log('AAAAA: ', scope.getState(tablesModel.$tables));
 
     render(<TablesList />, { wrapper: Wrapper });
 

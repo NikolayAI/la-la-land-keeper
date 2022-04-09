@@ -1,10 +1,10 @@
 import React from 'react';
+import { useStore } from 'effector-react';
 import Stack from '@mui/material/Stack';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import { useStore } from 'effector-react';
 
+import * as notificationsModel from './model';
 import { INotification } from './types';
-import { notificationsModel } from 'entities/computed/notifications/index';
 
 interface INotificationProps {
   handleCloseNotification: (payload: INotification) => void;

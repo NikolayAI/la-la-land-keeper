@@ -1,8 +1,16 @@
 import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fork, Scope } from 'effector';
+import { Provider } from 'effector-react/ssr';
 
 import { AddProductToTable } from './ui';
 import { addProductToTable, setAnchorEl } from './model';
+
+let scope: Scope;
+
+const Wrapper: React.FC = ({ children }) => (
+  <Provider value={scope}>{children}</Provider>
+);
 
 const products = {
   '1': {
@@ -22,18 +30,26 @@ describe('events', () => {
   const setAnchorElFn = jest.fn();
   setAnchorEl.watch(setAnchorElFn);
 
+  beforeEach(() => {
+    scope = fork();
+  });
+
   test('should call setAnchorElFn for open form', async () => {
-    render(<AddProductToTable products={products} tableId="1" />);
+    render(<AddProductToTable products={products} tableId="1" />, {
+      wrapper: Wrapper,
+    });
 
     act(() => {
-      fireEvent.click(screen.getByRole('add-product-to-table-button'));
+      fireEvent.click(screen.getByRole('add-product-to-table-button-1'));
     });
 
     expect(setAnchorElFn).toHaveBeenCalledTimes(1);
   });
 
   test('should call addProductToTable and setAnchorElFn for add product', async () => {
-    render(<AddProductToTable products={products} tableId="1" />);
+    render(<AddProductToTable products={products} tableId="1" />, {
+      wrapper: Wrapper,
+    });
 
     act(() => {
       fireEvent.click(screen.getByRole('add-product-to-table-menu-item'));

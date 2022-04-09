@@ -3,14 +3,14 @@ import { TableProductTimerStatuses } from './constants';
 
 describe('should return specific value', () => {
   test('call createTableBody', async () => {
-    const result = createTableBody({id: '1'})
+    const result = createTableBody({ id: '1' });
 
     expect(result).toStrictEqual({
       id: '1',
       title: 'неизвестный стол',
       products: {},
-    })
-  })
+    });
+  });
 
   test('call createTableProductBody', async () => {
     const product = {
@@ -20,15 +20,15 @@ describe('should return specific value', () => {
       isPiece: true,
       needTimer: true,
       eachProductUnitMinutesTimer: 0,
-    }
+    };
 
-    const result = createTableProductBody(product)
+    const result = createTableProductBody(product);
 
     expect(result).toStrictEqual({
       ...product,
       units: 1,
-      createdAt: new Date(),
+      createdAt: result.createdAt,
       timerStatus: TableProductTimerStatuses.PLAY,
-    })
-  })
-})
+    });
+  });
+});

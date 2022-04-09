@@ -1,9 +1,17 @@
 import React from 'react';
+import { fork, Scope } from 'effector';
+import { Provider } from 'effector-react/ssr';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { Header } from './ui';
 import { createTable } from 'features/table';
 import { openCreateProductModal } from 'features/product';
+
+let scope: Scope;
+
+const Wrapper: React.FC = ({ children }) => (
+  <Provider value={scope}>{children}</Provider>
+);
 
 describe('events', () => {
   const createTableFn = jest.fn();
@@ -12,8 +20,12 @@ describe('events', () => {
   const openCreateProductModalFn = jest.fn();
   openCreateProductModal.watch(openCreateProductModalFn);
 
+  beforeEach(() => {
+    scope = fork();
+  });
+
   test('should call createTable', async () => {
-    render(<Header />);
+    render(<Header />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByRole('create-table-header-button'));
@@ -23,7 +35,7 @@ describe('events', () => {
   });
 
   test('should call openCreateProductModal', async () => {
-    render(<Header />);
+    render(<Header />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(

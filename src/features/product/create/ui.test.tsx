@@ -1,10 +1,23 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
+import { fork, Scope } from 'effector';
+import { Provider } from 'effector-react/ssr';
 
 import { CreateProductModal } from './ui';
 import { createProduct, openCreateProductModal } from './model';
 import { productsModel } from 'entities/products';
-import { act } from 'react-dom/test-utils';
+
+let scope: Scope;
+
+const Wrapper: React.FC = ({ children }) => (
+  <Provider value={scope}>{children}</Provider>
+);
 
 describe('events', () => {
   const createProductFn = jest.fn();
@@ -13,12 +26,16 @@ describe('events', () => {
   const setProductPropertyFn = jest.fn();
   productsModel.setProductProperty.watch(setProductPropertyFn);
 
+  beforeEach(() => {
+    scope = fork();
+  });
+
   test('should call createProduct handler', async () => {
     act(() => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByText('Создать'));
@@ -32,7 +49,7 @@ describe('events', () => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Название товара'), {
@@ -48,7 +65,7 @@ describe('events', () => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Цена за 1 ед. товара, руб'), {
@@ -64,7 +81,7 @@ describe('events', () => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Штучный товар'));
@@ -78,7 +95,7 @@ describe('events', () => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
@@ -94,12 +111,10 @@ describe('events', () => {
       openCreateProductModal();
     });
 
-    render(<CreateProductModal />);
+    render(<CreateProductModal />, { wrapper: Wrapper });
 
-    act(() => {
-      fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
-    });
     await act(async () => {
+      fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
       fireEvent.change(
         await waitFor(() =>
           screen.getByLabelText('Таймер для 1 ед. товара, мин')

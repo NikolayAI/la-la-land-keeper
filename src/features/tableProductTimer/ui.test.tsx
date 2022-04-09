@@ -1,8 +1,16 @@
 import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fork, Scope } from 'effector';
+import { Provider } from 'effector-react/ssr';
 
 import { TableProductTimer } from './ui';
 import { TableProductTimerStatuses } from 'shared/api';
+
+let scope: Scope;
+
+const Wrapper: React.FC = ({ children }) => (
+  <Provider value={scope}>{children}</Provider>
+);
 
 const tablesWithPlayTimerStatus = {
   '1': {
@@ -43,6 +51,10 @@ describe('events', () => {
   const playTimerFn = jest.fn();
   const stopTimerFn = jest.fn();
 
+  beforeEach(() => {
+    scope = fork();
+  });
+
   test('should call handleStopTimer', async () => {
     render(
       <TableProductTimer
@@ -55,7 +67,8 @@ describe('events', () => {
         setTimer={setTimerFn}
         handlePlayTimer={playTimerFn}
         handleStopTimer={stopTimerFn}
-      />
+      />,
+      { wrapper: Wrapper }
     );
 
     act(() => {
@@ -77,7 +90,8 @@ describe('events', () => {
         setTimer={setTimerFn}
         handlePlayTimer={playTimerFn}
         handleStopTimer={stopTimerFn}
-      />
+      />,
+      { wrapper: Wrapper }
     );
 
     act(() => {

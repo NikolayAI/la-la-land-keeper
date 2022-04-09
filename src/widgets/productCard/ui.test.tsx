@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/scope';
+import { Provider } from 'effector-react/ssr';
 
 import { ProductCard } from './ui';
 import {
