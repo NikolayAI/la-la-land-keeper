@@ -15,13 +15,16 @@ const Wrapper: React.FC = ({ children }) => (
 );
 
 test('when page has mounted should open gate', async () => {
+  const fn = jest.fn();
+  DashBoardGate.open.watch(fn);
+
   scope = fork();
 
   expect(DashBoardGate.status.getState()).toBe(false);
 
   render(<Dashboard />, { wrapper: Wrapper });
 
-  expect(DashBoardGate.status.getState()).toBe(true);
+  expect(fn).toHaveBeenCalledTimes(1);
 });
 
 test('when gate has opened should call getProducts and getTables', async () => {

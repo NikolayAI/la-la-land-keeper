@@ -9,7 +9,6 @@ import {
   deleteProductFromTable,
   increaseTableProduct,
 } from 'features/tableProduct';
-import { tablesModel } from 'entities/tables';
 import { TableProductTimerStatuses } from 'shared/api';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
 
@@ -30,6 +29,7 @@ describe('events', () => {
   increaseTableProduct.watch(increaseTableProductFn);
 
   test('should call decreaseTableProduct', async () => {
+    scope = fork();
     const testTableProduct = {
       ...tableProduct,
       units: 2,
@@ -42,9 +42,6 @@ describe('events', () => {
         },
       },
     };
-    scope = fork({
-      values: [[tablesModel.$tables, testTables]],
-    });
 
     render(
       <ProductCard
@@ -64,9 +61,7 @@ describe('events', () => {
   });
 
   test('should call deleteProductFromTable', async () => {
-    scope = fork({
-      values: [[tablesModel.$tables, tables]],
-    });
+    scope = fork();
 
     render(
       <ProductCard
@@ -86,9 +81,7 @@ describe('events', () => {
   });
 
   test('should call deleteProductFromTable', async () => {
-    scope = fork({
-      values: [[tablesModel.$tables, tables]],
-    });
+    scope = fork();
 
     render(
       <ProductCard
@@ -108,6 +101,7 @@ describe('events', () => {
   });
 
   test('should call deleteProductFromTable', async () => {
+    scope = fork();
     const testTableProduct = {
       ...tableProduct,
       isPiece: false,
@@ -120,9 +114,6 @@ describe('events', () => {
         },
       },
     };
-    scope = fork({
-      values: [[tablesModel.$tables, testTables]],
-    });
 
     render(
       <ProductCard

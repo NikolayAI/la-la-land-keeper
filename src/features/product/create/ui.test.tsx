@@ -28,13 +28,10 @@ describe('events', () => {
 
   beforeEach(() => {
     scope = fork();
+    openCreateProductModal();
   });
 
   test('should call createProduct handler', async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
@@ -45,10 +42,6 @@ describe('events', () => {
   });
 
   test(`change field "Название товара" should call productsModel.setProductProperty event`, async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
@@ -61,10 +54,6 @@ describe('events', () => {
   });
 
   test(`change field "Цена за 1 ед. товара, руб" should call productsModel.setProductProperty event`, async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
@@ -77,10 +66,6 @@ describe('events', () => {
   });
 
   test(`change field "Штучный товар" should call productsModel.setProductProperty event`, async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
@@ -91,10 +76,6 @@ describe('events', () => {
   });
 
   test(`change field "Нужен таймер товара" should call productsModel.setProductProperty event`, async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
     act(() => {
@@ -102,25 +83,21 @@ describe('events', () => {
     });
 
     expect(setProductPropertyFn).toHaveBeenCalledTimes(1);
-
-    productsModel.setProductProperty({ key: 'needTimer', value: false });
   });
 
   test(`change field "Таймер для 1 ед. товара, мин" should call productsModel.setProductProperty event`, async () => {
-    act(() => {
-      openCreateProductModal();
-    });
-
     render(<CreateProductModal />, { wrapper: Wrapper });
 
-    await act(async () => {
+    act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
-      fireEvent.change(
-        await waitFor(() =>
-          screen.getByLabelText('Таймер для 1 ед. товара, мин')
-        ),
-        { target: { formattedValue: '321', value: '321', floatValue: 321 } }
-      );
+    });
+    const element = await waitFor(() =>
+      screen.getByLabelText('Таймер для 1 ед. товара, мин')
+    );
+    act(() => {
+      fireEvent.change(element, {
+        target: { formattedValue: '321', value: '321', floatValue: 321 },
+      });
     });
 
     expect(setProductPropertyFn).toHaveBeenCalledTimes(2);

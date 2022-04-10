@@ -1,6 +1,6 @@
 import React from 'react';
-import { fork, Scope } from 'effector';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 
 import { Table, TablesList } from './ui';
@@ -31,7 +31,11 @@ describe('events', () => {
   setTableTitle.watch(setTableTitleFn);
 
   test('should call deleteTableFn', () => {
-    render(<Table tableId={table.id} tables={tables} products={products} />);
+    scope = fork();
+
+    render(<Table tableId={table.id} tables={tables} products={products} />, {
+      wrapper: Wrapper,
+    });
 
     act(() => {
       fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
@@ -41,7 +45,11 @@ describe('events', () => {
   });
 
   test('should call clearTableFn', () => {
-    render(<Table tableId={table.id} tables={tables} products={products} />);
+    scope = fork();
+
+    render(<Table tableId={table.id} tables={tables} products={products} />, {
+      wrapper: Wrapper,
+    });
 
     act(() => {
       fireEvent.click(screen.getByRole(`clear-table-${table.id}-button`));
@@ -51,15 +59,24 @@ describe('events', () => {
   });
 
   test('should render Table from TablesList', () => {
-    const testTables = JSON.parse(JSON.stringify(tables));
+    const testTableProduct = {
+      ...tableProduct,
+      units: 2,
+    };
+    const testTables = {
+      [table.id]: {
+        ...table,
+        products: {
+          [tableProduct.id]: testTableProduct,
+        },
+      },
+    };
     scope = fork({
       values: [
         [tablesModel.$tables, testTables],
         [productsModel.$products, products],
       ],
     });
-
-    console.log('AAAAA: ', scope.getState(tablesModel.$tables));
 
     render(<TablesList />, { wrapper: Wrapper });
 

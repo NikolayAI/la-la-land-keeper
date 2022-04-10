@@ -12,7 +12,12 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "effector/babel-plugin",
+    [
+      "effector/babel-plugin",
+      {
+        "reactSsr": true
+      }
+    ],
     [
       "module-resolver",
       {
