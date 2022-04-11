@@ -18,7 +18,7 @@ import {
 } from './model';
 import { productsModel } from 'entities/products';
 
-export const CreateProductModal: React.FC = React.memo(() => {
+export const CreateProductModal: React.FC = () => {
   const isOpen = useStore($isOpenCreateProductModal);
   const product = useStore(productsModel.$product);
   return (
@@ -124,7 +124,7 @@ export const CreateProductModal: React.FC = React.memo(() => {
       </Modal>
     </div>
   );
-});
+};
 
 const style = {
   position: 'absolute' as 'absolute',

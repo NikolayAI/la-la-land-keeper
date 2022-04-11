@@ -11,11 +11,13 @@ interface IDashboardProps {
 
 export const Dashboard: React.FC<IDashboardProps> = ({ className }) => {
   return (
-    <div className={className}>
+    <>
       <DashBoardGate />
-      <Header />
-      <TablesList />
-      <CreateProductModal />
-    </div>
+      <div className={className}>
+        <Header />
+        <TablesList />
+        <CreateProductModal />
+      </div>
+    </>
   );
 };

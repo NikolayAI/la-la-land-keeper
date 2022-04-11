@@ -6,7 +6,7 @@ import { createTable } from 'features/table';
 import { DeleteProduct, openCreateProductModal } from 'features/product';
 import { productsModel } from 'entities/products';
 
-export const Header = React.memo(() => {
+export const Header = () => {
   const products = useStore(productsModel.$products);
   return (
     <AppBar position="static" sx={{ marginBottom: 2 }}>
@@ -47,4 +47,4 @@ export const Header = React.memo(() => {
       </Container>
     </AppBar>
   );
-});
+};
