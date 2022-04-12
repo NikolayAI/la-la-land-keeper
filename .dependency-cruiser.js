@@ -14,13 +14,14 @@ module.exports = {
         pathNot: '^src/pages/(routes|paths).ts',
       },
     },
-    {
-      name: 'no-widgets-on-widgets',
-      severity: 'warn',
-      comment: 'One widget MUST not depends on another widget.',
-      from: { path: '^src/widgets/([^/]+)/?.+' },
-      to: { path: '^src/widgets/(?!$1)/?.+' },
-    },
+    // should be ensure
+    // {
+    //   name: 'no-widgets-on-widgets',
+    //   severity: 'warn',
+    //   comment: 'One widget MUST not depends on another widget.',
+    //   from: { path: '^src/widgets/([^/]+)/?.+' },
+    //   to: { path: '^src/widgets/(?!$1)/?.+' },
+    // },
     {
       name: 'no-features-on-features',
       severity: 'warn',
@@ -32,7 +33,10 @@ module.exports = {
       name: 'no-entities-on-entities',
       severity: 'warn',
       comment: 'One entity MUST not depends on another entity.',
-      from: { path: '^src/entities/([^/]+)/?.+' },
+      from: {
+        path: '^src/entities/([^/]+)/?.+',
+        pathNot: '^src/entities/computed/(?!$1)/?.+',
+      },
       to: { path: '^src/entities/(?!$1)/?.+' },
     },
     // ---------------------------------------------------------------------------------------------
@@ -226,7 +230,7 @@ module.exports = {
       from: {
         path: '^(src)',
         pathNot:
-          '\\.(spec|test)\\.(js|mjs|cjs|ts|ls|coffee|litcoffee|coffee\\.md)$',
+          '\\.(spec|test)\\.(js|mjs|cjs|ts|tsx|ls|coffee|litcoffee|coffee\\.md)$',
       },
       to: {
         dependencyTypes: ['npm-dev'],
