@@ -1,10 +1,10 @@
 import { createEvent, createStore, sample } from 'effector';
 
-import { INotification } from './types';
-import { NotificationKinds } from './constants';
-import { tablesModel } from '../../tables';
-import { productsModel } from '../../products';
 import { TableProductTimerStatuses } from 'shared/api';
+import { productsModel } from '../../products';
+import { tablesModel } from '../../tables';
+import { NotificationKinds } from './constants';
+import { INotification } from './types';
 
 export const addNotification = createEvent<INotification>();
 export const deleteNotification =
