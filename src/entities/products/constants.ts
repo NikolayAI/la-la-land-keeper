@@ -5,4 +5,4 @@ export const defaultProduct = {
   isPiece: true,
   needTimer: false,
   eachProductUnitMinutesTimer: 0,
-}
+};

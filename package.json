@@ -14,7 +14,7 @@
     "compile": "tsc"
   },
   "lint-staged": {
-    "*": "eslint --fix --ext .ts,.tsx && prettier --write"
+    "*": "prettier --write"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

@@ -9,7 +9,7 @@ import {
   IIncreaseTableProductParams,
   ISetTableProductTimerStatusParams,
   ISetTableTitleParams,
-  TablesType
+  TablesType,
 } from './types';
 import { createTableBody, createTableProductBody } from './lib';
 import { headers } from './constants';
@@ -35,7 +35,9 @@ export const createTable = async (): Promise<void> => {
   await setTables(tables);
 };
 
-export const deleteTable = async ({ id }: IDeleteTableParams): Promise<void> => {
+export const deleteTable = async ({
+  id,
+}: IDeleteTableParams): Promise<void> => {
   const tables = await getTables();
   delete tables[id];
   await setTables(tables);
@@ -43,14 +45,16 @@ export const deleteTable = async ({ id }: IDeleteTableParams): Promise<void> => 
 
 export const setTableTitle = async ({
   id,
-  text
+  text,
 }: ISetTableTitleParams): Promise<void> => {
   const tables = await getTables();
   tables[id].title = text;
   await setTables(tables);
 };
 
-export const clearTable = async ({ tableId }: IClearTableParams): Promise<void> => {
+export const clearTable = async ({
+  tableId,
+}: IClearTableParams): Promise<void> => {
   const tables = await getTables();
   tables[tableId].products = {};
   await setTables(tables);
@@ -58,17 +62,19 @@ export const clearTable = async ({ tableId }: IClearTableParams): Promise<void> 
 
 export const addProductToTable = async ({
   productId,
-  tableId
+  tableId,
 }: IAddProductToTableParams): Promise<void> => {
   const tables = await getTables();
   const products = await getProducts();
-  tables[tableId].products[productId] = createTableProductBody(products[productId]);
+  tables[tableId].products[productId] = createTableProductBody(
+    products[productId]
+  );
   await setTables(tables);
 };
 
 export const deleteProductFromTable = async ({
   productId,
-  tableId
+  tableId,
 }: IDeleteProductToTableParams): Promise<void> => {
   const tables = await getTables();
   delete tables[tableId].products[productId];
@@ -98,7 +104,7 @@ export const decreaseTableProduct = async ({
 export const setTableProductTimerStatus = async ({
   productId,
   tableId,
-  value
+  value,
 }: ISetTableProductTimerStatusParams) => {
   const tables = await getTables();
   tables[tableId].products[productId].timerStatus = value;

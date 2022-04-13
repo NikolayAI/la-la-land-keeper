@@ -3,12 +3,12 @@ import { allSettled, fork } from 'effector';
 import {
   $isOpenCreateProductModal,
   closeCreateProductModal,
-  openCreateProductModal
+  openCreateProductModal,
 } from './model';
 
 test('openCreateProductModal should set "true" to $isOpenCreateProductModal', async () => {
   const scope = fork({
-    values: [[$isOpenCreateProductModal, false]]
+    values: [[$isOpenCreateProductModal, false]],
   });
 
   await allSettled(openCreateProductModal, { scope });
@@ -18,7 +18,7 @@ test('openCreateProductModal should set "true" to $isOpenCreateProductModal', as
 
 test(`closeCreateProductModal should set "false" to $isOpenCreateProductModal`, async () => {
   const scope = fork({
-    values: [[$isOpenCreateProductModal, true]]
+    values: [[$isOpenCreateProductModal, true]],
   });
 
   await allSettled(closeCreateProductModal, { scope });

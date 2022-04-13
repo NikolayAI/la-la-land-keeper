@@ -3,7 +3,7 @@ import React, {
   FC,
   KeyboardEvent,
   useEffect,
-  useState
+  useState,
 } from 'react';
 import { IconButton, TextField } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
@@ -42,20 +42,21 @@ export const EditableText: FC<IEditableText> = ({
 
   return (
     <>
-      {
-        isEditMode
-          ? <TextField
-            role={`${role}-field`}
-            color="primary"
-            size="small"
-            autoComplete=""
-            value={editableText}
-            onChange={handleTitleChange}
-            onKeyUp={handleKeyPress}
-            focused
-            autoFocus
-          /> : editableText
-      }
+      {isEditMode ? (
+        <TextField
+          role={`${role}-field`}
+          color="primary"
+          size="small"
+          autoComplete=""
+          value={editableText}
+          onChange={handleTitleChange}
+          onKeyUp={handleKeyPress}
+          focused
+          autoFocus
+        />
+      ) : (
+        editableText
+      )}
       <IconButton
         role={`${role}-button`}
         color="inherit"

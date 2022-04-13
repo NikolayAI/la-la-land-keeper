@@ -16,7 +16,9 @@ test(`addNotification should add notification to tableProductsTimersNotification
 
   await allSettled(notificationsModel.addNotification, { scope, params });
 
-  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toStrictEqual([params]);
+  expect(
+    scope.getState(notificationsModel.$tableProductsTimersNotifications)
+  ).toStrictEqual([params]);
 });
 
 test(`deleteNotification should delete notification from tableProductsTimersNotifications`, async () => {
@@ -29,8 +31,10 @@ test(`deleteNotification should delete notification from tableProductsTimersNoti
     params: {
       tableId: '1',
       productId: '2',
-    }
+    },
   });
 
-  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toStrictEqual([]);
+  expect(
+    scope.getState(notificationsModel.$tableProductsTimersNotifications)
+  ).toStrictEqual([]);
 });
