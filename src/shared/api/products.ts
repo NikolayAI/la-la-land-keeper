@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
-import { IProduct, ProductsType } from './types';
 import { headers } from './constants';
+import { IProduct, ProductsType } from './types';
 
 export const getProducts = async (): Promise<ProductsType> => {
   const response = await fetch('http://localhost:3001/products');

@@ -1,10 +1,10 @@
-import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
+import React from 'react';
 
-import { AddProductToTable } from './ui';
 import { addProductToTable, setAnchorEl } from './model';
+import { AddProductToTable } from './ui';
 
 let scope: Scope;
 

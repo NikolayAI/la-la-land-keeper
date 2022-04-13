@@ -1,7 +1,7 @@
 import { createEvent, forward } from 'effector';
 
-import { IStopProductTableTimerParams } from './types';
 import { tablesModel } from 'entities/tables';
+import { IStopProductTableTimerParams } from './types';
 
 export const stopTableProductTimer =
   createEvent<IStopProductTableTimerParams>();

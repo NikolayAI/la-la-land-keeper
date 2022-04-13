@@ -1,3 +1,6 @@
+import DoneIcon from '@mui/icons-material/Done';
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton, TextField } from '@mui/material';
 import React, {
   ChangeEvent,
   FC,
@@ -5,9 +8,6 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { IconButton, TextField } from '@mui/material';
-import DoneIcon from '@mui/icons-material/Done';
-import EditIcon from '@mui/icons-material/Edit';
 
 interface IEditableText {
   text: string;

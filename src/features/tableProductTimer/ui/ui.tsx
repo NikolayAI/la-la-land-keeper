@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { useStore } from 'effector-react';
-import { IconButton } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { IconButton } from '@mui/material';
+import { useStore } from 'effector-react';
+import React, { useEffect } from 'react';
 
-import { IPlayTableProductTimerParams } from '../play';
-import { IStopProductTableTimerParams } from '../stop';
-import { tablesModel } from 'entities/tables';
 import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
@@ -18,6 +15,9 @@ import {
   tablesProductsTimersKey,
   useTimer,
 } from 'shared/lib';
+import { tablesModel } from 'entities/tables';
+import { IPlayTableProductTimerParams } from '../play';
+import { IStopProductTableTimerParams } from '../stop';
 
 interface IProductTimer {
   tables: TablesType;
@@ -58,8 +58,7 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(
       interval: 1000,
     });
 
-    useEffect(() => {
-      return () => {
+    useEffect(() => () => {
         const timers = getLocalStorage({ key: tablesProductsTimersKey });
         setLocalStorage({
           key: tablesProductsTimersKey,
@@ -75,8 +74,7 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(
             },
           },
         });
-      };
-    }, []);
+      }, []);
 
     const handlePause = () => {
       handleStopTimer({

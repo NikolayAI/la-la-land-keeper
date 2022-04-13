@@ -3,8 +3,8 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React from 'react';
 
-import { TableProductTimer } from './ui';
 import { TableProductTimerStatuses } from 'shared/api';
+import { TableProductTimer } from './ui';
 
 let scope: Scope;
 

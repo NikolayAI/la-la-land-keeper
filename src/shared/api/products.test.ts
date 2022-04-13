@@ -1,10 +1,10 @@
+import { products, product } from 'tests/__mocks__/fixtures';
 import {
   createProduct,
   deleteProduct,
   getProducts,
   setProducts,
 } from './products';
-import { products, product } from 'tests/__mocks__/fixtures';
 
 test('getProducts should return value', async () => {
   const result = await getProducts();

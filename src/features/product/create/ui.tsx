@@ -1,8 +1,3 @@
-import React from 'react';
-import { useStore } from 'effector-react';
-import NumberFormat, { NumberFormatValues } from 'react-number-format';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 import {
   Button,
   Checkbox,
@@ -10,13 +5,18 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import { useStore } from 'effector-react';
+import React from 'react';
+import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
+import { productsModel } from 'entities/products';
 import {
   $isOpenCreateProductModal,
   closeCreateProductModal,
   createProduct,
 } from './model';
-import { productsModel } from 'entities/products';
 
 export const CreateProductModal: React.FC = () => {
   const isOpen = useStore($isOpenCreateProductModal);

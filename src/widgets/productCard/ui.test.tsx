@@ -1,16 +1,16 @@
-import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
+import React from 'react';
 
-import { ProductCard } from './ui';
+import { TableProductTimerStatuses } from 'shared/api';
 import {
   decreaseTableProduct,
   deleteProductFromTable,
   increaseTableProduct,
 } from 'features/tableProduct';
-import { TableProductTimerStatuses } from 'shared/api';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
+import { ProductCard } from './ui';
 
 let scope: Scope;
 

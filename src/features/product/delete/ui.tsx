@@ -1,12 +1,12 @@
-import React from 'react';
-import { useStore } from 'effector-react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { alpha, Box, Button, MenuItem } from '@mui/material';
 import Menu, { MenuProps } from '@mui/material/Menu/Menu';
 import { styled } from '@mui/material/styles';
-import { alpha, Box, Button, MenuItem } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { useStore } from 'effector-react';
+import React from 'react';
 
-import { $anchorEl, deleteProduct, setAnchorEl } from './model';
 import { ProductsType } from 'shared/api';
+import { $anchorEl, deleteProduct, setAnchorEl } from './model';
 
 interface IDeleteProductsList {
   products: ProductsType;

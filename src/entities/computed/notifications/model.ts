@@ -15,13 +15,9 @@ export const $tableProductsTimersNotifications = createStore<INotification[]>(
 );
 
 $tableProductsTimersNotifications
-  .on(addNotification, (state, notification) => {
-    return [...state, notification];
-  })
+  .on(addNotification, (state, notification) => [...state, notification])
   .on(deleteNotification, (state, { tableId, productId }) => {
-    const index = state.findIndex((i) => {
-      return i.tableId === tableId && i.productId === productId;
-    });
+    const index = state.findIndex((i) => i.tableId === tableId && i.productId === productId);
     state.splice(index, 1);
     return [...state];
   });

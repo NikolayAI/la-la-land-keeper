@@ -1,10 +1,10 @@
-import React from 'react';
-import { useStore } from 'effector-react';
 import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import { useStore } from 'effector-react';
+import React from 'react';
 
-import { createTable } from 'features/table';
-import { DeleteProduct, openCreateProductModal } from 'features/product';
 import { productsModel } from 'entities/products';
+import { DeleteProduct, openCreateProductModal } from 'features/product';
+import { createTable } from 'features/table';
 
 export const Header = () => {
   const products = useStore(productsModel.$products);

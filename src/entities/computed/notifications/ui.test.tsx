@@ -1,10 +1,10 @@
-import React from 'react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 
-import * as notificationsModel from './model';
 import { NotificationKinds } from './constants';
+import * as notificationsModel from './model';
 import { Notifications } from './ui';
 
 let scope: Scope;

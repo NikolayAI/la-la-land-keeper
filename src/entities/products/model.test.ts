@@ -1,13 +1,13 @@
 import { allSettled, fork } from 'effector';
 
+import { ProductsAPI } from 'shared/api';
+import { defaultProduct } from './constants';
 import {
   $product,
   createProductFx,
   deleteProductFx,
   setProductProperty,
 } from './model';
-import { defaultProduct } from './constants';
-import { ProductsAPI } from 'shared/api';
 
 const params = {
   id: '1',

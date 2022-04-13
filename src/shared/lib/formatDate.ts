@@ -1,3 +1,1 @@
-export const dateToSeconds = (milliseconds: number): number => {
-  return Math.floor(milliseconds / 1000);
-};
+export const dateToSeconds = (milliseconds: number): number => Math.floor(milliseconds / 1000);

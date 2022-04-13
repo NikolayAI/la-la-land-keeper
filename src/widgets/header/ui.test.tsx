@@ -1,11 +1,11 @@
-import React from 'react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 
-import { Header } from './ui';
-import { createTable } from 'features/table';
 import { openCreateProductModal } from 'features/product';
+import { createTable } from 'features/table';
+import { Header } from './ui';
 
 let scope: Scope;
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
   AppBar,
   Box,
@@ -10,18 +11,17 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import { useStore } from 'effector-react';
+import React, { memo, FC } from 'react';
 
-import { calculateTableTotalPrice } from './lib';
-import { ProductCard } from '../productCard';
-import { clearTable, deleteTable, setTableTitle } from 'features/table';
-import { AddProductToTable } from 'features/tableProduct';
-import { productsModel } from 'entities/products';
-import { tablesModel } from 'entities/tables';
 import { ProductsType, TablesType } from 'shared/api';
 import { EditableText } from 'shared/ui';
+import { productsModel } from 'entities/products';
+import { tablesModel } from 'entities/tables';
+import { clearTable, deleteTable, setTableTitle } from 'features/table';
+import { AddProductToTable } from 'features/tableProduct';
+import { ProductCard } from '../productCard';
+import { calculateTableTotalPrice } from './lib';
 
 interface ITable {
   tableId: string;
@@ -29,7 +29,7 @@ interface ITable {
   products: ProductsType;
 }
 
-export const Table: React.FC<ITable> = React.memo(
+export const Table: FC<ITable> = memo(
   ({ tableId, tables, products }) => {
     const { title, products: tableProducts } = tables?.[tableId] ?? {};
     return (

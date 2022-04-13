@@ -4,10 +4,6 @@ export const calculateTableTotalPrice = ({
   products,
 }: {
   products: TableProductsType;
-}) => {
-  return Object.keys(products).reduce((acc, tableProductId) => {
-    return (
+}) => Object.keys(products).reduce((acc, tableProductId) => (
       acc + products[tableProductId].price * products[tableProductId].units
-    );
-  }, 0);
-};
+    ), 0);

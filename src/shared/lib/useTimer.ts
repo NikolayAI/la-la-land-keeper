@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-import { dateToSeconds } from './formatDate';
 import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
 } from '../api';
+import { dateToSeconds } from './formatDate';
 import { getLocalStorage } from './localStorage';
 
 export const tablesProductsTimersKey = 'tablesProductsTimers';
@@ -20,7 +20,8 @@ interface IUseTimer {
 }
 
 export interface ITableProductTimerRef {
-  intervalId: NodeJS.Timeout | null;
+  // eslint-disable-next-line no-undef
+  intervalId: NodeJS.Timer | null;
   isTimerPlay: boolean;
   pausedAt: Date | null;
   pausedTimerCount: number;
@@ -53,8 +54,8 @@ export const useTimer = ({
       );
     }
     if (!ref.current.isTimerPlay) {
-      // @ts-ignore
       return dateToSeconds(
+      // @ts-ignore
         Number(new Date(ref.current.pausedAt)) -
           Number(new Date(createdAt)) -
           ref.current.pausedTimerCount

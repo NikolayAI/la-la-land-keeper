@@ -1,7 +1,7 @@
-import React from 'react';
-import { useStore } from 'effector-react';
-import Stack from '@mui/material/Stack';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import { useStore } from 'effector-react';
+import React from 'react';
 
 import * as notificationsModel from './model';
 import { INotification } from './types';

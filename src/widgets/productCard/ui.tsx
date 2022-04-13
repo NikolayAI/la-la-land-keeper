@@ -1,11 +1,16 @@
-import React from 'react';
-import { useStore } from 'effector-react';
-import { Grid, IconButton, Paper, Typography } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+import { Grid, IconButton, Paper, Typography } from '@mui/material';
+import { useStore } from 'effector-react';
+import React from 'react';
 
-import { backgroundColors } from './constants';
+import {
+  ITableProduct,
+  TableProductTimerStatuses,
+  TablesType,
+} from 'shared/api';
+import { tablesModel } from 'entities/tables';
 import {
   decreaseTableProduct,
   deleteProductFromTable,
@@ -16,12 +21,7 @@ import {
   stopTableProductTimer,
   TableProductTimer,
 } from 'features/tableProductTimer';
-import { tablesModel } from 'entities/tables';
-import {
-  ITableProduct,
-  TableProductTimerStatuses,
-  TablesType,
-} from 'shared/api';
+import { backgroundColors } from './constants';
 
 interface IProductCard {
   tables: TablesType;

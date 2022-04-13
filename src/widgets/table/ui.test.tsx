@@ -1,18 +1,18 @@
-import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
+import React from 'react';
 
-import { Table, TablesList } from './ui';
-import { clearTable, deleteTable, setTableTitle } from 'features/table';
-import { tablesModel } from 'entities/tables';
 import { productsModel } from 'entities/products';
+import { tablesModel } from 'entities/tables';
+import { clearTable, deleteTable, setTableTitle } from 'features/table';
 import {
   products,
   table,
   tableProduct,
   tables,
 } from 'tests/__mocks__/fixtures';
+import { Table, TablesList } from './ui';
 
 let scope: Scope;
 

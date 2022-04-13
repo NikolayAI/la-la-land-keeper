@@ -96,7 +96,9 @@
     "dist",
     "node_modules",
     "webpack.*",
-    "webpack/paths.js"
+    "webpack/paths.js",
+    "*.test.tsx",
+    "*.test.ts"
   ],
   "env": {
     "browser": true,

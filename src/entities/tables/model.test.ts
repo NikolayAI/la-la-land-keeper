@@ -1,7 +1,7 @@
 import { allSettled, fork } from 'effector';
 
-import { tablesModel } from '../tables';
 import { TableProductTimerStatuses, TablesAPI } from 'shared/api/';
+import { tablesModel } from '../tables';
 
 jest.mock('shared/api');
 

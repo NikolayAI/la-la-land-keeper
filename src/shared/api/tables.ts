@@ -1,5 +1,8 @@
 import { v4 } from 'uuid';
 
+import { headers } from './constants';
+import { createTableBody, createTableProductBody } from './lib';
+import { getProducts } from './products';
 import {
   IAddProductToTableParams,
   IClearTableParams,
@@ -11,9 +14,6 @@ import {
   ISetTableTitleParams,
   TablesType,
 } from './types';
-import { createTableBody, createTableProductBody } from './lib';
-import { headers } from './constants';
-import { getProducts } from './products';
 
 export const getTables = async (): Promise<TablesType> => {
   const response = await fetch('http://localhost:3001/tables');

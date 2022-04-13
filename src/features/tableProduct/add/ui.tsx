@@ -1,13 +1,13 @@
-import React from 'react';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { useStore } from 'effector-react';
+import React from 'react';
 
-import { IAddProductToTableProps } from './types';
-import { $anchorEl, addProductToTable, setAnchorEl } from './model';
 import { IAddProductToTableParams } from 'shared/api';
+import { $anchorEl, addProductToTable, setAnchorEl } from './model';
+import { IAddProductToTableProps } from './types';
 
 export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
   tableId,

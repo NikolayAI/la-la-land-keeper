@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   act,
   fireEvent,
@@ -8,10 +7,11 @@ import {
 } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
+import React from 'react';
 
-import { CreateProductModal } from './ui';
-import { createProduct, openCreateProductModal } from './model';
 import { productsModel } from 'entities/products';
+import { createProduct, openCreateProductModal } from './model';
+import { CreateProductModal } from './ui';
 
 let scope: Scope;
 
