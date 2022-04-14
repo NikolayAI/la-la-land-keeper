@@ -2,7 +2,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { IconButton } from '@mui/material';
 import { useStore } from 'effector-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, FC, memo } from 'react';
 
 import {
   ISetTablesProductsTimersParams,
@@ -31,7 +31,7 @@ interface IProductTimer {
   handlePlayTimer: (payload: IPlayTableProductTimerParams) => void;
 }
 
-export const TableProductTimer: React.FC<IProductTimer> = React.memo(
+export const TableProductTimer: FC<IProductTimer> = memo(
   ({
     tables,
     tableId,
@@ -58,7 +58,8 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(
       interval: 1000,
     });
 
-    useEffect(() => () => {
+    useEffect(
+      () => () => {
         const timers = getLocalStorage({ key: tablesProductsTimersKey });
         setLocalStorage({
           key: tablesProductsTimersKey,
@@ -74,7 +75,9 @@ export const TableProductTimer: React.FC<IProductTimer> = React.memo(
             },
           },
         });
-      }, []);
+      },
+      []
+    );
 
     const handlePause = () => {
       handleStopTimer({

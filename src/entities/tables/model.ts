@@ -18,7 +18,7 @@ import {
   ISetTableTitleParams,
   TablesAPI,
   TablesType,
-} from '../../shared/api';
+} from 'shared/api';
 import { TableProductsTimersType } from './types';
 
 export const setTablesProductsTimers =
@@ -112,12 +112,12 @@ $tables.on(getTablesFx.doneData, (_, tables) => tables);
 $tablesProductsTimers.on(
   setTablesProductsTimers,
   (state, { tableId, productId, value }) => ({
-      ...state,
-      [tableId]: {
-        ...state[tableId],
-        [productId]: value,
-      },
-    })
+    ...state,
+    [tableId]: {
+      ...state[tableId],
+      [productId]: value,
+    },
+  })
 );
 
 forward({

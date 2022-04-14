@@ -14,7 +14,10 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*": "prettier --write"
+    "*": [
+      "npm run lint",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

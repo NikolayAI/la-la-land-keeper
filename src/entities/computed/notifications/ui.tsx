@@ -1,7 +1,7 @@
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { forwardRef, FC, memo } from 'react';
 
 import * as notificationsModel from './model';
 import { INotification } from './types';
@@ -10,7 +10,7 @@ interface INotificationProps {
   handleCloseNotification: (payload: INotification) => void;
 }
 
-export const Notifications: React.FC<INotificationProps> = React.memo(
+export const Notifications: FC<INotificationProps> = memo(
   ({ handleCloseNotification }) => {
     const tableProductsTimersNotifications = useStore(
       notificationsModel.$tableProductsTimersNotifications
@@ -44,7 +44,7 @@ export const Notifications: React.FC<INotificationProps> = React.memo(
   }
 );
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
   ref
 ) {
