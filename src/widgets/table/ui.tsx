@@ -12,10 +12,9 @@ import {
   Typography,
 } from '@mui/material';
 import { useStore } from 'effector-react';
-import React, { memo, FC } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 
 import { ProductsType, TablesType } from 'shared/api';
-import { EditableText } from 'shared/ui';
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
 import { clearTable, deleteTable, setTableTitle } from 'features/table';
@@ -27,11 +26,12 @@ interface ITable {
   tableId: string;
   tables: TablesType;
   products: ProductsType;
+  SetTableTitleSlot: ReactNode;
 }
 
 export const Table: FC<ITable> = memo(
-  ({ tableId, tables, products }) => {
-    const { title, products: tableProducts } = tables?.[tableId] ?? {};
+  ({ tableId, tables, products, SetTableTitleSlot }) => {
+    const { products: tableProducts } = tables?.[tableId] ?? {};
     return (
       <Card key={tableId} sx={{ width: 575, margin: 2 }} elevation={6}>
         <CardContent>
@@ -39,13 +39,7 @@ export const Table: FC<ITable> = memo(
             <AppBar position="static" sx={{ borderRadius: 1 }}>
               <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                  <EditableText
-                    role={`editable-table-title-${tableId}`}
-                    text={title}
-                    setTableTitle={(text: string) => {
-                      setTableTitle({ id: tableId, text });
-                    }}
-                  />
+                  {SetTableTitleSlot}
                 </Typography>
                 <AddProductToTable products={products} tableId={tableId} />
               </Toolbar>
@@ -137,14 +131,20 @@ export const TablesList: React.FC = () => {
   const products = useStore(productsModel.$products);
   return (
     <Grid container spacing={0}>
-      {tablesIds.map((tableId) => (
-        <Table
-          key={tableId}
-          tableId={tableId}
-          tables={tables}
-          products={products}
-        />
-      ))}
+      {tablesIds.map((tableId) => {
+        const { title } = tables?.[tableId] ?? {};
+        return (
+          <Table
+            key={tableId}
+            tableId={tableId}
+            tables={tables}
+            products={products}
+            SetTableTitleSlot={
+              <setTableTitle.ui.Field tableId={tableId} tableTitle={title} />
+            }
+          />
+        );
+      })}
     </Grid>
   );
 };

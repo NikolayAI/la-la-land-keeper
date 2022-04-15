@@ -6,11 +6,11 @@ import React, { forwardRef, FC, memo } from 'react';
 import * as notificationsModel from './model';
 import { INotification } from './types';
 
-interface INotificationProps {
+interface INotificationsProps {
   handleCloseNotification: (payload: INotification) => void;
 }
 
-export const Notifications: FC<INotificationProps> = memo(
+export const Notifications: FC<INotificationsProps> = memo(
   ({ handleCloseNotification }) => {
     const tableProductsTimersNotifications = useStore(
       notificationsModel.$tableProductsTimersNotifications

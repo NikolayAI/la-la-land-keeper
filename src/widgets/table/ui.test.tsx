@@ -28,14 +28,22 @@ describe('events', () => {
   deleteTable.watch(deleteTableFn);
 
   const setTableTitleFn = jest.fn();
-  setTableTitle.watch(setTableTitleFn);
+  setTableTitle.model.setTableTitle.watch(setTableTitleFn);
 
   test('should call deleteTableFn', () => {
     scope = fork();
 
-    render(<Table tableId={table.id} tables={tables} products={products} />, {
-      wrapper: Wrapper,
-    });
+    render(
+      <Table
+        tableId={table.id}
+        tables={tables}
+        products={products}
+        SetTableTitleSlot={setTableTitle.ui.Field}
+      />,
+      {
+        wrapper: Wrapper,
+      }
+    );
 
     act(() => {
       fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
@@ -47,9 +55,17 @@ describe('events', () => {
   test('should call clearTableFn', () => {
     scope = fork();
 
-    render(<Table tableId={table.id} tables={tables} products={products} />, {
-      wrapper: Wrapper,
-    });
+    render(
+      <Table
+        tableId={table.id}
+        tables={tables}
+        products={products}
+        SetTableTitleSlot={setTableTitle.ui.Field}
+      />,
+      {
+        wrapper: Wrapper,
+      }
+    );
 
     act(() => {
       fireEvent.click(screen.getByRole(`clear-table-${table.id}-button`));
