@@ -119,6 +119,7 @@ module.exports = {
           '(^|/)\\.[^/]+\\.(js|cjs|mjs|ts|json)$', // dot files
           '\\.d\\.ts$', // TypeScript declaration files
           '(^|/)tsconfig\\.json$', // TypeScript config
+          '(^|/)package\\.json$', // package config
           '(^|/)(babel|webpack)\\.config\\.(js|cjs|mjs|ts|json)$', // other configs
         ],
       },
