@@ -1,19 +1,19 @@
 {
   "tables": {
-    "c61fc9e9-5234-4b5d-9118-380905b6838b": {
-      "id": "c61fc9e9-5234-4b5d-9118-380905b6838b",
-      "title": "неизвестный столLDFKS",
+    "6507e460-336d-41be-b969-ef9cb7ca2694": {
+      "id": "6507e460-336d-41be-b969-ef9cb7ca2694",
+      "title": "неизвестный стол",
       "products": {}
     }
   },
   "products": {
-    "c87bb434-99d2-494e-bb0e-215cc9370197": {
-      "id": "c87bb434-99d2-494e-bb0e-215cc9370197",
-      "title": "some",
-      "price": 123,
+    "e683724e-8da6-4034-90d8-b5669676b48d": {
+      "id": "e683724e-8da6-4034-90d8-b5669676b48d",
+      "title": "sefhj",
+      "price": 23,
       "isPiece": true,
       "needTimer": true,
-      "eachProductUnitMinutesTimer": 13
+      "eachProductUnitMinutesTimer": 12
     }
   }
 }

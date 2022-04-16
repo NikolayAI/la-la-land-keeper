@@ -11,7 +11,7 @@ import {
   IClearTableParams,
   IDecreaseTableProductParams,
   IDeleteProductToTableParams,
-  IDeleteTableParams,
+  IRemoveTableParams,
   IIncreaseTableProductParams,
   ISetTableProductTimerStatusParams,
   ISetTablesProductsTimersParams,
@@ -26,7 +26,7 @@ export const setTablesProductsTimers =
 
 export const getTablesFx = createEffect<void, TablesType, Error>();
 export const createTableFx = createEffect<void, void, Error>();
-export const deleteTableFx = createEffect<IDeleteTableParams, void, Error>();
+export const removeTableFx = createEffect<IRemoveTableParams, void, Error>();
 export const setTitleFx = createEffect<ISetTableTitleParams, void, Error>();
 export const addProductFx = createEffect<
   IAddProductToTableParams,
@@ -62,8 +62,8 @@ getTablesFx.use(async () => await TablesAPI.getTables());
 createTableFx.use(async () => {
   await TablesAPI.createTable();
 });
-deleteTableFx.use(async ({ id }) => {
-  await TablesAPI.deleteTable({ id });
+removeTableFx.use(async ({ id }) => {
+  await TablesAPI.removeTable({ id });
 });
 setTitleFx.use(async ({ id, text }) => {
   await TablesAPI.setTableTitle({ id, text });
@@ -123,7 +123,7 @@ $tablesProductsTimers.on(
 forward({
   from: [
     createTableFx.doneData,
-    deleteTableFx.doneData,
+    removeTableFx.doneData,
     setTitleFx.doneData,
     addProductFx.doneData,
     deleteProductFx.doneData,

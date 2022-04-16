@@ -4,7 +4,7 @@ import React from 'react';
 
 import { productsModel } from 'entities/products';
 import { DeleteProduct, openCreateProductModal } from 'features/product';
-import { createTable } from 'features/table';
+import { CreateTableUI } from 'features/table';
 
 export const Header = () => {
   const products = useStore(productsModel.$products);
@@ -13,20 +13,7 @@ export const Header = () => {
       <Container maxWidth="xl">
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
-              role="create-table-header-button"
-              variant="contained"
-              sx={{
-                my: 2,
-                color: 'white',
-                display: 'block',
-                border: '1px solid white',
-                marginRight: 4,
-              }}
-              onClick={() => createTable()}
-            >
-              Создать стол
-            </Button>
+            <CreateTableUI.Btn />
             <Button
               role="open-create-product-modal-header-button"
               variant="contained"

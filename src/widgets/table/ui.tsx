@@ -1,9 +1,6 @@
-import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
-import DeleteIcon from '@mui/icons-material/Delete';
 import {
   AppBar,
   Box,
-  Button,
   Card,
   CardContent,
   Grid,
@@ -17,7 +14,7 @@ import React, { FC, memo, ReactNode } from 'react';
 import { ProductsType, TablesType } from 'shared/api';
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
-import { clearTable, deleteTable, setTableTitle } from 'features/table';
+import { ClearTableUI, RemoveTableUI, SetTableTitleUI } from 'features/table';
 import { AddProductToTable } from 'features/tableProduct';
 import { ProductCard } from '../productCard';
 import { calculateTableTotalPrice } from './lib';
@@ -27,10 +24,19 @@ interface ITable {
   tables: TablesType;
   products: ProductsType;
   SetTableTitleSlot: ReactNode;
+  ClearTableSlot: ReactNode;
+  RemoveTableSlot: ReactNode;
 }
 
 export const Table: FC<ITable> = memo(
-  ({ tableId, tables, products, SetTableTitleSlot }) => {
+  ({
+    tableId,
+    tables,
+    products,
+    SetTableTitleSlot,
+    ClearTableSlot,
+    RemoveTableSlot,
+  }) => {
     const { products: tableProducts } = tables?.[tableId] ?? {};
     return (
       <Card key={tableId} sx={{ width: 575, margin: 2 }} elevation={6}>
@@ -92,29 +98,14 @@ export const Table: FC<ITable> = memo(
             <Paper elevation={0}>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                  <Button
-                    role={`delete-table-${tableId}-button`}
-                    startIcon={<DeleteIcon />}
-                    onClick={() => deleteTable({ id: tableId })}
-                  >
-                    Удалить стол
-                  </Button>
+                  {RemoveTableSlot}
                 </Grid>
                 <Grid
                   item
                   xs={6}
                   sx={{ display: 'flex', justifyContent: 'end' }}
                 >
-                  <Button
-                    role={`clear-table-${tableId}-button`}
-                    variant="contained"
-                    startIcon={<CleaningServicesIcon />}
-                    onClick={() => {
-                      clearTable({ tableId });
-                    }}
-                  >
-                    Очистить стол
-                  </Button>
+                  {ClearTableSlot}
                 </Grid>
               </Grid>
             </Paper>
@@ -140,8 +131,10 @@ export const TablesList: React.FC = () => {
             tables={tables}
             products={products}
             SetTableTitleSlot={
-              <setTableTitle.ui.Field tableId={tableId} tableTitle={title} />
+              <SetTableTitleUI.Field tableId={tableId} tableTitle={title} />
             }
+            ClearTableSlot={<ClearTableUI.Btn tableId={tableId} />}
+            RemoveTableSlot={<RemoveTableUI.Btn tableId={tableId} />}
           />
         );
       })}

@@ -34,7 +34,7 @@ export interface ISetTableTitleParams {
   text: string;
 }
 
-export interface IDeleteTableParams {
+export interface IRemoveTableParams {
   id: string;
 }
 

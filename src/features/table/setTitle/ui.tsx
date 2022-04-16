@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { EditableText } from 'shared/ui';
-import { setTableTitle } from './model';
+import { setTitle } from './model';
 
 interface ISetTableTitleProps {
   tableId: string;
@@ -13,7 +13,7 @@ export const Field: FC<ISetTableTitleProps> = ({ tableId, tableTitle }) => (
     role={`editable-table-title-${tableId}`}
     text={tableTitle}
     setTableTitle={(text: string) => {
-      setTableTitle({ id: tableId, text });
+      setTitle({ id: tableId, text });
     }}
   />
 );

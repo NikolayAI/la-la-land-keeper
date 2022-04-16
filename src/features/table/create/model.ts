@@ -2,9 +2,9 @@ import { createEvent, forward } from 'effector';
 
 import { tablesModel } from 'entities/tables';
 
-export const createTable = createEvent();
+export const create = createEvent();
 
 forward({
-  from: createTable,
+  from: create,
   to: tablesModel.createTableFx,
 });

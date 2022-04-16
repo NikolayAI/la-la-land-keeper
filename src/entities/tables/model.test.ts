@@ -13,12 +13,12 @@ test('createTableFx should calls TablesAPI.createTable', async () => {
   expect(TablesAPI.createTable).toHaveBeenCalledTimes(1);
 });
 
-test('deleteTableFx should calls TablesAPI.deleteTable', async () => {
+test('removeTableFx should calls TablesAPI.removeTable', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.deleteTableFx, { scope, params: { id: '1' } });
+  await allSettled(tablesModel.removeTableFx, { scope, params: { id: '1' } });
 
-  expect(TablesAPI.deleteTable).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.removeTable).toHaveBeenCalledTimes(1);
 });
 
 test('setTitleFx should calls TablesAPI.setTableTitle', async () => {

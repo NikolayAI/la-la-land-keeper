@@ -2,9 +2,9 @@ import { createEvent, forward } from 'effector';
 
 import { tablesModel } from 'entities/tables';
 
-export const deleteTable = createEvent<{ id: string }>();
+export const remove = createEvent<{ id: string }>();
 
 forward({
-  from: deleteTable,
-  to: tablesModel.deleteTableFx,
+  from: remove,
+  to: tablesModel.removeTableFx,
 });

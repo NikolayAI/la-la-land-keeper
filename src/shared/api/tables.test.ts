@@ -6,7 +6,7 @@ import {
   createTable,
   decreaseTableProduct,
   deleteProductFromTable,
-  deleteTable,
+  removeTable,
   getTables,
   increaseTableProduct,
   setTableProductTimerStatus,
@@ -36,8 +36,8 @@ test('should call createTable', async () => {
   expect(result).toStrictEqual(undefined);
 });
 
-test('should call deleteTable', async () => {
-  const result = await deleteTable({ id: tableId });
+test('should call removeTable', async () => {
+  const result = await removeTable({ id: tableId });
 
   expect(result).toStrictEqual(undefined);
 });

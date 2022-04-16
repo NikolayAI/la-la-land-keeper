@@ -3,9 +3,9 @@ import { createEvent, forward } from 'effector';
 import { IClearTableParams } from 'shared/api';
 import { tablesModel } from 'entities/tables';
 
-export const clearTable = createEvent<IClearTableParams>();
+export const clear = createEvent<IClearTableParams>();
 
 forward({
-  from: clearTable,
+  from: clear,
   to: tablesModel.clearTableFx,
 });

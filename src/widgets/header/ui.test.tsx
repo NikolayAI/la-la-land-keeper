@@ -4,7 +4,7 @@ import { Provider } from 'effector-react/ssr';
 import React from 'react';
 
 import { openCreateProductModal } from 'features/product';
-import { createTable } from 'features/table';
+import { createTableModel } from 'features/table';
 import { Header } from './ui';
 
 let scope: Scope;
@@ -15,7 +15,7 @@ const Wrapper: React.FC = ({ children }) => (
 
 describe('events', () => {
   const createTableFn = jest.fn();
-  createTable.watch(createTableFn);
+  createTableModel.create.watch(createTableFn);
 
   const openCreateProductModalFn = jest.fn();
   openCreateProductModal.watch(openCreateProductModalFn);

@@ -5,7 +5,14 @@ import React from 'react';
 
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
-import { clearTable, deleteTable, setTableTitle } from 'features/table';
+import {
+  removeTableModel,
+  RemoveTableUI,
+  clearTableModel,
+  ClearTableUI,
+  setTableTitleModel,
+  SetTableTitleUI,
+} from 'features/table';
 import {
   products,
   table,
@@ -22,15 +29,15 @@ const Wrapper: React.FC = ({ children }) => (
 
 describe('events', () => {
   const clearTableFn = jest.fn();
-  clearTable.watch(clearTableFn);
+  clearTableModel.clear.watch(clearTableFn);
 
-  const deleteTableFn = jest.fn();
-  deleteTable.watch(deleteTableFn);
+  const removeTableFn = jest.fn();
+  removeTableModel.remove.watch(removeTableFn);
 
   const setTableTitleFn = jest.fn();
-  setTableTitle.model.setTableTitle.watch(setTableTitleFn);
+  setTableTitleModel.setTitle.watch(setTableTitleFn);
 
-  test('should call deleteTableFn', () => {
+  test('should call removeTableFn', () => {
     scope = fork();
 
     render(
@@ -38,7 +45,11 @@ describe('events', () => {
         tableId={table.id}
         tables={tables}
         products={products}
-        SetTableTitleSlot={setTableTitle.ui.Field}
+        SetTableTitleSlot={
+          <SetTableTitleUI.Field tableId={table.id} tableTitle={table.title} />
+        }
+        ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
+        RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
       />,
       {
         wrapper: Wrapper,
@@ -49,7 +60,7 @@ describe('events', () => {
       fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
     });
 
-    expect(deleteTableFn).toHaveBeenCalledTimes(1);
+    expect(removeTableFn).toHaveBeenCalledTimes(1);
   });
 
   test('should call clearTableFn', () => {
@@ -60,7 +71,11 @@ describe('events', () => {
         tableId={table.id}
         tables={tables}
         products={products}
-        SetTableTitleSlot={setTableTitle.ui.Field}
+        SetTableTitleSlot={
+          <SetTableTitleUI.Field tableId={table.id} tableTitle={table.title} />
+        }
+        ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
+        RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
       />,
       {
         wrapper: Wrapper,
