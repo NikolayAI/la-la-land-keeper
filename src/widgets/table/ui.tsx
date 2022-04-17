@@ -11,31 +11,30 @@ import {
 import { useStore } from 'effector-react';
 import React, { FC, memo, ReactNode } from 'react';
 
-import { ProductsType, TablesType } from 'shared/api';
-import { productsModel } from 'entities/products';
+import { TablesType } from 'shared/api';
 import { tablesModel } from 'entities/tables';
 import { ClearTableUI, RemoveTableUI, SetTableTitleUI } from 'features/table';
-import { AddProductToTable } from 'features/tableProduct';
+import { AddTableProductUI } from 'features/tableProduct';
 import { ProductCard } from '../productCard';
 import { calculateTableTotalPrice } from './lib';
 
 interface ITable {
   tableId: string;
   tables: TablesType;
-  products: ProductsType;
   SetTableTitleSlot: ReactNode;
   ClearTableSlot: ReactNode;
   RemoveTableSlot: ReactNode;
+  AddProductToTableSlot: ReactNode;
 }
 
 export const Table: FC<ITable> = memo(
   ({
     tableId,
     tables,
-    products,
     SetTableTitleSlot,
     ClearTableSlot,
     RemoveTableSlot,
+    AddProductToTableSlot,
   }) => {
     const { products: tableProducts } = tables?.[tableId] ?? {};
     return (
@@ -47,7 +46,7 @@ export const Table: FC<ITable> = memo(
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                   {SetTableTitleSlot}
                 </Typography>
-                <AddProductToTable products={products} tableId={tableId} />
+                {AddProductToTableSlot}
               </Toolbar>
             </AppBar>
           </Box>
@@ -119,7 +118,6 @@ export const Table: FC<ITable> = memo(
 export const TablesList: React.FC = () => {
   const tables = useStore(tablesModel.$tables);
   const tablesIds = useStore(tablesModel.$tablesIds);
-  const products = useStore(productsModel.$products);
   return (
     <Grid container spacing={0}>
       {tablesIds.map((tableId) => {
@@ -129,12 +127,14 @@ export const TablesList: React.FC = () => {
             key={tableId}
             tableId={tableId}
             tables={tables}
-            products={products}
             SetTableTitleSlot={
               <SetTableTitleUI.Field tableId={tableId} tableTitle={title} />
             }
             ClearTableSlot={<ClearTableUI.Btn tableId={tableId} />}
             RemoveTableSlot={<RemoveTableUI.Btn tableId={tableId} />}
+            AddProductToTableSlot={
+              <AddTableProductUI.IconBtn tableId={tableId} />
+            }
           />
         );
       })}

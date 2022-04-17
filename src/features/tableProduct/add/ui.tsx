@@ -6,13 +6,12 @@ import { useStore } from 'effector-react';
 import React from 'react';
 
 import { IAddProductToTableParams } from 'shared/api';
+import { productsModel } from 'entities/products';
 import { $anchorEl, addProductToTable, setAnchorEl } from './model';
 import { IAddProductToTableProps } from './types';
 
-export const AddProductToTable: React.FC<IAddProductToTableProps> = ({
-  tableId,
-  products,
-}) => {
+export const IconBtn: React.FC<IAddProductToTableProps> = ({ tableId }) => {
+  const products = useStore(productsModel.$products);
   const anchorEl = useStore($anchorEl)[tableId];
 
   const open = Boolean(anchorEl);

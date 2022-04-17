@@ -1,27 +1,18 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
+import { productsModel } from 'entities/products';
 import React from 'react';
 
+import { products } from 'tests/__mocks__/fixtures';
 import { addProductToTable, setAnchorEl } from './model';
-import { AddProductToTable } from './ui';
+import { IconBtn } from './ui';
 
 let scope: Scope;
 
 const Wrapper: React.FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
-
-const products = {
-  '1': {
-    id: '1',
-    title: 'test',
-    price: 12,
-    isPiece: true,
-    needTimer: false,
-    eachProductUnitMinutesTimer: 0,
-  },
-};
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
@@ -30,12 +21,12 @@ describe('events', () => {
   const setAnchorElFn = jest.fn();
   setAnchorEl.watch(setAnchorElFn);
 
-  beforeEach(() => {
-    scope = fork();
-  });
-
   test('should call setAnchorElFn for open form', async () => {
-    render(<AddProductToTable products={products} tableId="1" />, {
+    scope = fork({
+      values: [[productsModel.$products, products]],
+    });
+
+    render(<IconBtn tableId="1" />, {
       wrapper: Wrapper,
     });
 
@@ -47,7 +38,11 @@ describe('events', () => {
   });
 
   test('should call addProductToTable and setAnchorElFn for add product', async () => {
-    render(<AddProductToTable products={products} tableId="1" />, {
+    scope = fork({
+      values: [[productsModel.$products, products]],
+    });
+
+    render(<IconBtn tableId="1" />, {
       wrapper: Wrapper,
     });
 
