@@ -21,6 +21,7 @@ import {
 } from 'tests/__mocks__/fixtures';
 import { Table, TablesList } from './ui';
 import { AddTableProductUI } from 'features/tableProduct';
+import { ProductCardList } from 'widgets/productCard';
 
 let scope: Scope;
 
@@ -51,6 +52,9 @@ describe('events', () => {
         ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
         RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
         AddProductToTableSlot={<AddTableProductUI.IconBtn tableId={table.id} />}
+        ProductCardListSlot={
+          <ProductCardList tables={tables} tableId={table.id} />
+        }
       />,
       {
         wrapper: Wrapper,
@@ -77,6 +81,9 @@ describe('events', () => {
         ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
         RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
         AddProductToTableSlot={<AddTableProductUI.IconBtn tableId={table.id} />}
+        ProductCardListSlot={
+          <ProductCardList tables={tables} tableId={table.id} />
+        }
       />,
       {
         wrapper: Wrapper,

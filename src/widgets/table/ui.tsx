@@ -15,7 +15,7 @@ import { TablesType } from 'shared/api';
 import { tablesModel } from 'entities/tables';
 import { ClearTableUI, RemoveTableUI, SetTableTitleUI } from 'features/table';
 import { AddTableProductUI } from 'features/tableProduct';
-import { ProductCard } from '../productCard';
+import { ProductCardList } from '../productCard';
 import { calculateTableTotalPrice } from './lib';
 
 interface ITable {
@@ -25,6 +25,7 @@ interface ITable {
   ClearTableSlot: ReactNode;
   RemoveTableSlot: ReactNode;
   AddProductToTableSlot: ReactNode;
+  ProductCardListSlot: ReactNode;
 }
 
 export const Table: FC<ITable> = memo(
@@ -35,6 +36,7 @@ export const Table: FC<ITable> = memo(
     ClearTableSlot,
     RemoveTableSlot,
     AddProductToTableSlot,
+    ProductCardListSlot,
   }) => {
     const { products: tableProducts } = tables?.[tableId] ?? {};
     return (
@@ -61,15 +63,7 @@ export const Table: FC<ITable> = memo(
               },
             }}
           >
-            {Object.keys(tableProducts).map((productId) => (
-              <ProductCard
-                tables={tables}
-                key={productId}
-                tableId={tableId}
-                tableProduct={tableProducts[productId] ?? {}}
-                timerStatus={tableProducts[productId].timerStatus}
-              />
-            ))}
+            {ProductCardListSlot}
             <Paper elevation={0}>
               <Grid container spacing={2}>
                 <Grid item xs={10}>
@@ -134,6 +128,9 @@ export const TablesList: React.FC = () => {
             RemoveTableSlot={<RemoveTableUI.Btn tableId={tableId} />}
             AddProductToTableSlot={
               <AddTableProductUI.IconBtn tableId={tableId} />
+            }
+            ProductCardListSlot={
+              <ProductCardList tables={tables} tableId={tableId} />
             }
           />
         );

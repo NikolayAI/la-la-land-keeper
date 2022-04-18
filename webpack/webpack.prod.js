@@ -1,9 +1,9 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const { merge } = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { merge } = require('webpack-merge');
 
-const paths = require('./paths')
-const common = require('./webpack.common')
+const paths = require('./paths');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -17,7 +17,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: [/\.jsx?$/, /\.tsx?$/],
-        use: 'babel-loader',
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
@@ -53,4 +53,4 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-})
+});

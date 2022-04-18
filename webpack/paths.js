@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   src: path.resolve(__dirname, '../src'),
@@ -11,4 +11,5 @@ module.exports = {
   features: path.resolve(__dirname, '../src/features'),
   entities: path.resolve(__dirname, '../src/entities'),
   shared: path.resolve(__dirname, '../src/shared'),
-}
+  tests: path.resolve(__dirname, '../tests'),
+};

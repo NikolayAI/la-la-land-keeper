@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Grid, IconButton, Paper, Typography } from '@mui/material';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { FC } from 'react';
 
 import {
   ITableProduct,
@@ -30,7 +30,7 @@ interface IProductCard {
   timerStatus: TableProductTimerStatuses;
 }
 
-export const ProductCard: React.FC<IProductCard> = ({
+export const ProductCard: FC<IProductCard> = ({
   tables,
   tableId,
   tableProduct,
@@ -125,5 +125,30 @@ export const ProductCard: React.FC<IProductCard> = ({
         </Grid>
       </Grid>
     </Paper>
+  );
+};
+
+interface IProductCardListProps {
+  tables: TablesType;
+  tableId: string;
+}
+
+export const ProductCardList: FC<IProductCardListProps> = ({
+  tables,
+  tableId,
+}) => {
+  const { products } = tables?.[tableId] ?? {};
+  return (
+    <>
+      {Object.keys(products).map((productId) => (
+        <ProductCard
+          tables={tables}
+          key={productId}
+          tableId={tableId}
+          tableProduct={products[productId] ?? {}}
+          timerStatus={products[productId]?.timerStatus}
+        />
+      ))}
+    </>
   );
 };
