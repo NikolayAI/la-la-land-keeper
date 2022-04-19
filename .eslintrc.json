@@ -17,7 +17,8 @@
       { "type": "widgets", "pattern": "widgets/*" },
       { "type": "features", "pattern": "features/*" },
       { "type": "entities", "pattern": "entities/*", "capture": ["slice"] },
-      { "type": "shared", "pattern": "shared/*" }
+      { "type": "shared", "pattern": "shared/*" },
+      { "type": "tests", "pattern": "tests/*" }
     ],
     "boundaries/ignore": ["**/*.test.*"]
   },
@@ -43,6 +44,7 @@
       {
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "pathGroups": [
+          { "group": "internal", "position": "after", "pattern": "tests/**" },
           { "group": "internal", "position": "after", "pattern": "shared/**" },
           {
             "group": "internal",

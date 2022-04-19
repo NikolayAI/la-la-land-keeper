@@ -19,7 +19,7 @@ import {
   TablesAPI,
   TablesType,
 } from 'shared/api';
-import { TableProductsTimersType } from './types';
+import { TableProductsTimersType } from '../types';
 
 export const setTablesProductsTimers =
   createEvent<ISetTablesProductsTimersParams>();
