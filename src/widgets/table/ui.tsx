@@ -33,7 +33,7 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => {
   );
 };
 
-export const TablesList: React.FC = () => {
+export const TablesList: FC = () => {
   const tables = useStore(tablesModel.$tables);
   const tablesIds = useStore(tablesModel.$tablesIds);
   return (

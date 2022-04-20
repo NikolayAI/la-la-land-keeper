@@ -1,14 +1,14 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
-import { TableProductTimer } from './ui';
+import { Timer } from './timer';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 
@@ -57,7 +57,7 @@ describe('events', () => {
 
   test('should call handleStopTimer', async () => {
     render(
-      <TableProductTimer
+      <Timer
         tables={tablesWithPlayTimerStatus}
         tableId="1"
         productId="2"
@@ -80,7 +80,7 @@ describe('events', () => {
 
   test('should call handlePlayTimer', async () => {
     render(
-      <TableProductTimer
+      <Timer
         tables={tablesWithStopTimerStatus}
         tableId="1"
         productId="2"

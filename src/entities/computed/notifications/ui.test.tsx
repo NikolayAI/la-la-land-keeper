@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { NotificationKinds } from './constants';
 import * as notificationsModel from './model';
@@ -9,7 +9,7 @@ import { Notifications } from './ui';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

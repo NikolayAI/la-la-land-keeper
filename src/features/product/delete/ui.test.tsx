@@ -1,14 +1,14 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { deleteProduct, setAnchorEl } from './model';
 import { DeleteProduct } from './ui';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 const products = {

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { allSettled, fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
@@ -10,7 +10,7 @@ import { Dashboard } from './ui';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

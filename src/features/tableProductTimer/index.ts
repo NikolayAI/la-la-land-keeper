@@ -1,3 +1,3 @@
 export * from './play';
 export * from './stop';
-export * from './ui';
+export * as TableProductTimerUI from './ui';

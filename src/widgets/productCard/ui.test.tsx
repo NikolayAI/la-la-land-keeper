@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
 import {
@@ -11,10 +11,16 @@ import {
 } from 'features/tableProduct';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
 import { ProductCard } from './ui';
+import {
+  playTableProductTimer,
+  stopTableProductTimer,
+  TableProductTimerUI,
+} from 'features/tableProductTimer';
+import { tablesModel } from 'entities/tables';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 
@@ -45,10 +51,22 @@ describe('events', () => {
 
     render(
       <ProductCard
-        tables={testTables}
         tableId={table.id}
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer
+            tables={testTables}
+            tableId={table.id}
+            productId={tableProduct.id}
+            createdAt={tableProduct.createdAt}
+            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+            productUnits={tableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+            handleStopTimer={stopTableProductTimer}
+            handlePlayTimer={playTableProductTimer}
+          />
+        }
       />,
       { wrapper: Wrapper }
     );
@@ -65,10 +83,22 @@ describe('events', () => {
 
     render(
       <ProductCard
-        tables={tables}
         tableId={table.id}
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer
+            tables={tables}
+            tableId={table.id}
+            productId={tableProduct.id}
+            createdAt={tableProduct.createdAt}
+            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+            productUnits={tableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+            handleStopTimer={stopTableProductTimer}
+            handlePlayTimer={playTableProductTimer}
+          />
+        }
       />,
       { wrapper: Wrapper }
     );
@@ -85,10 +115,22 @@ describe('events', () => {
 
     render(
       <ProductCard
-        tables={tables}
         tableId={table.id}
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer
+            tables={tables}
+            tableId={table.id}
+            productId={tableProduct.id}
+            createdAt={tableProduct.createdAt}
+            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+            productUnits={tableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+            handleStopTimer={stopTableProductTimer}
+            handlePlayTimer={playTableProductTimer}
+          />
+        }
       />,
       { wrapper: Wrapper }
     );
@@ -117,10 +159,22 @@ describe('events', () => {
 
     render(
       <ProductCard
-        tables={testTables}
         tableId={table.id}
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer
+            tables={testTables}
+            tableId={table.id}
+            productId={tableProduct.id}
+            createdAt={tableProduct.createdAt}
+            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+            productUnits={tableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+            handleStopTimer={stopTableProductTimer}
+            handlePlayTimer={playTableProductTimer}
+          />
+        }
       />,
       { wrapper: Wrapper }
     );

@@ -1,7 +1,7 @@
 import { fork, Scope } from 'effector';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'effector-react/ssr';
-import React from 'react';
+import React, { FC } from 'react';
 
 import {
   clearTableModel,
@@ -18,7 +18,7 @@ import { Table } from './index';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

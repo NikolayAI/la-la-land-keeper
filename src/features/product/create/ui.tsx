@@ -8,7 +8,7 @@ import {
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { FC } from 'react';
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
 import { productsModel } from 'entities/products';
@@ -18,7 +18,7 @@ import {
   createProduct,
 } from './model';
 
-export const CreateProductModal: React.FC = () => {
+export const CreateProductModal: FC = () => {
   const isOpen = useStore($isOpenCreateProductModal);
   const product = useStore(productsModel.$product);
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { CreateProductModal } from 'features/product';
 import { Header } from 'widgets/header';
@@ -9,13 +9,13 @@ interface IDashboardProps {
   className?: string;
 }
 
-export const Dashboard: React.FC<IDashboardProps> = ({ className }) => (
-    <>
-      <DashBoardGate />
-      <div className={className}>
-        <Header />
-        <TablesList />
-        <CreateProductModal />
-      </div>
-    </>
-  );
+export const Dashboard: FC<IDashboardProps> = ({ className }) => (
+  <>
+    <DashBoardGate />
+    <div className={className}>
+      <Header />
+      <TablesList />
+      <CreateProductModal />
+    </div>
+  </>
+);

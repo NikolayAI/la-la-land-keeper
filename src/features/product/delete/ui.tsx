@@ -3,7 +3,7 @@ import { alpha, Box, Button, MenuItem } from '@mui/material';
 import Menu, { MenuProps } from '@mui/material/Menu/Menu';
 import { styled } from '@mui/material/styles';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { ProductsType } from 'shared/api';
 import { $anchorEl, deleteProduct, setAnchorEl } from './model';
@@ -12,7 +12,7 @@ interface IDeleteProductsList {
   products: ProductsType;
 }
 
-export const DeleteProduct: React.FC<IDeleteProductsList> = ({ products }) => {
+export const DeleteProduct: FC<IDeleteProductsList> = ({ products }) => {
   const anchorEl = useStore($anchorEl);
 
   const open = Boolean(anchorEl);

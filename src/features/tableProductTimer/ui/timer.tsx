@@ -31,7 +31,7 @@ interface IProductTimer {
   handlePlayTimer: (payload: IPlayTableProductTimerParams) => void;
 }
 
-export const TableProductTimer: FC<IProductTimer> = memo(
+export const Timer: FC<IProductTimer> = memo(
   ({
     tables,
     tableId,

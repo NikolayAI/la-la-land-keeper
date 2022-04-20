@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Grid, IconButton, Paper, Typography } from '@mui/material';
 import { useStore } from 'effector-react';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import {
   ITableProduct,
@@ -19,22 +19,22 @@ import {
 import {
   playTableProductTimer,
   stopTableProductTimer,
-  TableProductTimer,
+  TableProductTimerUI,
 } from 'features/tableProductTimer';
 import { backgroundColors } from './constants';
 
 interface IProductCard {
-  tables: TablesType;
   tableId: string;
   tableProduct: ITableProduct;
   timerStatus: TableProductTimerStatuses;
+  TableProductTimerSlot: ReactNode;
 }
 
 export const ProductCard: FC<IProductCard> = ({
-  tables,
   tableId,
   tableProduct,
   timerStatus,
+  TableProductTimerSlot,
 }) => {
   const tablesProductsTimersOutOfLimit = useStore(
     tablesModel.$tablesProductsTimersOutOfLimits
@@ -58,19 +58,7 @@ export const ProductCard: FC<IProductCard> = ({
           </Typography>
         </Grid>
         <Grid item xs={3.5}>
-          {tableProduct.needTimer && (
-            <TableProductTimer
-              tables={tables}
-              tableId={tableId}
-              productId={tableProduct.id}
-              createdAt={tableProduct.createdAt}
-              minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-              productUnits={tableProduct.units}
-              setTimer={tablesModel.setTablesProductsTimers}
-              handleStopTimer={stopTableProductTimer}
-              handlePlayTimer={playTableProductTimer}
-            />
-          )}
+          {tableProduct.needTimer && TableProductTimerSlot}
         </Grid>
         <Grid item xs={3}>
           {tableProduct.isPiece ? (
@@ -140,15 +128,30 @@ export const ProductCardList: FC<IProductCardListProps> = ({
   const { products } = tables?.[tableId] ?? {};
   return (
     <>
-      {Object.keys(products).map((productId) => (
-        <ProductCard
-          tables={tables}
-          key={productId}
-          tableId={tableId}
-          tableProduct={products[productId] ?? {}}
-          timerStatus={products[productId]?.timerStatus}
-        />
-      ))}
+      {Object.keys(products).map((productId) => {
+        const tableProduct = products[productId] ?? {};
+        return (
+          <ProductCard
+            key={productId}
+            tableId={tableId}
+            tableProduct={tableProduct}
+            timerStatus={tableProduct?.timerStatus}
+            TableProductTimerSlot={
+              <TableProductTimerUI.Timer
+                tables={tables}
+                tableId={tableId}
+                productId={tableProduct.id}
+                createdAt={tableProduct.createdAt}
+                minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+                productUnits={tableProduct.units}
+                setTimer={tablesModel.setTablesProductsTimers}
+                handleStopTimer={stopTableProductTimer}
+                handlePlayTimer={playTableProductTimer}
+              />
+            }
+          />
+        );
+      })}
     </>
   );
 };

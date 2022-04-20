@@ -3,14 +3,14 @@ import { Box, IconButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { IAddProductToTableParams } from 'shared/api';
 import { productsModel } from 'entities/products';
 import { $anchorEl, addProductToTable, setAnchorEl } from './model';
 import { IAddProductToTableProps } from './types';
 
-export const IconBtn: React.FC<IAddProductToTableProps> = ({ tableId }) => {
+export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
   const products = useStore(productsModel.$products);
   const anchorEl = useStore($anchorEl)[tableId];
 

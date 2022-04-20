@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import { productsModel } from 'entities/products';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { products } from 'tests/__mocks__/fixtures';
 import { addProductToTable, setAnchorEl } from './model';
@@ -10,7 +10,7 @@ import { IconBtn } from './ui';
 
 let scope: Scope;
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: FC = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 
