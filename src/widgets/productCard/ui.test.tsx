@@ -11,11 +11,7 @@ import {
 } from 'features/tableProduct';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
 import { ProductCard } from './ui';
-import {
-  playTableProductTimer,
-  stopTableProductTimer,
-  TableProductTimerUI,
-} from 'features/tableProductTimer';
+import { TableProductTimerUI } from 'features/tableProductTimer';
 import { tablesModel } from 'entities/tables';
 
 let scope: Scope;
@@ -63,8 +59,6 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
-            handleStopTimer={stopTableProductTimer}
-            handlePlayTimer={playTableProductTimer}
           />
         }
       />,
@@ -95,8 +89,6 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
-            handleStopTimer={stopTableProductTimer}
-            handlePlayTimer={playTableProductTimer}
           />
         }
       />,
@@ -127,8 +119,6 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
-            handleStopTimer={stopTableProductTimer}
-            handlePlayTimer={playTableProductTimer}
           />
         }
       />,
@@ -171,8 +161,6 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
-            handleStopTimer={stopTableProductTimer}
-            handlePlayTimer={playTableProductTimer}
           />
         }
       />,

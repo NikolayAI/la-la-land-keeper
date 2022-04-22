@@ -4,6 +4,8 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
+import { play } from '../model/play';
+import { stop } from '../model/stop';
 import { Timer } from './timer';
 
 let scope: Scope;
@@ -48,8 +50,12 @@ const tablesWithStopTimerStatus = {
 
 describe('events', () => {
   const setTimerFn = jest.fn();
+
   const playTimerFn = jest.fn();
+  play.watch(playTimerFn);
+
   const stopTimerFn = jest.fn();
+  stop.watch(stopTimerFn);
 
   beforeEach(() => {
     scope = fork();
@@ -65,8 +71,6 @@ describe('events', () => {
         minutesLimit={20}
         productUnits={1}
         setTimer={setTimerFn}
-        handlePlayTimer={playTimerFn}
-        handleStopTimer={stopTimerFn}
       />,
       { wrapper: Wrapper }
     );
@@ -88,8 +92,6 @@ describe('events', () => {
         minutesLimit={20}
         productUnits={1}
         setTimer={setTimerFn}
-        handlePlayTimer={playTimerFn}
-        handleStopTimer={stopTimerFn}
       />,
       { wrapper: Wrapper }
     );

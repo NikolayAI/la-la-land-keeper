@@ -16,11 +16,7 @@ import {
   deleteProductFromTable,
   increaseTableProduct,
 } from 'features/tableProduct';
-import {
-  playTableProductTimer,
-  stopTableProductTimer,
-  TableProductTimerUI,
-} from 'features/tableProductTimer';
+import { TableProductTimerUI } from 'features/tableProductTimer';
 import { backgroundColors } from './constants';
 
 interface IProductCard {
@@ -145,8 +141,6 @@ export const ProductCardList: FC<IProductCardListProps> = ({
                 minutesLimit={tableProduct.eachProductUnitMinutesTimer}
                 productUnits={tableProduct.units}
                 setTimer={tablesModel.setTablesProductsTimers}
-                handleStopTimer={stopTableProductTimer}
-                handlePlayTimer={playTableProductTimer}
               />
             }
           />

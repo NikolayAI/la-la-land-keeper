@@ -16,8 +16,8 @@ import {
   useTimer,
 } from 'shared/lib';
 import { tablesModel } from 'entities/tables';
-import { IPlayTableProductTimerParams } from '../play';
-import { IStopProductTableTimerParams } from '../stop';
+import { play } from '../model/play';
+import { stop } from '../model/stop';
 
 interface IProductTimer {
   tables: TablesType;
@@ -27,8 +27,6 @@ interface IProductTimer {
   minutesLimit: number;
   productUnits: number;
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
-  handleStopTimer: (payload: IStopProductTableTimerParams) => void;
-  handlePlayTimer: (payload: IPlayTableProductTimerParams) => void;
 }
 
 export const Timer: FC<IProductTimer> = memo(
@@ -40,8 +38,6 @@ export const Timer: FC<IProductTimer> = memo(
     minutesLimit,
     productUnits,
     setTimer,
-    handleStopTimer,
-    handlePlayTimer,
   }) => {
     const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
     const timerStatus = tables[tableId].products[productId]?.timerStatus;
@@ -80,7 +76,7 @@ export const Timer: FC<IProductTimer> = memo(
     );
 
     const handlePause = () => {
-      handleStopTimer({
+      stop({
         tableId,
         productId,
         value: TableProductTimerStatuses.STOP,
@@ -104,7 +100,7 @@ export const Timer: FC<IProductTimer> = memo(
     };
 
     const handlePlay = () => {
-      handlePlayTimer({
+      play({
         tableId,
         productId,
         value: TableProductTimerStatuses.PLAY,
