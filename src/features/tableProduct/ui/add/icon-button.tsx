@@ -7,8 +7,11 @@ import React, { FC } from 'react';
 
 import { IAddProductToTableParams } from 'shared/api';
 import { productsModel } from 'entities/products';
-import { $anchorEl, addProductToTable, setAnchorEl } from './model';
-import { IAddProductToTableProps } from './types';
+import { $anchorEl, add, setAnchorEl } from '../../model/add';
+
+interface IAddProductToTableProps {
+  tableId: string;
+}
 
 export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
   const products = useStore(productsModel.$products);
@@ -20,7 +23,7 @@ export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
     tableId,
     productId,
   }: IAddProductToTableParams) => {
-    addProductToTable({ tableId, productId });
+    add({ tableId, productId });
     setAnchorEl({ tableId, element: null });
   };
 

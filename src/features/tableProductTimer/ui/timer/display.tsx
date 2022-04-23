@@ -16,8 +16,8 @@ import {
   useTimer,
 } from 'shared/lib';
 import { tablesModel } from 'entities/tables';
-import { play } from '../model/play';
-import { stop } from '../model/stop';
+import { play } from '../../model/play';
+import { stop } from '../../model/stop';
 
 interface IProductTimer {
   tables: TablesType;
@@ -29,7 +29,7 @@ interface IProductTimer {
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
 }
 
-export const Timer: FC<IProductTimer> = memo(
+export const Display: FC<IProductTimer> = memo(
   ({
     tables,
     tableId,

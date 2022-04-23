@@ -4,11 +4,7 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
-import {
-  decreaseTableProduct,
-  deleteProductFromTable,
-  increaseTableProduct,
-} from 'features/tableProduct';
+import { tableProductModel, TableProductUI } from 'features/tableProduct';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
 import { ProductCard } from './ui';
 import { TableProductTimerUI } from 'features/tableProductTimer';
@@ -22,13 +18,13 @@ const Wrapper: FC = ({ children }) => (
 
 describe('events', () => {
   const decreaseTableProductFn = jest.fn();
-  decreaseTableProduct.watch(decreaseTableProductFn);
+  tableProductModel.decrease.watch(decreaseTableProductFn);
 
-  const deleteProductFromTableFn = jest.fn();
-  deleteProductFromTable.watch(deleteProductFromTableFn);
+  const removeProductFromTableFn = jest.fn();
+  tableProductModel.remove.watch(removeProductFromTableFn);
 
   const increaseTableProductFn = jest.fn();
-  increaseTableProduct.watch(increaseTableProductFn);
+  tableProductModel.increase.watch(increaseTableProductFn);
 
   test('should call decreaseTableProduct', async () => {
     scope = fork();
@@ -51,7 +47,7 @@ describe('events', () => {
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer
+          <TableProductTimerUI.Display
             tables={testTables}
             tableId={table.id}
             productId={tableProduct.id}
@@ -59,6 +55,12 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
           />
         }
       />,
@@ -72,7 +74,7 @@ describe('events', () => {
     expect(decreaseTableProductFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call deleteProductFromTable', async () => {
+  test('should call removeProductFromTable', async () => {
     scope = fork();
 
     render(
@@ -81,7 +83,7 @@ describe('events', () => {
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer
+          <TableProductTimerUI.Display
             tables={tables}
             tableId={table.id}
             productId={tableProduct.id}
@@ -89,6 +91,12 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
           />
         }
       />,
@@ -99,10 +107,10 @@ describe('events', () => {
       fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
     });
 
-    expect(deleteProductFromTableFn).toHaveBeenCalledTimes(1);
+    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call deleteProductFromTable', async () => {
+  test('should call removeProductFromTable', async () => {
     scope = fork();
 
     render(
@@ -111,7 +119,7 @@ describe('events', () => {
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer
+          <TableProductTimerUI.Display
             tables={tables}
             tableId={table.id}
             productId={tableProduct.id}
@@ -119,6 +127,12 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
           />
         }
       />,
@@ -132,7 +146,7 @@ describe('events', () => {
     expect(increaseTableProductFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call deleteProductFromTable', async () => {
+  test('should call removeProductFromTable', async () => {
     scope = fork();
     const testTableProduct = {
       ...tableProduct,
@@ -153,7 +167,7 @@ describe('events', () => {
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer
+          <TableProductTimerUI.Display
             tables={testTables}
             tableId={table.id}
             productId={tableProduct.id}
@@ -161,6 +175,12 @@ describe('events', () => {
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
           />
         }
       />,
@@ -171,6 +191,6 @@ describe('events', () => {
       fireEvent.click(screen.getByRole('delete-table-product-button'));
     });
 
-    expect(deleteProductFromTableFn).toHaveBeenCalledTimes(1);
+    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
   });
 });

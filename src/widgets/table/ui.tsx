@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { TablesType } from 'shared/api';
 import { tablesModel, TablesUI } from 'entities/tables';
 import { ClearTableUI, RemoveTableUI, SetTableTitleUI } from 'features/table';
-import { AddTableProductUI } from 'features/tableProduct';
+import { TableProductUI } from 'features/tableProduct';
 import { ProductCardList } from '../productCard';
 
 interface ITableProps {
@@ -25,7 +25,7 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => {
       }
       ClearTableSlot={<ClearTableUI.Btn tableId={tableId} />}
       RemoveTableSlot={<RemoveTableUI.Btn tableId={tableId} />}
-      AddProductToTableSlot={<AddTableProductUI.IconBtn tableId={tableId} />}
+      AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={tableId} />}
       ProductCardListSlot={
         <ProductCardList tables={tables} tableId={tableId} />
       }

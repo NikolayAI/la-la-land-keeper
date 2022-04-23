@@ -3,11 +3,11 @@ import { createEvent, sample } from 'effector';
 import { IDecreaseTableProductParams } from 'shared/api';
 import { tablesModel } from 'entities/tables';
 
-export const decreaseTableProduct =
+export const decrease =
   createEvent<Omit<IDecreaseTableProductParams, 'value'>>();
 
 sample({
-  clock: decreaseTableProduct,
+  clock: decrease,
   source: tablesModel.$tables,
   fn: (tables, { tableId, productId }) => ({
     tableId,

@@ -5,8 +5,8 @@ import { productsModel } from 'entities/products';
 import React, { FC } from 'react';
 
 import { products } from 'tests/__mocks__/fixtures';
-import { addProductToTable, setAnchorEl } from './model';
-import { IconBtn } from './ui';
+import { add, setAnchorEl } from '../../model/add/model';
+import { IconBtn } from '../../ui/add/icon-button';
 
 let scope: Scope;
 
@@ -16,7 +16,7 @@ const Wrapper: FC = ({ children }) => (
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
-  addProductToTable.watch(addProductToTableFn);
+  add.watch(addProductToTableFn);
 
   const setAnchorElFn = jest.fn();
   setAnchorEl.watch(setAnchorElFn);

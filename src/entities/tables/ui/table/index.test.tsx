@@ -12,7 +12,7 @@ import {
   SetTableTitleUI,
 } from 'features/table';
 import { table, tables } from 'tests/__mocks__/fixtures';
-import { AddTableProductUI } from 'features/tableProduct';
+import { TableProductUI } from 'features/tableProduct';
 import { ProductCardList } from 'widgets/productCard';
 import { Table } from './index';
 
@@ -44,7 +44,9 @@ describe('events', () => {
         }
         ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
         RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
-        AddProductToTableSlot={<AddTableProductUI.IconBtn tableId={table.id} />}
+        AddProductToTableSlot={
+          <TableProductUI.Add.IconBtn tableId={table.id} />
+        }
         ProductCardListSlot={
           <ProductCardList tables={tables} tableId={table.id} />
         }
@@ -73,7 +75,9 @@ describe('events', () => {
         }
         ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
         RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
-        AddProductToTableSlot={<AddTableProductUI.IconBtn tableId={table.id} />}
+        AddProductToTableSlot={
+          <TableProductUI.Add.IconBtn tableId={table.id} />
+        }
         ProductCardListSlot={
           <ProductCardList tables={tables} tableId={table.id} />
         }

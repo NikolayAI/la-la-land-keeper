@@ -1,4 +1,3 @@
-import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Grid, IconButton, Paper, Typography } from '@mui/material';
@@ -11,11 +10,7 @@ import {
   TablesType,
 } from 'shared/api';
 import { tablesModel } from 'entities/tables';
-import {
-  decreaseTableProduct,
-  deleteProductFromTable,
-  increaseTableProduct,
-} from 'features/tableProduct';
+import { tableProductModel, TableProductUI } from 'features/tableProduct';
 import { TableProductTimerUI } from 'features/tableProductTimer';
 import { backgroundColors } from './constants';
 
@@ -24,6 +19,7 @@ interface IProductCard {
   tableProduct: ITableProduct;
   timerStatus: TableProductTimerStatuses;
   TableProductTimerSlot: ReactNode;
+  IncreaseTableProductSlot: ReactNode;
 }
 
 export const ProductCard: FC<IProductCard> = ({
@@ -31,20 +27,18 @@ export const ProductCard: FC<IProductCard> = ({
   tableProduct,
   timerStatus,
   TableProductTimerSlot,
+  IncreaseTableProductSlot,
 }) => {
-  const tablesProductsTimersOutOfLimit = useStore(
+  const productsTimersOutOfLimit = useStore(
     tablesModel.$tablesProductsTimersOutOfLimits
   );
   const changeProductParams = { tableId, productId: tableProduct?.id };
-  const isOutOfTimer =
-    tablesProductsTimersOutOfLimit[tableId]?.[tableProduct?.id];
+  const isTimerOut = productsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
     <Paper
       elevation={6}
       sx={{
-        backgroundColor: isOutOfTimer
-          ? '#d32f2f'
-          : backgroundColors[timerStatus],
+        backgroundColor: isTimerOut ? '#d32f2f' : backgroundColors[timerStatus],
       }}
     >
       <Grid container spacing={2} alignItems="center">
@@ -65,8 +59,8 @@ export const ProductCard: FC<IProductCard> = ({
                 size="small"
                 onClick={() => {
                   tableProduct.units > 1
-                    ? decreaseTableProduct(changeProductParams)
-                    : deleteProductFromTable(changeProductParams);
+                    ? tableProductModel.decrease(changeProductParams)
+                    : tableProductModel.remove(changeProductParams);
                 }}
               >
                 <RemoveIcon fontSize="small" />
@@ -78,16 +72,7 @@ export const ProductCard: FC<IProductCard> = ({
               >
                 {tableProduct.units}
               </IconButton>
-              <IconButton
-                role="increase-table-product-count-button"
-                color="primary"
-                size="small"
-                onClick={() => {
-                  increaseTableProduct(changeProductParams);
-                }}
-              >
-                <AddIcon fontSize="small" />
-              </IconButton>
+              {IncreaseTableProductSlot}
             </>
           ) : (
             <IconButton
@@ -95,7 +80,7 @@ export const ProductCard: FC<IProductCard> = ({
               color="primary"
               size="small"
               onClick={() => {
-                deleteProductFromTable(changeProductParams);
+                tableProductModel.remove(changeProductParams);
               }}
             >
               <DeleteIcon fontSize="small" />
@@ -133,7 +118,7 @@ export const ProductCardList: FC<IProductCardListProps> = ({
             tableProduct={tableProduct}
             timerStatus={tableProduct?.timerStatus}
             TableProductTimerSlot={
-              <TableProductTimerUI.Timer
+              <TableProductTimerUI.Display
                 tables={tables}
                 tableId={tableId}
                 productId={tableProduct.id}
@@ -141,6 +126,12 @@ export const ProductCardList: FC<IProductCardListProps> = ({
                 minutesLimit={tableProduct.eachProductUnitMinutesTimer}
                 productUnits={tableProduct.units}
                 setTimer={tablesModel.setTablesProductsTimers}
+              />
+            }
+            IncreaseTableProductSlot={
+              <TableProductUI.Increase.IconBtn
+                tableId={tableId}
+                productId={tableProduct.id}
               />
             }
           />

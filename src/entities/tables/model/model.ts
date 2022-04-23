@@ -72,7 +72,7 @@ addProductFx.use(async ({ productId, tableId }) => {
   await TablesAPI.addProductToTable({ productId, tableId });
 });
 deleteProductFx.use(async ({ productId, tableId }) => {
-  await TablesAPI.deleteProductFromTable({ productId, tableId });
+  await TablesAPI.removeProductFromTable({ productId, tableId });
 });
 clearTableFx.use(async ({ tableId }) => {
   await TablesAPI.clearTable({ tableId });

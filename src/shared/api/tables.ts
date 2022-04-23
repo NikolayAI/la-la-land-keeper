@@ -72,7 +72,7 @@ export const addProductToTable = async ({
   await setTables(tables);
 };
 
-export const deleteProductFromTable = async ({
+export const removeProductFromTable = async ({
   productId,
   tableId,
 }: IDeleteProductToTableParams): Promise<void> => {

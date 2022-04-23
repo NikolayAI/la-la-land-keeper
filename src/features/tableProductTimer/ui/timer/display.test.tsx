@@ -4,9 +4,9 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
-import { play } from '../model/play';
-import { stop } from '../model/stop';
-import { Timer } from './timer';
+import { play } from '../../model/play';
+import { stop } from '../../model/stop';
+import { Display } from './display';
 
 let scope: Scope;
 
@@ -63,7 +63,7 @@ describe('events', () => {
 
   test('should call handleStopTimer', async () => {
     render(
-      <Timer
+      <Display
         tables={tablesWithPlayTimerStatus}
         tableId="1"
         productId="2"
@@ -84,7 +84,7 @@ describe('events', () => {
 
   test('should call handlePlayTimer', async () => {
     render(
-      <Timer
+      <Display
         tables={tablesWithStopTimerStatus}
         tableId="1"
         productId="2"
