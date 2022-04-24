@@ -1,8 +1,22 @@
-export * as clearTableModel from './clear/model';
-export * as ClearTableUI from './clear/ui';
-export * as createTableModel from './create/model';
-export * as CreateTableUI from './create/ui';
-export * as removeTableModel from './delete/model';
-export * as RemoveTableUI from './delete/ui';
-export * as setTableTitleModel from './setTitle/model';
-export * as SetTableTitleUI from './setTitle/ui';
+import { clear } from './model/clear';
+import { create } from './model/create';
+import { remove } from './model/remove';
+import { setTitle } from './model/setTitle';
+import * as Clear from './ui/clear';
+import * as Create from './ui/create';
+import * as Remove from './ui/remove';
+import * as SetTitle from './ui/setTitle';
+
+export const tableModel = {
+  clear,
+  create,
+  remove,
+  setTitle,
+};
+
+export const TableUI = {
+  Clear,
+  Create,
+  Remove,
+  SetTitle,
+};

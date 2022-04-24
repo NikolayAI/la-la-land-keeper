@@ -1,3 +1,3 @@
-export * from './useTimer';
-export * from './formatDate';
-export * from './localStorage';
+export * from './use-timer';
+export * from './format-date';
+export * from './local-storage';

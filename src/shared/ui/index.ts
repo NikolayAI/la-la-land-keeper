@@ -1,1 +1,1 @@
-export * from './editableText';
+export * from './editable-text';

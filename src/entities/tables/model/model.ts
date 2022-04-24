@@ -10,7 +10,7 @@ import {
   IAddProductToTableParams,
   IClearTableParams,
   IDecreaseTableProductParams,
-  IDeleteProductToTableParams,
+  IRemoveProductToTableParams,
   IRemoveTableParams,
   IIncreaseTableProductParams,
   ISetTableProductTimerStatusParams,
@@ -34,7 +34,7 @@ export const addProductFx = createEffect<
   Error
 >();
 export const deleteProductFx = createEffect<
-  IDeleteProductToTableParams,
+  IRemoveProductToTableParams,
   void,
   Error
 >();

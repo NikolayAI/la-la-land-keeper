@@ -27,7 +27,7 @@ export interface IIncreaseTableProductParams extends IAddProductToTableParams {
   value: number;
 }
 
-export interface IDeleteProductToTableParams extends IAddProductToTableParams {}
+export interface IRemoveProductToTableParams extends IAddProductToTableParams {}
 
 export interface ISetTableTitleParams {
   id: string;

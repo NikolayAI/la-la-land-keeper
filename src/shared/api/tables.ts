@@ -7,7 +7,7 @@ import {
   IAddProductToTableParams,
   IClearTableParams,
   IDecreaseTableProductParams,
-  IDeleteProductToTableParams,
+  IRemoveProductToTableParams,
   IRemoveTableParams,
   IIncreaseTableProductParams,
   ISetTableProductTimerStatusParams,
@@ -75,7 +75,7 @@ export const addProductToTable = async ({
 export const removeProductFromTable = async ({
   productId,
   tableId,
-}: IDeleteProductToTableParams): Promise<void> => {
+}: IRemoveProductToTableParams): Promise<void> => {
   const tables = await getTables();
   delete tables[tableId].products[productId];
   await setTables(tables);

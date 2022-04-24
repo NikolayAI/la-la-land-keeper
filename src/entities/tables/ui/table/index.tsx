@@ -13,7 +13,7 @@ import React, { FC, memo, ReactNode } from 'react';
 import { TablesType } from 'shared/api';
 import { calculateTableTotalPrice } from '../../lib';
 
-interface ITable {
+interface ITableProps {
   tableId: string;
   tables: TablesType;
   SetTableTitleSlot: ReactNode;
@@ -23,7 +23,7 @@ interface ITable {
   ProductCardListSlot: ReactNode;
 }
 
-export const Table: FC<ITable> = memo(
+export const Table: FC<ITableProps> = memo(
   ({
     tableId,
     tables,

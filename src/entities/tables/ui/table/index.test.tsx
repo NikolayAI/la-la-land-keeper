@@ -3,17 +3,10 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import {
-  clearTableModel,
-  ClearTableUI,
-  removeTableModel,
-  RemoveTableUI,
-  setTableTitleModel,
-  SetTableTitleUI,
-} from 'features/table';
+import { TableUI, tableModel } from 'features/table';
 import { table, tables } from 'tests/__mocks__/fixtures';
-import { TableProductUI } from 'features/tableProduct';
-import { ProductCardList } from 'widgets/productCard';
+import { TableProductUI } from 'features/table-product';
+import { ProductCardList } from 'widgets/product-card';
 import { Table } from './index';
 
 let scope: Scope;
@@ -24,13 +17,13 @@ const Wrapper: FC = ({ children }) => (
 
 describe('events', () => {
   const clearTableFn = jest.fn();
-  clearTableModel.clear.watch(clearTableFn);
+  tableModel.clear.watch(clearTableFn);
 
   const removeTableFn = jest.fn();
-  removeTableModel.remove.watch(removeTableFn);
+  tableModel.remove.watch(removeTableFn);
 
   const setTableTitleFn = jest.fn();
-  setTableTitleModel.setTitle.watch(setTableTitleFn);
+  tableModel.setTitle.watch(setTableTitleFn);
 
   test('should call removeTableFn', () => {
     scope = fork();
@@ -40,10 +33,10 @@ describe('events', () => {
         tableId={table.id}
         tables={tables}
         SetTableTitleSlot={
-          <SetTableTitleUI.Field tableId={table.id} tableTitle={table.title} />
+          <TableUI.SetTitle.Field tableId={table.id} tableTitle={table.title} />
         }
-        ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
-        RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
+        ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
+        RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
         AddProductToTableSlot={
           <TableProductUI.Add.IconBtn tableId={table.id} />
         }
@@ -71,10 +64,10 @@ describe('events', () => {
         tableId={table.id}
         tables={tables}
         SetTableTitleSlot={
-          <SetTableTitleUI.Field tableId={table.id} tableTitle={table.title} />
+          <TableUI.SetTitle.Field tableId={table.id} tableTitle={table.title} />
         }
-        ClearTableSlot={<ClearTableUI.Btn tableId={table.id} />}
-        RemoveTableSlot={<RemoveTableUI.Btn tableId={table.id} />}
+        ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
+        RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
         AddProductToTableSlot={
           <TableProductUI.Add.IconBtn tableId={table.id} />
         }
