@@ -3,8 +3,8 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { deleteProduct, setAnchorEl } from './model';
-import { DeleteProduct } from './ui';
+import { removeProduct, setAnchorEl } from '../../model/remove/model';
+import { Menu } from './menu';
 
 let scope: Scope;
 
@@ -25,15 +25,15 @@ describe('events', () => {
   const setAnchorElementFn = jest.fn();
   setAnchorEl.watch(setAnchorElementFn);
 
-  const deleteProductFn = jest.fn();
-  deleteProduct.watch(deleteProductFn);
+  const removeProductFn = jest.fn();
+  removeProduct.watch(removeProductFn);
 
   beforeEach(() => {
     scope = fork();
   });
 
   test('should call setAnchorEl for delete product', async () => {
-    render(<DeleteProduct products={products} />, { wrapper: Wrapper });
+    render(<Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByText('Удалить товар'));
@@ -42,14 +42,14 @@ describe('events', () => {
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call setAnchorEl and deleteProduct', async () => {
-    render(<DeleteProduct products={products} />, { wrapper: Wrapper });
+  test('should call setAnchorEl and removeProduct', async () => {
+    render(<Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByRole('delete-product-box'));
     });
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
-    expect(deleteProductFn).toHaveBeenCalledTimes(1);
+    expect(removeProductFn).toHaveBeenCalledTimes(1);
   });
 });

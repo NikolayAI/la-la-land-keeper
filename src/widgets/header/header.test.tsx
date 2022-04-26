@@ -3,7 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { openCreateProductModal } from 'features/product';
+import { productModel } from 'features/product';
 import { tableModel } from 'features/table';
 import { Header } from './header';
 
@@ -18,7 +18,7 @@ describe('events', () => {
   tableModel.create.watch(createTableFn);
 
   const openCreateProductModalFn = jest.fn();
-  openCreateProductModal.watch(openCreateProductModalFn);
+  productModel.openModal.watch(openCreateProductModalFn);
 
   beforeEach(() => {
     scope = fork();

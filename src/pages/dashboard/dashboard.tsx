@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { CreateProductModal } from 'features/product';
+import { ProductUI } from 'features/product';
 import { Header } from 'widgets/header';
 import { TablesList } from 'widgets/table';
 import { DashBoardGate } from './model';
@@ -15,7 +15,7 @@ export const Dashboard: FC<IDashboardProps> = ({ className }) => (
     <div className={className}>
       <Header />
       <TablesList />
-      <CreateProductModal />
+      <ProductUI.Create.Modal />
     </div>
   </>
 );

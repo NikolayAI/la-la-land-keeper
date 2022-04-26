@@ -8,7 +8,7 @@ export const setProductProperty = createEvent<KeyValueType<IProduct>>();
 
 export const getProductsFx = createEffect<void, ProductsType, Error>();
 export const createProductFx = createEffect<IProduct, void, Error>();
-export const deleteProductFx = createEffect<{ id: string }, void, Error>();
+export const removeProductFx = createEffect<{ id: string }, void, Error>();
 
 export const $product = createStore<IProduct>(defaultProduct);
 export const $products = createStore<ProductsType>({});
@@ -17,8 +17,8 @@ getProductsFx.use(async () => await ProductsAPI.getProducts());
 createProductFx.use(async (product) => {
   await ProductsAPI.createProduct(product);
 });
-deleteProductFx.use(async ({ id }) => {
-  await ProductsAPI.deleteProduct({ id });
+removeProductFx.use(async ({ id }) => {
+  await ProductsAPI.removeProduct({ id });
 });
 
 $product
@@ -34,6 +34,6 @@ forward({
   to: getProductsFx,
 });
 forward({
-  from: deleteProductFx.doneData,
+  from: removeProductFx.doneData,
   to: getProductsFx,
 });

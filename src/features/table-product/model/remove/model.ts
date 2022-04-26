@@ -7,5 +7,5 @@ export const remove = createEvent<IRemoveProductToTableParams>();
 
 forward({
   from: remove,
-  to: tablesModel.deleteProductFx,
+  to: tablesModel.removeProductFx,
 });

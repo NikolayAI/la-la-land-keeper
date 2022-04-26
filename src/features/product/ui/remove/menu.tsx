@@ -1,24 +1,28 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { alpha, Box, Button, MenuItem } from '@mui/material';
-import Menu, { MenuProps } from '@mui/material/Menu/Menu';
+import MaterialMenu, { MenuProps } from '@mui/material/Menu/Menu';
 import { styled } from '@mui/material/styles';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { ProductsType } from 'shared/api';
-import { $anchorEl, deleteProduct, setAnchorEl } from './model';
+import {
+  $anchorEl,
+  removeProduct,
+  setAnchorEl,
+} from '../../model/remove/model';
 
-interface IDeleteProductsList {
+interface IRemoveProductsList {
   products: ProductsType;
 }
 
-export const DeleteProduct: FC<IDeleteProductsList> = ({ products }) => {
+export const Menu: FC<IRemoveProductsList> = ({ products }) => {
   const anchorEl = useStore($anchorEl);
 
   const open = Boolean(anchorEl);
 
   const handleDelete = (productId: string) => {
-    deleteProduct({ id: productId });
+    removeProduct({ id: productId });
     setAnchorEl(null);
   };
 
@@ -76,7 +80,7 @@ export const DeleteProduct: FC<IDeleteProductsList> = ({ products }) => {
 };
 
 const StyledMenu = styled((props: MenuProps) => (
-  <Menu
+  <MaterialMenu
     elevation={0}
     anchorOrigin={{
       vertical: 'bottom',

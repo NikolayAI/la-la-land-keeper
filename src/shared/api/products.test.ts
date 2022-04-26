@@ -1,7 +1,7 @@
 import { products, product } from 'tests/__mocks__/fixtures';
 import {
   createProduct,
-  deleteProduct,
+  removeProduct,
   getProducts,
   setProducts,
 } from './products';
@@ -24,8 +24,8 @@ test('should call createProduct', async () => {
   expect(result).toStrictEqual(undefined);
 });
 
-test('should call deleteProduct', async () => {
-  const result = await deleteProduct({ id: product.id });
+test('should call removeProduct', async () => {
+  const result = await removeProduct({ id: product.id });
 
   expect(result).toStrictEqual(undefined);
 });

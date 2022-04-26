@@ -33,7 +33,7 @@ export const addProductFx = createEffect<
   void,
   Error
 >();
-export const deleteProductFx = createEffect<
+export const removeProductFx = createEffect<
   IRemoveProductToTableParams,
   void,
   Error
@@ -71,7 +71,7 @@ setTitleFx.use(async ({ id, text }) => {
 addProductFx.use(async ({ productId, tableId }) => {
   await TablesAPI.addProductToTable({ productId, tableId });
 });
-deleteProductFx.use(async ({ productId, tableId }) => {
+removeProductFx.use(async ({ productId, tableId }) => {
   await TablesAPI.removeProductFromTable({ productId, tableId });
 });
 clearTableFx.use(async ({ tableId }) => {
@@ -126,7 +126,7 @@ forward({
     removeTableFx.doneData,
     setTitleFx.doneData,
     addProductFx.doneData,
-    deleteProductFx.doneData,
+    removeProductFx.doneData,
     clearTableFx.doneData,
     increaseTableProductFx.doneData,
     decreaseTableProductFx.doneData,

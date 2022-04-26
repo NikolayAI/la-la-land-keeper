@@ -5,7 +5,7 @@ import { defaultProduct } from '../constants';
 import {
   $product,
   createProductFx,
-  deleteProductFx,
+  removeProductFx,
   setProductProperty,
 } from './model';
 
@@ -19,7 +19,7 @@ const params = {
 };
 
 const mockCreateProduct = jest.spyOn(ProductsAPI, 'createProduct');
-const mockDeleteProduct = jest.spyOn(ProductsAPI, 'deleteProduct');
+const mockRemoveProduct = jest.spyOn(ProductsAPI, 'removeProduct');
 
 test('createProductFx should calls ProductsAPI.createProduct', async () => {
   const scope = fork();
@@ -29,12 +29,12 @@ test('createProductFx should calls ProductsAPI.createProduct', async () => {
   expect(mockCreateProduct).toHaveBeenCalledTimes(1);
 });
 
-test('deleteProductFx should calls ProductsAPI.deleteProduct', async () => {
+test('removeProductFx should calls ProductsAPI.removeProduct', async () => {
   const scope = fork();
 
-  await allSettled(deleteProductFx, { scope, params });
+  await allSettled(removeProductFx, { scope, params });
 
-  expect(mockDeleteProduct).toHaveBeenCalledTimes(1);
+  expect(mockRemoveProduct).toHaveBeenCalledTimes(1);
 });
 
 test('setProductProperty should set data to $product', async () => {

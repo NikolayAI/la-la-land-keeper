@@ -3,7 +3,7 @@ import { useStore } from 'effector-react';
 import React from 'react';
 
 import { productsModel } from 'entities/products';
-import { DeleteProduct, openCreateProductModal } from 'features/product';
+import { ProductUI, productModel } from 'features/product';
 import { TableUI } from 'features/table';
 
 export const Header = () => {
@@ -24,11 +24,11 @@ export const Header = () => {
                 border: '1px solid white',
                 marginRight: 4,
               }}
-              onClick={() => openCreateProductModal()}
+              onClick={() => productModel.openModal()}
             >
               Создать товар
             </Button>
-            <DeleteProduct products={products} />
+            <ProductUI.Remove.Menu products={products} />
           </Box>
         </Toolbar>
       </Container>

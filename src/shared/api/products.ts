@@ -23,7 +23,7 @@ export const createProduct = async (product: IProduct): Promise<void> => {
   await setProducts(products);
 };
 
-export const deleteProduct = async ({ id }: { id: string }) => {
+export const removeProduct = async ({ id }: { id: string }) => {
   const products = await getProducts();
   delete products[id];
   await setProducts(products);

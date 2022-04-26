@@ -44,10 +44,10 @@ test('addProductFx should calls TablesAPI.addProductToTable', async () => {
   expect(TablesAPI.addProductToTable).toHaveBeenCalledTimes(1);
 });
 
-test('deleteProductFx should calls TablesAPI.removeProductFromTable', async () => {
+test('removeProductFx should calls TablesAPI.removeProductFromTable', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.deleteProductFx, {
+  await allSettled(tablesModel.removeProductFx, {
     scope,
     params: { tableId: '1', productId: '2' },
   });

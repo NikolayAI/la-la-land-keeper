@@ -6,26 +6,22 @@ import {
   Typography,
 } from '@mui/material';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import MaterialModal from '@mui/material/Modal';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
 import { productsModel } from 'entities/products';
-import {
-  $isOpenCreateProductModal,
-  closeCreateProductModal,
-  createProduct,
-} from './model';
+import { $isModalOpen, closeModal, create } from '../../model/create/model';
 
-export const CreateProductModal: FC = () => {
-  const isOpen = useStore($isOpenCreateProductModal);
+export const Modal: FC = () => {
+  const isOpen = useStore($isModalOpen);
   const product = useStore(productsModel.$product);
   return (
     <div>
-      <Modal
+      <MaterialModal
         open={isOpen}
-        onClose={() => closeCreateProductModal()}
+        onClose={() => closeModal()}
         aria-labelledby="modal-modal-label"
         aria-describedby="modal-modal-description"
         title="modal-modal-title"
@@ -113,15 +109,11 @@ export const CreateProductModal: FC = () => {
               fullWidth
             />
           )}
-          <Box
-            display="flex"
-            justifyContent="end"
-            onClick={() => createProduct()}
-          >
+          <Box display="flex" justifyContent="end" onClick={() => create()}>
             <Button variant="outlined">Создать</Button>
           </Box>
         </Box>
-      </Modal>
+      </MaterialModal>
     </div>
   );
 };
