@@ -9,7 +9,7 @@ interface IIconButtonProps extends IRemoveProductToTableParams {}
 
 export const IconBtn: FC<IIconButtonProps> = ({ tableId, productId }) => (
   <IconButton
-    role="delete-table-product-button"
+    role="remove-table-product-button"
     color="primary"
     size="small"
     onClick={() => {

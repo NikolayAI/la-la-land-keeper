@@ -3,9 +3,9 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { NotificationKinds } from './constants';
-import * as notificationsModel from './model';
-import { Notifications } from './ui';
+import { NotificationKinds } from '../../constants';
+import * as notificationsModel from '../../model/model';
+import { Notifications } from './notification';
 
 let scope: Scope;
 
@@ -30,21 +30,20 @@ test('should render Notifications component', () => {
     ],
   });
 
-  render(<Notifications handleCloseNotification={() => {}} />, {
-    wrapper: Wrapper,
-  });
+  render(<Notifications />, { wrapper: Wrapper });
 
   expect(screen.getByText('notifications test')).toBeDefined();
 });
 
 test('should call handler after onClose click', () => {
-  const fn = jest.fn();
+  const removeNotificationFn = jest.fn();
+  notificationsModel.removeNotification.watch(removeNotificationFn);
 
-  render(<Notifications handleCloseNotification={fn} />, { wrapper: Wrapper });
+  render(<Notifications />, { wrapper: Wrapper });
 
   act(() => {
     fireEvent.click(screen.getByTitle('Close'));
   });
 
-  expect(fn).toHaveBeenCalledTimes(1);
+  expect(removeNotificationFn).toHaveBeenCalledTimes(1);
 });

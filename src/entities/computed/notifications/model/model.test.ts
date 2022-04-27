@@ -1,9 +1,16 @@
 import { allSettled, fork } from 'effector';
 
 import { TableProductTimerStatuses } from 'shared/api';
-import { productsModel } from '../../products';
-import { tablesModel } from '../../tables';
-import { notificationsModel } from './index';
+import { productsModel } from '../../../products';
+import { tablesModel } from '../../../tables';
+import { NotificationKinds, notificationsModel } from '../index';
+
+const params = {
+  tableId: '1',
+  productId: '2',
+  kind: NotificationKinds.INFO,
+  message: 'test',
+};
 
 test(`tableProductsTimersNotifications should take data when tablesProductsTimersOutOfLimits updated`, async () => {
   const scope = fork({
@@ -103,6 +110,30 @@ test(`tableProductsTimersNotifications should not take data when tablesProductsT
   });
 
   await allSettled(tablesModel.getTablesFx, { scope });
+
+  expect(
+    scope.getState(notificationsModel.$tableProductsTimersNotifications)
+  ).toStrictEqual([]);
+});
+
+test(`addNotification should add notification to tableProductsTimersNotifications`, async () => {
+  const scope = fork({
+    values: [[notificationsModel.$tableProductsTimersNotifications, []]],
+  });
+
+  await allSettled(notificationsModel.addNotification, { scope, params });
+
+  expect(
+    scope.getState(notificationsModel.$tableProductsTimersNotifications)
+  ).toStrictEqual([params]);
+});
+
+test(`removeNotification should remove notification from tableProductsTimersNotifications`, async () => {
+  const scope = fork({
+    values: [[notificationsModel.$tableProductsTimersNotifications, [params]]],
+  });
+
+  await allSettled(notificationsModel.removeNotification, { scope, params });
 
   expect(
     scope.getState(notificationsModel.$tableProductsTimersNotifications)

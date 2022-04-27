@@ -32,7 +32,7 @@ describe('events', () => {
     scope = fork();
   });
 
-  test('should call setAnchorEl for delete product', async () => {
+  test('should call setAnchorEl for remove product', async () => {
     render(<Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
@@ -46,7 +46,7 @@ describe('events', () => {
     render(<Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
-      fireEvent.click(screen.getByRole('delete-product-box'));
+      fireEvent.click(screen.getByRole('remove-product-box'));
     });
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);

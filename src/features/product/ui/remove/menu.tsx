@@ -21,7 +21,7 @@ export const Menu: FC<IRemoveProductsList> = ({ products }) => {
 
   const open = Boolean(anchorEl);
 
-  const handleDelete = (productId: string) => {
+  const handleRemove = (productId: string) => {
     removeProduct({ id: productId });
     setAnchorEl(null);
   };
@@ -62,8 +62,8 @@ export const Menu: FC<IRemoveProductsList> = ({ products }) => {
             >
               <Box
                 sx={{ display: 'flex', alignItems: 'center' }}
-                role="delete-product-box"
-                onClick={() => handleDelete(productId)}
+                role="remove-product-box"
+                onClick={() => handleRemove(productId)}
               >
                 <DeleteIcon />
                 <span>{products[productId]?.title}</span>

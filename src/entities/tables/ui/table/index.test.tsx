@@ -50,7 +50,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole(`delete-table-${table.id}-button`));
+      fireEvent.click(screen.getByRole(`remove-table-${table.id}-button`));
     });
 
     expect(removeTableFn).toHaveBeenCalledTimes(1);

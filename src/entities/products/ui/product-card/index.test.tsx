@@ -240,7 +240,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('delete-table-product-button'));
+      fireEvent.click(screen.getByRole('remove-table-product-button'));
     });
 
     expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
