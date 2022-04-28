@@ -7,7 +7,7 @@ import { TableUI, tableModel } from 'features/table';
 import { table, tables } from 'tests/__mocks__/fixtures';
 import { TableProductUI } from 'features/table-product';
 import { ProductCardList } from 'widgets/product-card';
-import { Table } from './index';
+import { Table } from './table';
 
 let scope: Scope;
 

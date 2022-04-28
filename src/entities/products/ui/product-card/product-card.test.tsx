@@ -8,7 +8,7 @@ import { tablesModel } from 'entities/tables';
 import { TableProductTimerUI } from 'features/table-product-timer';
 import { tableProductModel, TableProductUI } from 'features/table-product';
 import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
-import { ProductCard } from './index';
+import { ProductCard } from './product-card';
 
 let scope: Scope;
 

@@ -11,10 +11,11 @@ import {
 import React, { FC, memo, ReactNode } from 'react';
 
 import { TablesType } from 'shared/api';
+import { TableIdType } from 'shared/types';
 import { calculateTableTotalPrice } from '../../lib';
 
 interface ITableProps {
-  tableId: string;
+  tableId: TableIdType;
   tables: TablesType;
   SetTableTitleSlot: ReactNode;
   ClearTableSlot: ReactNode;

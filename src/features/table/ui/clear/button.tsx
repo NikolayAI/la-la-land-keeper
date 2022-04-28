@@ -2,10 +2,11 @@ import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import { Button } from '@mui/material';
 import React, { FC } from 'react';
 
+import { TableIdType } from 'shared/types';
 import { clear } from '../../model/clear';
 
 interface IBtnProps {
-  tableId: string;
+  tableId: TableIdType;
 }
 
 export const Btn: FC<IBtnProps> = ({ tableId }) => (

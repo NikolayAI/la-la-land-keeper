@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 import {
+  ProductIdType,
+  TableIdType,
+  TableProductCreatedAtType,
+} from 'shared/types';
+import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
 } from '../api';
@@ -10,9 +15,9 @@ import { getLocalStorage } from './local-storage';
 export const tablesProductsTimersKey = 'tablesProductsTimers';
 
 interface IUseTimer {
-  tableId: string;
-  productId: string;
-  createdAt: string | Date;
+  tableId: TableIdType;
+  productId: ProductIdType;
+  createdAt: TableProductCreatedAtType;
   isTimerPlay: boolean;
   timerStatus: TableProductTimerStatuses;
   interval: number;

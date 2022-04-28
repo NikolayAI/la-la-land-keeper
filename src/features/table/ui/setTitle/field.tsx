@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 
+import { TableIdType, TableTitleType } from 'shared/types';
 import { EditableText } from 'shared/ui';
 import { setTitle } from '../../model/setTitle';
 
 interface ISetTableTitleProps {
-  tableId: string;
-  tableTitle: string;
+  tableId: TableIdType;
+  tableTitle: TableTitleType;
 }
 
 export const Field: FC<ISetTableTitleProps> = ({ tableId, tableTitle }) => (

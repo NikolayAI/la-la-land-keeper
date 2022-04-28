@@ -6,6 +6,7 @@ import {
   TableProductTimerStatuses,
   TablesType,
 } from 'shared/api';
+import { TableIdType } from 'shared/types';
 import { ProductsUI } from 'entities/products';
 import { tablesModel } from 'entities/tables';
 import { TableProductUI } from 'features/table-product';
@@ -13,7 +14,7 @@ import { TableProductTimerUI } from 'features/table-product-timer';
 
 interface IProductCardProps {
   tables: TablesType;
-  tableId: string;
+  tableId: TableIdType;
   tableProduct: ITableProduct;
   timerStatus: TableProductTimerStatuses;
 }
@@ -69,7 +70,7 @@ export const ProductCard: FC<IProductCardProps> = ({
 
 interface IProductCardListProps {
   tables: TablesType;
-  tableId: string;
+  tableId: TableIdType;
 }
 
 export const ProductCardList: FC<IProductCardListProps> = ({

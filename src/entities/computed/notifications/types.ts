@@ -1,8 +1,13 @@
+import {
+  NotificationMessageType,
+  ProductIdType,
+  TableIdType,
+} from 'shared/types';
 import { NotificationKinds } from './constants';
 
 export interface INotification {
   kind: NotificationKinds;
-  message: string;
-  tableId: string;
-  productId: string;
+  message: NotificationMessageType;
+  tableId: TableIdType;
+  productId: ProductIdType;
 }

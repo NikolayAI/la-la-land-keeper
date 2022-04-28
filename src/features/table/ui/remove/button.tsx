@@ -2,10 +2,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 import React, { FC } from 'react';
 
+import { TableIdType } from 'shared/types';
 import { remove } from '../../model/remove';
 
 interface IBtnProps {
-  tableId: string;
+  tableId: TableIdType;
 }
 
 export const Btn: FC<IBtnProps> = ({ tableId }) => (

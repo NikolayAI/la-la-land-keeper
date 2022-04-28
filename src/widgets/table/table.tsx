@@ -3,6 +3,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TablesType } from 'shared/api';
+import { TableIdType } from 'shared/types';
 import { tablesModel, TablesUI } from 'entities/tables';
 import { TableUI } from 'features/table';
 import { TableProductUI } from 'features/table-product';
@@ -10,7 +11,7 @@ import { ProductCardList } from '../product-card';
 
 interface ITableProps {
   tables: TablesType;
-  tableId: string;
+  tableId: TableIdType;
 }
 
 export const Table: FC<ITableProps> = ({ tables, tableId }) => {

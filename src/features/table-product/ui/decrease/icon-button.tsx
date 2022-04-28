@@ -3,11 +3,12 @@ import { IconButton } from '@mui/material';
 import React, { FC } from 'react';
 
 import { IDecreaseTableProductParams } from 'shared/api';
+import { TableProductUnitsType } from 'shared/types';
 import { decrease } from '../../model/decrease';
 import { remove } from '../../model/remove';
 
 interface IIconBtnProps extends Omit<IDecreaseTableProductParams, 'value'> {
-  productUnits: number;
+  productUnits: TableProductUnitsType;
 }
 
 export const IconBtn: FC<IIconBtnProps> = ({

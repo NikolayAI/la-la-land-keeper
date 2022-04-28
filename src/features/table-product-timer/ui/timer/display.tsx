@@ -2,7 +2,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { IconButton } from '@mui/material';
 import { useStore } from 'effector-react';
-import React, { useEffect, FC, memo } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 
 import {
   ISetTablesProductsTimersParams,
@@ -15,17 +15,24 @@ import {
   tablesProductsTimersKey,
   useTimer,
 } from 'shared/lib';
+import {
+  TableIdType,
+  TableProductCreatedAtType,
+  TableProductIdType,
+  TableProductMinutesLimitType,
+  TableProductUnitsType,
+} from 'shared/types';
 import { tablesModel } from 'entities/tables';
 import { play } from '../../model/play';
 import { stop } from '../../model/stop';
 
 interface IProductTimer {
   tables: TablesType;
-  tableId: string;
-  productId: string;
-  createdAt: string | Date;
-  minutesLimit: number;
-  productUnits: number;
+  tableId: TableIdType;
+  productId: TableProductIdType;
+  createdAt: TableProductCreatedAtType;
+  minutesLimit: TableProductMinutesLimitType;
+  productUnits: TableProductUnitsType;
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
 }
 

@@ -1,4 +1,6 @@
+import { TableIdType } from 'shared/types';
+
 export interface ISetAnchorElementParams {
-  tableId: string;
+  tableId: TableIdType;
   element: null | HTMLElement;
 }

@@ -1,12 +1,22 @@
+import {
+  ProductIdType,
+  ProductPriceType,
+  ProductTitleType,
+  ProductUnitMinutesTimerType,
+  TableIdType,
+  TableProductCreatedAtType,
+  TableProductUnitsType,
+  TableTitleType,
+} from 'shared/types';
 import { TableProductTimerStatuses } from './constants';
 
 export interface IClearTableParams {
-  tableId: string;
+  tableId: TableIdType;
 }
 
 export interface IAddProductToTableParams {
-  productId: string;
-  tableId: string;
+  productId: ProductIdType;
+  tableId: TableIdType;
 }
 
 export interface ISetTablesProductsTimersParams
@@ -30,42 +40,37 @@ export interface IIncreaseTableProductParams extends IAddProductToTableParams {
 export interface IRemoveProductToTableParams extends IAddProductToTableParams {}
 
 export interface ISetTableTitleParams {
-  id: string;
+  id: TableIdType;
   text: string;
 }
 
 export interface IRemoveTableParams {
-  id: string;
+  id: TableIdType;
 }
 
 export interface IProduct {
-  id: string;
-  title: string;
-  price: number;
+  id: ProductIdType;
+  title: ProductTitleType;
+  price: ProductPriceType;
   isPiece: boolean;
   needTimer: boolean;
-  eachProductUnitMinutesTimer: number;
+  eachProductUnitMinutesTimer: ProductUnitMinutesTimerType;
 }
 
-export type ProductsType = Record<string, IProduct>;
+export type ProductsType = Record<ProductIdType, IProduct>;
 
 export interface ITableProduct extends IProduct {
-  units: number;
-  createdAt: Date | string;
+  units: TableProductUnitsType;
+  createdAt: TableProductCreatedAtType;
   timerStatus: TableProductTimerStatuses;
 }
 
-export type TableProductsType = Record<string, ITableProduct>;
+export type TableProductsType = Record<ProductIdType, ITableProduct>;
 
 export interface ITable {
-  id: string;
-  title: string;
+  id: TableIdType;
+  title: TableTitleType;
   products: TableProductsType;
 }
 
-export type TablesType = Record<string, ITable>;
-
-export interface ApplicationData {
-  tables: TablesType;
-  products: ProductsType;
-}
+export type TablesType = Record<TableIdType, ITable>;
