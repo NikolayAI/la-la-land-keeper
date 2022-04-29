@@ -3,13 +3,14 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from 'shared/types';
 import { NotificationKinds } from '../../constants';
 import * as notificationsModel from '../../model/model';
 import { Notifications } from './notification';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

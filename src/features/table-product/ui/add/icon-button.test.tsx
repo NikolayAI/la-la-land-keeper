@@ -5,12 +5,13 @@ import { productsModel } from 'entities/products';
 import React, { FC } from 'react';
 
 import { products } from 'tests/__mocks__/fixtures';
+import { IChildrenOnly } from 'shared/types';
 import { add, setAnchorEl } from '../../model/add/model';
 import { IconBtn } from '../../ui/add/icon-button';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

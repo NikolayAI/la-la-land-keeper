@@ -9,13 +9,14 @@ import {
   tableProduct,
   tables,
 } from 'tests/__mocks__/fixtures';
+import { IChildrenOnly } from 'shared/types';
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
 import { Table, TablesList } from './table';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

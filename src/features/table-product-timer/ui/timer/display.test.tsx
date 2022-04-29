@@ -3,6 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from 'shared/types';
 import { TableProductTimerStatuses } from 'shared/api';
 import { play } from '../../model/play';
 import { stop } from '../../model/stop';
@@ -10,7 +11,7 @@ import { Display } from './display';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

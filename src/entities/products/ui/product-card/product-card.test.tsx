@@ -4,6 +4,7 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
+import { IChildrenOnly } from 'shared/types';
 import { tablesModel } from 'entities/tables';
 import { TableProductTimerUI } from 'features/table-product-timer';
 import { tableProductModel, TableProductUI } from 'features/table-product';
@@ -12,7 +13,7 @@ import { ProductCard } from './product-card';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

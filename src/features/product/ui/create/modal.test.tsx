@@ -9,13 +9,14 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from 'shared/types';
 import { productsModel } from 'entities/products';
 import { create, openModal } from '../../model/create/model';
 import { Modal } from './modal';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

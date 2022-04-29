@@ -3,6 +3,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from 'shared/types';
 import { TableUI, tableModel } from 'features/table';
 import { table, tables } from 'tests/__mocks__/fixtures';
 import { TableProductUI } from 'features/table-product';
@@ -11,7 +12,7 @@ import { Table } from './table';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

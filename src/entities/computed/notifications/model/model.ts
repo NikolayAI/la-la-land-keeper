@@ -28,12 +28,12 @@ $tableProductsTimersNotifications
   });
 
 sample({
-  source: [
-    tablesModel.$tablesProductsTimersOutOfLimits,
-    tablesModel.$tables,
-    productsModel.$products,
-  ],
-  fn: ([timers, tables, products]) => {
+  source: {
+    timers: tablesModel.$tablesProductsTimersOutOfLimits,
+    tables: tablesModel.$tables,
+    products: productsModel.$products,
+  },
+  fn: ({ timers, tables, products }) => {
     const result = [];
     for (const tableId in timers) {
       for (const productId in timers[tableId]) {

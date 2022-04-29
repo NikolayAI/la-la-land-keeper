@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 /* type utilities */
 export type KeyValueType<T> = {
   [K in keyof T]: { key: K; value: T[K] };
@@ -22,3 +24,7 @@ export type ProductPriceType = number;
 export type ProductUnitMinutesTimerType = number;
 
 export type ClassNameType = string;
+
+export interface IChildrenOnly {
+  children: ReactNode;
+}

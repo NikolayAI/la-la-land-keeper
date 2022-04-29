@@ -4,12 +4,13 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { TableProductTimerStatuses } from 'shared/api';
+import { IChildrenOnly } from 'shared/types';
 import { table, tableProduct } from 'tests/__mocks__/fixtures';
 import { ProductCard } from './product-card';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 

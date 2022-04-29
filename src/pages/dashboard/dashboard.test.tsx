@@ -3,6 +3,7 @@ import { allSettled, fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from 'shared/types';
 import { productsModel } from 'entities/products';
 import { tablesModel } from 'entities/tables';
 import { DashBoardGate } from './model';
@@ -10,7 +11,7 @@ import { Dashboard } from './dashboard';
 
 let scope: Scope;
 
-const Wrapper: FC = ({ children }) => (
+const Wrapper: FC<IChildrenOnly> = ({ children }) => (
   <Provider value={scope}>{children}</Provider>
 );
 
