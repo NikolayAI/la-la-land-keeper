@@ -22,18 +22,17 @@
       "module-resolver",
       {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "root": ["./src"],
         "alias": {
-          "@": "./",
-          "public": "./public",
-          "app": "./app",
-          "processes": "./processes",
-          "pages": "./pages",
-          "widgets": "./widgets",
-          "features": "./features",
-          "entities": "./entities",
-          "shared": "./shared",
-          "tests": "../tests"
+          "@": "./src",
+          "public": "./src/public",
+          "app": "./src/app",
+          "processes": "./src/processes",
+          "pages": "./src/pages",
+          "widgets": "./src/widgets",
+          "features": "./src/features",
+          "entities": "./src/entities",
+          "shared": "./src/shared",
+          "tests": "./tests"
         }
       }
     ]
