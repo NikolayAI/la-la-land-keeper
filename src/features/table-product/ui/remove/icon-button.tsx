@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import React, { FC } from 'react';
 
-import { IRemoveProductToTableParams } from 'shared/api';
+import { IRemoveProductToTableParams } from '@/shared';
 import { remove } from '../../model/remove';
 
 interface IIconButtonProps extends IRemoveProductToTableParams {}

@@ -3,8 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { TableProductTimerStatuses } from 'shared/api';
-import { IChildrenOnly } from 'shared/types';
+import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { table, tableProduct } from 'tests/__mocks__/fixtures';
 import { ProductCard } from './product-card';
 

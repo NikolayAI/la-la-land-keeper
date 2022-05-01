@@ -5,8 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import { IAddProductToTableParams } from 'shared/api';
-import { productsModel } from 'entities/products';
+import { IAddProductToTableParams } from '@/shared';
+import { productsModel } from '@/entities/products';
 import { $anchorEl, add, setAnchorEl } from '../../model/add';
 
 interface IAddProductToTableProps

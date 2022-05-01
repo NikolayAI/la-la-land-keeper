@@ -3,9 +3,9 @@ import { allSettled, fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
-import { productsModel } from 'entities/products';
-import { tablesModel } from 'entities/tables';
+import { IChildrenOnly } from '@/shared';
+import { productsModel } from '@/entities/products';
+import { tablesModel } from '@/entities/tables';
 import { DashBoardGate } from './model';
 import { Dashboard } from './dashboard';
 

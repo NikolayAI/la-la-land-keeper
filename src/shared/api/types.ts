@@ -7,7 +7,7 @@ import {
   TableProductCreatedAtType,
   TableProductUnitsType,
   TableTitleType,
-} from 'shared/types';
+} from '../types';
 import { TableProductTimerStatuses } from './constants';
 
 export interface IClearTableParams {

@@ -1,7 +1,7 @@
 import {
   ISetTableProductTimerStatusParams,
   TableProductTimerStatuses,
-} from 'shared/api';
+} from '@/shared';
 
 export interface IStopProductTableTimerParams
   extends ISetTableProductTimerStatusParams {

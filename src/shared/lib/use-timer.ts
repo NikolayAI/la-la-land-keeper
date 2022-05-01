@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 
 import {
-  ProductIdType,
-  TableIdType,
-  TableProductCreatedAtType,
-} from 'shared/types';
-import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
 } from '../api';
+import {
+  ProductIdType,
+  TableIdType,
+  TableProductCreatedAtType,
+} from '../types';
 import { dateToSeconds } from './format-date';
 import { getLocalStorage } from './local-storage';
 

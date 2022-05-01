@@ -10,8 +10,7 @@ import {
 } from '@mui/material';
 import React, { FC, memo, ReactNode } from 'react';
 
-import { TablesType } from 'shared/api';
-import { TableIdType } from 'shared/types';
+import { TableIdType, TablesType } from '@/shared';
 import { calculateTableTotalPrice } from '../../lib';
 
 interface ITableProps {

@@ -1,4 +1,4 @@
-import { TableProductTimerStatuses } from 'shared/api';
+import { TableProductTimerStatuses } from '@/shared';
 
 export const defaultProduct = {
   id: '',

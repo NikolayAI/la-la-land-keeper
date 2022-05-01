@@ -2,9 +2,9 @@ import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 import { useStore } from 'effector-react';
 import React from 'react';
 
-import { productsModel } from 'entities/products';
-import { ProductUI, productModel } from 'features/product';
-import { TableUI } from 'features/table';
+import { productsModel } from '@/entities/products';
+import { ProductUI, productModel } from '@/features/product';
+import { TableUI } from '@/features/table';
 
 export const Header = () => {
   const products = useStore(productsModel.$products);

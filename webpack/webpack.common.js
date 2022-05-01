@@ -50,6 +50,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       assets: paths.public,
+      '@': paths.src,
     },
   },
   performance: {

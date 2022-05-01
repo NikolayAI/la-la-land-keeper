@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
-import { ClassNameType } from 'shared/types';
-import { ProductUI } from 'features/product';
-import { Header } from 'widgets/header';
-import { TablesList } from 'widgets/table';
+import { ClassNameType } from '@/shared';
+import { ProductUI } from '@/features/product';
+import { Header } from '@/widgets/header';
+import { TablesList } from '@/widgets/table';
 import { DashBoardGate } from './model';
 
 interface IDashboardProps {

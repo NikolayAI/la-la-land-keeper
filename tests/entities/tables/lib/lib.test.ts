@@ -1,5 +1,5 @@
-import { table } from 'tests/__mocks__/fixtures';
-import { calculateTableTotalPrice } from 'entities/tables/lib/lib';
+import { calculateTableTotalPrice } from '@/entities/tables';
+import { table } from '../../../__mocks__/fixtures';
 
 test('calculateTableTotalPrice should return value', async () => {
   const result = calculateTableTotalPrice(table);

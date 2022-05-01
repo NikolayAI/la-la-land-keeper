@@ -1,9 +1,12 @@
 import { allSettled, fork } from 'effector';
 
 import { TableProductTimerStatuses } from '@/shared';
-import { productsModel } from '../../../products';
-import { tablesModel } from '../../../tables';
-import { NotificationKinds, notificationsModel } from '../index';
+import {
+  NotificationKinds,
+  notificationsModel,
+} from '@/entities/computed/notifications';
+import { productsModel } from '@/entities/products';
+import { tablesModel } from '@/entities/tables';
 
 const params = {
   tableId: '1',

@@ -3,13 +3,12 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { TableProductTimerStatuses } from 'shared/api';
-import { IChildrenOnly } from 'shared/types';
-import { tablesModel } from 'entities/tables';
-import { TableProductTimerUI } from 'features/table-product-timer';
-import { tableProductModel, TableProductUI } from 'features/table-product';
-import { table, tableProduct, tables } from 'tests/__mocks__/fixtures';
-import { ProductCard } from './product-card';
+import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
+import { ProductsUI } from '@/entities/products';
+import { tablesModel } from '@/entities/tables';
+import { tableProductModel, TableProductUI } from '@/features/table-product';
+import { TableProductTimerUI } from '@/features/table-product-timer';
+import { table, tableProduct, tables } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -43,7 +42,7 @@ describe('events', () => {
     };
 
     render(
-      <ProductCard
+      <ProductsUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         isProductTimerOut={false}
@@ -92,7 +91,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <ProductCard
+      <ProductsUI.ProductCard
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         isProductTimerOut={false}
@@ -141,7 +140,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <ProductCard
+      <ProductsUI.ProductCard
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         isProductTimerOut={false}
@@ -202,7 +201,7 @@ describe('events', () => {
     };
 
     render(
-      <ProductCard
+      <ProductsUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
         isProductTimerOut={false}

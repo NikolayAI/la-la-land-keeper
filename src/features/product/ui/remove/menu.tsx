@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import { ProductsType } from 'shared/api';
+import { ProductsType } from '@/shared';
 import {
   $anchorEl,
   removeProduct,

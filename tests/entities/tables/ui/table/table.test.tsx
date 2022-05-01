@@ -1,14 +1,14 @@
-import { fork, Scope } from 'effector';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
-import { TableUI, tableModel } from 'features/table';
-import { table, tables } from 'tests/__mocks__/fixtures';
-import { TableProductUI } from 'features/table-product';
-import { ProductCardList } from 'widgets/product-card';
-import { Table } from './table';
+import { IChildrenOnly } from '@/shared';
+import { TablesUI } from '@/entities/tables';
+import { TableUI, tableModel } from '@/features/table';
+import { TableProductUI } from '@/features/table-product';
+import { ProductCardList } from '@/widgets/product-card';
+import { table, tables } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -30,7 +30,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <Table
+      <TablesUI.Table
         tableId={table.id}
         tables={tables}
         SetTableTitleSlot={
@@ -61,7 +61,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <Table
+      <TablesUI.Table
         tableId={table.id}
         tables={tables}
         SetTableTitleSlot={

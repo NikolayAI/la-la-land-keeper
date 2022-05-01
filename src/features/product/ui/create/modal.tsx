@@ -11,7 +11,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
-import { productsModel } from 'entities/products';
+import { productsModel } from '@/entities/products';
 import { $isModalOpen, closeModal, create } from '../../model/create/model';
 
 export const Modal: FC = () => {

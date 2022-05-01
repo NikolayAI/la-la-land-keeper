@@ -3,8 +3,8 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
-import { App } from './App';
+import { App } from '@/app';
+import { IChildrenOnly } from '@/shared';
 
 let scope: Scope;
 

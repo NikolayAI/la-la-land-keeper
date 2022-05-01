@@ -18,7 +18,7 @@ import {
   ISetTableTitleParams,
   TablesAPI,
   TablesType,
-} from 'shared/api';
+} from '@/shared';
 import { TableProductsTimersType } from '../types';
 
 export const setTablesProductsTimers =

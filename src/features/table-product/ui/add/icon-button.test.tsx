@@ -1,11 +1,11 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
-import { productsModel } from 'entities/products';
 import React, { FC } from 'react';
 
+import { productsModel } from '@/entities/products';
 import { products } from 'tests/__mocks__/fixtures';
-import { IChildrenOnly } from 'shared/types';
+import { IChildrenOnly } from '@/shared';
 import { add, setAnchorEl } from '../../model/add/model';
 import { IconBtn } from '../../ui/add/icon-button';
 

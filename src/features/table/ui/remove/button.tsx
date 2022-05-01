@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 import React, { FC } from 'react';
 
-import { TableIdType } from 'shared/types';
+import { TableIdType } from '@/shared';
 import { remove } from '../../model/remove';
 
 interface IBtnProps {

@@ -1,11 +1,15 @@
 import 'whatwg-fetch';
 import '@testing-library/jest-dom';
 import 'jest-environment-jsdom';
+import { randomFillSync } from 'crypto';
 
 import { server } from './__mocks__/server.js';
 
-// eslint-disable-next-line no-undef
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+window.crypto = {
+  getRandomValues: function (buffer) {
+    return randomFillSync(buffer);
+  },
+};
 
 // eslint-disable-next-line no-undef
 beforeAll(() => server.listen());

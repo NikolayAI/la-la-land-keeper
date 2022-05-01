@@ -2,8 +2,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { IconButton } from '@mui/material';
 import React, { FC } from 'react';
 
-import { IDecreaseTableProductParams } from 'shared/api';
-import { TableProductUnitsType } from 'shared/types';
+import { IDecreaseTableProductParams, TableProductUnitsType } from '@/shared';
 import { decrease } from '../../model/decrease';
 import { remove } from '../../model/remove';
 

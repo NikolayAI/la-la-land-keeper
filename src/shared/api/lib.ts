@@ -1,4 +1,4 @@
-import { TableIdType } from 'shared/types';
+import { TableIdType } from '../types';
 import { TableProductTimerStatuses } from './constants';
 import { IProduct, ITable, ITableProduct } from './types';
 

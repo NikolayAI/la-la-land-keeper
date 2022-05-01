@@ -1,7 +1,7 @@
 import { createEvent, createStore, sample } from 'effector';
 
-import { IAddProductToTableParams } from 'shared/api';
-import { tablesModel } from 'entities/tables';
+import { IAddProductToTableParams } from '@/shared';
+import { tablesModel } from '@/entities/tables';
 import { ISetAnchorElementParams } from './types';
 
 export const add = createEvent<IAddProductToTableParams>();

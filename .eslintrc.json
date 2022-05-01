@@ -9,18 +9,43 @@
   ],
   "parser": "@typescript-eslint/parser",
   "settings": {
-    "import/resolver": { "typescript": {} },
+    "import/resolver": {
+      "typescript": {}
+    },
     "boundaries/elements": [
-      { "type": "app", "pattern": "app/*" },
-      { "type": "processes", "pattern": "processes/*" },
-      { "type": "pages", "pattern": "pages/*" },
-      { "type": "widgets", "pattern": "widgets/*" },
-      { "type": "features", "pattern": "features/*" },
-      { "type": "entities", "pattern": "entities/*", "capture": ["slice"] },
-      { "type": "shared", "pattern": "shared/*" },
-      { "type": "tests", "pattern": "tests/*" }
-    ],
-    "boundaries/ignore": ["**/*.test.*"]
+      {
+        "type": "app",
+        "pattern": "app/*"
+      },
+      {
+        "type": "processes",
+        "pattern": "processes/*"
+      },
+      {
+        "type": "pages",
+        "pattern": "pages/*"
+      },
+      {
+        "type": "widgets",
+        "pattern": "widgets/*"
+      },
+      {
+        "type": "features",
+        "pattern": "features/*"
+      },
+      {
+        "type": "entities",
+        "pattern": "entities/*",
+        "capture": ["slice"]
+      },
+      {
+        "type": "shared",
+        "pattern": "shared/*"
+      }
+    ]
+    //    "boundaries/ignore": [
+    //      "**/*.test.*"
+    //    ]
   },
   "rules": {
     "prefer-template": "off",
@@ -42,26 +67,45 @@
     "import/order": [
       "error",
       {
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
         "pathGroups": [
-          { "group": "internal", "position": "after", "pattern": "tests/**" },
-          { "group": "internal", "position": "after", "pattern": "shared/**" },
           {
             "group": "internal",
             "position": "after",
-            "pattern": "entities/**"
+            "pattern": "@/shared/**"
           },
           {
             "group": "internal",
             "position": "after",
-            "pattern": "features/**"
+            "pattern": "@/entities/**"
           },
-          { "group": "internal", "position": "after", "pattern": "widgets/**" },
-          { "group": "internal", "position": "after", "pattern": "pages/**" },
           {
             "group": "internal",
             "position": "after",
-            "pattern": "processes/**"
+            "pattern": "@/features/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/widgets/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/pages/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/processes/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "app/**"
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
@@ -81,31 +125,31 @@
         "patterns": [
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["app/**"]
+            "group": ["@/app/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["processes/*/**"]
+            "group": ["@/processes/*/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["pages/*/**"]
+            "group": ["@/pages/*/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["widgets/*/**"]
+            "group": ["@/widgets/*/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["features/*/**"]
+            "group": ["@/features/*/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["entities/*/**", "!entities/computed/**"]
+            "group": ["@/entities/*/**", "!@/entities/computed/**"]
           },
           {
             "message": "Private imports are prohibited, use public imports instead",
-            "group": ["shared/*/*/**"]
+            "group": ["@/shared/*/*/**"]
           },
           {
             "message": "Prefer absolute imports instead of relatives (for root modules)",
@@ -166,32 +210,52 @@
             "from": "widgets",
             "allow": ["widgets", "features", "entities", "shared"]
           },
-          { "from": "features", "allow": ["entities", "shared"] },
-          { "from": "entities", "allow": ["shared"] },
           {
-            "from": [["entities", { "slice": "computed" }]],
+            "from": "features",
             "allow": ["entities", "shared"]
           },
-          { "from": "shared", "allow": ["shared"] }
+          {
+            "from": "entities",
+            "allow": ["shared"]
+          },
+          {
+            "from": [
+              [
+                "entities",
+                {
+                  "slice": "computed"
+                }
+              ]
+            ],
+            "allow": ["entities", "shared"]
+          },
+          {
+            "from": "shared",
+            "allow": ["shared"]
+          }
         ]
       }
     ]
   },
   "overrides": [
-    { "files": ["**/*.test.*"], "rules": { "boundaries/element-types": "off" } }
+    {
+      "files": ["**/*.test.*"],
+      "rules": {
+        "boundaries/element-types": "off"
+      }
+    }
   ],
   "ignorePatterns": [
     "index.tsx",
     "dist",
     "node_modules",
     "webpack.*",
-    "webpack/paths.js",
-    "*.test.tsx",
-    "*.test.ts"
+    "webpack/paths.js"
   ],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2021,

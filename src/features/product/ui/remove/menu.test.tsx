@@ -3,7 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
+import { IChildrenOnly } from '@/shared';
 import { removeProduct, setAnchorEl } from '../../model/remove/model';
 import { Menu } from './menu';
 

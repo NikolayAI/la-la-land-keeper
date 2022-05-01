@@ -9,8 +9,8 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
-import { productsModel } from 'entities/products';
+import { IChildrenOnly } from '@/shared';
+import { productsModel } from '@/entities/products';
 import { create, openModal } from '../../model/create/model';
 import { Modal } from './modal';
 

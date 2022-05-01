@@ -1,13 +1,7 @@
 import { allSettled, fork } from 'effector';
 
-import { ProductsAPI } from 'shared/api';
-import { defaultProduct } from '../constants';
-import {
-  $product,
-  createProductFx,
-  removeProductFx,
-  setProductProperty,
-} from './model';
+import { ProductsAPI } from '@/shared';
+import { productsModel, defaultProduct } from '@/entities/products';
 
 const params = {
   id: '1',
@@ -24,7 +18,7 @@ const mockRemoveProduct = jest.spyOn(ProductsAPI, 'removeProduct');
 test('createProductFx should calls ProductsAPI.createProduct', async () => {
   const scope = fork();
 
-  await allSettled(createProductFx, { scope, params });
+  await allSettled(productsModel.createProductFx, { scope, params });
 
   expect(mockCreateProduct).toHaveBeenCalledTimes(1);
 });
@@ -32,17 +26,17 @@ test('createProductFx should calls ProductsAPI.createProduct', async () => {
 test('removeProductFx should calls ProductsAPI.removeProduct', async () => {
   const scope = fork();
 
-  await allSettled(removeProductFx, { scope, params });
+  await allSettled(productsModel.removeProductFx, { scope, params });
 
   expect(mockRemoveProduct).toHaveBeenCalledTimes(1);
 });
 
 test('setProductProperty should set data to $product', async () => {
   const scope = fork({
-    values: [[$product, defaultProduct]],
+    values: [[productsModel.$product, defaultProduct]],
   });
 
-  await allSettled(setProductProperty, {
+  await allSettled(productsModel.setProductProperty, {
     scope,
     params: {
       key: 'title',
@@ -50,7 +44,7 @@ test('setProductProperty should set data to $product', async () => {
     },
   });
 
-  expect(scope.getState($product)).toStrictEqual({
+  expect(scope.getState(productsModel.$product)).toStrictEqual({
     id: '',
     title: 'test',
     price: 0,

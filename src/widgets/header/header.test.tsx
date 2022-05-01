@@ -3,9 +3,9 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from 'shared/types';
-import { productModel } from 'features/product';
-import { tableModel } from 'features/table';
+import { IChildrenOnly } from '@/shared';
+import { productModel } from '@/features/product';
+import { tableModel } from '@/features/table';
 import { Header } from './header';
 
 let scope: Scope;

@@ -1,7 +1,6 @@
 import { createEffect, createEvent, createStore, forward } from 'effector';
 
-import { IProduct, ProductsAPI, ProductsType } from 'shared/api';
-import { KeyValueType } from 'shared/types';
+import { IProduct, ProductsAPI, ProductsType, KeyValueType } from '@/shared';
 import { defaultProduct } from '../constants';
 
 export const setProductProperty = createEvent<KeyValueType<IProduct>>();

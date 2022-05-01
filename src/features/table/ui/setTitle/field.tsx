@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
-import { TableIdType, TableTitleType } from 'shared/types';
-import { EditableText } from 'shared/ui';
+import { TableIdType, TableTitleType, EditableText } from '@/shared';
 import { setTitle } from '../../model/setTitle';
 
 interface ISetTableTitleProps {

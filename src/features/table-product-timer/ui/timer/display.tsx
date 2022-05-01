@@ -8,21 +8,17 @@ import {
   ISetTablesProductsTimersParams,
   TableProductTimerStatuses,
   TablesType,
-} from 'shared/api';
-import {
   getLocalStorage,
   setLocalStorage,
   tablesProductsTimersKey,
   useTimer,
-} from 'shared/lib';
-import {
   TableIdType,
   TableProductCreatedAtType,
   TableProductIdType,
   TableProductMinutesLimitType,
   TableProductUnitsType,
-} from 'shared/types';
-import { tablesModel } from 'entities/tables';
+} from '@/shared';
+import { tablesModel } from '@/entities/tables';
 import { play } from '../../model/play';
 import { stop } from '../../model/stop';
 

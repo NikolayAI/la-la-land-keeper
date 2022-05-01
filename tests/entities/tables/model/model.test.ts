@@ -1,10 +1,9 @@
 import { allSettled, fork } from 'effector';
 
-import { TableProductTimerStatuses, TablesAPI } from 'shared/api';
+import { TableProductTimerStatuses, TablesAPI } from '@/shared';
+import { tablesModel } from '@/entities/tables';
 
-import { tablesModel } from '../index';
-
-jest.mock('shared/api');
+jest.mock('@/shared');
 
 test('createTableFx should calls TablesAPI.createTable', async () => {
   const scope = fork();

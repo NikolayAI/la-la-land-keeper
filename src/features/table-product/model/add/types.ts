@@ -1,4 +1,4 @@
-import { TableIdType } from 'shared/types';
+import { TableIdType } from '@/shared';
 
 export interface ISetAnchorElementParams {
   tableId: TableIdType;
