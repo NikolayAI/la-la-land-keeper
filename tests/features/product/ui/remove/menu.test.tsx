@@ -4,8 +4,7 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly } from '@/shared';
-import { removeProduct, setAnchorEl } from '../../model/remove/model';
-import { Menu } from './menu';
+import { productModel, ProductUI } from '@/features/product';
 
 let scope: Scope;
 
@@ -24,17 +23,17 @@ const products = {
 };
 describe('events', () => {
   const setAnchorElementFn = jest.fn();
-  setAnchorEl.watch(setAnchorElementFn);
+  productModel.setAnchorEl.watch(setAnchorElementFn);
 
   const removeProductFn = jest.fn();
-  removeProduct.watch(removeProductFn);
+  productModel.removeProduct.watch(removeProductFn);
 
   beforeEach(() => {
     scope = fork();
   });
 
   test('should call setAnchorEl for remove product', async () => {
-    render(<Menu products={products} />, { wrapper: Wrapper });
+    render(<ProductUI.Remove.Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByText('Удалить товар'));
@@ -44,7 +43,7 @@ describe('events', () => {
   });
 
   test('should call setAnchorEl and removeProduct', async () => {
-    render(<Menu products={products} />, { wrapper: Wrapper });
+    render(<ProductUI.Remove.Menu products={products} />, { wrapper: Wrapper });
 
     act(() => {
       fireEvent.click(screen.getByRole('remove-product-box'));
