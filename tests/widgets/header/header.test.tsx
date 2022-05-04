@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { IChildrenOnly } from '@/shared';
 import { productModel } from '@/features/product';
 import { tableModel } from '@/features/table';
-import { Header } from './header';
+import { Header } from '@/widgets/header';
 
 let scope: Scope;
 

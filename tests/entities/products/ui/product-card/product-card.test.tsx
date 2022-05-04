@@ -45,7 +45,7 @@ describe('events', () => {
       <ProductsUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.PLAY}
-        isProductTimerOut={false}
+        isProductTimerOut={true}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
             tables={testTables}
@@ -244,5 +244,124 @@ describe('events', () => {
     });
 
     expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('product card should have correct background color', async () => {
+    scope = fork();
+    const testTableProduct = {
+      ...tableProduct,
+      units: 2,
+    };
+    const testTables = {
+      [table.id]: {
+        ...table,
+        products: {
+          [tableProduct.id]: testTableProduct,
+        },
+      },
+    };
+
+    render(
+      <ProductsUI.ProductCard
+        tableProduct={testTableProduct}
+        timerStatus={TableProductTimerStatuses.PLAY}
+        isProductTimerOut={true}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer.Display
+            tables={testTables}
+            tableId={table.id}
+            productId={tableProduct.id}
+            createdAt={tableProduct.createdAt}
+            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
+            productUnits={tableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+          />
+        }
+        RemoveTableProductSlot={
+          <TableProductUI.Remove.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+          />
+        }
+        DecreaseTableProductSlot={
+          <TableProductUI.Decrease.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+            productUnits={testTableProduct.units}
+          />
+        }
+      />,
+      { wrapper: Wrapper }
+    );
+
+    expect(
+      screen.getByRole(`table-product-paper-${tableProduct.id}`)
+    ).toHaveStyle('backgroundColor: #d32f2f');
+  });
+
+  test('product card should display timer if product need timer', async () => {
+    scope = fork();
+    const testTableProduct = {
+      ...tableProduct,
+      units: 2,
+      needTimer: true,
+    };
+    const testTables = {
+      [table.id]: {
+        ...table,
+        products: {
+          [testTableProduct.id]: testTableProduct,
+        },
+      },
+    };
+
+    render(
+      <ProductsUI.ProductCard
+        tableProduct={testTableProduct}
+        timerStatus={TableProductTimerStatuses.PLAY}
+        isProductTimerOut={true}
+        TableProductTimerSlot={
+          <TableProductTimerUI.Timer.Display
+            tables={testTables}
+            tableId={table.id}
+            productId={testTableProduct.id}
+            createdAt={testTableProduct.createdAt}
+            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+            productUnits={testTableProduct.units}
+            setTimer={tablesModel.setTablesProductsTimers}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+          />
+        }
+        RemoveTableProductSlot={
+          <TableProductUI.Remove.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+          />
+        }
+        DecreaseTableProductSlot={
+          <TableProductUI.Decrease.IconBtn
+            tableId={table.id}
+            productId={tableProduct.id}
+            productUnits={testTableProduct.units}
+          />
+        }
+      />,
+      { wrapper: Wrapper }
+    );
+
+    expect(
+      screen.getByRole(`product-timer-display-${table.id}-${tableProduct.id}`)
+    ).toBeDefined();
   });
 });

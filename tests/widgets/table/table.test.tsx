@@ -3,16 +3,16 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
+import { IChildrenOnly } from '@/shared';
+import { productsModel } from '@/entities/products';
+import { tablesModel } from '@/entities/tables';
+import { Table, TablesList } from '@/widgets/table';
 import {
   products,
   table,
   tableProduct,
   tables,
-} from 'tests/__mocks__/fixtures';
-import { IChildrenOnly } from '@/shared';
-import { productsModel } from '@/entities/products';
-import { tablesModel } from '@/entities/tables';
-import { Table, TablesList } from './table';
+} from '../../__mocks__/fixtures';
 
 let scope: Scope;
 

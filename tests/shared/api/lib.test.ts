@@ -1,5 +1,5 @@
-import { TableProductTimerStatuses } from './constants';
-import { createTableBody, createTableProductBody } from './lib';
+import { TableProductTimerStatuses } from '@/shared/api/constants';
+import { createTableBody, createTableProductBody } from '@/shared/api/lib';
 
 describe('should return specific value', () => {
   test('call createTableBody', async () => {

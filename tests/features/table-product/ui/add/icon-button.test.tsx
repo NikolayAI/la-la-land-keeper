@@ -3,11 +3,10 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { productsModel } from '@/entities/products';
-import { products } from 'tests/__mocks__/fixtures';
 import { IChildrenOnly } from '@/shared';
-import { add, setAnchorEl } from '../../model/add/model';
-import { IconBtn } from '../../ui/add/icon-button';
+import { productsModel } from '@/entities/products';
+import { tableProductModel, TableProductUI } from '@/features/table-product';
+import { products } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -17,17 +16,17 @@ const Wrapper: FC<IChildrenOnly> = ({ children }) => (
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
-  add.watch(addProductToTableFn);
+  tableProductModel.add.watch(addProductToTableFn);
 
   const setAnchorElFn = jest.fn();
-  setAnchorEl.watch(setAnchorElFn);
+  tableProductModel.setAnchorEl.watch(setAnchorElFn);
 
   test('should call setAnchorElFn for open form', async () => {
     scope = fork({
       values: [[productsModel.$products, products]],
     });
 
-    render(<IconBtn tableId="1" />, {
+    render(<TableProductUI.Add.IconBtn tableId="1" />, {
       wrapper: Wrapper,
     });
 
@@ -43,7 +42,7 @@ describe('events', () => {
       values: [[productsModel.$products, products]],
     });
 
-    render(<IconBtn tableId="1" />, {
+    render(<TableProductUI.Add.IconBtn tableId="1" />, {
       wrapper: Wrapper,
     });
 

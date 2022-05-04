@@ -3,10 +3,13 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
-import { play } from '../../model/play';
-import { stop } from '../../model/stop';
-import { Display } from './display';
+import { play } from '../../../../../src/features/table-product-timer/model/play';
+import { stop } from '../../../../../src/features/table-product-timer/model/stop';
+import { Display } from '../../../../../src/features/table-product-timer/ui/timer/display';
+import {
+  IChildrenOnly,
+  TableProductTimerStatuses,
+} from '../../../../../src/shared';
 
 let scope: Scope;
 

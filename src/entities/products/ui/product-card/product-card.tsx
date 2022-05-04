@@ -24,6 +24,7 @@ export const ProductCard: FC<IProductCardProps> = ({
   RemoveTableProductSlot,
 }) => (
   <Paper
+    role={`table-product-paper-${tableProduct.id}`}
     elevation={6}
     sx={{
       backgroundColor: isProductTimerOut

@@ -65,9 +65,9 @@ export const Display: FC<IProductTimer> = memo(
           value: {
             ...(timers ?? {}),
             [tableId]: {
-              ...(timers[tableId] ?? {}),
+              ...(timers?.[tableId] ?? {}),
               [productId]: {
-                ...(timers[tableId]?.[productId] ?? {}),
+                ...(timers?.[tableId]?.[productId] ?? {}),
                 pausedAt: null,
                 pausedTimerCount: 0,
               },
@@ -135,7 +135,7 @@ export const Display: FC<IProductTimer> = memo(
     };
 
     return (
-      <>
+      <div role={`product-timer-display-${tableId}-${productId}`}>
         <IconButton color="primary" size="small" sx={{ cursor: 'default' }}>
           {`${timerCount}`}
         </IconButton>
@@ -159,7 +159,7 @@ export const Display: FC<IProductTimer> = memo(
             <PlayArrowIcon fontSize="small" />
           </IconButton>
         )}
-      </>
+      </div>
     );
   }
 );

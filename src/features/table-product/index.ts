@@ -1,4 +1,4 @@
-import { add } from './model/add';
+import { add, setAnchorEl } from './model/add';
 import { decrease } from './model/decrease';
 import { increase } from './model/increase';
 import { remove } from './model/remove';
@@ -9,6 +9,7 @@ import * as Remove from './ui/remove';
 
 export const tableProductModel = {
   add,
+  setAnchorEl,
   increase,
   decrease,
   remove,

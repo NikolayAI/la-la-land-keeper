@@ -1,10 +1,10 @@
-import { products, product } from 'tests/__mocks__/fixtures';
 import {
   createProduct,
   removeProduct,
   getProducts,
   setProducts,
-} from './products';
+} from '@/shared/api/products';
+import { products, product } from '../../__mocks__/fixtures';
 
 test('getProducts should return value', async () => {
   const result = await getProducts();

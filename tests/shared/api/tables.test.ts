@@ -1,5 +1,4 @@
-import { tables } from 'tests/__mocks__/fixtures';
-import { TableProductTimerStatuses } from './constants';
+import { TableProductTimerStatuses } from '@/shared/api/constants';
 import {
   addProductToTable,
   clearTable,
@@ -12,7 +11,8 @@ import {
   setTableProductTimerStatus,
   setTables,
   setTableTitle,
-} from './tables';
+} from '@/shared/api/tables';
+import { tables } from '../../__mocks__/fixtures';
 
 const tableId = 'test-table-id';
 const productId = 'test-table-product-id';
