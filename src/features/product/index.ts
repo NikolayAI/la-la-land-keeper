@@ -1,9 +1,18 @@
-import { openModal, closeModal, $isModalOpen, create } from './model/create';
+import {
+  openModal,
+  closeModal,
+  $isModalOpen,
+  create,
+  setProperty,
+  $product,
+} from './model/create';
 import { removeProduct, setAnchorEl } from './model/remove';
 import * as Create from './ui/create';
 import * as Remove from './ui/remove';
 
 export const productModel = {
+  setProperty,
+  $product,
   create,
   openModal,
   closeModal,

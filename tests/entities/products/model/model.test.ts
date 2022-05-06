@@ -1,7 +1,7 @@
 import { allSettled, fork } from 'effector';
 
 import { ProductsAPI } from '@/shared';
-import { productsModel, defaultProduct } from '@/entities/products';
+import { productsModel } from '@/entities/products';
 
 const params = {
   id: '1',
@@ -29,27 +29,4 @@ test('removeProductFx should calls ProductsAPI.removeProduct', async () => {
   await allSettled(productsModel.removeProductFx, { scope, params });
 
   expect(mockRemoveProduct).toHaveBeenCalledTimes(1);
-});
-
-test('setProductProperty should set data to $product', async () => {
-  const scope = fork({
-    values: [[productsModel.$product, defaultProduct]],
-  });
-
-  await allSettled(productsModel.setProductProperty, {
-    scope,
-    params: {
-      key: 'title',
-      value: 'test',
-    },
-  });
-
-  expect(scope.getState(productsModel.$product)).toStrictEqual({
-    id: '',
-    title: 'test',
-    price: 0,
-    isPiece: true,
-    needTimer: false,
-    eachProductUnitMinutesTimer: 0,
-  });
 });

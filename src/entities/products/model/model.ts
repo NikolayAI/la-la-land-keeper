@@ -1,15 +1,11 @@
-import { createEffect, createEvent, createStore, forward } from 'effector';
+import { createEffect, createStore, forward } from 'effector';
 
-import { IProduct, ProductsAPI, ProductsType, KeyValueType } from '@/shared';
-import { defaultProduct } from '../constants';
-
-export const setProductProperty = createEvent<KeyValueType<IProduct>>();
+import { IProduct, ProductsAPI, ProductsType } from '@/shared';
 
 export const getProductsFx = createEffect<void, ProductsType, Error>();
 export const createProductFx = createEffect<IProduct, void, Error>();
 export const removeProductFx = createEffect<{ id: string }, void, Error>();
 
-export const $product = createStore<IProduct>(defaultProduct);
 export const $products = createStore<ProductsType>({});
 
 getProductsFx.use(async () => await ProductsAPI.getProducts());
@@ -20,12 +16,6 @@ removeProductFx.use(async ({ id }) => {
   await ProductsAPI.removeProduct({ id });
 });
 
-$product
-  .on(setProductProperty, (state, { key, value }) => ({
-    ...state,
-    [key]: value,
-  }))
-  .reset(createProductFx.doneData);
 $products.on(getProductsFx.doneData, (_, products) => products);
 
 forward({

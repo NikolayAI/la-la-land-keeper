@@ -13,25 +13,23 @@ interface ITableProps {
   tableId: TableIdType;
 }
 
-export const Table: FC<ITableProps> = ({ tables, tableId }) => {
-  const { title } = tables?.[tableId] ?? {};
-  return (
-    <TablesUI.Table
-      key={tableId}
-      tableId={tableId}
-      tables={tables}
-      SetTableTitleSlot={
-        <TableUI.SetTitle.Field tableId={tableId} tableTitle={title} />
-      }
-      ClearTableSlot={<TableUI.Clear.Btn tableId={tableId} />}
-      RemoveTableSlot={<TableUI.Remove.Btn tableId={tableId} />}
-      AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={tableId} />}
-      ProductCardListSlot={
-        <ProductCardList tables={tables} tableId={tableId} />
-      }
-    />
-  );
-};
+export const Table: FC<ITableProps> = ({ tables, tableId }) => (
+  <TablesUI.Table
+    key={tableId}
+    tableId={tableId}
+    tables={tables}
+    SetTableTitleSlot={
+      <TableUI.SetTitle.Field
+        tableId={tableId}
+        tableTitle={tables?.[tableId]?.title ?? ''}
+      />
+    }
+    ClearTableSlot={<TableUI.Clear.Btn tableId={tableId} />}
+    RemoveTableSlot={<TableUI.Remove.Btn tableId={tableId} />}
+    AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={tableId} />}
+    ProductCardListSlot={<ProductCardList tables={tables} tableId={tableId} />}
+  />
+);
 
 export const TablesList: FC = () => {
   const tables = useStore(tablesModel.$tables);

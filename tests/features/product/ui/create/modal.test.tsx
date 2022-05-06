@@ -10,7 +10,6 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly } from '@/shared';
-import { productsModel } from '@/entities/products';
 import { productModel, ProductUI } from '@/features/product';
 
 let scope: Scope;
@@ -24,7 +23,7 @@ describe('events', () => {
   productModel.create.watch(createProductFn);
 
   const setProductPropertyFn = jest.fn();
-  productsModel.setProductProperty.watch(setProductPropertyFn);
+  productModel.setProperty.watch(setProductPropertyFn);
 
   beforeEach(() => {
     scope = fork();

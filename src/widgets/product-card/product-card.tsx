@@ -76,22 +76,19 @@ interface IProductCardListProps {
 export const ProductCardList: FC<IProductCardListProps> = ({
   tables,
   tableId,
-}) => {
-  const { products } = tables?.[tableId] ?? {};
-  return (
-    <>
-      {Object.keys(products).map((productId) => {
-        const tableProduct = products[productId] ?? {};
-        return (
-          <ProductCard
-            key={productId}
-            tables={tables}
-            tableId={tableId}
-            tableProduct={tableProduct}
-            timerStatus={tableProduct?.timerStatus}
-          />
-        );
-      })}
-    </>
-  );
-};
+}) => (
+  <>
+    {Object.keys(tables?.[tableId]?.products).map((productId) => {
+      const tableProduct = tables?.[tableId]?.products?.[productId] ?? {};
+      return (
+        <ProductCard
+          key={productId}
+          tables={tables}
+          tableId={tableId}
+          tableProduct={tableProduct}
+          timerStatus={tableProduct?.timerStatus}
+        />
+      );
+    })}
+  </>
+);
