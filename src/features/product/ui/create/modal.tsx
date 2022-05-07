@@ -1,22 +1,15 @@
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import MaterialModal from '@mui/material/Modal';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
-
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
-import { productModel } from '@/features/product';
-import { $isModalOpen, closeModal, create } from '../../model/create/model';
+
+import { $isModalOpen, closeModal, create, $product, setProperty } from '../../model/create/model';
 
 export const Modal: FC = () => {
   const isOpen = useStore($isModalOpen);
-  const product = useStore(productModel.$product);
+  const product = useStore($product);
   return (
     <div>
       <MaterialModal
@@ -38,7 +31,7 @@ export const Modal: FC = () => {
             sx={{ paddingBottom: 2 }}
             autoComplete="off"
             onChange={({ target: { value } }) => {
-              productModel.setProperty({
+              setProperty({
                 key: 'title',
                 value: value,
               });
@@ -57,7 +50,7 @@ export const Modal: FC = () => {
             sx={{ paddingBottom: 2 }}
             autoComplete="off"
             onValueChange={({ value }: NumberFormatValues) => {
-              productModel.setProperty({
+              setProperty({
                 key: 'price',
                 value: Number(value),
               });
@@ -69,7 +62,7 @@ export const Modal: FC = () => {
             control={<Checkbox />}
             label="Штучный товар"
             onChange={(_, checked) => {
-              productModel.setProperty({
+              setProperty({
                 key: 'isPiece',
                 value: checked,
               });
@@ -81,7 +74,7 @@ export const Modal: FC = () => {
             label="Нужен таймер товара"
             sx={{ paddingBottom: 2 }}
             onChange={(_, checked) => {
-              productModel.setProperty({
+              setProperty({
                 key: 'needTimer',
                 value: checked,
               });
@@ -90,18 +83,14 @@ export const Modal: FC = () => {
           {product.needTimer && (
             <NumberFormat
               customInput={TextField}
-              value={
-                product.eachProductUnitMinutesTimer === 0
-                  ? ''
-                  : product.eachProductUnitMinutesTimer
-              }
+              value={product.eachProductUnitMinutesTimer === 0 ? '' : product.eachProductUnitMinutesTimer}
               variant="outlined"
               label="Таймер для 1 ед. товара, мин"
               sx={{ paddingBottom: 2 }}
               autoComplete="off"
               helperText="Введите количество минут, которые будет отсчитывать таймер для каждой единицы товара. Пример: если ввести цифру 90, то у товара, у которого указано количество единиц 2шт будет отсчитываться таймер 180 минут"
               onValueChange={({ value }: NumberFormatValues) => {
-                productModel.setProperty({
+                setProperty({
                   key: 'eachProductUnitMinutesTimer',
                   value: Number(value),
                 });

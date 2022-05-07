@@ -1,9 +1,5 @@
-import {
-  ISetTableProductTimerStatusParams,
-  TableProductTimerStatuses,
-} from '@/shared';
+import { ISetTableProductTimerStatusParams, TableProductTimerStatuses } from '@/shared';
 
-export interface IStopProductTableTimerParams
-  extends ISetTableProductTimerStatusParams {
+export interface IStopProductTableTimerParams extends ISetTableProductTimerStatusParams {
   value: TableProductTimerStatuses.STOP;
 }

@@ -33,15 +33,7 @@ interface IProductTimer {
 }
 
 export const Display: FC<IProductTimer> = memo(
-  ({
-    tables,
-    tableId,
-    productId,
-    createdAt,
-    minutesLimit,
-    productUnits,
-    setTimer,
-  }) => {
+  ({ tables, tableId, productId, createdAt, minutesLimit, productUnits, setTimer }) => {
     const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
     const timerStatus = tables[tableId].products[productId]?.timerStatus;
     const timerCount = tablesProductsTimers[tableId]?.[productId] ?? 0;
@@ -112,8 +104,7 @@ export const Display: FC<IProductTimer> = memo(
       const updateStorage = () => {
         const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
         const pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
-        let pausedTimerCount =
-          timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
+        let pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
         // @ts-ignore
         pausedTimerCount = new Date() - new Date(pausedAt) + pausedTimerCount;
 
@@ -143,19 +134,11 @@ export const Display: FC<IProductTimer> = memo(
           / {minutesLimit * productUnits}
         </IconButton>
         {isTimerPlay ? (
-          <IconButton
-            role="pause-timer-button"
-            size="small"
-            onClick={handlePause}
-          >
+          <IconButton role="pause-timer-button" size="small" onClick={handlePause}>
             <PauseIcon fontSize="small" />
           </IconButton>
         ) : (
-          <IconButton
-            role="play-timer-button"
-            size="small"
-            onClick={handlePlay}
-          >
+          <IconButton role="play-timer-button" size="small" onClick={handlePlay}>
             <PlayArrowIcon fontSize="small" />
           </IconButton>
         )}

@@ -9,19 +9,13 @@ import { INotification } from '../types';
 export const addNotification = createEvent<INotification>();
 export const removeNotification = createEvent<INotification>();
 
-export const $tableProductsTimersNotifications = createStore<INotification[]>(
-  []
-);
+export const $tableProductsTimersNotifications = createStore<INotification[]>([]);
 
 $tableProductsTimersNotifications
   .on(addNotification, (state, notification) => [...state, notification])
   .on(removeNotification, (state, { tableId, productId, kind, message }) => {
     const index = state.findIndex(
-      (i) =>
-        i.tableId === tableId &&
-        i.productId === productId &&
-        i.kind === kind &&
-        i.message === message
+      (i) => i.tableId === tableId && i.productId === productId && i.kind === kind && i.message === message
     );
     state.splice(index, 1);
     return [...state];
@@ -37,9 +31,7 @@ sample({
     const result = [];
     for (const tableId in timers) {
       for (const productId in timers[tableId]) {
-        const isTimerPlay =
-          tables[tableId].products[productId].timerStatus ===
-          TableProductTimerStatuses.PLAY;
+        const isTimerPlay = tables[tableId].products[productId].timerStatus === TableProductTimerStatuses.PLAY;
         if (timers[tableId]?.[productId] && isTimerPlay) {
           result.push({
             tableId,

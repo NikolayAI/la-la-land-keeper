@@ -9,8 +9,7 @@ import { IAddProductToTableParams } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { $anchorEl, add, setAnchorEl } from '../../model/add';
 
-interface IAddProductToTableProps
-  extends Omit<IAddProductToTableParams, 'productId'> {}
+interface IAddProductToTableProps extends Omit<IAddProductToTableParams, 'productId'> {}
 
 export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
   const products = useStore(productsModel.$products);
@@ -18,10 +17,7 @@ export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
 
   const open = Boolean(anchorEl);
 
-  const handleAddProduct = ({
-    tableId,
-    productId,
-  }: IAddProductToTableParams) => {
+  const handleAddProduct = ({ tableId, productId }: IAddProductToTableParams) => {
     add({ tableId, productId });
     setAnchorEl({ tableId, element: null });
   };
@@ -44,7 +40,9 @@ export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
         id={`basic-menu-${tableId}`}
         anchorEl={anchorEl}
         open={open}
-        onClose={() => setAnchorEl({ tableId, element: null })}
+        onClose={() => {
+          setAnchorEl({ tableId, element: null });
+        }}
         MenuListProps={{ 'aria-labelledby': `basic-button-${tableId}` }}
       >
         {Object.keys(products).map((productId) => (

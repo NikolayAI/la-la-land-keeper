@@ -1,8 +1,4 @@
-import {
-  removeNotification,
-  $tableProductsTimersNotifications,
-  addNotification,
-} from './model';
+import { removeNotification, $tableProductsTimersNotifications, addNotification } from './model';
 import { Notifications } from './ui';
 
 export * from './constants';

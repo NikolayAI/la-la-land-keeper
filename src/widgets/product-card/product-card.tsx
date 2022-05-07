@@ -1,12 +1,7 @@
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import {
-  TableIdType,
-  ITableProduct,
-  TableProductTimerStatuses,
-  TablesType,
-} from '@/shared';
+import { TableIdType, ITableProduct, TableProductTimerStatuses, TablesType } from '@/shared';
 import { ProductsUI } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
@@ -19,15 +14,8 @@ interface IProductCardProps {
   timerStatus: TableProductTimerStatuses;
 }
 
-export const ProductCard: FC<IProductCardProps> = ({
-  tables,
-  tableId,
-  tableProduct,
-  timerStatus,
-}) => {
-  const productsTimersOutOfLimit = useStore(
-    tablesModel.$tablesProductsTimersOutOfLimits
-  );
+export const ProductCard: FC<IProductCardProps> = ({ tables, tableId, tableProduct, timerStatus }) => {
+  const productsTimersOutOfLimit = useStore(tablesModel.$tablesProductsTimersOutOfLimits);
   const isTimerOut = productsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
     <ProductsUI.ProductCard
@@ -45,18 +33,8 @@ export const ProductCard: FC<IProductCardProps> = ({
           setTimer={tablesModel.setTablesProductsTimers}
         />
       }
-      IncreaseTableProductSlot={
-        <TableProductUI.Increase.IconBtn
-          tableId={tableId}
-          productId={tableProduct.id}
-        />
-      }
-      RemoveTableProductSlot={
-        <TableProductUI.Remove.IconBtn
-          tableId={tableId}
-          productId={tableProduct.id}
-        />
-      }
+      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={tableId} productId={tableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={tableId} productId={tableProduct.id} />}
       DecreaseTableProductSlot={
         <TableProductUI.Decrease.IconBtn
           tableId={tableId}
@@ -73,10 +51,7 @@ interface IProductCardListProps {
   tableId: TableIdType;
 }
 
-export const ProductCardList: FC<IProductCardListProps> = ({
-  tables,
-  tableId,
-}) => (
+export const ProductCardList: FC<IProductCardListProps> = ({ tables, tableId }) => (
   <>
     {Object.keys(tables?.[tableId]?.products).map((productId) => {
       const tableProduct = tables?.[tableId]?.products?.[productId] ?? {};

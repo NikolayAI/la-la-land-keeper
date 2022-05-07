@@ -1,13 +1,7 @@
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import { IconButton, TextField } from '@mui/material';
-import React, {
-  ChangeEvent,
-  FC,
-  KeyboardEvent,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react';
 
 interface IEditableText {
   text: string;
@@ -15,11 +9,7 @@ interface IEditableText {
   role?: string;
 }
 
-export const EditableText: FC<IEditableText> = ({
-  text,
-  setTableTitle,
-  role,
-}) => {
+export const EditableText: FC<IEditableText> = ({ text, setTableTitle, role }) => {
   const [editableText, setEditableText] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -57,11 +47,7 @@ export const EditableText: FC<IEditableText> = ({
       ) : (
         editableText
       )}
-      <IconButton
-        role={`${role}-button`}
-        color="inherit"
-        onClick={handleTitleClick}
-      >
+      <IconButton role={`${role}-button`} color="inherit" onClick={handleTitleClick}>
         {isEditMode ? <DoneIcon /> : <EditIcon />}
       </IconButton>
     </>

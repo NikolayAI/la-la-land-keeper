@@ -24,7 +24,9 @@ export const Header = () => {
                 border: '1px solid white',
                 marginRight: 4,
               }}
-              onClick={() => productModel.openModal()}
+              onClick={() => {
+                productModel.openModal();
+              }}
             >
               Создать товар
             </Button>

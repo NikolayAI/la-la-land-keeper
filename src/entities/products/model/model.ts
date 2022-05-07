@@ -8,7 +8,9 @@ export const removeProductFx = createEffect<{ id: string }, void, Error>();
 
 export const $products = createStore<ProductsType>({});
 
-getProductsFx.use(async () => await ProductsAPI.getProducts());
+getProductsFx.use(async () => {
+  return await ProductsAPI.getProducts();
+});
 createProductFx.use(async (product) => {
   await ProductsAPI.createProduct(product);
 });

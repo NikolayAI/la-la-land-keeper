@@ -35,77 +35,50 @@ export const createTable = async (): Promise<void> => {
   await setTables(tables);
 };
 
-export const removeTable = async ({
-  id,
-}: IRemoveTableParams): Promise<void> => {
+export const removeTable = async ({ id }: IRemoveTableParams): Promise<void> => {
   const tables = await getTables();
   delete tables[id];
   await setTables(tables);
 };
 
-export const setTableTitle = async ({
-  id,
-  text,
-}: ISetTableTitleParams): Promise<void> => {
+export const setTableTitle = async ({ id, text }: ISetTableTitleParams): Promise<void> => {
   const tables = await getTables();
   tables[id].title = text;
   await setTables(tables);
 };
 
-export const clearTable = async ({
-  tableId,
-}: IClearTableParams): Promise<void> => {
+export const clearTable = async ({ tableId }: IClearTableParams): Promise<void> => {
   const tables = await getTables();
   tables[tableId].products = {};
   await setTables(tables);
 };
 
-export const addProductToTable = async ({
-  productId,
-  tableId,
-}: IAddProductToTableParams): Promise<void> => {
+export const addProductToTable = async ({ productId, tableId }: IAddProductToTableParams): Promise<void> => {
   const tables = await getTables();
   const products = await getProducts();
-  tables[tableId].products[productId] = createTableProductBody(
-    products[productId]
-  );
+  tables[tableId].products[productId] = createTableProductBody(products[productId]);
   await setTables(tables);
 };
 
-export const removeProductFromTable = async ({
-  productId,
-  tableId,
-}: IRemoveProductToTableParams): Promise<void> => {
+export const removeProductFromTable = async ({ productId, tableId }: IRemoveProductToTableParams): Promise<void> => {
   const tables = await getTables();
   delete tables[tableId].products[productId];
   await setTables(tables);
 };
 
-export const increaseTableProduct = async ({
-  productId,
-  tableId,
-  value,
-}: IIncreaseTableProductParams) => {
+export const increaseTableProduct = async ({ productId, tableId, value }: IIncreaseTableProductParams) => {
   const tables = await getTables();
   tables[tableId].products[productId].units = value;
   await setTables(tables);
 };
 
-export const decreaseTableProduct = async ({
-  productId,
-  tableId,
-  value,
-}: IDecreaseTableProductParams) => {
+export const decreaseTableProduct = async ({ productId, tableId, value }: IDecreaseTableProductParams) => {
   const tables = await getTables();
   tables[tableId].products[productId].units = value;
   await setTables(tables);
 };
 
-export const setTableProductTimerStatus = async ({
-  productId,
-  tableId,
-  value,
-}: ISetTableProductTimerStatusParams) => {
+export const setTableProductTimerStatus = async ({ productId, tableId, value }: ISetTableProductTimerStatusParams) => {
   const tables = await getTables();
   tables[tableId].products[productId].timerStatus = value;
   await setTables(tables);

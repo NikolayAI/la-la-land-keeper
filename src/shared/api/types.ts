@@ -19,13 +19,11 @@ export interface IAddProductToTableParams {
   tableId: TableIdType;
 }
 
-export interface ISetTablesProductsTimersParams
-  extends IAddProductToTableParams {
+export interface ISetTablesProductsTimersParams extends IAddProductToTableParams {
   value: number;
 }
 
-export interface ISetTableProductTimerStatusParams
-  extends IAddProductToTableParams {
+export interface ISetTableProductTimerStatusParams extends IAddProductToTableParams {
   value: TableProductTimerStatuses;
 }
 

@@ -57,7 +57,7 @@
     "no-template-curly-in-string": 1,
     "no-self-compare": 1,
     "import/prefer-default-export": 0,
-    "arrow-body-style": 1,
+    "arrow-body-style": 0,
     "import/no-extraneous-dependencies": [
       "off",
       {
@@ -109,14 +109,7 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ]
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
       }
     ],
     "no-restricted-imports": [
@@ -189,14 +182,7 @@
         "rules": [
           {
             "from": "app",
-            "allow": [
-              "processes",
-              "pages",
-              "widgets",
-              "features",
-              "entities",
-              "shared"
-            ]
+            "allow": ["processes", "pages", "widgets", "features", "entities", "shared"]
           },
           {
             "from": "processes",
@@ -245,13 +231,7 @@
       }
     }
   ],
-  "ignorePatterns": [
-    "index.tsx",
-    "dist",
-    "node_modules",
-    "webpack.*",
-    "webpack/paths.js"
-  ],
+  "ignorePatterns": ["index.tsx", "dist", "node_modules", "webpack.*", "webpack/paths.js"],
   "env": {
     "browser": true,
     "es6": true,

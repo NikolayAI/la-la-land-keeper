@@ -1,9 +1,4 @@
-import {
-  createProductFx,
-  getProductsFx,
-  removeProductFx,
-  $products,
-} from './model';
+import { createProductFx, getProductsFx, removeProductFx, $products } from './model';
 import { ProductCard } from './ui';
 
 export * from './constants';

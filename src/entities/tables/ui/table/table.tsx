@@ -1,13 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  Paper,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Box, Card, CardContent, Grid, Paper, Toolbar, Typography } from '@mui/material';
 import React, { FC, memo, ReactNode } from 'react';
 
 import { TableIdType, TablesType } from '@/shared';
@@ -60,22 +51,12 @@ export const Table: FC<ITableProps> = memo(
           <Paper elevation={0}>
             <Grid container spacing={2}>
               <Grid item xs={10}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  paddingTop={1}
-                  paddingBottom={1}
-                >
+                <Typography variant="h6" component="div" paddingTop={1} paddingBottom={1}>
                   Итого:
                 </Typography>
               </Grid>
               <Grid item xs={2}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  paddingTop={1}
-                  paddingBottom={1}
-                >
+                <Typography variant="h6" component="div" paddingTop={1} paddingBottom={1}>
                   {calculateTableTotalPrice({
                     products: tables?.[tableId]?.products,
                   })}

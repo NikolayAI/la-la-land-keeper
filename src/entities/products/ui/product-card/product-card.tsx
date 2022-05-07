@@ -26,11 +26,7 @@ export const ProductCard: FC<IProductCardProps> = ({
   <Paper
     role={`table-product-paper-${tableProduct.id}`}
     elevation={6}
-    sx={{
-      backgroundColor: isProductTimerOut
-        ? '#d32f2f'
-        : backgroundColors[timerStatus],
-    }}
+    sx={{ backgroundColor: isProductTimerOut ? '#d32f2f' : backgroundColors[timerStatus] }}
   >
     <Grid container spacing={2} alignItems="center">
       <Grid item xs={3.5}>

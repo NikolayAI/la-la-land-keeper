@@ -17,8 +17,9 @@ $anchorEl.on(setAnchorEl, (state, { tableId, element }) => ({
 sample({
   clock: add,
   source: tablesModel.$tables,
-  filter: (tables, { tableId, productId }) =>
-    !tables[tableId]?.products[productId]?.createdAt,
+  filter: (tables, { tableId, productId }) => {
+    return !tables[tableId]?.products[productId]?.createdAt;
+  },
   fn: (_, clockPayload) => clockPayload,
   target: tablesModel.addProductFx,
 });

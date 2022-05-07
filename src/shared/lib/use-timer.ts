@@ -1,14 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import {
-  ISetTablesProductsTimersParams,
-  TableProductTimerStatuses,
-} from '../api';
-import {
-  ProductIdType,
-  TableIdType,
-  TableProductCreatedAtType,
-} from '../types';
+import { ISetTablesProductsTimersParams, TableProductTimerStatuses } from '../api';
+import { ProductIdType, TableIdType, TableProductCreatedAtType } from '../types';
 import { dateToSeconds } from './format-date';
 import { getLocalStorage } from './local-storage';
 
@@ -52,18 +45,12 @@ export const useTimer = ({
 
   const calculateTimerCount = () => {
     if (ref.current.isTimerPlay) {
-      return dateToSeconds(
-        Number(new Date()) -
-          Number(new Date(createdAt)) -
-          ref.current.pausedTimerCount
-      );
+      return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
     }
     if (!ref.current.isTimerPlay) {
       return dateToSeconds(
         // @ts-ignore
-        Number(new Date(ref.current.pausedAt)) -
-          Number(new Date(createdAt)) -
-          ref.current.pausedTimerCount
+        Number(new Date(ref.current.pausedAt)) - Number(new Date(createdAt)) - ref.current.pausedTimerCount
       );
     }
     return 0;
@@ -72,8 +59,7 @@ export const useTimer = ({
   useEffect(() => {
     const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
     ref.current.pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
-    ref.current.pausedTimerCount =
-      timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
+    ref.current.pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
 
     setTimer({
       tableId,

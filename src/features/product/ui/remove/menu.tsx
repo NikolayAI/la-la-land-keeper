@@ -6,11 +6,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { ProductsType } from '@/shared';
-import {
-  $anchorEl,
-  removeProduct,
-  setAnchorEl,
-} from '../../model/remove/model';
+import { $anchorEl, removeProduct, setAnchorEl } from '../../model/remove/model';
 
 interface IRemoveProductsList {
   products: ProductsType;
@@ -38,7 +34,9 @@ export const Menu: FC<IRemoveProductsList> = ({ products }) => {
             border: '1px solid white',
             marginRight: 4,
           }}
-          onClick={(event) => setAnchorEl(event.currentTarget)}
+          onClick={(event) => {
+            setAnchorEl(event.currentTarget);
+          }}
         >
           Удалить товар
         </Button>
@@ -97,10 +95,7 @@ const StyledMenu = styled((props: MenuProps) => (
     borderRadius: 6,
     marginTop: theme.spacing(1),
     minWidth: 180,
-    color:
-      theme.palette.mode === 'light'
-        ? 'rgb(55, 65, 81)'
-        : theme.palette.grey[300],
+    color: theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
@@ -113,10 +108,7 @@ const StyledMenu = styled((props: MenuProps) => (
         marginRight: theme.spacing(1.5),
       },
       '&:active': {
-        backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity
-        ),
+        backgroundColor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
       },
     },
   },
