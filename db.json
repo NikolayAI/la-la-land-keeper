@@ -22,14 +22,6 @@
       "isPiece": true,
       "needTimer": false,
       "eachProductUnitMinutesTimer": 0
-    },
-    "f517b22a-aef7-4151-b652-12bf326538e1": {
-      "id": "f517b22a-aef7-4151-b652-12bf326538e1",
-      "title": "Шапка Деда Мороза",
-      "price": 12,
-      "isPiece": true,
-      "needTimer": true,
-      "eachProductUnitMinutesTimer": 4
     }
   }
 }

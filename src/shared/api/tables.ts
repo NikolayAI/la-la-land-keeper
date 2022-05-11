@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 
+import { HttpClient } from '../lib';
 import { headers } from './constants';
 import { createTableBody, createTableProductBody } from './lib';
 import { getProducts } from './products';
@@ -16,15 +17,15 @@ import {
 } from './types';
 
 export const getTables = async (): Promise<TablesType> => {
-  const response = await fetch('http://localhost:3001/tables');
-  return await response.json();
+  const { data } = await HttpClient.get<TablesType>({ url: '/tables' });
+  return data;
 };
 
 export const setTables = async (tables: TablesType): Promise<void> => {
-  await fetch('http://localhost:3001/tables', {
-    method: 'POST',
-    body: JSON.stringify(tables),
-    headers,
+  await HttpClient.post({
+    url: '/tables',
+    data: tables,
+    config: { headers },
   });
 };
 

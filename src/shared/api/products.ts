@@ -1,18 +1,19 @@
 import { v4 } from 'uuid';
 
+import { HttpClient } from '../lib';
 import { headers } from './constants';
 import { IProduct, ProductsType } from './types';
 
 export const getProducts = async (): Promise<ProductsType> => {
-  const response = await fetch('http://localhost:3001/products');
-  return await response.json();
+  const { data } = await HttpClient.get({ url: '/products' });
+  return data;
 };
 
 export const setProducts = async (products: ProductsType): Promise<void> => {
-  await fetch('http://localhost:3001/products', {
-    method: 'POST',
-    body: JSON.stringify(products),
-    headers,
+  await HttpClient.post({
+    url: '/products',
+    data: products,
+    config: { headers },
   });
 };
 
