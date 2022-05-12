@@ -16,7 +16,12 @@ export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId, productUnits })
     color="primary"
     size="small"
     onClick={() => {
-      productUnits > 1 ? decrease({ tableId, productId }) : remove({ tableId, productId });
+      productUnits > 1
+        ? decrease({ tableId, productId })
+        : remove({
+            tableId,
+            productId,
+          });
     }}
   >
     <RemoveIcon fontSize="small" />

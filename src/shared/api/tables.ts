@@ -1,9 +1,6 @@
 import { v4 } from 'uuid';
 
 import { HttpClient } from '../lib';
-import { headers } from './constants';
-import { createTableBody, createTableProductBody } from './lib';
-import { getProducts } from './products';
 import {
   IAddProductToTableParams,
   IClearTableParams,
@@ -14,7 +11,10 @@ import {
   ISetTableProductTimerStatusParams,
   ISetTableTitleParams,
   TablesType,
-} from './types';
+} from '../types';
+import { headers } from './constants';
+import { createTableBody, createTableProductBody } from './lib';
+import { getProducts } from './products';
 
 export const getTables = async (): Promise<TablesType> => {
   const { data } = await HttpClient.get<TablesType>({ url: '/tables' });

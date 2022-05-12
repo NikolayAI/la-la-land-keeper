@@ -6,16 +6,11 @@ import React, { FC } from 'react';
 import { play } from '../../../../../src/features/table-product-timer/model/play';
 import { stop } from '../../../../../src/features/table-product-timer/model/stop';
 import { Display } from '../../../../../src/features/table-product-timer/ui/timer/display';
-import {
-  IChildrenOnly,
-  TableProductTimerStatuses,
-} from '../../../../../src/shared';
+import { IChildrenOnly } from '../../../../../src/shared';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 const tablesWithPlayTimerStatus = {
   '1': {

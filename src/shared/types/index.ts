@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { TableProductTimerStatuses } from '../constants';
+
 /* type utilities */
 export type KeyValueType<T> = {
   [K in keyof T]: { key: K; value: T[K] };
@@ -25,6 +27,70 @@ export type ProductUnitMinutesTimerType = number;
 
 export type ClassNameType = string;
 
+/* types */
 export interface IChildrenOnly {
   children: ReactNode;
 }
+
+export interface IClearTableParams {
+  tableId: TableIdType;
+}
+
+export interface IAddProductToTableParams {
+  productId: ProductIdType;
+  tableId: TableIdType;
+}
+
+export interface ISetTablesProductsTimersParams extends IAddProductToTableParams {
+  value: number;
+}
+
+export interface ISetTableProductTimerStatusParams extends IAddProductToTableParams {
+  value: TableProductTimerStatuses;
+}
+
+export interface IDecreaseTableProductParams extends IAddProductToTableParams {
+  value: number;
+}
+
+export interface IIncreaseTableProductParams extends IAddProductToTableParams {
+  value: number;
+}
+
+export interface IRemoveProductToTableParams extends IAddProductToTableParams {}
+
+export interface ISetTableTitleParams {
+  id: TableIdType;
+  text: string;
+}
+
+export interface IRemoveTableParams {
+  id: TableIdType;
+}
+
+export interface IProduct {
+  id: ProductIdType;
+  title: ProductTitleType;
+  price: ProductPriceType;
+  isPiece: boolean;
+  needTimer: boolean;
+  eachProductUnitMinutesTimer: ProductUnitMinutesTimerType;
+}
+
+export type ProductsType = Record<ProductIdType, IProduct>;
+
+export interface ITableProduct extends IProduct {
+  units: TableProductUnitsType;
+  createdAt: TableProductCreatedAtType;
+  timerStatus: TableProductTimerStatuses;
+}
+
+export type TableProductsType = Record<ProductIdType, ITableProduct>;
+
+export interface ITable {
+  id: TableIdType;
+  title: TableTitleType;
+  products: TableProductsType;
+}
+
+export type TablesType = Record<TableIdType, ITable>;

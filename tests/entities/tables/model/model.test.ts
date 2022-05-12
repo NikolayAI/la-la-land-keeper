@@ -1,6 +1,6 @@
 import { allSettled, fork } from 'effector';
 
-import { TableProductTimerStatuses, TablesAPI } from '@/shared';
+import { TablesAPI } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 jest.mock('@/shared');
@@ -122,9 +122,7 @@ test(`$tablesProductsTimersOutOfLimits should not calculate boolean values`, asy
     ],
   });
 
-  expect(
-    scope.getState(tablesModel.$tablesProductsTimersOutOfLimits)
-  ).toStrictEqual({ 1: {} });
+  expect(scope.getState(tablesModel.$tablesProductsTimersOutOfLimits)).toStrictEqual({ 1: {} });
 });
 
 test(`$tablesProductsTimersOutOfLimits should calculate boolean values`, async () => {
@@ -151,9 +149,7 @@ test(`$tablesProductsTimersOutOfLimits should calculate boolean values`, async (
     ],
   });
 
-  expect(
-    scope.getState(tablesModel.$tablesProductsTimersOutOfLimits)
-  ).toStrictEqual({
+  expect(scope.getState(tablesModel.$tablesProductsTimersOutOfLimits)).toStrictEqual({
     1: { 2: false },
   });
 });

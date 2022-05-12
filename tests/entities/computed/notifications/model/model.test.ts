@@ -1,10 +1,6 @@
 import { allSettled, fork } from 'effector';
 
-import { TableProductTimerStatuses } from '@/shared';
-import {
-  NotificationKinds,
-  notificationsModel,
-} from '@/entities/computed/notifications';
+import { NotificationKinds, notificationsModel } from '@/entities/computed/notifications';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 
@@ -66,9 +62,7 @@ test(`tableProductsTimersNotifications should take data when tablesProductsTimer
 
   await allSettled(tablesModel.getTablesFx, { scope });
 
-  expect(
-    scope.getState(notificationsModel.$tableProductsTimersNotifications)
-  ).toHaveLength(1);
+  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toHaveLength(1);
 });
 
 test(`tableProductsTimersNotifications should not take data when tablesProductsTimersOutOfLimits updated`, async () => {
@@ -114,9 +108,7 @@ test(`tableProductsTimersNotifications should not take data when tablesProductsT
 
   await allSettled(tablesModel.getTablesFx, { scope });
 
-  expect(
-    scope.getState(notificationsModel.$tableProductsTimersNotifications)
-  ).toStrictEqual([]);
+  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toStrictEqual([]);
 });
 
 test(`addNotification should add notification to tableProductsTimersNotifications`, async () => {
@@ -126,9 +118,7 @@ test(`addNotification should add notification to tableProductsTimersNotification
 
   await allSettled(notificationsModel.addNotification, { scope, params });
 
-  expect(
-    scope.getState(notificationsModel.$tableProductsTimersNotifications)
-  ).toStrictEqual([params]);
+  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toStrictEqual([params]);
 });
 
 test(`removeNotification should remove notification from tableProductsTimersNotifications`, async () => {
@@ -138,7 +128,5 @@ test(`removeNotification should remove notification from tableProductsTimersNoti
 
   await allSettled(notificationsModel.removeNotification, { scope, params });
 
-  expect(
-    scope.getState(notificationsModel.$tableProductsTimersNotifications)
-  ).toStrictEqual([]);
+  expect(scope.getState(notificationsModel.$tableProductsTimersNotifications)).toStrictEqual([]);
 });

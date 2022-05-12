@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { ISetTablesProductsTimersParams, TableProductTimerStatuses } from '../api';
-import { ProductIdType, TableIdType, TableProductCreatedAtType } from '../types';
+import { TableProductTimerStatuses } from '../constants';
+import { ISetTablesProductsTimersParams, ProductIdType, TableIdType, TableProductCreatedAtType } from '../types';
 import { dateToSeconds } from './format-date';
 import { getLocalStorage } from './local-storage';
 

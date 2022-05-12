@@ -5,18 +5,18 @@ import { useStore } from 'effector-react';
 import React, { FC, memo, useEffect } from 'react';
 
 import {
-  ISetTablesProductsTimersParams,
-  TableProductTimerStatuses,
-  TablesType,
   getLocalStorage,
+  ISetTablesProductsTimersParams,
   setLocalStorage,
-  tablesProductsTimersKey,
-  useTimer,
   TableIdType,
   TableProductCreatedAtType,
   TableProductIdType,
   TableProductMinutesLimitType,
+  TableProductTimerStatuses,
   TableProductUnitsType,
+  tablesProductsTimersKey,
+  TablesType,
+  useTimer,
 } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 import { play } from '../../model/play';

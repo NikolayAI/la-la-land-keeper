@@ -1,8 +1,8 @@
 import { v4 } from 'uuid';
 
 import { HttpClient } from '../lib';
+import { IProduct, ProductsType } from '../types';
 import { headers } from './constants';
-import { IProduct, ProductsType } from './types';
 
 export const getProducts = async (): Promise<ProductsType> => {
   const { data } = await HttpClient.get({ url: '/products' });

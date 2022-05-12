@@ -3,7 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
+import { IChildrenOnly } from '@/shared';
 import { ProductsUI } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
@@ -12,9 +12,7 @@ import { table, tableProduct, tables } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const decreaseTableProductFn = jest.fn();
@@ -57,18 +55,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -106,18 +94,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -155,18 +133,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -216,18 +184,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -277,18 +235,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -300,9 +248,7 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    expect(
-      screen.getByRole(`table-product-paper-${tableProduct.id}`)
-    ).toHaveStyle('backgroundColor: #d32f2f');
+    expect(screen.getByRole(`table-product-paper-${tableProduct.id}`)).toHaveStyle('backgroundColor: #d32f2f');
   });
 
   test('product card should display timer if product need timer', async () => {
@@ -337,18 +283,8 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
-        RemoveTableProductSlot={
-          <TableProductUI.Remove.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-          />
-        }
+        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
@@ -360,8 +296,6 @@ describe('events', () => {
       { wrapper: Wrapper }
     );
 
-    expect(
-      screen.getByRole(`product-timer-display-${table.id}-${tableProduct.id}`)
-    ).toBeDefined();
+    expect(screen.getByRole(`product-timer-display-${table.id}-${tableProduct.id}`)).toBeDefined();
   });
 });

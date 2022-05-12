@@ -1,6 +1,5 @@
-import { TableIdType } from '../types';
-import { TableProductTimerStatuses } from './constants';
-import { IProduct, ITable, ITableProduct } from './types';
+import { TableProductTimerStatuses } from '../constants';
+import { TableIdType, IProduct, ITable, ITableProduct } from '../types';
 
 export const createTableBody = ({ id }: { id: TableIdType }): ITable => ({
   id,
