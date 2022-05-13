@@ -3,7 +3,7 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { IChildrenOnly } from '@/shared';
+import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { ProductsUI } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel, TableProductUI } from '@/features/table-product';

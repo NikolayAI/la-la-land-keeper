@@ -25,7 +25,7 @@ export interface ITableProductTimerRef {
   pausedTimerCount: number;
 }
 
-export const useTimer = ({
+export const useProductTimer = ({
   tableId,
   productId,
   createdAt,

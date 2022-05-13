@@ -3,10 +3,8 @@ import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
-import { play } from '../../../../../src/features/table-product-timer/model/play';
-import { stop } from '../../../../../src/features/table-product-timer/model/stop';
-import { Display } from '../../../../../src/features/table-product-timer/ui/timer/display';
-import { IChildrenOnly } from '../../../../../src/shared';
+import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
+import { TableProductTimerUI, tableProductTimerModel } from '@/features/table-product-timer';
 
 let scope: Scope;
 
@@ -50,10 +48,10 @@ describe('events', () => {
   const setTimerFn = jest.fn();
 
   const playTimerFn = jest.fn();
-  play.watch(playTimerFn);
+  tableProductTimerModel.play.watch(playTimerFn);
 
   const stopTimerFn = jest.fn();
-  stop.watch(stopTimerFn);
+  tableProductTimerModel.stop.watch(stopTimerFn);
 
   beforeEach(() => {
     scope = fork();
@@ -61,7 +59,7 @@ describe('events', () => {
 
   test('should call handleStopTimer', async () => {
     render(
-      <Display
+      <TableProductTimerUI.Timer.Display
         tables={tablesWithPlayTimerStatus}
         tableId="1"
         productId="2"
@@ -82,7 +80,7 @@ describe('events', () => {
 
   test('should call handlePlayTimer', async () => {
     render(
-      <Display
+      <TableProductTimerUI.Timer.Display
         tables={tablesWithStopTimerStatus}
         tableId="1"
         productId="2"

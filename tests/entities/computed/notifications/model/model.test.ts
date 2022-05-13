@@ -1,5 +1,6 @@
 import { allSettled, fork } from 'effector';
 
+import { TableProductTimerStatuses } from '@/shared';
 import { NotificationKinds, notificationsModel } from '@/entities/computed/notifications';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';

@@ -1,6 +1,6 @@
 import { allSettled, fork } from 'effector';
 
-import { TablesAPI } from '@/shared';
+import { TableProductTimerStatuses, TablesAPI } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 jest.mock('@/shared');

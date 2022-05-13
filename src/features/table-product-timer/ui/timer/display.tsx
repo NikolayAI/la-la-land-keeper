@@ -16,7 +16,7 @@ import {
   TableProductUnitsType,
   tablesProductsTimersKey,
   TablesType,
-  useTimer,
+  useProductTimer,
 } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 import { play } from '../../model/play';
@@ -39,7 +39,7 @@ export const Display: FC<IProductTimer> = memo(
     const timerCount = tablesProductsTimers[tableId]?.[productId] ?? 0;
     const isTimerPlay = timerStatus === TableProductTimerStatuses.PLAY;
 
-    useTimer({
+    useProductTimer({
       tableId,
       productId,
       createdAt,

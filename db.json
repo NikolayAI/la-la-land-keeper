@@ -15,10 +15,10 @@
       "needTimer": true,
       "eachProductUnitMinutesTimer": 90
     },
-    "30517acc-851f-4636-b881-b91a4e5ddf38": {
-      "id": "30517acc-851f-4636-b881-b91a4e5ddf38",
+    "80ea92d3-96b6-492b-b6db-9b8501cd1670": {
+      "id": "80ea92d3-96b6-492b-b6db-9b8501cd1670",
       "title": "Чай",
-      "price": 300,
+      "price": 23,
       "isPiece": true,
       "needTimer": false,
       "eachProductUnitMinutesTimer": 0
