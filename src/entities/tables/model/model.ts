@@ -58,8 +58,8 @@ increaseTableProductFx.use(async ({ productId, tableId, value }) => {
 decreaseTableProductFx.use(async ({ productId, tableId, value }) => {
   await TablesAPI.decreaseTableProduct({ productId, tableId, value });
 });
-setTableProductTimerStatusFx.use(async ({ productId, tableId, value }) => {
-  await TablesAPI.setTableProductTimerStatus({ productId, tableId, value });
+setTableProductTimerStatusFx.use(async (payload) => {
+  await TablesAPI.setTableProductTimerStatus(payload);
 });
 
 export const $tablesIds = combine($tables, (tables) => Object.keys(tables));

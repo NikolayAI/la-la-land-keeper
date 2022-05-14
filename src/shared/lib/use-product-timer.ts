@@ -1,9 +1,15 @@
 import { useEffect, useRef } from 'react';
 
-import { TableProductTimerStatuses } from '../constants';
-import { ISetTablesProductsTimersParams, ProductIdType, TableIdType, TableProductCreatedAtType } from '../types';
+import {
+  ISetTablesProductsTimersParams,
+  ProductIdType,
+  TableIdType,
+  TableProductCreatedAtType,
+  TableProductPausedAtType,
+  TableProductPausedTimerCountType,
+  TableProductTimerStatusType,
+} from '../types';
 import { dateToSeconds } from './format-date';
-import { getLocalStorage } from './local-storage';
 
 export const tablesProductsTimersKey = 'tablesProductsTimers';
 
@@ -12,7 +18,9 @@ interface IUseTimer {
   productId: ProductIdType;
   createdAt: TableProductCreatedAtType;
   isTimerPlay: boolean;
-  timerStatus: TableProductTimerStatuses;
+  timerStatus: TableProductTimerStatusType;
+  pausedAt: TableProductPausedAtType;
+  pausedTimerCount: TableProductPausedTimerCountType;
   interval: number;
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
 }
@@ -21,7 +29,7 @@ export interface ITableProductTimerRef {
   // eslint-disable-next-line no-undef
   intervalId: NodeJS.Timer | null;
   isTimerPlay: boolean;
-  pausedAt: Date | null;
+  pausedAt: TableProductPausedAtType;
   pausedTimerCount: number;
 }
 
@@ -31,6 +39,8 @@ export const useProductTimer = ({
   createdAt,
   isTimerPlay,
   timerStatus,
+  pausedTimerCount,
+  pausedAt,
   interval,
   setTimer,
 }: IUseTimer) => {
@@ -57,9 +67,8 @@ export const useProductTimer = ({
   };
 
   useEffect(() => {
-    const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
-    ref.current.pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
-    ref.current.pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
+    ref.current.pausedAt = pausedAt ?? new Date();
+    ref.current.pausedTimerCount = pausedTimerCount;
 
     setTimer({
       tableId,
@@ -67,23 +76,19 @@ export const useProductTimer = ({
       value: calculateTimerCount(),
     });
 
-    if (!ref.current.isTimerPlay) {
-      if (ref.current.intervalId) {
-        clearInterval(ref.current.intervalId);
-        ref.current.intervalId = null;
-      }
+    if (!ref.current.isTimerPlay && ref.current.intervalId) {
+      clearInterval(ref.current.intervalId);
+      ref.current.intervalId = null;
     }
 
-    if (ref.current.isTimerPlay) {
-      if (!ref.current.intervalId) {
-        ref.current.intervalId = setInterval(() => {
-          setTimer({
-            tableId,
-            productId,
-            value: calculateTimerCount(),
-          });
-        }, interval);
-      }
+    if (ref.current.isTimerPlay && !ref.current.intervalId) {
+      ref.current.intervalId = setInterval(() => {
+        setTimer({
+          tableId,
+          productId,
+          value: calculateTimerCount(),
+        });
+      }, interval);
     }
 
     return () => {

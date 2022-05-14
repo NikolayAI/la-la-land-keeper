@@ -2,20 +2,19 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { IconButton } from '@mui/material';
 import { useStore } from 'effector-react';
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo } from 'react';
 
 import {
-  getLocalStorage,
   ISetTablesProductsTimersParams,
-  setLocalStorage,
   TableIdType,
   TableProductCreatedAtType,
   TableProductIdType,
   TableProductMinutesLimitType,
+  TableProductPausedAtType,
+  TableProductPausedTimerCountType,
   TableProductTimerStatuses,
+  TableProductTimerStatusType,
   TableProductUnitsType,
-  tablesProductsTimersKey,
-  TablesType,
   useProductTimer,
 } from '@/shared';
 import { tablesModel } from '@/entities/tables';
@@ -23,9 +22,11 @@ import { play } from '../../model/play';
 import { stop } from '../../model/stop';
 
 interface IProductTimer {
-  tables: TablesType;
   tableId: TableIdType;
   productId: TableProductIdType;
+  timerStatus: TableProductTimerStatusType;
+  pausedAt: TableProductPausedAtType;
+  pausedTimerCount: TableProductPausedTimerCountType;
   createdAt: TableProductCreatedAtType;
   minutesLimit: TableProductMinutesLimitType;
   productUnits: TableProductUnitsType;
@@ -33,11 +34,21 @@ interface IProductTimer {
 }
 
 export const Display: FC<IProductTimer> = memo(
-  ({ tables, tableId, productId, createdAt, minutesLimit, productUnits, setTimer }) => {
+  ({
+    tableId,
+    productId,
+    pausedAt,
+    timerStatus,
+    pausedTimerCount,
+    createdAt,
+    minutesLimit,
+    productUnits,
+    setTimer,
+  }) => {
     const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
-    const timerStatus = tables[tableId].products[productId]?.timerStatus;
-    const timerCount = tablesProductsTimers[tableId]?.[productId] ?? 0;
-    const isTimerPlay = timerStatus === TableProductTimerStatuses.PLAY;
+
+    const timerCount = tablesProductsTimers[tableId]?.[productId];
+    const isTimerPlay = timerStatus === TableProductTimerStatuses.play;
 
     useProductTimer({
       tableId,
@@ -45,52 +56,19 @@ export const Display: FC<IProductTimer> = memo(
       createdAt,
       isTimerPlay,
       timerStatus,
+      pausedAt,
+      pausedTimerCount,
       setTimer,
       interval: 1000,
     });
-
-    useEffect(
-      () => () => {
-        const timers = getLocalStorage({ key: tablesProductsTimersKey });
-        setLocalStorage({
-          key: tablesProductsTimersKey,
-          value: {
-            ...(timers ?? {}),
-            [tableId]: {
-              ...(timers?.[tableId] ?? {}),
-              [productId]: {
-                ...(timers?.[tableId]?.[productId] ?? {}),
-                pausedAt: null,
-                pausedTimerCount: 0,
-              },
-            },
-          },
-        });
-      },
-      []
-    );
 
     const handlePause = () => {
       stop({
         tableId,
         productId,
-        value: TableProductTimerStatuses.STOP,
-      });
-
-      const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
-
-      setLocalStorage({
-        key: tablesProductsTimersKey,
-        value: {
-          ...(timers ?? {}),
-          [tableId]: {
-            ...(timers[tableId] ?? {}),
-            [productId]: {
-              ...(timers[tableId]?.[productId] ?? {}),
-              pausedAt: new Date(),
-            },
-          },
-        },
+        timerStatus: TableProductTimerStatuses.stop,
+        pausedAt: new Date(),
+        pausedTimerCount,
       });
     };
 
@@ -98,31 +76,11 @@ export const Display: FC<IProductTimer> = memo(
       play({
         tableId,
         productId,
-        value: TableProductTimerStatuses.PLAY,
-      });
-
-      const updateStorage = () => {
-        const timers = getLocalStorage({ key: tablesProductsTimersKey }) ?? {};
-        const pausedAt = timers[tableId]?.[productId]?.pausedAt ?? new Date();
-        let pausedTimerCount = timers[tableId]?.[productId]?.pausedTimerCount ?? 0;
+        pausedAt,
+        timerStatus: TableProductTimerStatuses.play,
         // @ts-ignore
-        pausedTimerCount = new Date() - new Date(pausedAt) + pausedTimerCount;
-
-        setLocalStorage({
-          key: tablesProductsTimersKey,
-          value: {
-            ...(timers ?? {}),
-            [tableId]: {
-              ...(timers[tableId] ?? {}),
-              [productId]: {
-                ...(timers[tableId]?.[productId] ?? {}),
-                pausedTimerCount: pausedTimerCount,
-              },
-            },
-          },
-        });
-      };
-      updateStorage();
+        pausedTimerCount: new Date() - new Date(pausedAt ?? new Date()) + pausedTimerCount,
+      });
     };
 
     return (

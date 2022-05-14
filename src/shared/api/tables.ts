@@ -79,8 +79,16 @@ export const decreaseTableProduct = async ({ productId, tableId, value }: IDecre
   await setTables(tables);
 };
 
-export const setTableProductTimerStatus = async ({ productId, tableId, value }: ISetTableProductTimerStatusParams) => {
+export const setTableProductTimerStatus = async ({
+  productId,
+  tableId,
+  timerStatus,
+  pausedAt,
+  pausedTimerCount,
+}: ISetTableProductTimerStatusParams) => {
   const tables = await getTables();
-  tables[tableId].products[productId].timerStatus = value;
+  tables[tableId].products[productId].timerStatus = timerStatus;
+  tables[tableId].products[productId].pausedAt = pausedAt;
+  tables[tableId].products[productId].pausedTimerCount = pausedTimerCount;
   await setTables(tables);
 };

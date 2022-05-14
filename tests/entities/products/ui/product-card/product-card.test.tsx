@@ -8,7 +8,7 @@ import { ProductsUI } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
 import { TableProductTimerUI } from '@/features/table-product-timer';
-import { table, tableProduct, tables } from '../../../../__mocks__/fixtures';
+import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -30,37 +30,33 @@ describe('events', () => {
       ...tableProduct,
       units: 2,
     };
-    const testTables = {
-      [table.id]: {
-        ...table,
-        products: {
-          [tableProduct.id]: testTableProduct,
-        },
-      },
-    };
 
     render(
       <ProductsUI.ProductCard
         tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={testTables}
+            timerStatus={testTableProduct.timerStatus}
+            pausedTimerCount={testTableProduct.pausedTimerCount}
+            pausedAt={testTableProduct.pausedAt}
             tableId={table.id}
-            productId={tableProduct.id}
-            createdAt={tableProduct.createdAt}
-            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-            productUnits={tableProduct.units}
+            productId={testTableProduct.id}
+            createdAt={testTableProduct.createdAt}
+            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+            productUnits={testTableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
+        }
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
-            productId={tableProduct.id}
+            productId={testTableProduct.id}
             productUnits={testTableProduct.units}
           />
         }
@@ -81,11 +77,13 @@ describe('events', () => {
     render(
       <ProductsUI.ProductCard
         tableProduct={tableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={tables}
+            timerStatus={tableProduct.timerStatus}
+            pausedTimerCount={tableProduct.pausedTimerCount}
+            pausedAt={tableProduct.pausedAt}
             tableId={table.id}
             productId={tableProduct.id}
             createdAt={tableProduct.createdAt}
@@ -120,11 +118,13 @@ describe('events', () => {
     render(
       <ProductsUI.ProductCard
         tableProduct={tableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={tables}
+            timerStatus={tableProduct.timerStatus}
+            pausedTimerCount={tableProduct.pausedTimerCount}
+            pausedAt={tableProduct.pausedAt}
             tableId={table.id}
             productId={tableProduct.id}
             createdAt={tableProduct.createdAt}
@@ -159,38 +159,34 @@ describe('events', () => {
       ...tableProduct,
       isPiece: false,
     };
-    const testTables = {
-      [table.id]: {
-        ...table,
-        products: {
-          [tableProduct.id]: testTableProduct,
-        },
-      },
-    };
 
     render(
       <ProductsUI.ProductCard
         tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={testTables}
+            timerStatus={testTableProduct.timerStatus}
+            pausedTimerCount={testTableProduct.pausedTimerCount}
+            pausedAt={testTableProduct.pausedAt}
             tableId={table.id}
-            productId={tableProduct.id}
-            createdAt={tableProduct.createdAt}
-            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-            productUnits={tableProduct.units}
+            productId={testTableProduct.id}
+            createdAt={testTableProduct.createdAt}
+            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+            productUnits={testTableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
+        }
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
-            productId={tableProduct.id}
-            productUnits={tableProduct.units}
+            productId={testTableProduct.id}
+            productUnits={testTableProduct.units}
           />
         }
       />,
@@ -210,37 +206,33 @@ describe('events', () => {
       ...tableProduct,
       units: 2,
     };
-    const testTables = {
-      [table.id]: {
-        ...table,
-        products: {
-          [tableProduct.id]: testTableProduct,
-        },
-      },
-    };
 
     render(
       <ProductsUI.ProductCard
         tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={testTables}
+            timerStatus={testTableProduct.timerStatus}
+            pausedTimerCount={testTableProduct.pausedTimerCount}
+            pausedAt={testTableProduct.pausedAt}
             tableId={table.id}
-            productId={tableProduct.id}
-            createdAt={tableProduct.createdAt}
-            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-            productUnits={tableProduct.units}
+            productId={testTableProduct.id}
+            createdAt={testTableProduct.createdAt}
+            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+            productUnits={testTableProduct.units}
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
+        }
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
-            productId={tableProduct.id}
+            productId={testTableProduct.id}
             productUnits={testTableProduct.units}
           />
         }
@@ -258,23 +250,17 @@ describe('events', () => {
       units: 2,
       needTimer: true,
     };
-    const testTables = {
-      [table.id]: {
-        ...table,
-        products: {
-          [testTableProduct.id]: testTableProduct,
-        },
-      },
-    };
 
     render(
       <ProductsUI.ProductCard
         tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.PLAY}
+        timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={true}
         TableProductTimerSlot={
           <TableProductTimerUI.Timer.Display
-            tables={testTables}
+            timerStatus={testTableProduct.timerStatus}
+            pausedTimerCount={testTableProduct.pausedTimerCount}
+            pausedAt={testTableProduct.pausedAt}
             tableId={table.id}
             productId={testTableProduct.id}
             createdAt={testTableProduct.createdAt}
@@ -283,12 +269,14 @@ describe('events', () => {
             setTimer={tablesModel.setTablesProductsTimers}
           />
         }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
+        }
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
         DecreaseTableProductSlot={
           <TableProductUI.Decrease.IconBtn
             tableId={table.id}
-            productId={tableProduct.id}
+            productId={testTableProduct.id}
             productUnits={testTableProduct.units}
           />
         }

@@ -10,40 +10,6 @@ let scope: Scope;
 
 const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
-const tablesWithPlayTimerStatus = {
-  '1': {
-    id: '1',
-    title: 'test table',
-    products: {
-      '2': {
-        id: '2',
-        title: 'test product',
-        price: 12,
-        isPiece: true,
-        needTimer: false,
-        eachProductUnitMinutesTimer: 0,
-        units: 1,
-        createdAt: new Date(),
-        timerStatus: TableProductTimerStatuses.PLAY,
-      },
-    },
-  },
-};
-
-const tablesWithStopTimerStatus = {
-  ...tablesWithPlayTimerStatus,
-  1: {
-    ...tablesWithPlayTimerStatus['1'],
-    products: {
-      ...tablesWithPlayTimerStatus['1'].products,
-      2: {
-        ...tablesWithPlayTimerStatus['1'].products['2'],
-        timerStatus: TableProductTimerStatuses.STOP,
-      },
-    },
-  },
-};
-
 describe('events', () => {
   const setTimerFn = jest.fn();
 
@@ -60,7 +26,9 @@ describe('events', () => {
   test('should call handleStopTimer', async () => {
     render(
       <TableProductTimerUI.Timer.Display
-        tables={tablesWithPlayTimerStatus}
+        timerStatus={TableProductTimerStatuses.play}
+        pausedTimerCount={0}
+        pausedAt={null}
         tableId="1"
         productId="2"
         createdAt={new Date()}
@@ -81,7 +49,9 @@ describe('events', () => {
   test('should call handlePlayTimer', async () => {
     render(
       <TableProductTimerUI.Timer.Display
-        tables={tablesWithStopTimerStatus}
+        timerStatus={TableProductTimerStatuses.stop}
+        pausedTimerCount={0}
+        pausedAt={null}
         tableId="1"
         productId="2"
         createdAt={new Date()}

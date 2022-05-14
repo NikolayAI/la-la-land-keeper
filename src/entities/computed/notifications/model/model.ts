@@ -31,7 +31,7 @@ sample({
     const result = [];
     for (const tableId in timers) {
       for (const productId in timers[tableId]) {
-        const isTimerPlay = tables[tableId].products[productId].timerStatus === TableProductTimerStatuses.PLAY;
+        const isTimerPlay = tables[tableId].products[productId].timerStatus === TableProductTimerStatuses.play;
         if (timers[tableId]?.[productId] && isTimerPlay) {
           result.push({
             tableId,

@@ -31,7 +31,7 @@ test('should call decreaseTableProduct', async () => {
       tables={testTables}
       tableId={table.id}
       tableProduct={testTableProduct}
-      timerStatus={TableProductTimerStatuses.PLAY}
+      timerStatus={TableProductTimerStatuses.play}
     />,
     { wrapper: Wrapper }
   );

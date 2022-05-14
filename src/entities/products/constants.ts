@@ -10,6 +10,6 @@ export const defaultProduct = {
 };
 
 export const backgroundColors = {
-  [TableProductTimerStatuses.PLAY]: 'inherit',
-  [TableProductTimerStatuses.STOP]: '#ed6c02',
+  [TableProductTimerStatuses.play]: 'inherit',
+  [TableProductTimerStatuses.stop]: '#ed6c02',
 };

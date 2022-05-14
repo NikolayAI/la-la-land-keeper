@@ -95,7 +95,7 @@ test('setTableProductTimerStatusFx should calls TablesAPI.setTableProductTimerSt
     params: {
       tableId: '1',
       productId: '2',
-      value: TableProductTimerStatuses.STOP,
+      value: TableProductTimerStatuses.stop,
     },
   });
 
@@ -139,7 +139,7 @@ test(`$tablesProductsTimersOutOfLimits should calculate boolean values`, async (
                 units: 1,
                 needTimer: true,
                 createdAt: new Date(),
-                timerStatus: TableProductTimerStatuses.STOP,
+                timerStatus: TableProductTimerStatuses.stop,
                 eachProductUnitMinutesTimer: 20,
               },
             },

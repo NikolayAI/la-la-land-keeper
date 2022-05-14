@@ -18,7 +18,9 @@ export type TableProductPriceType = number;
 export type TableProductUnitsType = number;
 export type TableProductMinutesLimitType = number;
 export type TableProductCreatedAtType = string | Date;
-export type TableProductUnitMinutesTimerType = number;
+export type TableProductTimerStatusType = TableProductTimerStatuses;
+export type TableProductPausedAtType = Date | null;
+export type TableProductPausedTimerCountType = number;
 
 export type ProductIdType = string;
 export type ProductTitleType = string;
@@ -46,7 +48,9 @@ export interface ISetTablesProductsTimersParams extends IAddProductToTableParams
 }
 
 export interface ISetTableProductTimerStatusParams extends IAddProductToTableParams {
-  value: TableProductTimerStatuses;
+  timerStatus: TableProductTimerStatusType;
+  pausedAt: TableProductPausedAtType;
+  pausedTimerCount: TableProductPausedTimerCountType;
 }
 
 export interface IDecreaseTableProductParams extends IAddProductToTableParams {
@@ -82,7 +86,9 @@ export type ProductsType = Record<ProductIdType, IProduct>;
 export interface ITableProduct extends IProduct {
   units: TableProductUnitsType;
   createdAt: TableProductCreatedAtType;
-  timerStatus: TableProductTimerStatuses;
+  timerStatus: TableProductTimerStatusType;
+  pausedAt: TableProductPausedAtType;
+  pausedTimerCount: TableProductPausedTimerCountType;
 }
 
 export type TableProductsType = Record<ProductIdType, ITableProduct>;

@@ -1,4 +1,4 @@
 export enum TableProductTimerStatuses {
-  PLAY = 'play',
-  STOP = 'stop',
+  play = 'play',
+  stop = 'stop',
 }

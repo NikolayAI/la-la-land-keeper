@@ -22,7 +22,9 @@ export const tableProduct = {
   eachProductUnitMinutesTimer: 0,
   units: 1,
   createdAt: '2022-04-04T09:19:32.064Z',
-  timerStatus: TableProductTimerStatuses.PLAY,
+  timerStatus: TableProductTimerStatuses.play,
+  pausedAt: null,
+  pausedTimerCount: 0,
 };
 
 export const tableProducts = {

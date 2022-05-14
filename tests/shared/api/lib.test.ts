@@ -1,5 +1,4 @@
-import { createTableBody, createTableProductBody } from '@/shared/api/lib';
-import { TableProductTimerStatuses } from '../../../src/shared';
+import { createTableBody, createTableProductBody, TableProductTimerStatuses } from '@/shared';
 
 describe('should return specific value', () => {
   test('call createTableBody', async () => {
@@ -28,7 +27,9 @@ describe('should return specific value', () => {
       ...product,
       units: 1,
       createdAt: result.createdAt,
-      timerStatus: TableProductTimerStatuses.PLAY,
+      timerStatus: TableProductTimerStatuses.play,
+      pausedAt: null,
+      pausedTimerCount: 0,
     });
   });
 });
