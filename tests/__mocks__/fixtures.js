@@ -2,7 +2,7 @@ import { TableProductTimerStatuses } from '@/shared';
 
 export const product = {
   id: 'test-product-id',
-  title: 'test product',
+  name: 'test product',
   price: 1,
   isPiece: true,
   needTimer: false,
@@ -15,7 +15,7 @@ export const products = {
 
 export const tableProduct = {
   id: 'test-table-product-id',
-  title: 'test table product',
+  name: 'test table product',
   price: 1,
   isPiece: true,
   needTimer: false,
@@ -33,7 +33,7 @@ export const tableProducts = {
 
 export const table = {
   id: 'test-table-id',
-  title: 'test table',
+  name: 'test table',
   products: tableProducts,
 };
 

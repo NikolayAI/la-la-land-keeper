@@ -7,18 +7,11 @@ import { IChildrenOnly } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { Table, TablesList } from '@/widgets/table';
-import {
-  products,
-  table,
-  tableProduct,
-  tables,
-} from '../../__mocks__/fixtures';
+import { products, table, tableProduct, tables } from '../../__mocks__/fixtures';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 test('should render Table widget', () => {
   scope = fork();
@@ -27,7 +20,7 @@ test('should render Table widget', () => {
     wrapper: Wrapper,
   });
 
-  const element = screen.getByText(tables['test-table-id'].title);
+  const element = screen.getByText(tables['test-table-id'].name);
 
   expect(element).toBeDefined();
 });
@@ -54,7 +47,7 @@ test('should render Table from TablesList', () => {
 
   render(<TablesList />, { wrapper: Wrapper });
 
-  const element = screen.getByText(tables['test-table-id'].title);
+  const element = screen.getByText(tables['test-table-id'].name);
 
   expect(element).toBeDefined();
 });

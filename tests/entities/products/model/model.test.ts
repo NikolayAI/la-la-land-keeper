@@ -5,7 +5,7 @@ import { productsModel } from '@/entities/products';
 
 const params = {
   id: '1',
-  title: 'test',
+  name: 'test',
   price: 1,
   isPiece: false,
   needTimer: false,

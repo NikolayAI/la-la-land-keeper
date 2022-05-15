@@ -9,23 +9,18 @@ import { table } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
-test('should call setTitle', async () => {
+test('should call setName', async () => {
   const fn = jest.fn();
-  tableModel.setTitle.watch(fn);
+  tableModel.setName.watch(fn);
 
-  render(
-    <TableUI.SetTitle.Field tableId={table.id} tableTitle={table.title} />,
-    {
-      wrapper: Wrapper,
-    }
-  );
+  render(<TableUI.SetName.Field tableId={table.id} tableName={table.name} />, {
+    wrapper: Wrapper,
+  });
 
-  fireEvent.click(screen.getByRole(`editable-table-title-${table.id}-button`));
-  fireEvent.click(screen.getByRole(`editable-table-title-${table.id}-button`));
+  fireEvent.click(screen.getByRole(`editable-table-name-${table.id}-button`));
+  fireEvent.click(screen.getByRole(`editable-table-name-${table.id}-button`));
 
   expect(fn).toHaveBeenCalledTimes(1);
 });

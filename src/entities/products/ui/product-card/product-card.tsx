@@ -31,7 +31,7 @@ export const ProductCard: FC<IProductCardProps> = ({
     <Grid container spacing={2} alignItems="center">
       <Grid item xs={3.5}>
         <Typography variant="subtitle1" component="div" paddingLeft={1}>
-          {tableProduct.title}
+          {tableProduct.name}
         </Typography>
       </Grid>
       <Grid item xs={3.5}>

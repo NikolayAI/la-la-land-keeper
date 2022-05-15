@@ -37,7 +37,7 @@ sample({
             tableId,
             productId,
             kind: NotificationKinds.ERROR,
-            message: `Время для ${products[productId]?.title} на столе ${tables[tableId]?.title} истекло`,
+            message: `Время для ${products[productId]?.name} на столе ${tables[tableId]?.name} истекло`,
           });
         }
       }

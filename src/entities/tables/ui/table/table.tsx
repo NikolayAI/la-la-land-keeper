@@ -7,7 +7,7 @@ import { calculateTableTotalPrice } from '../../lib';
 interface ITableProps {
   tableId: TableIdType;
   tables: TablesType;
-  SetTableTitleSlot: ReactNode;
+  SetTableNameSlot: ReactNode;
   ClearTableSlot: ReactNode;
   RemoveTableSlot: ReactNode;
   AddProductToTableSlot: ReactNode;
@@ -18,7 +18,7 @@ export const Table: FC<ITableProps> = memo(
   ({
     tableId,
     tables,
-    SetTableTitleSlot,
+    SetTableNameSlot,
     ClearTableSlot,
     RemoveTableSlot,
     AddProductToTableSlot,
@@ -30,7 +30,7 @@ export const Table: FC<ITableProps> = memo(
           <AppBar position="static" sx={{ borderRadius: 1 }}>
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {SetTableTitleSlot}
+                {SetTableNameSlot}
               </Typography>
               {AddProductToTableSlot}
             </Toolbar>

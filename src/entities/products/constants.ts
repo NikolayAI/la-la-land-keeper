@@ -2,7 +2,7 @@ import { TableProductTimerStatuses } from '@/shared';
 
 export const defaultProduct = {
   id: '',
-  title: '',
+  name: '',
   price: 0,
   isPiece: true,
   needTimer: false,

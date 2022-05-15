@@ -11,9 +11,9 @@ export type KeyValueType<T> = {
 export type NotificationMessageType = string;
 
 export type TableIdType = string;
-export type TableTitleType = string;
+export type TableNameType = string;
 export type TableProductIdType = string;
-export type TableProductTitleType = string;
+export type TableProductNameType = string;
 export type TableProductPriceType = number;
 export type TableProductUnitsType = number;
 export type TableProductMinutesLimitType = number;
@@ -23,7 +23,7 @@ export type TableProductPausedAtType = Date | null;
 export type TableProductPausedTimerCountType = number;
 
 export type ProductIdType = string;
-export type ProductTitleType = string;
+export type ProductNameType = string;
 export type ProductPriceType = number;
 export type ProductUnitMinutesTimerType = number;
 
@@ -63,7 +63,7 @@ export interface IIncreaseTableProductParams extends IAddProductToTableParams {
 
 export interface IRemoveProductToTableParams extends IAddProductToTableParams {}
 
-export interface ISetTableTitleParams {
+export interface ISetTableNameParams {
   id: TableIdType;
   text: string;
 }
@@ -74,7 +74,7 @@ export interface IRemoveTableParams {
 
 export interface IProduct {
   id: ProductIdType;
-  title: ProductTitleType;
+  name: ProductNameType;
   price: ProductPriceType;
   isPiece: boolean;
   needTimer: boolean;
@@ -95,7 +95,7 @@ export type TableProductsType = Record<ProductIdType, ITableProduct>;
 
 export interface ITable {
   id: TableIdType;
-  title: TableTitleType;
+  name: TableNameType;
   products: TableProductsType;
 }
 

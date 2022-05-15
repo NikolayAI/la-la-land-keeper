@@ -3,7 +3,7 @@ import { TableIdType, IProduct, ITable, ITableProduct } from '../types';
 
 export const createTableBody = ({ id }: { id: TableIdType }): ITable => ({
   id,
-  title: 'неизвестный стол',
+  name: 'неизвестный стол',
   products: {},
 });
 

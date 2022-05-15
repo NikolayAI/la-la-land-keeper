@@ -31,14 +31,14 @@ test('setProductProperty should set data to $product', async () => {
   await allSettled(productModel.setProperty, {
     scope,
     params: {
-      key: 'title',
+      key: 'name',
       value: 'test',
     },
   });
 
   expect(scope.getState(productModel.$product)).toStrictEqual({
     id: '',
-    title: 'test',
+    name: 'test',
     price: 0,
     isPiece: true,
     needTimer: false,

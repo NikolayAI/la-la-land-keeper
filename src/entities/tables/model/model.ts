@@ -9,7 +9,7 @@ import {
   IRemoveTableParams,
   ISetTableProductTimerStatusParams,
   ISetTablesProductsTimersParams,
-  ISetTableTitleParams,
+  ISetTableNameParams,
   TablesAPI,
   TablesType,
 } from '@/shared';
@@ -20,7 +20,7 @@ export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParam
 export const getTablesFx = createEffect<void, TablesType, Error>();
 export const createTableFx = createEffect<void, void, Error>();
 export const removeTableFx = createEffect<IRemoveTableParams, void, Error>();
-export const setTitleFx = createEffect<ISetTableTitleParams, void, Error>();
+export const setNameFx = createEffect<ISetTableNameParams, void, Error>();
 export const addProductFx = createEffect<IAddProductToTableParams, void, Error>();
 export const removeProductFx = createEffect<IRemoveProductToTableParams, void, Error>();
 export const clearTableFx = createEffect<IClearTableParams, void, Error>();
@@ -40,8 +40,8 @@ createTableFx.use(async () => {
 removeTableFx.use(async ({ id }) => {
   await TablesAPI.removeTable({ id });
 });
-setTitleFx.use(async ({ id, text }) => {
-  await TablesAPI.setTableTitle({ id, text });
+setNameFx.use(async ({ id, text }) => {
+  await TablesAPI.setTableName({ id, text });
 });
 addProductFx.use(async ({ productId, tableId }) => {
   await TablesAPI.addProductToTable({ productId, tableId });
@@ -96,7 +96,7 @@ forward({
   from: [
     createTableFx.doneData,
     removeTableFx.doneData,
-    setTitleFx.doneData,
+    setNameFx.doneData,
     addProductFx.doneData,
     removeProductFx.doneData,
     clearTableFx.doneData,

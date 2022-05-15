@@ -6,7 +6,7 @@ describe('should return specific value', () => {
 
     expect(result).toStrictEqual({
       id: '1',
-      title: 'неизвестный стол',
+      name: 'неизвестный стол',
       products: {},
     });
   });
@@ -14,7 +14,7 @@ describe('should return specific value', () => {
   test('call createTableProductBody', async () => {
     const product = {
       id: '1',
-      title: 'test',
+      name: 'test',
       price: 10,
       isPiece: true,
       needTimer: true,

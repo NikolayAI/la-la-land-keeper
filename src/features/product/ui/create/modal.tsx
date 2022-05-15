@@ -24,7 +24,7 @@ export const Modal: FC = () => {
             Введите название товара
           </Typography>
           <TextField
-            value={product.title}
+            value={product.name}
             variant="outlined"
             type="text"
             label="Название товара"
@@ -32,7 +32,7 @@ export const Modal: FC = () => {
             autoComplete="off"
             onChange={({ target: { value } }) => {
               setProperty({
-                key: 'title',
+                key: 'name',
                 value: value,
               });
             }}

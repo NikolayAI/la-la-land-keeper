@@ -60,7 +60,7 @@ export const IconBtn: FC<IAddProductToTableProps> = ({ tableId }) => {
                 width: '100%',
               }}
             >
-              <span>{products[productId]?.title}</span>
+              <span>{products[productId]?.name}</span>
               <Box sx={{ marginLeft: 4 }}>
                 <span>{products[productId]?.price} ₽</span>
               </Box>

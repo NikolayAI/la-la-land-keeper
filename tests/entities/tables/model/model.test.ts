@@ -21,15 +21,15 @@ test('removeTableFx should calls TablesAPI.removeTable', async () => {
   expect(TablesAPI.removeTable).toHaveBeenCalledTimes(1);
 });
 
-test('setTitleFx should calls TablesAPI.setTableTitle', async () => {
+test('setNameFx should calls TablesAPI.setTableName', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.setTitleFx, {
+  await allSettled(tablesModel.setNameFx, {
     scope,
     params: { id: '1', text: 'test' },
   });
 
-  expect(TablesAPI.setTableTitle).toHaveBeenCalledTimes(1);
+  expect(TablesAPI.setTableName).toHaveBeenCalledTimes(1);
 });
 
 test('addProductFx should calls TablesAPI.addProductToTable', async () => {
@@ -95,7 +95,9 @@ test('setTableProductTimerStatusFx should calls TablesAPI.setTableProductTimerSt
     params: {
       tableId: '1',
       productId: '2',
-      value: TableProductTimerStatuses.stop,
+      timerStatus: TableProductTimerStatuses.stop,
+      pausedAt: null,
+      pausedTimerCount: 0,
     },
   });
 
@@ -110,7 +112,7 @@ test(`$tablesProductsTimersOutOfLimits should not calculate boolean values`, asy
         {
           1: {
             id: '1',
-            title: 'test',
+            name: 'test',
             products: {
               2: {
                 units: 1,
@@ -133,7 +135,7 @@ test(`$tablesProductsTimersOutOfLimits should calculate boolean values`, async (
         {
           1: {
             id: '1',
-            title: 'test',
+            name: 'test',
             products: {
               2: {
                 units: 1,

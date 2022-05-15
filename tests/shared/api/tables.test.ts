@@ -29,8 +29,8 @@ test('should call removeTable', async () => {
   expect(result).toStrictEqual(undefined);
 });
 
-test('should call setTableTitle', async () => {
-  const result = await TablesAPI.setTableTitle({
+test('should call setTableName', async () => {
+  const result = await TablesAPI.setTableName({
     id: tableId,
     text: 'test table',
   });
@@ -80,7 +80,9 @@ test('should call setTableProductTimerStatus', async () => {
   const result = await TablesAPI.setTableProductTimerStatus({
     tableId,
     productId,
-    value: TableProductTimerStatuses.stop,
+    timerStatus: TableProductTimerStatuses.stop,
+    pausedTimerCount: 0,
+    pausedAt: null,
   });
 
   expect(result).toStrictEqual(undefined);

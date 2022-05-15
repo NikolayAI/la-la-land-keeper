@@ -2,14 +2,14 @@
   "tables": {
     "ad0d3b65-608d-420c-a489-732ec6c3fc9c": {
       "id": "ad0d3b65-608d-420c-a489-732ec6c3fc9c",
-      "title": "Фиолетовая пудра",
+      "name": "Фиолетовая пудра",
       "products": {}
     }
   },
   "products": {
     "8f4051a6-af49-4048-98b8-d8ebc533fe81": {
       "id": "8f4051a6-af49-4048-98b8-d8ebc533fe81",
-      "title": "Кальян",
+      "name": "Кальян",
       "price": 600,
       "isPiece": true,
       "needTimer": true,
@@ -17,7 +17,7 @@
     },
     "80ea92d3-96b6-492b-b6db-9b8501cd1670": {
       "id": "80ea92d3-96b6-492b-b6db-9b8501cd1670",
-      "title": "Чай",
+      "name": "Чай",
       "price": 23,
       "isPiece": true,
       "needTimer": false,

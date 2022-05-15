@@ -9,7 +9,7 @@ import {
   IRemoveProductToTableParams,
   IRemoveTableParams,
   ISetTableProductTimerStatusParams,
-  ISetTableTitleParams,
+  ISetTableNameParams,
   TablesType,
 } from '../types';
 import { headers } from './constants';
@@ -42,9 +42,9 @@ export const removeTable = async ({ id }: IRemoveTableParams): Promise<void> => 
   await setTables(tables);
 };
 
-export const setTableTitle = async ({ id, text }: ISetTableTitleParams): Promise<void> => {
+export const setTableName = async ({ id, text }: ISetTableNameParams): Promise<void> => {
   const tables = await getTables();
-  tables[id].title = text;
+  tables[id].name = text;
   await setTables(tables);
 };
 

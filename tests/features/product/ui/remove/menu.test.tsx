@@ -8,13 +8,11 @@ import { productModel, ProductUI } from '@/features/product';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 const products = {
   1: {
     id: '1',
-    title: 'test',
+    name: 'test',
     price: 12,
     isPiece: true,
     needTimer: true,

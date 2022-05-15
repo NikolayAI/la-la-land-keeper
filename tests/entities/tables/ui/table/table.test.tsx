@@ -12,9 +12,7 @@ import { table, tables } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const clearTableFn = jest.fn();
@@ -23,8 +21,8 @@ describe('events', () => {
   const removeTableFn = jest.fn();
   tableModel.remove.watch(removeTableFn);
 
-  const setTableTitleFn = jest.fn();
-  tableModel.setTitle.watch(setTableTitleFn);
+  const setTableNameFn = jest.fn();
+  tableModel.setName.watch(setTableNameFn);
 
   test('should call removeTableFn', () => {
     scope = fork();
@@ -33,17 +31,11 @@ describe('events', () => {
       <TablesUI.Table
         tableId={table.id}
         tables={tables}
-        SetTableTitleSlot={
-          <TableUI.SetTitle.Field tableId={table.id} tableTitle={table.title} />
-        }
+        SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
         RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={
-          <TableProductUI.Add.IconBtn tableId={table.id} />
-        }
-        ProductCardListSlot={
-          <ProductCardList tables={tables} tableId={table.id} />
-        }
+        AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={table.id} />}
+        ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {
         wrapper: Wrapper,
@@ -64,17 +56,11 @@ describe('events', () => {
       <TablesUI.Table
         tableId={table.id}
         tables={tables}
-        SetTableTitleSlot={
-          <TableUI.SetTitle.Field tableId={table.id} tableTitle={table.title} />
-        }
+        SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
         RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={
-          <TableProductUI.Add.IconBtn tableId={table.id} />
-        }
-        ProductCardListSlot={
-          <ProductCardList tables={tables} tableId={table.id} />
-        }
+        AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={table.id} />}
+        ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {
         wrapper: Wrapper,

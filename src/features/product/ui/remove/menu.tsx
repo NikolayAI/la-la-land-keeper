@@ -64,7 +64,7 @@ export const Menu: FC<IRemoveProductsList> = ({ products }) => {
                 onClick={() => handleRemove(productId)}
               >
                 <DeleteIcon />
-                <span>{products[productId]?.title}</span>
+                <span>{products[productId]?.name}</span>
               </Box>
               <Box sx={{ marginLeft: 4 }}>
                 <span>{products[productId]?.price} ₽</span>

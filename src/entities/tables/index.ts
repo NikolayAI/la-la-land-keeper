@@ -13,7 +13,7 @@ import {
   clearTableFx,
   removeTableFx,
   $tablesIds,
-  setTitleFx,
+  setNameFx,
 } from './model';
 import { Table } from './ui';
 
@@ -35,7 +35,7 @@ export const tablesModel = {
   clearTableFx,
   removeTableFx,
   $tablesIds,
-  setTitleFx,
+  setNameFx,
 };
 
 export const TablesUI = {

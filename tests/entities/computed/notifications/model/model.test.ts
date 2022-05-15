@@ -20,7 +20,7 @@ test(`tableProductsTimersNotifications should take data when tablesProductsTimer
         {
           3: {
             id: '3',
-            title: 'test product',
+            name: 'test product',
             price: 5,
             isPiece: true,
             needTimer: true,
@@ -43,12 +43,12 @@ test(`tableProductsTimersNotifications should take data when tablesProductsTimer
         () => ({
           1: {
             id: '1',
-            title: 'test table',
+            name: 'test table',
             products: {
               3: {
                 units: 1,
                 id: '3',
-                title: 'test product',
+                name: 'test product',
                 needTimer: true,
                 createdAt: new Date(),
                 timerStatus: TableProductTimerStatuses.play,
@@ -74,7 +74,7 @@ test(`tableProductsTimersNotifications should not take data when tablesProductsT
         {
           3: {
             id: '3',
-            title: 'test product',
+            name: 'test product',
             price: 5,
             isPiece: true,
             needTimer: true,
@@ -89,12 +89,12 @@ test(`tableProductsTimersNotifications should not take data when tablesProductsT
         () => ({
           1: {
             id: '1',
-            title: 'test table',
+            name: 'test table',
             products: {
               3: {
                 units: 1,
                 id: '3',
-                title: 'test product',
+                name: 'test product',
                 needTimer: true,
                 createdAt: new Date(),
                 timerStatus: TableProductTimerStatuses.play,

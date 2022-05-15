@@ -18,12 +18,7 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => (
     key={tableId}
     tableId={tableId}
     tables={tables}
-    SetTableTitleSlot={
-      <TableUI.SetTitle.Field
-        tableId={tableId}
-        tableTitle={tables?.[tableId]?.title ?? ''}
-      />
-    }
+    SetTableNameSlot={<TableUI.SetName.Field tableId={tableId} tableName={tables?.[tableId]?.name ?? ''} />}
     ClearTableSlot={<TableUI.Clear.Btn tableId={tableId} />}
     RemoveTableSlot={<TableUI.Remove.Btn tableId={tableId} />}
     AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={tableId} />}

@@ -5,11 +5,11 @@ import React, { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'reac
 
 interface IEditableText {
   text: string;
-  setTableTitle: (text: string) => void;
+  setTableName: (text: string) => void;
   role?: string;
 }
 
-export const EditableText: FC<IEditableText> = ({ text, setTableTitle, role }) => {
+export const EditableText: FC<IEditableText> = ({ text, setTableName, role }) => {
   const [editableText, setEditableText] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -19,7 +19,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableTitle, role }) =
 
   const handleTitleClick = () => {
     setIsEditMode((prev) => !prev);
-    if (isEditMode) setTableTitle(editableText);
+    if (isEditMode) setTableName(editableText);
   };
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
