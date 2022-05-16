@@ -1,18 +1,15 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import { alpha, Box, Button, MenuItem } from '@mui/material';
+import { alpha, Box, MenuItem } from '@mui/material';
 import MaterialMenu, { MenuProps } from '@mui/material/Menu/Menu';
 import { styled } from '@mui/material/styles';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import { ProductsType } from '@/shared';
+import { productsModel } from '@/entities/products';
 import { $anchorEl, removeProduct, setAnchorEl } from '../../model/remove/model';
 
-interface IRemoveProductsList {
-  products: ProductsType;
-}
-
-export const Menu: FC<IRemoveProductsList> = ({ products }) => {
+export const Menu: FC = () => {
+  const products = useStore(productsModel.$products);
   const anchorEl = useStore($anchorEl);
 
   const open = Boolean(anchorEl);
@@ -23,57 +20,38 @@ export const Menu: FC<IRemoveProductsList> = ({ products }) => {
   };
 
   return (
-    <>
-      {Object.keys(products).length ? (
-        <Button
-          variant="contained"
-          sx={{
-            my: 2,
-            color: 'white',
-            display: 'block',
-            border: '1px solid white',
-            marginRight: 4,
-          }}
-          onClick={(event) => {
-            setAnchorEl(event.currentTarget);
-          }}
-        >
-          Удалить товар
-        </Button>
-      ) : null}
-      <StyledMenu
-        id="demo-customized-menu"
-        title="demo-customized-button"
-        MenuListProps={{ 'aria-labelledby': 'demo-customized-button' }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={() => setAnchorEl(null)}
-      >
-        {Object.keys(products).map((productId) => (
-          <MenuItem key={productId} disableRipple>
+    <StyledMenu
+      id="demo-customized-menu"
+      title="demo-customized-button"
+      MenuListProps={{ 'aria-labelledby': 'demo-customized-button' }}
+      anchorEl={anchorEl}
+      open={open}
+      onClose={() => setAnchorEl(null)}
+    >
+      {Object.keys(products).map((productId) => (
+        <MenuItem key={productId} disableRipple>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
             <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
+              sx={{ display: 'flex', alignItems: 'center' }}
+              role="remove-product-box"
+              onClick={() => handleRemove(productId)}
             >
-              <Box
-                sx={{ display: 'flex', alignItems: 'center' }}
-                role="remove-product-box"
-                onClick={() => handleRemove(productId)}
-              >
-                <DeleteIcon />
-                <span>{products[productId]?.name}</span>
-              </Box>
-              <Box sx={{ marginLeft: 4 }}>
-                <span>{products[productId]?.price} ₽</span>
-              </Box>
+              <DeleteIcon />
+              <span>{products[productId]?.name}</span>
             </Box>
-          </MenuItem>
-        ))}
-      </StyledMenu>
-    </>
+            <Box sx={{ marginLeft: 4 }}>
+              <span>{products[productId]?.price} ₽</span>
+            </Box>
+          </Box>
+        </MenuItem>
+      ))}
+    </StyledMenu>
   );
 };
 

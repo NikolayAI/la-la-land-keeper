@@ -1,24 +1,18 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly } from '@/shared';
-import { productModel, ProductUI } from '@/features/product';
+import { productsModel } from '@/entities/products';
+import { productModel } from '@/features/product';
+import { Header } from '@/widgets/header';
+import { products } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
 const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
-const products = {
-  1: {
-    id: '1',
-    name: 'test',
-    price: 12,
-    isPiece: true,
-    needTimer: true,
-    eachProductUnitMinutesTimer: 1,
-  },
-};
+
 describe('events', () => {
   const setAnchorElementFn = jest.fn();
   productModel.setAnchorEl.watch(setAnchorElementFn);
@@ -27,27 +21,31 @@ describe('events', () => {
   productModel.removeProduct.watch(removeProductFn);
 
   beforeEach(() => {
-    scope = fork();
+    setAnchorElementFn.mockRestore();
   });
 
-  test('should call setAnchorEl for remove product', async () => {
-    render(<ProductUI.Remove.Menu products={products} />, { wrapper: Wrapper });
-
-    act(() => {
-      fireEvent.click(screen.getByText('Удалить товар'));
+  test('should call setAnchorEl for remove product', () => {
+    scope = fork({
+      values: [[productsModel.$products, products]],
     });
+
+    render(<Header />, { wrapper: Wrapper });
+
+    fireEvent.click(screen.getByText('Удалить товар'));
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call setAnchorEl and removeProduct', async () => {
-    render(<ProductUI.Remove.Menu products={products} />, { wrapper: Wrapper });
-
-    act(() => {
-      fireEvent.click(screen.getByRole('remove-product-box'));
+  test('should call setAnchorEl and call removeProduct', () => {
+    scope = fork({
+      values: [[productsModel.$products, products]],
     });
 
-    expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
+    render(<Header />, { wrapper: Wrapper });
+
+    fireEvent.click(screen.getByText('Удалить товар'));
+    fireEvent.click(screen.getByRole('remove-product-box'));
+
     expect(removeProductFn).toHaveBeenCalledTimes(1);
   });
 });

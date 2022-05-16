@@ -14,6 +14,7 @@ import {
   removeTableFx,
   $tablesIds,
   setNameFx,
+  $isLoading,
 } from './model';
 import { Table } from './ui';
 
@@ -36,6 +37,7 @@ export const tablesModel = {
   removeTableFx,
   $tablesIds,
   setNameFx,
+  $isLoading,
 };
 
 export const TablesUI = {

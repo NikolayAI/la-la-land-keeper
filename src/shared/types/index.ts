@@ -72,6 +72,10 @@ export interface IRemoveTableParams {
   id: TableIdType;
 }
 
+export interface IRemoveProductParams {
+  id: ProductIdType;
+}
+
 export interface IProduct {
   id: ProductIdType;
   name: ProductNameType;

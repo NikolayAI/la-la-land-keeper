@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
 import { HttpClient } from '../lib';
-import { IProduct, ProductsType } from '../types';
+import { IProduct, IRemoveProductParams, ProductsType } from '../types';
 import { headers } from './constants';
 
 export const getProducts = async (): Promise<ProductsType> => {
@@ -24,7 +24,7 @@ export const createProduct = async (product: IProduct): Promise<void> => {
   await setProducts(products);
 };
 
-export const removeProduct = async ({ id }: { id: string }) => {
+export const removeProduct = async ({ id }: IRemoveProductParams) => {
   const products = await getProducts();
   delete products[id];
   await setProducts(products);

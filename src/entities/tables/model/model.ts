@@ -28,6 +28,7 @@ export const increaseTableProductFx = createEffect<IIncreaseTableProductParams, 
 export const decreaseTableProductFx = createEffect<IDecreaseTableProductParams, void, Error>();
 export const setTableProductTimerStatusFx = createEffect<ISetTableProductTimerStatusParams, void, Error>();
 
+export const $isLoading = createStore<boolean>(false);
 export const $tables = createStore<TablesType>({});
 export const $tablesProductsTimers = createStore<TableProductsTimersType>({});
 
@@ -83,6 +84,22 @@ export const $tablesProductsTimersOutOfLimits = combine(
   }
 );
 
+$isLoading.on(
+  combine(
+    getTablesFx.pending,
+    createTableFx.pending,
+    removeTableFx.pending,
+    setNameFx.pending,
+    addProductFx.pending,
+    removeProductFx.pending,
+    clearTableFx.pending,
+    increaseTableProductFx.pending,
+    decreaseTableProductFx.pending,
+    setTableProductTimerStatusFx.pending,
+    (...args) => args.some((isLoading) => isLoading)
+  ),
+  (isLoading) => isLoading
+);
 $tables.on(getTablesFx.doneData, (_, tables) => tables);
 $tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
   ...state,
