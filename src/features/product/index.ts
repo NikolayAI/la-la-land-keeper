@@ -1,5 +1,13 @@
-import { $isModalOpen, $product, closeModal, create, openModal, setProperty } from './model/create';
-import { removeProduct, setAnchorEl } from './model/remove';
+import {
+  $isLoading as $isCreateLoading,
+  $isModalOpen,
+  $product,
+  closeModal,
+  create,
+  openCreateForm,
+  setProperty,
+} from './model/create';
+import { $isLoading as $isRemoveLoading, removeProduct, setRemoveAnchorEl } from './model/remove';
 import * as Create from './ui/create';
 import * as Remove from './ui/remove';
 
@@ -7,11 +15,13 @@ export const productModel = {
   setProperty,
   $product,
   create,
-  openModal,
+  openCreateForm,
   closeModal,
   $isModalOpen,
   removeProduct,
-  setAnchorEl,
+  setRemoveAnchorEl,
+  $isCreateLoading,
+  $isRemoveLoading,
 };
 
 export const ProductUI = {

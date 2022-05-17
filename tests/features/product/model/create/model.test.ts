@@ -8,7 +8,7 @@ test('openCreateProductModal should set "true" to $isOpenCreateProductModal', as
     values: [[productModel.$isModalOpen, false]],
   });
 
-  await allSettled(productModel.openModal, { scope });
+  await allSettled(productModel.openCreateForm, { scope });
 
   expect(scope.getState(productModel.$isModalOpen)).toBe(true);
 });

@@ -1,6 +1,8 @@
-import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import { AppBar, Box, Container, Toolbar } from '@mui/material';
+import { useStore } from 'effector-react';
 import React from 'react';
 
+import { StyledLoadingButton } from '@/shared';
 import { productModel, ProductUI } from '@/features/product';
 import { TableUI } from '@/features/table';
 
@@ -11,37 +13,26 @@ export const Header = () => {
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <TableUI.Create.Btn />
-            <Button
-              role="open-create-product-modal-header-button"
+            <StyledLoadingButton
+              role="open-create-product-form-header-button"
               variant="contained"
-              sx={{
-                my: 2,
-                color: 'white',
-                display: 'block',
-                border: '1px solid white',
-                marginRight: 4,
-              }}
+              loading={useStore(productModel.$isCreateLoading)}
               onClick={() => {
-                productModel.openModal();
+                productModel.openCreateForm();
               }}
             >
               Создать товар
-            </Button>
-            <Button
+            </StyledLoadingButton>
+            <StyledLoadingButton
+              role="open-remove-product-form-header-button"
               variant="contained"
-              sx={{
-                my: 2,
-                color: 'white',
-                display: 'block',
-                border: '1px solid white',
-                marginRight: 4,
-              }}
+              loading={useStore(productModel.$isRemoveLoading)}
               onClick={(event) => {
-                productModel.setAnchorEl(event.currentTarget);
+                productModel.setRemoveAnchorEl(event.currentTarget);
               }}
             >
               Удалить товар
-            </Button>
+            </StyledLoadingButton>
             <ProductUI.Remove.Menu />
           </Box>
         </Toolbar>

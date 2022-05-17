@@ -6,7 +6,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { productsModel } from '@/entities/products';
-import { $anchorEl, removeProduct, setAnchorEl } from '../../model/remove/model';
+import { $anchorEl, removeProduct, setRemoveAnchorEl } from '../../model/remove/model';
 
 export const Menu: FC = () => {
   const products = useStore(productsModel.$products);
@@ -16,7 +16,7 @@ export const Menu: FC = () => {
 
   const handleRemove = (productId: string) => {
     removeProduct({ id: productId });
-    setAnchorEl(null);
+    setRemoveAnchorEl(null);
   };
 
   return (
@@ -26,7 +26,7 @@ export const Menu: FC = () => {
       MenuListProps={{ 'aria-labelledby': 'demo-customized-button' }}
       anchorEl={anchorEl}
       open={open}
-      onClose={() => setAnchorEl(null)}
+      onClose={() => setRemoveAnchorEl(null)}
     >
       {Object.keys(products).map((productId) => (
         <MenuItem key={productId} disableRipple>

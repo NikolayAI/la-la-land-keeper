@@ -1,13 +1,18 @@
-import { createEvent, createStore, forward } from 'effector';
+import { combine, createEvent, createStore, forward } from 'effector';
 
 import { productsModel } from '@/entities/products';
 
 export const removeProduct = createEvent<{ id: string }>();
-export const setAnchorEl = createEvent<null | HTMLElement>();
+export const setRemoveAnchorEl = createEvent<null | HTMLElement>();
 
+export const $isLoading = createStore<boolean>(false);
 export const $anchorEl = createStore<null | HTMLElement>(null);
 
-$anchorEl.on(setAnchorEl, (_, data) => data);
+$isLoading.on(
+  combine(productsModel.removeProductFx.pending, (...args) => args.some((isLoading) => isLoading)),
+  (isLoading) => isLoading
+);
+$anchorEl.on(setRemoveAnchorEl, (_, data) => data);
 
 forward({
   from: removeProduct,

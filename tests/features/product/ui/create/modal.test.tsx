@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
@@ -14,9 +8,7 @@ import { productModel, ProductUI } from '@/features/product';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const createProductFn = jest.fn();
@@ -27,7 +19,7 @@ describe('events', () => {
 
   beforeEach(() => {
     scope = fork();
-    productModel.openModal();
+    productModel.openCreateForm();
   });
 
   test('should call createProduct handler', async () => {
@@ -90,9 +82,7 @@ describe('events', () => {
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
     });
-    const element = await waitFor(() =>
-      screen.getByLabelText('Таймер для 1 ед. товара, мин')
-    );
+    const element = await waitFor(() => screen.getByLabelText('Таймер для 1 ед. товара, мин'));
     act(() => {
       fireEvent.change(element, {
         target: { formattedValue: '321', value: '321', floatValue: 321 },

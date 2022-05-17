@@ -15,7 +15,7 @@ const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{ch
 
 describe('events', () => {
   const setAnchorElementFn = jest.fn();
-  productModel.setAnchorEl.watch(setAnchorElementFn);
+  productModel.setRemoveAnchorEl.watch(setAnchorElementFn);
 
   const removeProductFn = jest.fn();
   productModel.removeProduct.watch(removeProductFn);
@@ -31,7 +31,7 @@ describe('events', () => {
 
     render(<Header />, { wrapper: Wrapper });
 
-    fireEvent.click(screen.getByText('Удалить товар'));
+    fireEvent.click(screen.getByRole('open-remove-product-form-header-button'));
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });
