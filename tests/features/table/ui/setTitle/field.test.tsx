@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Scope } from 'effector';
+import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
@@ -14,6 +14,7 @@ const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{ch
 test('should call setName', async () => {
   const fn = jest.fn();
   tableModel.setName.watch(fn);
+  scope = fork();
 
   render(<TableUI.SetName.Field tableId={table.id} tableName={table.name} />, {
     wrapper: Wrapper,

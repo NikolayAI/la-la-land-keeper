@@ -1,15 +1,17 @@
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import { IconButton, TextField } from '@mui/material';
+import Box from '@mui/material/Box';
 import React, { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react';
 
 interface IEditableText {
   text: string;
   setTableName: (text: string) => void;
+  isLoading: boolean;
   role?: string;
 }
 
-export const EditableText: FC<IEditableText> = ({ text, setTableName, role }) => {
+export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading, role }) => {
   const [editableText, setEditableText] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -45,9 +47,9 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, role }) =>
           autoFocus
         />
       ) : (
-        editableText
+        <Box sx={{ display: 'inline-block', opacity: isLoading ? 0.5 : 1.0 }}>{editableText}</Box>
       )}
-      <IconButton role={`${role}-button`} color="inherit" onClick={handleTitleClick}>
+      <IconButton role={`${role}-button`} color="inherit" disabled={isLoading} onClick={handleTitleClick}>
         {isEditMode ? <DoneIcon /> : <EditIcon />}
       </IconButton>
     </>
