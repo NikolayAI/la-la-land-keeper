@@ -34,7 +34,7 @@ describe('events', () => {
         SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
         RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={table.id} />}
+        AddProductToTableSlot={<TableProductUI.Add.Menu tableId={table.id} />}
         ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {
@@ -59,7 +59,7 @@ describe('events', () => {
         SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
         RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={<TableProductUI.Add.IconBtn tableId={table.id} />}
+        AddProductToTableSlot={<TableProductUI.Add.Menu tableId={table.id} />}
         ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {

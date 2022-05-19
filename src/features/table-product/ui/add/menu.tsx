@@ -1,0 +1,58 @@
+import { Box } from '@mui/material';
+import MaterialMenu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useStore } from 'effector-react';
+import React, { FC } from 'react';
+
+import { IAddProductToTableParams } from '@/shared';
+import { productsModel } from '@/entities/products';
+import { $anchorEl, add, setAddAnchorEl } from '../../model/add';
+
+interface IAddProductToTableProps extends Omit<IAddProductToTableParams, 'productId'> {}
+
+export const Menu: FC<IAddProductToTableProps> = ({ tableId }) => {
+  const products = useStore(productsModel.$products);
+  const anchorEl = useStore($anchorEl)[tableId];
+
+  const open = Boolean(anchorEl);
+
+  const handleAddProduct = ({ tableId, productId }: IAddProductToTableParams) => {
+    add({ tableId, productId });
+    setAddAnchorEl({ tableId, element: null });
+  };
+
+  return (
+    <MaterialMenu
+      id={`basic-menu-${tableId}`}
+      anchorEl={anchorEl}
+      open={open}
+      onClose={() => {
+        setAddAnchorEl({ tableId, element: null });
+      }}
+      MenuListProps={{ 'aria-labelledby': `basic-button-${tableId}` }}
+    >
+      {Object.keys(products).map((productId) => (
+        <MenuItem
+          key={productId}
+          role={`add-product-to-table-menu-item-${tableId}`}
+          onClick={() => {
+            handleAddProduct({ tableId, productId });
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <span>{products[productId]?.name}</span>
+            <Box sx={{ marginLeft: 4 }}>
+              <span>{products[productId]?.price} ₽</span>
+            </Box>
+          </Box>
+        </MenuItem>
+      ))}
+    </MaterialMenu>
+  );
+};

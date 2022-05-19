@@ -1,4 +1,4 @@
-import { add, setAnchorEl } from './model/add';
+import { $anchorEl as $addAnchorEl, $isLoading as $isAddLoading, add, setAddAnchorEl } from './model/add';
 import { decrease } from './model/decrease';
 import { increase } from './model/increase';
 import { remove } from './model/remove';
@@ -9,7 +9,9 @@ import * as Remove from './ui/remove';
 
 export const tableProductModel = {
   add,
-  setAnchorEl,
+  setAddAnchorEl,
+  $addAnchorEl,
+  $isAddLoading,
   increase,
   decrease,
   remove,

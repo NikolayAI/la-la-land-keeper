@@ -10,44 +10,31 @@ import { products } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
   tableProductModel.add.watch(addProductToTableFn);
 
   const setAnchorElFn = jest.fn();
-  tableProductModel.setAnchorEl.watch(setAnchorElFn);
+  tableProductModel.setAddAnchorEl.watch(setAnchorElFn);
 
-  test('should call setAnchorElFn for open form', async () => {
-    scope = fork({
-      values: [[productsModel.$products, products]],
-    });
-
-    render(<TableProductUI.Add.IconBtn tableId="1" />, {
-      wrapper: Wrapper,
-    });
-
-    act(() => {
-      fireEvent.click(screen.getByRole('add-product-to-table-button-1'));
-    });
-
-    expect(setAnchorElFn).toHaveBeenCalledTimes(1);
-  });
+  const tableId = '1';
 
   test('should call addProductToTable and setAnchorElFn for add product', async () => {
     scope = fork({
-      values: [[productsModel.$products, products]],
+      values: [
+        [productsModel.$products, products],
+        [tableProductModel.$addAnchorEl, { [tableId]: <div></div> }],
+      ],
     });
 
-    render(<TableProductUI.Add.IconBtn tableId="1" />, {
+    render(<TableProductUI.Add.Menu tableId={tableId} />, {
       wrapper: Wrapper,
     });
 
     act(() => {
-      fireEvent.click(screen.getByRole('add-product-to-table-menu-item'));
+      fireEvent.click(screen.getByRole(`add-product-to-table-menu-item-${tableId}`));
     });
 
     expect(addProductToTableFn).toHaveBeenCalledTimes(1);

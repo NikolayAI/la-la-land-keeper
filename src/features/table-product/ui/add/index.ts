@@ -1,1 +1,1 @@
-export { IconBtn } from './icon-button';
+export { Menu } from './menu';

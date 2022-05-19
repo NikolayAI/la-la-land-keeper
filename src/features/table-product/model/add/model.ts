@@ -1,15 +1,20 @@
-import { createEvent, createStore, sample } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 
 import { IAddProductToTableParams } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 import { ISetAnchorElementParams } from './types';
 
 export const add = createEvent<IAddProductToTableParams>();
-export const setAnchorEl = createEvent<ISetAnchorElementParams>();
+export const setAddAnchorEl = createEvent<ISetAnchorElementParams>();
 
+export const $isLoading = createStore<boolean>(false);
 export const $anchorEl = createStore<Record<string, null | HTMLElement>>({});
 
-$anchorEl.on(setAnchorEl, (state, { tableId, element }) => ({
+$isLoading.on(
+  combine(tablesModel.addProductFx.pending, (...args) => args.some((isLoading) => isLoading)),
+  (isLoading) => isLoading
+);
+$anchorEl.on(setAddAnchorEl, (state, { tableId, element }) => ({
   ...state,
   [tableId]: element,
 }));
