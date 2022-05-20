@@ -1,6 +1,6 @@
 import { clear } from './model/clear';
 import { create } from './model/create';
-import { remove } from './model/remove';
+import { remove, $isLoading as $isRemoveLoading } from './model/remove';
 import { setName, $isLoading as $isSetNameLoading } from './model/setName';
 import * as Clear from './ui/clear';
 import * as Create from './ui/create';
@@ -11,6 +11,7 @@ export const tableModel = {
   clear,
   create,
   remove,
+  $isRemoveLoading,
   setName,
   $isSetNameLoading,
 };
