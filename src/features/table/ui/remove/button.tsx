@@ -1,5 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
@@ -11,14 +11,15 @@ interface IBtnProps {
 }
 
 export const Btn: FC<IBtnProps> = ({ tableId }) => (
-  <Button
+  <LoadingButton
+    sx={{}}
     role={`remove-table-${tableId}-button`}
     startIcon={<DeleteIcon />}
-    disabled={useStore($isLoading)}
+    loading={useStore($isLoading)}
     onClick={() => {
       remove({ id: tableId });
     }}
   >
     Удалить стол
-  </Button>
+  </LoadingButton>
 );

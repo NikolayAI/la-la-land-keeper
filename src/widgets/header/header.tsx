@@ -1,8 +1,8 @@
+import LoadingButton from '@mui/lab/LoadingButton';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
 import { useStore } from 'effector-react';
 import React from 'react';
 
-import { StyledLoadingButton } from '@/shared';
 import { productModel, ProductUI } from '@/features/product';
 import { TableUI } from '@/features/table';
 
@@ -11,9 +11,14 @@ export const Header = () => {
     <AppBar position="static" sx={{ marginBottom: 2 }}>
       <Container maxWidth="xl">
         <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              '& button': { marginRight: '1rem', border: '1px solid #fff' },
+            }}
+          >
             <TableUI.Create.Btn />
-            <StyledLoadingButton
+            <LoadingButton
               role="open-create-product-form-header-button"
               variant="contained"
               loading={useStore(productModel.$isCreateLoading)}
@@ -22,8 +27,8 @@ export const Header = () => {
               }}
             >
               Создать товар
-            </StyledLoadingButton>
-            <StyledLoadingButton
+            </LoadingButton>
+            <LoadingButton
               role="open-remove-product-form-header-button"
               variant="contained"
               loading={useStore(productModel.$isRemoveLoading)}
@@ -32,7 +37,7 @@ export const Header = () => {
               }}
             >
               Удалить товар
-            </StyledLoadingButton>
+            </LoadingButton>
             <ProductUI.Remove.Menu />
           </Box>
         </Toolbar>
