@@ -18,6 +18,7 @@ import {
   useProductTimer,
 } from '@/shared';
 import { tablesModel } from '@/entities/tables';
+import { tableProductTimerModel } from '@/features/table-product-timer';
 import { play } from '../../model/play';
 import { stop } from '../../model/stop';
 
@@ -62,7 +63,7 @@ export const Display: FC<IProductTimer> = memo(
       interval: 1000,
     });
 
-    const handlePause = () => {
+    const handleStop = () => {
       stop({
         tableId,
         productId,
@@ -92,11 +93,21 @@ export const Display: FC<IProductTimer> = memo(
           / {minutesLimit * productUnits}
         </IconButton>
         {isTimerPlay ? (
-          <IconButton role="pause-timer-button" size="small" onClick={handlePause}>
+          <IconButton
+            role="pause-timer-button"
+            size="small"
+            disabled={useStore(tableProductTimerModel.$isStopLoading)}
+            onClick={handleStop}
+          >
             <PauseIcon fontSize="small" />
           </IconButton>
         ) : (
-          <IconButton role="play-timer-button" size="small" onClick={handlePlay}>
+          <IconButton
+            role="play-timer-button"
+            size="small"
+            disabled={useStore(tableProductTimerModel.$isPlayLoading)}
+            onClick={handlePlay}
+          >
             <PlayArrowIcon fontSize="small" />
           </IconButton>
         )}

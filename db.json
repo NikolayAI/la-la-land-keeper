@@ -3,7 +3,21 @@
     "ad0d3b65-608d-420c-a489-732ec6c3fc9c": {
       "id": "ad0d3b65-608d-420c-a489-732ec6c3fc9c",
       "name": "Фиолетовая пудра",
-      "products": {}
+      "products": {
+        "8f4051a6-af49-4048-98b8-d8ebc533fe81": {
+          "id": "8f4051a6-af49-4048-98b8-d8ebc533fe81",
+          "name": "Кальян",
+          "price": 600,
+          "isPiece": true,
+          "needTimer": true,
+          "eachProductUnitMinutesTimer": 90,
+          "units": 1,
+          "createdAt": "2022-05-22T12:08:05.203Z",
+          "timerStatus": "stop",
+          "pausedAt": "2022-05-22T12:33:56.507Z",
+          "pausedTimerCount": 1522661
+        }
+      }
     }
   },
   "products": {
