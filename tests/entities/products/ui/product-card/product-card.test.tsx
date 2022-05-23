@@ -106,7 +106,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${tableProduct.id}`));
     });
 
     expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
@@ -194,7 +194,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('remove-table-product-button'));
+      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`));
     });
 
     expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);

@@ -65,10 +65,10 @@ test('clearTableFx should calls TablesAPI.clearTable', async () => {
   expect(TablesAPI.clearTable).toHaveBeenCalledTimes(1);
 });
 
-test('increaseTableProductFx should calls TablesAPI.increaseTableProduct', async () => {
+test('increaseProductFx should calls TablesAPI.increaseTableProduct', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.increaseTableProductFx, {
+  await allSettled(tablesModel.increaseProductFx, {
     scope,
     params: { tableId: '1', productId: '2', value: 1 },
   });
@@ -76,10 +76,10 @@ test('increaseTableProductFx should calls TablesAPI.increaseTableProduct', async
   expect(TablesAPI.increaseTableProduct).toHaveBeenCalledTimes(1);
 });
 
-test('decreaseTableProductFx should calls TablesAPI.decreaseTableProduct', async () => {
+test('decreaseProductFx should calls TablesAPI.decreaseTableProduct', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.decreaseTableProductFx, {
+  await allSettled(tablesModel.decreaseProductFx, {
     scope,
     params: { tableId: '1', productId: '2', value: 1 },
   });
@@ -87,10 +87,10 @@ test('decreaseTableProductFx should calls TablesAPI.decreaseTableProduct', async
   expect(TablesAPI.decreaseTableProduct).toHaveBeenCalledTimes(1);
 });
 
-test('setTableProductTimerStatusFx should calls TablesAPI.setTableProductTimerStatus', async () => {
+test('setProductTimerStatusFx should calls TablesAPI.setTableProductTimerStatus', async () => {
   const scope = fork();
 
-  await allSettled(tablesModel.setTableProductTimerStatusFx, {
+  await allSettled(tablesModel.setProductTimerStatusFx, {
     scope,
     params: {
       tableId: '1',

@@ -24,9 +24,9 @@ export const setNameFx = createEffect<ISetTableNameParams, void, Error>();
 export const addProductFx = createEffect<IAddProductToTableParams, void, Error>();
 export const removeProductFx = createEffect<IRemoveProductToTableParams, void, Error>();
 export const clearTableFx = createEffect<IClearTableParams, void, Error>();
-export const increaseTableProductFx = createEffect<IIncreaseTableProductParams, void, Error>();
-export const decreaseTableProductFx = createEffect<IDecreaseTableProductParams, void, Error>();
-export const setTableProductTimerStatusFx = createEffect<ISetTableProductTimerStatusParams, void, Error>();
+export const increaseProductFx = createEffect<IIncreaseTableProductParams, void, Error>();
+export const decreaseProductFx = createEffect<IDecreaseTableProductParams, void, Error>();
+export const setProductTimerStatusFx = createEffect<ISetTableProductTimerStatusParams, void, Error>();
 
 export const $isLoading = createStore<boolean>(false);
 export const $tables = createStore<TablesType>({});
@@ -53,13 +53,13 @@ removeProductFx.use(async ({ productId, tableId }) => {
 clearTableFx.use(async ({ tableId }) => {
   await TablesAPI.clearTable({ tableId });
 });
-increaseTableProductFx.use(async ({ productId, tableId, value }) => {
+increaseProductFx.use(async ({ productId, tableId, value }) => {
   await TablesAPI.increaseTableProduct({ productId, tableId, value });
 });
-decreaseTableProductFx.use(async ({ productId, tableId, value }) => {
+decreaseProductFx.use(async ({ productId, tableId, value }) => {
   await TablesAPI.decreaseTableProduct({ productId, tableId, value });
 });
-setTableProductTimerStatusFx.use(async (payload) => {
+setProductTimerStatusFx.use(async (payload) => {
   await TablesAPI.setTableProductTimerStatus(payload);
 });
 
@@ -93,9 +93,9 @@ $isLoading.on(
     addProductFx.pending,
     removeProductFx.pending,
     clearTableFx.pending,
-    increaseTableProductFx.pending,
-    decreaseTableProductFx.pending,
-    setTableProductTimerStatusFx.pending,
+    increaseProductFx.pending,
+    decreaseProductFx.pending,
+    setProductTimerStatusFx.pending,
     (...args) => args.some((isLoading) => isLoading)
   ),
   (isLoading) => isLoading
@@ -117,9 +117,9 @@ forward({
     addProductFx.doneData,
     removeProductFx.doneData,
     clearTableFx.doneData,
-    increaseTableProductFx.doneData,
-    decreaseTableProductFx.doneData,
-    setTableProductTimerStatusFx.doneData,
+    increaseProductFx.doneData,
+    decreaseProductFx.doneData,
+    setProductTimerStatusFx.doneData,
   ],
   to: getTablesFx,
 });

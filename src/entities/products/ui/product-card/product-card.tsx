@@ -40,7 +40,7 @@ export const ProductCard: FC<IProductCardProps> = ({
       <Grid item xs={3}>
         {tableProduct.isPiece ? (
           <>
-            {DecreaseTableProductSlot}
+            {tableProduct.units > 1 ? DecreaseTableProductSlot : RemoveTableProductSlot}
             <IconButton color="default" size="small" sx={{ cursor: 'default' }}>
               {tableProduct.units}
             </IconButton>

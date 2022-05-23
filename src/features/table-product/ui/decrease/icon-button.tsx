@@ -1,28 +1,22 @@
 import RemoveIcon from '@mui/icons-material/Remove';
 import { IconButton } from '@mui/material';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { IDecreaseTableProductParams, TableProductUnitsType } from '@/shared';
-import { decrease } from '../../model/decrease';
-import { remove } from '../../model/remove';
+import { decrease, $isLoading } from '../../model/decrease';
 
 interface IIconBtnProps extends Omit<IDecreaseTableProductParams, 'value'> {
   productUnits: TableProductUnitsType;
 }
 
-export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId, productUnits }) => (
+export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId }) => (
   <IconButton
     role="decrease-table-product-count-button"
     color="primary"
     size="small"
-    onClick={() => {
-      productUnits > 1
-        ? decrease({ tableId, productId })
-        : remove({
-            tableId,
-            productId,
-          });
-    }}
+    disabled={useStore($isLoading)}
+    onClick={() => decrease({ tableId, productId })}
   >
     <RemoveIcon fontSize="small" />
   </IconButton>

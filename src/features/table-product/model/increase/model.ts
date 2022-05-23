@@ -13,5 +13,5 @@ sample({
     productId,
     value: tables[tableId]?.products[productId]?.units + 1,
   }),
-  target: tablesModel.increaseTableProductFx,
+  target: tablesModel.increaseProductFx,
 });
