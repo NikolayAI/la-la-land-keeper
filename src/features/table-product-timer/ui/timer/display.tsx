@@ -105,7 +105,7 @@ export const Display: FC<IProductTimer> = memo(
           <IconButton
             role="play-timer-button"
             size="small"
-            disabled={useStore(tableProductTimerModel.$isPlayLoading)}
+            disabled={useStore(tableProductTimerModel.$isPlayLoading)?.[tableId]?.[productId]}
             onClick={handlePlay}
           >
             <PlayArrowIcon fontSize="small" />

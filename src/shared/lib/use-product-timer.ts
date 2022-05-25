@@ -11,8 +11,6 @@ import {
 } from '../types';
 import { dateToSeconds } from './format-date';
 
-export const tablesProductsTimersKey = 'tablesProductsTimers';
-
 interface IUseTimer {
   tableId: TableIdType;
   productId: ProductIdType;
