@@ -13,7 +13,7 @@ export const IconBtn: FC<IIconButtonProps> = ({ tableId, productId }) => (
     role={`remove-table-product-button-${tableId}-${productId}`}
     color="primary"
     size="small"
-    disabled={useStore($isLoading)}
+    disabled={useStore($isLoading)?.[tableId]?.[productId]}
     onClick={() => {
       remove({ tableId, productId });
     }}

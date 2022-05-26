@@ -1,12 +1,12 @@
 import { createEvent, createStore, forward } from 'effector';
 
-import { TableIdType, TableProductIdType } from '@/shared';
+import { TablesProductLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 import { IPlayTableProductTimerParams } from './types';
 
 export const play = createEvent<IPlayTableProductTimerParams>();
 
-export const $isLoading = createStore<Record<TableIdType, Record<TableProductIdType, boolean>>>({});
+export const $isLoading = createStore<TablesProductLoadingType>({});
 
 $isLoading
   .on(tablesModel.setProductTimerStatusFx.finally, (state, { params: { tableId, productId } }) => ({
@@ -16,7 +16,7 @@ $isLoading
       [productId]: false,
     },
   }))
-  .on(play, (state, { tableId, productId }) => ({
+  .on(tablesModel.setProductTimerStatusFx, (state, { tableId, productId }) => ({
     ...state,
     [tableId]: {
       ...state[tableId],

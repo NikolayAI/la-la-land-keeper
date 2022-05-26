@@ -15,7 +15,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
     sx={{}}
     role={`remove-table-${tableId}-button`}
     startIcon={<DeleteIcon />}
-    loading={useStore($isLoading)}
+    loading={useStore($isLoading)?.[tableId]}
     onClick={() => {
       remove({ id: tableId });
     }}

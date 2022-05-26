@@ -16,7 +16,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
     role={`clear-table-${tableId}-button`}
     variant="contained"
     startIcon={<CleaningServicesIcon />}
-    loading={useStore(tableModel.$isClearLoading)}
+    loading={useStore(tableModel.$isClearLoading)?.[tableId]}
     onClick={() => {
       clear({ tableId });
     }}

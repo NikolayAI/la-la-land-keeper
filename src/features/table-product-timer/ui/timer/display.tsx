@@ -96,7 +96,7 @@ export const Display: FC<IProductTimer> = memo(
           <IconButton
             role="pause-timer-button"
             size="small"
-            disabled={useStore(tableProductTimerModel.$isStopLoading)}
+            disabled={useStore(tableProductTimerModel.$isStopLoading)?.[tableId]?.[productId]}
             onClick={handleStop}
           >
             <PauseIcon fontSize="small" />

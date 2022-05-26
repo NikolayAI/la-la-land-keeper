@@ -15,7 +15,7 @@ export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId }) => (
     role="decrease-table-product-count-button"
     color="primary"
     size="small"
-    disabled={useStore($isLoading)}
+    disabled={useStore($isLoading)?.[tableId]?.[productId]}
     onClick={() => decrease({ tableId, productId })}
   >
     <RemoveIcon fontSize="small" />

@@ -21,6 +21,8 @@ export type TableProductCreatedAtType = string | Date;
 export type TableProductTimerStatusType = TableProductTimerStatuses;
 export type TableProductPausedAtType = Date | null;
 export type TableProductPausedTimerCountType = number;
+export type TablesLoadingType = Record<TableIdType, boolean>;
+export type TablesProductLoadingType = Record<TableIdType, Record<TableProductIdType, boolean>>;
 
 export type ProductIdType = string;
 export type ProductNameType = string;

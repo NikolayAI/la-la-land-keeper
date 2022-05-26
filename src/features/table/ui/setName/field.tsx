@@ -10,12 +10,11 @@ interface ISetTableNameProps {
 }
 
 export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => {
-  const isLoading = useStore($isLoading);
   return (
     <EditableText
       role={`editable-table-name-${tableId}`}
       text={tableName}
-      isLoading={isLoading}
+      isLoading={useStore($isLoading)?.[tableId]}
       setTableName={(text: string) => {
         setName({ id: tableId, text });
       }}

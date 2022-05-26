@@ -1,16 +1,21 @@
-import { combine, createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, forward } from 'effector';
 
-import { IClearTableParams } from '@/shared';
+import { IClearTableParams, TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 export const clear = createEvent<IClearTableParams>();
 
-export const $isLoading = createStore<boolean>(false);
+export const $isLoading = createStore<TablesLoadingType>({});
 
-$isLoading.on(
-  combine(tablesModel.clearTableFx.pending, (...args) => args.some((isLoading) => isLoading)),
-  (isLoading) => isLoading
-);
+$isLoading
+  .on(tablesModel.clearTableFx.finally, (state, { params: { tableId } }) => ({
+    ...state,
+    [tableId]: false,
+  }))
+  .on(tablesModel.clearTableFx, (state, { tableId }) => ({
+    ...state,
+    [tableId]: true,
+  }));
 
 forward({
   from: clear,

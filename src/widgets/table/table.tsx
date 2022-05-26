@@ -27,7 +27,7 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => (
         <IconButton
           role={`add-product-to-table-button-${tableId}`}
           color="inherit"
-          disabled={useStore(tableProductModel.$isAddLoading)}
+          disabled={useStore(tableProductModel.$isAddLoading)?.[tableId]}
           onClick={(event) =>
             tableProductModel.setAddAnchorEl({
               tableId,

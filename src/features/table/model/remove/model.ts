@@ -1,15 +1,21 @@
-import { combine, createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, forward } from 'effector';
 
+import { TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 export const remove = createEvent<{ id: string }>();
 
-export const $isLoading = createStore<boolean>(false);
+export const $isLoading = createStore<TablesLoadingType>({});
 
-$isLoading.on(
-  combine(tablesModel.removeTableFx.pending, (...args) => args.some((isLoading) => isLoading)),
-  (isLoading) => isLoading
-);
+$isLoading
+  .on(tablesModel.removeTableFx.finally, (state, { params: { id: tableId } }) => ({
+    ...state,
+    [tableId]: false,
+  }))
+  .on(tablesModel.removeTableFx, (state, { id: tableId }) => ({
+    ...state,
+    [tableId]: true,
+  }));
 
 forward({
   from: remove,
