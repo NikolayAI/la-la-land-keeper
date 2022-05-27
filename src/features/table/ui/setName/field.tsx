@@ -9,15 +9,13 @@ interface ISetTableNameProps {
   tableName: TableNameType;
 }
 
-export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => {
-  return (
-    <EditableText
-      role={`editable-table-name-${tableId}`}
-      text={tableName}
-      isLoading={useStore($isLoading)?.[tableId]}
-      setTableName={(text: string) => {
-        setName({ id: tableId, text });
-      }}
-    />
-  );
-};
+export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => (
+  <EditableText
+    role={`editable-table-name-${tableId}`}
+    text={tableName}
+    isLoading={useStore($isLoading)?.[tableId]}
+    setTableName={(text: string) => {
+      setName({ id: tableId, text });
+    }}
+  />
+);

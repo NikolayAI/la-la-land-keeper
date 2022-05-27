@@ -65,7 +65,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('decrease-table-product-count-button'));
+      fireEvent.click(screen.getByRole(`decrease-table-product-count-button-${table.id}-${testTableProduct.id}`));
     });
 
     expect(decreaseTableProductFn).toHaveBeenCalledTimes(1);

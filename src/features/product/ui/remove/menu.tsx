@@ -39,7 +39,7 @@ export const Menu: FC = () => {
           >
             <Box
               sx={{ display: 'flex', alignItems: 'center' }}
-              role="remove-product-box"
+              role={`remove-product-box-${productId}`}
               onClick={() => handleRemove(productId)}
             >
               <DeleteIcon />

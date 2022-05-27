@@ -94,7 +94,7 @@ export const Display: FC<IProductTimer> = memo(
         </IconButton>
         {isTimerPlay ? (
           <IconButton
-            role="pause-timer-button"
+            role={`pause-timer-button-${tableId}-${productId}`}
             size="small"
             disabled={useStore(tableProductTimerModel.$isStopLoading)?.[tableId]?.[productId]}
             onClick={handleStop}
@@ -103,7 +103,7 @@ export const Display: FC<IProductTimer> = memo(
           </IconButton>
         ) : (
           <IconButton
-            role="play-timer-button"
+            role={`play-timer-button-${tableId}-${productId}`}
             size="small"
             disabled={useStore(tableProductTimerModel.$isPlayLoading)?.[tableId]?.[productId]}
             onClick={handlePlay}

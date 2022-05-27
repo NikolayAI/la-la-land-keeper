@@ -12,7 +12,7 @@ interface IIconBtnProps extends Omit<IDecreaseTableProductParams, 'value'> {
 
 export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId }) => (
   <IconButton
-    role="decrease-table-product-count-button"
+    role={`decrease-table-product-count-button-${tableId}-${productId}`}
     color="primary"
     size="small"
     disabled={useStore($isLoading)?.[tableId]?.[productId]}

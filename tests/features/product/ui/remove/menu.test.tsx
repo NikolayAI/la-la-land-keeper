@@ -44,7 +44,7 @@ describe('events', () => {
     render(<Header />, { wrapper: Wrapper });
 
     fireEvent.click(screen.getByText('Удалить товар'));
-    fireEvent.click(screen.getByRole('remove-product-box'));
+    fireEvent.click(screen.getByRole(`remove-product-box-${products['test-product-id'].id}`));
 
     expect(removeProductFn).toHaveBeenCalledTimes(1);
   });

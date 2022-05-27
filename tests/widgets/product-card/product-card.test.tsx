@@ -17,26 +17,13 @@ test('should call decreaseTableProduct', async () => {
     ...tableProduct,
     units: 2,
   };
-  const testTables = {
-    [table.id]: {
-      ...table,
-      products: {
-        [tableProduct.id]: testTableProduct,
-      },
-    },
-  };
 
   render(
-    <ProductCard
-      tables={testTables}
-      tableId={table.id}
-      tableProduct={testTableProduct}
-      timerStatus={TableProductTimerStatuses.play}
-    />,
+    <ProductCard tableId={table.id} tableProduct={testTableProduct} timerStatus={TableProductTimerStatuses.play} />,
     { wrapper: Wrapper }
   );
 
-  const element = screen.getByRole('decrease-table-product-count-button');
+  const element = screen.getByRole(`decrease-table-product-count-button-${table.id}-${testTableProduct.id}`);
 
   expect(element).toBeDefined();
 });

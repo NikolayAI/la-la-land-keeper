@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { TableProductTimerUI, tableProductTimerModel } from '@/features/table-product-timer';
+import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
 
@@ -29,8 +30,8 @@ describe('events', () => {
         timerStatus={TableProductTimerStatuses.play}
         pausedTimerCount={0}
         pausedAt={null}
-        tableId="1"
-        productId="2"
+        tableId={table.id}
+        productId={tableProduct.id}
         createdAt={new Date()}
         minutesLimit={20}
         productUnits={1}
@@ -40,7 +41,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('pause-timer-button'));
+      fireEvent.click(screen.getByRole(`pause-timer-button-${table.id}-${tableProduct.id}`));
     });
 
     expect(stopTimerFn).toHaveBeenCalledTimes(1);
@@ -52,8 +53,8 @@ describe('events', () => {
         timerStatus={TableProductTimerStatuses.stop}
         pausedTimerCount={0}
         pausedAt={null}
-        tableId="1"
-        productId="2"
+        tableId={table.id}
+        productId={tableProduct.id}
         createdAt={new Date()}
         minutesLimit={20}
         productUnits={1}
@@ -63,7 +64,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('play-timer-button'));
+      fireEvent.click(screen.getByRole(`play-timer-button-${table.id}-${tableProduct.id}`));
     });
 
     expect(playTimerFn).toHaveBeenCalledTimes(1);
