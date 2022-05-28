@@ -31,7 +31,7 @@ describe('events', () => {
 
     render(<Header />, { wrapper: Wrapper });
 
-    fireEvent.click(screen.getByRole('open-remove-product-form-header-button'));
+    fireEvent.click(screen.getByRole('open-remove-product-form-button'));
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });

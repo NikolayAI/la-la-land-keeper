@@ -36,7 +36,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
     <>
       {isEditMode ? (
         <TextField
-          role={`${role}-field`}
+          role={`editable-text-field-${role}`}
           color="primary"
           size="small"
           autoComplete=""
@@ -47,9 +47,16 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
           autoFocus
         />
       ) : (
-        <Box sx={{ display: 'inline-block', opacity: isLoading ? 0.5 : 1.0 }}>{editableText}</Box>
+        <Box
+          sx={{
+            display: 'inline-block',
+            opacity: isLoading ? 0.5 : 1.0,
+          }}
+        >
+          {editableText}
+        </Box>
       )}
-      <IconButton role={`${role}-button`} color="inherit" disabled={isLoading} onClick={handleTitleClick}>
+      <IconButton role={`editable-text-button-${role}`} color="inherit" disabled={isLoading} onClick={handleTitleClick}>
         {isEditMode ? <DoneIcon /> : <EditIcon />}
       </IconButton>
     </>

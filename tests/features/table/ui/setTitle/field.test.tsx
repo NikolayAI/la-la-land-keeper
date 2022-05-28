@@ -20,8 +20,8 @@ test('should call setName', async () => {
     wrapper: Wrapper,
   });
 
-  fireEvent.click(screen.getByRole(`editable-table-name-${table.id}-button`));
-  fireEvent.click(screen.getByRole(`editable-table-name-${table.id}-button`));
+  fireEvent.click(screen.getByRole(`editable-text-button-editable-table-name-${table.id}`));
+  fireEvent.click(screen.getByRole(`editable-text-button-editable-table-name-${table.id}`));
 
   expect(fn).toHaveBeenCalledTimes(1);
 });

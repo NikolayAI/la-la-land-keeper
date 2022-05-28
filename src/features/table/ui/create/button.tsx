@@ -6,7 +6,7 @@ import { $isLoading, create } from '../../model/create';
 
 export const Btn = () => (
   <LoadingButton
-    role="create-table-header-button"
+    role="create-table-button"
     variant="contained"
     loading={useStore($isLoading)}
     onClick={() => {

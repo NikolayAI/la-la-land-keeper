@@ -13,7 +13,7 @@ interface IBtnProps {
 
 export const Btn: FC<IBtnProps> = ({ tableId }) => (
   <LoadingButton
-    role={`clear-table-${tableId}-button`}
+    role={`clear-table-button-${tableId}`}
     variant="contained"
     startIcon={<CleaningServicesIcon />}
     loading={useStore(tableModel.$isClearLoading)?.[tableId]}

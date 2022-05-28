@@ -20,34 +20,9 @@ describe('events', () => {
   const stopTimerFn = jest.fn();
   tableProductTimerModel.stop.watch(stopTimerFn);
 
-  beforeEach(() => {
+  test('should call handlePlayTimer', () => {
     scope = fork();
-  });
 
-  test('should call handleStopTimer', async () => {
-    render(
-      <TableProductTimerUI.Timer.Display
-        timerStatus={TableProductTimerStatuses.play}
-        pausedTimerCount={0}
-        pausedAt={null}
-        tableId={table.id}
-        productId={tableProduct.id}
-        createdAt={new Date()}
-        minutesLimit={20}
-        productUnits={1}
-        setTimer={setTimerFn}
-      />,
-      { wrapper: Wrapper }
-    );
-
-    act(() => {
-      fireEvent.click(screen.getByRole(`pause-timer-button-${table.id}-${tableProduct.id}`));
-    });
-
-    expect(stopTimerFn).toHaveBeenCalledTimes(1);
-  });
-
-  test('should call handlePlayTimer', async () => {
     render(
       <TableProductTimerUI.Timer.Display
         timerStatus={TableProductTimerStatuses.stop}
@@ -68,5 +43,30 @@ describe('events', () => {
     });
 
     expect(playTimerFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call handleStopTimer', () => {
+    scope = fork();
+
+    render(
+      <TableProductTimerUI.Timer.Display
+        timerStatus={TableProductTimerStatuses.play}
+        pausedTimerCount={0}
+        pausedAt={null}
+        tableId={table.id}
+        productId={tableProduct.id}
+        createdAt={new Date()}
+        minutesLimit={20}
+        productUnits={1}
+        setTimer={setTimerFn}
+      />,
+      { wrapper: Wrapper }
+    );
+
+    act(() => {
+      fireEvent.click(screen.getByRole(`stop-timer-button-${table.id}-${tableProduct.id}`));
+    });
+
+    expect(stopTimerFn).toHaveBeenCalledTimes(1);
   });
 });

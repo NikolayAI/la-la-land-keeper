@@ -18,9 +18,8 @@ import {
   useProductTimer,
 } from '@/shared';
 import { tablesModel } from '@/entities/tables';
-import { tableProductTimerModel } from '@/features/table-product-timer';
-import { play } from '../../model/play';
-import { stop } from '../../model/stop';
+import { play, $isLoading as $isPlayLoading } from '../../model/play';
+import { stop, $isLoading as $isStopLoading } from '../../model/stop';
 
 interface IProductTimer {
   tableId: TableIdType;
@@ -94,9 +93,9 @@ export const Display: FC<IProductTimer> = memo(
         </IconButton>
         {isTimerPlay ? (
           <IconButton
-            role={`pause-timer-button-${tableId}-${productId}`}
+            role={`stop-timer-button-${tableId}-${productId}`}
             size="small"
-            disabled={useStore(tableProductTimerModel.$isStopLoading)?.[tableId]?.[productId]}
+            disabled={useStore($isStopLoading)?.[tableId]?.[productId]}
             onClick={handleStop}
           >
             <PauseIcon fontSize="small" />
@@ -105,7 +104,7 @@ export const Display: FC<IProductTimer> = memo(
           <IconButton
             role={`play-timer-button-${tableId}-${productId}`}
             size="small"
-            disabled={useStore(tableProductTimerModel.$isPlayLoading)?.[tableId]?.[productId]}
+            disabled={useStore($isPlayLoading)?.[tableId]?.[productId]}
             onClick={handlePlay}
           >
             <PlayArrowIcon fontSize="small" />

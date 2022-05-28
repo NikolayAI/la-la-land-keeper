@@ -12,8 +12,7 @@ interface IBtnProps {
 
 export const Btn: FC<IBtnProps> = ({ tableId }) => (
   <LoadingButton
-    sx={{}}
-    role={`remove-table-${tableId}-button`}
+    role={`remove-table-button-${tableId}`}
     startIcon={<DeleteIcon />}
     loading={useStore($isLoading)?.[tableId]}
     onClick={() => {

@@ -9,7 +9,7 @@ interface IIconBtnProps extends Omit<IIncreaseTableProductParams, 'value'> {}
 
 export const IconBtn: FC<IIconBtnProps> = ({ tableId, productId }) => (
   <IconButton
-    role="increase-table-product-count-button"
+    role={`increase-table-product-count-button-${tableId}-${productId}`}
     color="primary"
     size="small"
     onClick={() => {

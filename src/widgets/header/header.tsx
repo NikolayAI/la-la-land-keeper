@@ -29,7 +29,7 @@ export const Header = () => {
               Создать товар
             </LoadingButton>
             <LoadingButton
-              role="open-remove-product-form-header-button"
+              role="open-remove-product-form-button"
               variant="contained"
               loading={useStore(productModel.$isRemoveLoading)}
               onClick={(event) => {

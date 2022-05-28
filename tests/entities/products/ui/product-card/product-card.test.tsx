@@ -147,57 +147,10 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole('increase-table-product-count-button'));
+      fireEvent.click(screen.getByRole(`increase-table-product-count-button-${table.id}-${tableProduct.id}`));
     });
 
     expect(increaseTableProductFn).toHaveBeenCalledTimes(1);
-  });
-
-  test('should call removeProductFromTable', async () => {
-    scope = fork();
-    const testTableProduct = {
-      ...tableProduct,
-      isPiece: false,
-    };
-
-    render(
-      <ProductsUI.ProductCard
-        tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.play}
-        isProductTimerOut={false}
-        TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
-            timerStatus={testTableProduct.timerStatus}
-            pausedTimerCount={testTableProduct.pausedTimerCount}
-            pausedAt={testTableProduct.pausedAt}
-            tableId={table.id}
-            productId={testTableProduct.id}
-            createdAt={testTableProduct.createdAt}
-            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
-            productUnits={testTableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
-          />
-        }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
-        }
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={testTableProduct.id}
-            productUnits={testTableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    act(() => {
-      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`));
-    });
-
-    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
   });
 
   test('product card should have correct background color', async () => {

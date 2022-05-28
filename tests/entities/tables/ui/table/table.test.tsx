@@ -43,7 +43,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole(`remove-table-${table.id}-button`));
+      fireEvent.click(screen.getByRole(`remove-table-button-${table.id}`));
     });
 
     expect(removeTableFn).toHaveBeenCalledTimes(1);
@@ -68,7 +68,7 @@ describe('events', () => {
     );
 
     act(() => {
-      fireEvent.click(screen.getByRole(`clear-table-${table.id}-button`));
+      fireEvent.click(screen.getByRole(`clear-table-button-${table.id}`));
     });
 
     expect(clearTableFn).toHaveBeenCalledTimes(1);

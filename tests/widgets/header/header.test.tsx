@@ -7,7 +7,6 @@ import { IChildrenOnly } from '@/shared';
 import { productModel } from '@/features/product';
 import { tableModel } from '@/features/table';
 import { Header } from '@/widgets/header';
-import { openCreateForm } from '../../../src/features/product/model/create';
 
 let scope: Scope;
 
@@ -28,7 +27,7 @@ describe('events', () => {
     render(<Header />, { wrapper: Wrapper });
 
     act(() => {
-      fireEvent.click(screen.getByRole('create-table-header-button'));
+      fireEvent.click(screen.getByRole('create-table-button'));
     });
 
     expect(createTableFn).toHaveBeenCalledTimes(1);
