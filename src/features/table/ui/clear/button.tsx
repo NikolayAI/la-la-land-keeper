@@ -4,8 +4,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType } from '@/shared';
-import { tableModel } from '@/features/table';
-import { clear } from '../../model/clear';
+import { $isLoading, clear } from '../../model/clear';
 
 interface IBtnProps {
   tableId: TableIdType;
@@ -16,7 +15,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
     role={`clear-table-button-${tableId}`}
     variant="contained"
     startIcon={<CleaningServicesIcon />}
-    loading={useStore(tableModel.$isClearLoading)?.[tableId]}
+    loading={useStore($isLoading)?.[tableId]}
     onClick={() => {
       clear({ tableId });
     }}

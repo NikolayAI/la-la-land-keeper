@@ -5,7 +5,7 @@ import { ITableProduct, TableIdType, TableProductTimerStatusType, TablesType } f
 import { ProductsUI } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
-import { TableProductTimerUI } from '@/features/table-product-timer';
+import { ProductTimer } from '@/widgets/product-timer';
 
 interface IProductCardProps {
   tableId: TableIdType;
@@ -22,7 +22,7 @@ export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct, time
       timerStatus={timerStatus}
       isProductTimerOut={isTimerOut}
       TableProductTimerSlot={
-        <TableProductTimerUI.Timer.Display
+        <ProductTimer
           tableId={tableId}
           productId={tableProduct.id}
           pausedTimerCount={tableProduct.pausedTimerCount}
@@ -31,7 +31,6 @@ export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct, time
           createdAt={tableProduct.createdAt}
           minutesLimit={tableProduct.eachProductUnitMinutesTimer}
           productUnits={tableProduct.units}
-          setTimer={tablesModel.setTablesProductsTimers}
         />
       }
       IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={tableId} productId={tableProduct.id} />}

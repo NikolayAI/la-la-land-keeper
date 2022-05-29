@@ -1,6 +1,7 @@
-import { play, $isLoading as $isPlayLoading } from './model/play';
-import { stop, $isLoading as $isStopLoading } from './model/stop';
-import { Display } from './ui/timer';
+import { $isLoading as $isPlayLoading, play } from './model/play';
+import { $isLoading as $isStopLoading, stop } from './model/stop';
+import * as Play from './ui/play';
+import * as Stop from './ui/stop';
 
 export type { IPlayTableProductTimerParams } from './model/play';
 export type { IStopProductTableTimerParams } from './model/stop';
@@ -13,5 +14,6 @@ export const tableProductTimerModel = {
 };
 
 export const TableProductTimerUI = {
-  Timer: { Display },
+  Play,
+  Stop,
 };

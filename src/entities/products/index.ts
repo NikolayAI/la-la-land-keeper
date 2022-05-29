@@ -1,5 +1,5 @@
 import { $isLoading, $products, createProductFx, getProductsFx, removeProductFx } from './model';
-import { ProductCard } from './ui';
+import { ProductCard, ProductTimer } from './ui';
 
 export * from './constants';
 
@@ -13,4 +13,5 @@ export const productsModel = {
 
 export const ProductsUI = {
   ProductCard,
+  ProductTimer,
 };

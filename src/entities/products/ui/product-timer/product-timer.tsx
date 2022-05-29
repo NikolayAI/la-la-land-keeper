@@ -1,8 +1,5 @@
-import PauseIcon from '@mui/icons-material/Pause';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { IconButton } from '@mui/material';
-import { useStore } from 'effector-react';
-import React, { FC, memo } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 
 import {
   ISetTablesProductsTimersParams,
@@ -12,14 +9,12 @@ import {
   TableProductMinutesLimitType,
   TableProductPausedAtType,
   TableProductPausedTimerCountType,
+  TableProductsTimersType,
   TableProductTimerStatuses,
   TableProductTimerStatusType,
   TableProductUnitsType,
   useProductTimer,
 } from '@/shared';
-import { tablesModel } from '@/entities/tables';
-import { play, $isLoading as $isPlayLoading } from '../../model/play';
-import { stop, $isLoading as $isStopLoading } from '../../model/stop';
 
 interface IProductTimer {
   tableId: TableIdType;
@@ -31,9 +26,12 @@ interface IProductTimer {
   minutesLimit: TableProductMinutesLimitType;
   productUnits: TableProductUnitsType;
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
+  tablesProductsTimers: TableProductsTimersType;
+  StopTimerSlot: ReactNode;
+  PlayTimerSlot: ReactNode;
 }
 
-export const Display: FC<IProductTimer> = memo(
+export const ProductTimer: FC<IProductTimer> = memo(
   ({
     tableId,
     productId,
@@ -44,9 +42,10 @@ export const Display: FC<IProductTimer> = memo(
     minutesLimit,
     productUnits,
     setTimer,
+    tablesProductsTimers,
+    StopTimerSlot,
+    PlayTimerSlot,
   }) => {
-    const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
-
     const timerCount = tablesProductsTimers[tableId]?.[productId];
     const isTimerPlay = timerStatus === TableProductTimerStatuses.play;
 
@@ -62,27 +61,6 @@ export const Display: FC<IProductTimer> = memo(
       interval: 1000,
     });
 
-    const handleStop = () => {
-      stop({
-        tableId,
-        productId,
-        timerStatus: TableProductTimerStatuses.stop,
-        pausedAt: new Date(),
-        pausedTimerCount,
-      });
-    };
-
-    const handlePlay = () => {
-      play({
-        tableId,
-        productId,
-        pausedAt,
-        timerStatus: TableProductTimerStatuses.play,
-        // @ts-ignore
-        pausedTimerCount: new Date() - new Date(pausedAt ?? new Date()) + pausedTimerCount,
-      });
-    };
-
     return (
       <div role={`product-timer-display-${tableId}-${productId}`}>
         <IconButton color="primary" size="small" sx={{ cursor: 'default' }}>
@@ -91,25 +69,7 @@ export const Display: FC<IProductTimer> = memo(
         <IconButton color="default" size="small" sx={{ cursor: 'default' }}>
           / {minutesLimit * productUnits}
         </IconButton>
-        {isTimerPlay ? (
-          <IconButton
-            role={`stop-timer-button-${tableId}-${productId}`}
-            size="small"
-            disabled={useStore($isStopLoading)?.[tableId]?.[productId]}
-            onClick={handleStop}
-          >
-            <PauseIcon fontSize="small" />
-          </IconButton>
-        ) : (
-          <IconButton
-            role={`play-timer-button-${tableId}-${productId}`}
-            size="small"
-            disabled={useStore($isPlayLoading)?.[tableId]?.[productId]}
-            onClick={handlePlay}
-          >
-            <PlayArrowIcon fontSize="small" />
-          </IconButton>
-        )}
+        {isTimerPlay ? StopTimerSlot : PlayTimerSlot}
       </div>
     );
   }

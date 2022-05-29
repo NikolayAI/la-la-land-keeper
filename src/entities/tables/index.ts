@@ -19,7 +19,6 @@ import {
 import { Table } from './ui';
 
 export { calculateTableTotalPrice } from './lib';
-export * from './types';
 
 export const tablesModel = {
   removeProductFx,

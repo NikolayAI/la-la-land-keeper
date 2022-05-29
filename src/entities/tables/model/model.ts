@@ -12,8 +12,8 @@ import {
   ISetTableNameParams,
   TablesAPI,
   TablesType,
+  TableProductsTimersType,
 } from '@/shared';
-import { TableProductsTimersType } from '../types';
 
 export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
 
