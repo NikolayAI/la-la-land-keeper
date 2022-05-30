@@ -4,7 +4,9 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
-import { TableProductTimerUI, tableProductTimerModel } from '@/features/table-product-timer';
+import { tableProductTimerModel } from '@/features/table-product-timer';
+import { ProductTimer } from '@/widgets/product-timer';
+
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
@@ -12,8 +14,6 @@ let scope: Scope;
 const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
-  const setTimerFn = jest.fn();
-
   const playTimerFn = jest.fn();
   tableProductTimerModel.play.watch(playTimerFn);
 
@@ -24,7 +24,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <TableProductTimerUI.Timer.Display
+      <ProductTimer
         timerStatus={TableProductTimerStatuses.stop}
         pausedTimerCount={0}
         pausedAt={null}
@@ -33,7 +33,6 @@ describe('events', () => {
         createdAt={new Date()}
         minutesLimit={20}
         productUnits={1}
-        setTimer={setTimerFn}
       />,
       { wrapper: Wrapper }
     );
@@ -49,7 +48,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <TableProductTimerUI.Timer.Display
+      <ProductTimer
         timerStatus={TableProductTimerStatuses.play}
         pausedTimerCount={0}
         pausedAt={null}
@@ -58,7 +57,6 @@ describe('events', () => {
         createdAt={new Date()}
         minutesLimit={20}
         productUnits={1}
-        setTimer={setTimerFn}
       />,
       { wrapper: Wrapper }
     );

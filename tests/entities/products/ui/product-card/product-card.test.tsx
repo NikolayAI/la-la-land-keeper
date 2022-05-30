@@ -5,9 +5,9 @@ import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { ProductsUI } from '@/entities/products';
-import { tablesModel } from '@/entities/tables';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
-import { TableProductTimerUI } from '@/features/table-product-timer';
+import { ProductTimer } from '@/widgets/product-timer';
+
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;
@@ -37,7 +37,7 @@ describe('events', () => {
         timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
+          <ProductTimer
             timerStatus={testTableProduct.timerStatus}
             pausedTimerCount={testTableProduct.pausedTimerCount}
             pausedAt={testTableProduct.pausedAt}
@@ -46,7 +46,6 @@ describe('events', () => {
             createdAt={testTableProduct.createdAt}
             minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
             productUnits={testTableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
           />
         }
         IncreaseTableProductSlot={
@@ -80,7 +79,7 @@ describe('events', () => {
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
+          <ProductTimer
             timerStatus={tableProduct.timerStatus}
             pausedTimerCount={tableProduct.pausedTimerCount}
             pausedAt={tableProduct.pausedAt}
@@ -89,7 +88,6 @@ describe('events', () => {
             createdAt={tableProduct.createdAt}
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
           />
         }
         IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
@@ -121,7 +119,7 @@ describe('events', () => {
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
+          <ProductTimer
             timerStatus={tableProduct.timerStatus}
             pausedTimerCount={tableProduct.pausedTimerCount}
             pausedAt={tableProduct.pausedAt}
@@ -130,7 +128,6 @@ describe('events', () => {
             createdAt={tableProduct.createdAt}
             minutesLimit={tableProduct.eachProductUnitMinutesTimer}
             productUnits={tableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
           />
         }
         IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
@@ -166,7 +163,7 @@ describe('events', () => {
         timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
+          <ProductTimer
             timerStatus={testTableProduct.timerStatus}
             pausedTimerCount={testTableProduct.pausedTimerCount}
             pausedAt={testTableProduct.pausedAt}
@@ -175,7 +172,6 @@ describe('events', () => {
             createdAt={testTableProduct.createdAt}
             minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
             productUnits={testTableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
           />
         }
         IncreaseTableProductSlot={
@@ -210,7 +206,7 @@ describe('events', () => {
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={true}
         TableProductTimerSlot={
-          <TableProductTimerUI.Timer.Display
+          <ProductTimer
             timerStatus={testTableProduct.timerStatus}
             pausedTimerCount={testTableProduct.pausedTimerCount}
             pausedAt={testTableProduct.pausedAt}
@@ -219,7 +215,6 @@ describe('events', () => {
             createdAt={testTableProduct.createdAt}
             minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
             productUnits={testTableProduct.units}
-            setTimer={tablesModel.setTablesProductsTimers}
           />
         }
         IncreaseTableProductSlot={

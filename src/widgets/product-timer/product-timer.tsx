@@ -39,34 +39,28 @@ export const ProductTimer: FC<IProductTimerProps> = ({
   const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
 
   return (
-    <div role={`product-timer-display-${tableId}-${productId}`}>
-      <ProductsUI.ProductTimer
-        tableId={tableId}
-        productId={productId}
-        timerStatus={timerStatus}
-        pausedAt={pausedAt}
-        pausedTimerCount={pausedTimerCount}
-        createdAt={createdAt}
-        minutesLimit={minutesLimit}
-        productUnits={productUnits}
-        setTimer={tablesModel.setTablesProductsTimers}
-        tablesProductsTimers={tablesProductsTimers}
-        StopTimerSlot={
-          <TableProductTimerUI.Stop.IconBtn
-            tableId={tableId}
-            productId={productId}
-            pausedTimerCount={pausedTimerCount}
-          />
-        }
-        PlayTimerSlot={
-          <TableProductTimerUI.Play.IconBtn
-            tableId={tableId}
-            productId={productId}
-            pausedTimerCount={pausedTimerCount}
-            pausedAt={pausedAt}
-          />
-        }
-      />
-    </div>
+    <ProductsUI.ProductTimer
+      tableId={tableId}
+      productId={productId}
+      timerStatus={timerStatus}
+      pausedAt={pausedAt}
+      pausedTimerCount={pausedTimerCount}
+      createdAt={createdAt}
+      minutesLimit={minutesLimit}
+      productUnits={productUnits}
+      setTimer={tablesModel.setTablesProductsTimers}
+      tablesProductsTimers={tablesProductsTimers}
+      StopTimerSlot={
+        <TableProductTimerUI.Stop.IconBtn tableId={tableId} productId={productId} pausedTimerCount={pausedTimerCount} />
+      }
+      PlayTimerSlot={
+        <TableProductTimerUI.Play.IconBtn
+          tableId={tableId}
+          productId={productId}
+          pausedTimerCount={pausedTimerCount}
+          pausedAt={pausedAt}
+        />
+      }
+    />
   );
 };
