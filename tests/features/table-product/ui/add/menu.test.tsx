@@ -25,7 +25,7 @@ describe('events', () => {
     scope = fork({
       values: [
         [productsModel.$products, products],
-        [tableProductModel.$addAnchorEl, { [tableId]: <div></div> }],
+        [tableProductModel.$addAnchorEl, { [tableId]: <div /> }],
       ],
     });
 

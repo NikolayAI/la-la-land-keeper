@@ -5,7 +5,7 @@ import { tablesModel } from '@/entities/tables';
 import { ISetAnchorElementParams } from './types';
 
 export const add = createEvent<IAddProductToTableParams>();
-export const setAddAnchorEl = createEvent<ISetAnchorElementParams>();
+export const setAnchorEl = createEvent<ISetAnchorElementParams>();
 
 export const $anchorEl = createStore<Record<string, null | HTMLElement>>({});
 export const $isLoading = createStore<TablesLoadingType>({});
@@ -19,7 +19,7 @@ $isLoading
     ...state,
     [tableId]: true,
   }));
-$anchorEl.on(setAddAnchorEl, (state, { tableId, element }) => ({
+$anchorEl.on(setAnchorEl, (state, { tableId, element }) => ({
   ...state,
   [tableId]: element,
 }));

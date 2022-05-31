@@ -1,4 +1,9 @@
-import { $anchorEl as $addAnchorEl, $isLoading as $isAddLoading, add, setAddAnchorEl } from './model/add';
+import {
+  $anchorEl as $addAnchorEl,
+  $isLoading as $isAddLoading,
+  add,
+  setAnchorEl as setAddAnchorEl,
+} from './model/add';
 import { decrease } from './model/decrease';
 import { increase } from './model/increase';
 import { remove } from './model/remove';

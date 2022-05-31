@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 
 import { IAddProductToTableParams } from '@/shared';
 import { productsModel } from '@/entities/products';
-import { $anchorEl, add, setAddAnchorEl } from '../../model/add';
+import { $anchorEl, add, setAnchorEl } from '../../model/add';
 
 interface IAddProductToTableProps extends Omit<IAddProductToTableParams, 'productId'> {}
 
@@ -18,16 +18,17 @@ export const Menu: FC<IAddProductToTableProps> = ({ tableId }) => {
 
   const handleAddProduct = ({ tableId, productId }: IAddProductToTableParams) => {
     add({ tableId, productId });
-    setAddAnchorEl({ tableId, element: null });
+    setAnchorEl({ tableId, element: null });
   };
 
   return (
     <MaterialMenu
+      key={tableId}
       id={`basic-menu-${tableId}`}
       anchorEl={anchorEl}
       open={open}
       onClose={() => {
-        setAddAnchorEl({ tableId, element: null });
+        setAnchorEl({ tableId, element: null });
       }}
       MenuListProps={{ 'aria-labelledby': `basic-button-${tableId}` }}
     >
