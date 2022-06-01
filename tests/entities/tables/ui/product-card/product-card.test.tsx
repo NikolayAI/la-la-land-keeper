@@ -4,7 +4,7 @@ import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
-import { ProductsUI } from '@/entities/products';
+import { TablesUI } from '@/entities/tables';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
 
@@ -32,7 +32,7 @@ describe('events', () => {
     };
 
     render(
-      <ProductsUI.ProductCard
+      <TablesUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
@@ -74,7 +74,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <ProductsUI.ProductCard
+      <TablesUI.ProductCard
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
@@ -114,7 +114,7 @@ describe('events', () => {
     scope = fork();
 
     render(
-      <ProductsUI.ProductCard
+      <TablesUI.ProductCard
         tableProduct={tableProduct}
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={false}
@@ -158,7 +158,7 @@ describe('events', () => {
     };
 
     render(
-      <ProductsUI.ProductCard
+      <TablesUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={testTableProduct.timerStatus}
         isProductTimerOut={true}
@@ -201,7 +201,7 @@ describe('events', () => {
     };
 
     render(
-      <ProductsUI.ProductCard
+      <TablesUI.ProductCard
         tableProduct={testTableProduct}
         timerStatus={TableProductTimerStatuses.play}
         isProductTimerOut={true}

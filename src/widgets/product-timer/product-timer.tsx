@@ -11,8 +11,7 @@ import {
   TableProductTimerStatusType,
   TableProductUnitsType,
 } from '@/shared';
-import { ProductsUI } from '@/entities/products';
-import { tablesModel } from '@/entities/tables';
+import { tablesModel, TablesUI } from '@/entities/tables';
 import { TableProductTimerUI } from '@/features/table-product-timer';
 
 interface IProductTimerProps {
@@ -39,7 +38,7 @@ export const ProductTimer: FC<IProductTimerProps> = ({
   const tablesProductsTimers = useStore(tablesModel.$tablesProductsTimers);
 
   return (
-    <ProductsUI.ProductTimer
+    <TablesUI.ProductTimer
       tableId={tableId}
       productId={productId}
       timerStatus={timerStatus}

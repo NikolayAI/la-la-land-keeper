@@ -1,22 +1,22 @@
 import {
-  removeProductFx,
-  addProductFx,
+  $isLoading,
   $tables,
-  getTablesFx,
-  setTablesProductsTimers,
+  $tablesIds,
   $tablesProductsTimers,
   $tablesProductsTimersOutOfLimits,
-  setProductTimerStatusFx,
-  decreaseProductFx,
-  increaseProductFx,
-  createTableFx,
+  addProductFx,
   clearTableFx,
+  createTableFx,
+  decreaseProductFx,
+  getTablesFx,
+  increaseProductFx,
+  removeProductFx,
   removeTableFx,
-  $tablesIds,
   setNameFx,
-  $isLoading,
+  setProductTimerStatusFx,
+  setTablesProductsTimers,
 } from './model';
-import { Table } from './ui';
+import { ProductCard, ProductTimer, Table } from './ui';
 
 export { calculateTableTotalPrice } from './lib';
 
@@ -41,4 +41,6 @@ export const tablesModel = {
 
 export const TablesUI = {
   Table,
+  ProductCard,
+  ProductTimer,
 };

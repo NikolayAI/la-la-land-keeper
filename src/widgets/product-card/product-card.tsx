@@ -2,8 +2,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { ITableProduct, TableIdType, TableProductTimerStatusType, TablesType } from '@/shared';
-import { ProductsUI } from '@/entities/products';
-import { tablesModel } from '@/entities/tables';
+import { tablesModel, TablesUI } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
 
@@ -17,7 +16,7 @@ export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct, time
   const productsTimersOutOfLimit = useStore(tablesModel.$tablesProductsTimersOutOfLimits);
   const isTimerOut = productsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
-    <ProductsUI.ProductCard
+    <TablesUI.ProductCard
       tableProduct={tableProduct}
       timerStatus={timerStatus}
       isProductTimerOut={isTimerOut}
