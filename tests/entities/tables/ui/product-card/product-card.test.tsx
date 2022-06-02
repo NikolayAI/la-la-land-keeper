@@ -24,7 +24,7 @@ describe('events', () => {
   const increaseTableProductFn = jest.fn();
   tableProductModel.increase.watch(increaseTableProductFn);
 
-  test('should call decreaseTableProduct', async () => {
+  test('should call decreaseTableProduct', () => {
     scope = fork();
     const testTableProduct = {
       ...tableProduct,
@@ -70,7 +70,7 @@ describe('events', () => {
     expect(decreaseTableProductFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call removeProductFromTable', async () => {
+  test('should call removeProductFromTable', () => {
     scope = fork();
 
     render(
@@ -110,7 +110,53 @@ describe('events', () => {
     expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should call increaseProductFromTable', async () => {
+  test('if product is not is piece should call removeProductFromTable', () => {
+    scope = fork();
+    const testTableProduct = {
+      ...tableProduct,
+      isPiece: false,
+    };
+
+    render(
+      <TablesUI.ProductCard
+        tableProduct={testTableProduct}
+        timerStatus={TableProductTimerStatuses.play}
+        isProductTimerOut={false}
+        TableProductTimerSlot={
+          <ProductTimer
+            timerStatus={testTableProduct.timerStatus}
+            pausedTimerCount={testTableProduct.pausedTimerCount}
+            pausedAt={testTableProduct.pausedAt}
+            tableId={table.id}
+            productId={testTableProduct.id}
+            createdAt={testTableProduct.createdAt}
+            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+            productUnits={testTableProduct.units}
+          />
+        }
+        IncreaseTableProductSlot={
+          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
+        }
+        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+        DecreaseTableProductSlot={
+          <TableProductUI.Decrease.IconBtn
+            tableId={table.id}
+            productId={testTableProduct.id}
+            productUnits={testTableProduct.units}
+          />
+        }
+      />,
+      { wrapper: Wrapper }
+    );
+
+    act(() => {
+      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`));
+    });
+
+    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call increaseProductFromTable', () => {
     scope = fork();
 
     render(
@@ -150,7 +196,7 @@ describe('events', () => {
     expect(increaseTableProductFn).toHaveBeenCalledTimes(1);
   });
 
-  test('product card should have correct background color', async () => {
+  test('product card should have correct background color', () => {
     scope = fork();
     const testTableProduct = {
       ...tableProduct,
@@ -192,7 +238,7 @@ describe('events', () => {
     expect(screen.getByRole(`table-product-paper-${tableProduct.id}`)).toHaveStyle('backgroundColor: #d32f2f');
   });
 
-  test('product card should display timer if product need timer', async () => {
+  test('product card should display timer if product need timer', () => {
     scope = fork();
     const testTableProduct = {
       ...tableProduct,
