@@ -7,7 +7,7 @@ import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { tableProductTimerModel } from '@/features/table-product-timer';
 import { ProductTimer } from '@/widgets/product-timer';
 
-import { table, tableProduct } from '../../../../__mocks__/fixtures';
+import { table, tableProduct } from '../../__mocks__/fixtures';
 
 let scope: Scope;
 

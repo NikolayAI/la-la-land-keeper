@@ -111,6 +111,7 @@ describe('events', () => {
   });
 
   test('if product is not is piece should call removeProductFromTable', () => {
+    scope = fork();
     const testTableProduct = {
       ...tableProduct,
       isPiece: false,

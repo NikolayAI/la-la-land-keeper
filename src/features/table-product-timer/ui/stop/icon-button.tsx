@@ -4,6 +4,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType, TableProductIdType, TableProductPausedTimerCountType, TableProductTimerStatuses } from '@/shared';
+
 import { $isLoading, stop } from '../../model/stop';
 
 interface IconBtnProps {
