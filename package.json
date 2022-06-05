@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' || true",
     "prettify": "prettier --write 'src/**/*.{js,ts,tsx}'",
+    "dpcruise": "depcruise --config .dependency-cruiser.js src",
     "test": "jest --coverage --config jest.config.json",
     "compile": "tsc",
     "prepare": "husky install"

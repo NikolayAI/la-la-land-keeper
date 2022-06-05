@@ -62,7 +62,7 @@ export const ProductTimer: FC<IProductTimer> = memo(
     });
 
     return (
-      <div role={`product-timer-display-${tableId}-${productId}`}>
+      <div role={`product-timer-${tableId}-${productId}`}>
         <IconButton color="primary" size="small" sx={{ cursor: 'default' }}>
           {`${timerCount}`}
         </IconButton>

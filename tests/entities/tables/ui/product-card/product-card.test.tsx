@@ -1,11 +1,11 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { fork, Scope } from 'effector';
 import { Provider } from 'effector-react/ssr';
 import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { TablesUI } from '@/entities/tables';
-import { tableProductModel, TableProductUI } from '@/features/table-product';
+import { TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
 
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
@@ -14,270 +14,87 @@ let scope: Scope;
 
 const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
-describe('events', () => {
-  const decreaseTableProductFn = jest.fn();
-  tableProductModel.decrease.watch(decreaseTableProductFn);
+test('if product is not is piece should call removeProductFromTable', () => {
+  scope = fork();
+  const testTableProduct = {
+    ...tableProduct,
+    isPiece: false,
+  };
 
-  const removeProductFromTableFn = jest.fn();
-  tableProductModel.remove.watch(removeProductFromTableFn);
+  render(
+    <TablesUI.ProductCard
+      tableProduct={testTableProduct}
+      timerStatus={TableProductTimerStatuses.play}
+      isProductTimerOut={false}
+      TableProductTimerSlot={
+        <ProductTimer
+          timerStatus={testTableProduct.timerStatus}
+          pausedTimerCount={testTableProduct.pausedTimerCount}
+          pausedAt={testTableProduct.pausedAt}
+          tableId={table.id}
+          productId={testTableProduct.id}
+          createdAt={testTableProduct.createdAt}
+          minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+          productUnits={testTableProduct.units}
+        />
+      }
+      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      DecreaseTableProductSlot={
+        <TableProductUI.Decrease.IconBtn
+          tableId={table.id}
+          productId={testTableProduct.id}
+          productUnits={testTableProduct.units}
+        />
+      }
+    />,
+    { wrapper: Wrapper }
+  );
 
-  const increaseTableProductFn = jest.fn();
-  tableProductModel.increase.watch(increaseTableProductFn);
+  const element = screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`);
 
-  test('should call decreaseTableProduct', () => {
-    scope = fork();
-    const testTableProduct = {
-      ...tableProduct,
-      units: 2,
-    };
+  expect(element).toBeDefined();
+});
 
-    render(
-      <TablesUI.ProductCard
-        tableProduct={testTableProduct}
-        timerStatus={testTableProduct.timerStatus}
-        isProductTimerOut={true}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={testTableProduct.timerStatus}
-            pausedTimerCount={testTableProduct.pausedTimerCount}
-            pausedAt={testTableProduct.pausedAt}
-            tableId={table.id}
-            productId={testTableProduct.id}
-            createdAt={testTableProduct.createdAt}
-            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
-            productUnits={testTableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
-        }
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={testTableProduct.id}
-            productUnits={testTableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
+test('product card should display timer if product need timer', () => {
+  scope = fork();
+  const testTableProduct = {
+    ...tableProduct,
+    units: 2,
+    needTimer: true,
+  };
 
-    act(() => {
-      fireEvent.click(screen.getByRole(`decrease-table-product-count-button-${table.id}-${testTableProduct.id}`));
-    });
+  render(
+    <TablesUI.ProductCard
+      tableProduct={testTableProduct}
+      timerStatus={TableProductTimerStatuses.play}
+      isProductTimerOut={true}
+      TableProductTimerSlot={
+        <ProductTimer
+          timerStatus={testTableProduct.timerStatus}
+          pausedTimerCount={testTableProduct.pausedTimerCount}
+          pausedAt={testTableProduct.pausedAt}
+          tableId={table.id}
+          productId={testTableProduct.id}
+          createdAt={testTableProduct.createdAt}
+          minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
+          productUnits={testTableProduct.units}
+        />
+      }
+      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      DecreaseTableProductSlot={
+        <TableProductUI.Decrease.IconBtn
+          tableId={table.id}
+          productId={testTableProduct.id}
+          productUnits={testTableProduct.units}
+        />
+      }
+    />,
+    { wrapper: Wrapper }
+  );
 
-    expect(decreaseTableProductFn).toHaveBeenCalledTimes(1);
-  });
+  const element = screen.getByRole(`product-timer-${table.id}-${tableProduct.id}`);
 
-  test('should call removeProductFromTable', () => {
-    scope = fork();
-
-    render(
-      <TablesUI.ProductCard
-        tableProduct={tableProduct}
-        timerStatus={TableProductTimerStatuses.play}
-        isProductTimerOut={false}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={tableProduct.timerStatus}
-            pausedTimerCount={tableProduct.pausedTimerCount}
-            pausedAt={tableProduct.pausedAt}
-            tableId={table.id}
-            productId={tableProduct.id}
-            createdAt={tableProduct.createdAt}
-            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-            productUnits={tableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-            productUnits={tableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    act(() => {
-      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${tableProduct.id}`));
-    });
-
-    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
-  });
-
-  test('if product is not is piece should call removeProductFromTable', () => {
-    scope = fork();
-    const testTableProduct = {
-      ...tableProduct,
-      isPiece: false,
-    };
-
-    render(
-      <TablesUI.ProductCard
-        tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.play}
-        isProductTimerOut={false}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={testTableProduct.timerStatus}
-            pausedTimerCount={testTableProduct.pausedTimerCount}
-            pausedAt={testTableProduct.pausedAt}
-            tableId={table.id}
-            productId={testTableProduct.id}
-            createdAt={testTableProduct.createdAt}
-            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
-            productUnits={testTableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
-        }
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={testTableProduct.id}
-            productUnits={testTableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    act(() => {
-      fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`));
-    });
-
-    expect(removeProductFromTableFn).toHaveBeenCalledTimes(1);
-  });
-
-  test('should call increaseProductFromTable', () => {
-    scope = fork();
-
-    render(
-      <TablesUI.ProductCard
-        tableProduct={tableProduct}
-        timerStatus={TableProductTimerStatuses.play}
-        isProductTimerOut={false}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={tableProduct.timerStatus}
-            pausedTimerCount={tableProduct.pausedTimerCount}
-            pausedAt={tableProduct.pausedAt}
-            tableId={table.id}
-            productId={tableProduct.id}
-            createdAt={tableProduct.createdAt}
-            minutesLimit={tableProduct.eachProductUnitMinutesTimer}
-            productUnits={tableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={tableProduct.id}
-            productUnits={tableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    act(() => {
-      fireEvent.click(screen.getByRole(`increase-table-product-count-button-${table.id}-${tableProduct.id}`));
-    });
-
-    expect(increaseTableProductFn).toHaveBeenCalledTimes(1);
-  });
-
-  test('product card should have correct background color', () => {
-    scope = fork();
-    const testTableProduct = {
-      ...tableProduct,
-      units: 2,
-    };
-
-    render(
-      <TablesUI.ProductCard
-        tableProduct={testTableProduct}
-        timerStatus={testTableProduct.timerStatus}
-        isProductTimerOut={true}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={testTableProduct.timerStatus}
-            pausedTimerCount={testTableProduct.pausedTimerCount}
-            pausedAt={testTableProduct.pausedAt}
-            tableId={table.id}
-            productId={testTableProduct.id}
-            createdAt={testTableProduct.createdAt}
-            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
-            productUnits={testTableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
-        }
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={testTableProduct.id}
-            productUnits={testTableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    expect(screen.getByRole(`table-product-paper-${tableProduct.id}`)).toHaveStyle('backgroundColor: #d32f2f');
-  });
-
-  test('product card should display timer if product need timer', () => {
-    scope = fork();
-    const testTableProduct = {
-      ...tableProduct,
-      units: 2,
-      needTimer: true,
-    };
-
-    render(
-      <TablesUI.ProductCard
-        tableProduct={testTableProduct}
-        timerStatus={TableProductTimerStatuses.play}
-        isProductTimerOut={true}
-        TableProductTimerSlot={
-          <ProductTimer
-            timerStatus={testTableProduct.timerStatus}
-            pausedTimerCount={testTableProduct.pausedTimerCount}
-            pausedAt={testTableProduct.pausedAt}
-            tableId={table.id}
-            productId={testTableProduct.id}
-            createdAt={testTableProduct.createdAt}
-            minutesLimit={testTableProduct.eachProductUnitMinutesTimer}
-            productUnits={testTableProduct.units}
-          />
-        }
-        IncreaseTableProductSlot={
-          <TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />
-        }
-        RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-        DecreaseTableProductSlot={
-          <TableProductUI.Decrease.IconBtn
-            tableId={table.id}
-            productId={testTableProduct.id}
-            productUnits={testTableProduct.units}
-          />
-        }
-      />,
-      { wrapper: Wrapper }
-    );
-
-    expect(screen.getByRole(`product-timer-display-${table.id}-${tableProduct.id}`)).toBeDefined();
-  });
+  expect(element).toBeDefined();
 });

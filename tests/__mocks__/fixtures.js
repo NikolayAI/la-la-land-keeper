@@ -40,3 +40,9 @@ export const table = {
 export const tables = {
   'test-table-id': table,
 };
+
+export const tablesProductsTimers = {
+  [table.id]: {
+    [tableProduct.id]: 0,
+  },
+};
