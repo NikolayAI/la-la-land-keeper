@@ -44,3 +44,4 @@ export const TablesUI = {
   ProductCard,
   ProductTimer,
 };
+export { backgroundColors } from '@/entities/tables/constants';

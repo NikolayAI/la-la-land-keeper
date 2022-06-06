@@ -6,6 +6,7 @@ import React, { FC } from 'react';
 import { IChildrenOnly } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
+
 import { products } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;

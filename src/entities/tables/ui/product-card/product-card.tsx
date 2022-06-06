@@ -2,7 +2,8 @@ import { Grid, IconButton, Paper, Typography } from '@mui/material';
 import React, { FC, ReactNode } from 'react';
 
 import { ITableProduct, TableProductTimerStatusType } from '@/shared';
-import { backgroundColors } from '../../../products/constants';
+
+import { backgroundColors } from '../../constants';
 
 interface IProductCardProps {
   tableProduct: ITableProduct;
