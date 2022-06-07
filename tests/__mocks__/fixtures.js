@@ -10,7 +10,7 @@ export const product = {
 };
 
 export const products = {
-  'test-product-id': product,
+  [product.id]: product,
 };
 
 export const tableProduct = {
@@ -28,7 +28,7 @@ export const tableProduct = {
 };
 
 export const tableProducts = {
-  'test-table-product-id': tableProduct,
+  [tableProduct.id]: tableProduct,
 };
 
 export const table = {
@@ -38,7 +38,7 @@ export const table = {
 };
 
 export const tables = {
-  'test-table-id': table,
+  [table.id]: table,
 };
 
 export const tablesProductsTimers = {
