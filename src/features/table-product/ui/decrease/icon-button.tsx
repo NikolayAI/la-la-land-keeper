@@ -4,6 +4,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { IDecreaseTableProductParams, TableProductUnitsType } from '@/shared';
+
 import { decrease, $isLoading } from '../../model/decrease';
 
 interface IIconBtnProps extends Omit<IDecreaseTableProductParams, 'value'> {

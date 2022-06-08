@@ -17,7 +17,7 @@
   "lint-staged": {
     "*": [
       "npm run lint",
-      "depcruise --config .dependency-cruiser.js src",
+      "npm run dpcruise",
       "prettier --write"
     ]
   },

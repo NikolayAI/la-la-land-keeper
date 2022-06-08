@@ -6,7 +6,7 @@ import {
 } from './model/add';
 import { decrease, $isLoading as $isDecreaseLoading } from './model/decrease';
 import { increase } from './model/increase';
-import { remove } from './model/remove';
+import { remove, $isLoading as $isRemoveLoading } from './model/remove';
 import * as Add from './ui/add';
 import * as Decrease from './ui/decrease';
 import * as Increase from './ui/increase';
@@ -21,6 +21,7 @@ export const tableProductModel = {
   decrease,
   $isDecreaseLoading,
   remove,
+  $isRemoveLoading,
 };
 
 export const TableProductUI = {

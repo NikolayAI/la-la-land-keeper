@@ -1,9 +1,9 @@
 import { createEvent, createStore, forward } from 'effector';
 
-import { TablesLoadingType } from '@/shared';
+import { TableIdType, TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
-export const remove = createEvent<{ id: string }>();
+export const remove = createEvent<{ id: TableIdType }>();
 
 export const $isLoading = createStore<TablesLoadingType>({});
 
