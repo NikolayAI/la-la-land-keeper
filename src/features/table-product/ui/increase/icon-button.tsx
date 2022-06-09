@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import React, { FC } from 'react';
 
 import { IIncreaseTableProductParams } from '@/shared';
+
 import { increase } from '../../model/increase';
 
 interface IIconBtnProps extends Omit<IIncreaseTableProductParams, 'value'> {}

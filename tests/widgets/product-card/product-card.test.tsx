@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 
 import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
 import { ProductCard } from '@/widgets/product-card';
+
 import { table, tableProduct } from '../../__mocks__/fixtures';
 
 let scope: Scope;

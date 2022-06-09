@@ -8,6 +8,7 @@ import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel } from '@/features/table-product';
 import { Table, TablesList } from '@/widgets/table';
+
 import { products, table, tableProduct, tables } from '../../__mocks__/fixtures';
 
 let scope: Scope;

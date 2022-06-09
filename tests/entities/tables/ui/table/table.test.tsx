@@ -8,6 +8,7 @@ import { TablesUI } from '@/entities/tables';
 import { TableUI, tableModel } from '@/features/table';
 import { TableProductUI } from '@/features/table-product';
 import { ProductCardList } from '@/widgets/product-card';
+
 import { table, tables } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;

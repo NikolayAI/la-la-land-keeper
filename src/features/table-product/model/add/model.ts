@@ -2,6 +2,7 @@ import { createEvent, createStore, sample } from 'effector';
 
 import { IAddProductToTableParams, TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
+
 import { ISetAnchorElementParams } from './types';
 
 export const add = createEvent<IAddProductToTableParams>();

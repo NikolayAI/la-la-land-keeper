@@ -4,6 +4,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType } from '@/shared';
+
 import { $isLoading, clear } from '../../model/clear';
 
 interface IBtnProps {

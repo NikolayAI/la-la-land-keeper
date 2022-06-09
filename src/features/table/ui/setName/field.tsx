@@ -2,6 +2,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType, TableNameType, EditableText } from '@/shared';
+
 import { setName, $isLoading } from '../../model/setName';
 
 interface ISetTableNameProps {

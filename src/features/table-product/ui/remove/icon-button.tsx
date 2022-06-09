@@ -4,6 +4,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { IRemoveProductToTableParams } from '@/shared';
+
 import { remove, $isLoading } from '../../model/remove';
 
 interface IIconButtonProps extends IRemoveProductToTableParams {}

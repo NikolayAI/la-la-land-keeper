@@ -7,6 +7,7 @@ import { TableIdType, TablesType } from '@/shared';
 import { tablesModel, TablesUI } from '@/entities/tables';
 import { TableUI } from '@/features/table';
 import { TableProductUI, tableProductModel } from '@/features/table-product';
+
 import { ProductCardList } from '../product-card';
 
 interface ITableProps {

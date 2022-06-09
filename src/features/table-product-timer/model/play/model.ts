@@ -2,6 +2,7 @@ import { createEvent, createStore, forward } from 'effector';
 
 import { TablesProductLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
+
 import { IPlayTableProductTimerParams } from './types';
 
 export const play = createEvent<IPlayTableProductTimerParams>();

@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 
 import { IChildrenOnly } from '@/shared';
 import { tableModel, TableUI } from '@/features/table';
+
 import { table } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;

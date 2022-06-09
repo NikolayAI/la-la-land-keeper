@@ -7,6 +7,7 @@ import { IChildrenOnly } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { productModel } from '@/features/product';
 import { Header } from '@/widgets/header';
+
 import { products } from '../../../../__mocks__/fixtures';
 
 let scope: Scope;

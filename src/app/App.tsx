@@ -4,6 +4,7 @@ import React from 'react';
 
 import { NotificationsUI } from '@/entities/computed/notifications';
 import { Dashboard } from '@/pages/dashboard';
+
 import './styles/App.css';
 
 const scope = fork();

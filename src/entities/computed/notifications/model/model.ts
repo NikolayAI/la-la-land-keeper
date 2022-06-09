@@ -1,6 +1,7 @@
 import { createEvent, createStore, sample } from 'effector';
 
 import { TableProductTimerStatuses } from '@/shared';
+
 import { productsModel } from '../../../products';
 import { tablesModel } from '../../../tables';
 import { NotificationKinds } from '../constants';

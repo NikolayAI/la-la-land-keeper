@@ -1,9 +1,5 @@
-import {
-  createProduct,
-  removeProduct,
-  getProducts,
-  setProducts,
-} from '@/shared/api/products';
+import { createProduct, removeProduct, getProducts, setProducts } from '@/shared/api/products';
+
 import { products, product } from '../../__mocks__/fixtures';
 
 test('getProducts should return value', async () => {

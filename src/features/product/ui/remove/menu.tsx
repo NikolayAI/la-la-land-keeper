@@ -6,6 +6,7 @@ import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { productsModel } from '@/entities/products';
+
 import { $anchorEl, removeProduct, setRemoveAnchorEl } from '../../model/remove/model';
 
 export const Menu: FC = () => {

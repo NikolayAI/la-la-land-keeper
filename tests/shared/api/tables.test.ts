@@ -1,4 +1,5 @@
 import { TableProductTimerStatuses, TablesAPI } from '@/shared';
+
 import { tables } from '../../__mocks__/fixtures';
 
 const tableId = 'test-table-id';

@@ -2,6 +2,7 @@ import { AppBar, Box, Card, CardContent, Grid, Paper, Toolbar, Typography } from
 import React, { FC, memo, ReactNode } from 'react';
 
 import { TableIdType, TablesType } from '@/shared';
+
 import { calculateTableTotalPrice } from '../../lib';
 
 interface ITableProps {
