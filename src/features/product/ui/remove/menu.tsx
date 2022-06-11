@@ -16,7 +16,7 @@ export const Menu: FC = () => {
   const open = Boolean(anchorEl);
 
   const handleRemove = (productId: string) => {
-    removeProduct({ id: productId });
+    removeProduct({ productId });
     setRemoveAnchorEl(null);
   };
 

@@ -17,7 +17,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
     startIcon={<DeleteIcon />}
     loading={useStore($isLoading)?.[tableId]}
     onClick={() => {
-      remove({ id: tableId });
+      remove({ tableId });
     }}
   >
     Удалить стол

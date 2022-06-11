@@ -1,8 +1,9 @@
 import { combine, createEvent, createStore, forward } from 'effector';
 
+import { IRemoveProductParams } from '@/shared';
 import { productsModel } from '@/entities/products';
 
-export const removeProduct = createEvent<{ id: string }>();
+export const removeProduct = createEvent<IRemoveProductParams>();
 export const setRemoveAnchorEl = createEvent<null | HTMLElement>();
 
 export const $isLoading = createStore<boolean>(false);

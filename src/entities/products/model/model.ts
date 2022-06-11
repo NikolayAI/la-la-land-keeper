@@ -15,8 +15,8 @@ getProductsFx.use(async () => {
 createProductFx.use(async (product) => {
   await ProductsAPI.createProduct(product);
 });
-removeProductFx.use(async ({ id }) => {
-  await ProductsAPI.removeProduct({ id });
+removeProductFx.use(async ({ productId }) => {
+  await ProductsAPI.removeProduct({ productId });
 });
 
 $isLoading.on(

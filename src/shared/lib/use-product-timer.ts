@@ -61,7 +61,6 @@ export const useProductTimer = ({
         Number(new Date(ref.current.pausedAt)) - Number(new Date(createdAt)) - ref.current.pausedTimerCount
       );
     }
-    return 0;
   };
 
   useEffect(() => {
@@ -71,7 +70,7 @@ export const useProductTimer = ({
     setTimer({
       tableId,
       productId,
-      value: calculateTimerCount(),
+      value: calculateTimerCount() ?? 0,
     });
 
     if (!ref.current.isTimerPlay && ref.current.intervalId) {
@@ -84,7 +83,7 @@ export const useProductTimer = ({
         setTimer({
           tableId,
           productId,
-          value: calculateTimerCount(),
+          value: calculateTimerCount() ?? 0,
         });
       }, interval);
     }

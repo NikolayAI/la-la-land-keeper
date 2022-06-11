@@ -1,10 +1,6 @@
 import { TableProductTimerStatuses, TablesAPI } from '@/shared';
 
-import { tables } from '../../__mocks__/fixtures';
-
-const tableId = 'test-table-id';
-const productId = 'test-table-product-id';
-const value = 1;
+import { tables, table, tableProduct } from '../../__mocks__/fixtures';
 
 test('getTables should return value', async () => {
   const result = await TablesAPI.getTables();
@@ -25,43 +21,43 @@ test('should call createTable', async () => {
 });
 
 test('should call removeTable', async () => {
-  const result = await TablesAPI.removeTable({ id: tableId });
+  const result = await TablesAPI.removeTable({ tableId: table.id });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call setTableName', async () => {
   const result = await TablesAPI.setTableName({
-    id: tableId,
-    text: 'test table',
+    tableId: table.id,
+    text: table.name,
   });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call clearTable', async () => {
-  const result = await TablesAPI.clearTable({ tableId });
+  const result = await TablesAPI.clearTable({ tableId: table.id });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call addProductToTable', async () => {
-  const result = await TablesAPI.addProductToTable({ tableId, productId });
+  const result = await TablesAPI.addProductToTable({ tableId: table.id, productId: tableProduct.id });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call removeProductFromTable', async () => {
-  const result = await TablesAPI.removeProductFromTable({ tableId, productId });
+  const result = await TablesAPI.removeProductFromTable({ tableId: table.id, productId: tableProduct.id });
 
   expect(result).toStrictEqual(undefined);
 });
 
 test('should call increaseTableProduct', async () => {
   const result = await TablesAPI.increaseTableProduct({
-    tableId,
-    productId,
-    value,
+    tableId: table.id,
+    productId: tableProduct.id,
+    value: 1,
   });
 
   expect(result).toStrictEqual(undefined);
@@ -69,9 +65,9 @@ test('should call increaseTableProduct', async () => {
 
 test('should call decreaseTableProduct', async () => {
   const result = await TablesAPI.decreaseTableProduct({
-    tableId,
-    productId,
-    value,
+    tableId: table.id,
+    productId: tableProduct.id,
+    value: 1,
   });
 
   expect(result).toStrictEqual(undefined);
@@ -79,8 +75,8 @@ test('should call decreaseTableProduct', async () => {
 
 test('should call setTableProductTimerStatus', async () => {
   const result = await TablesAPI.setTableProductTimerStatus({
-    tableId,
-    productId,
+    tableId: table.id,
+    productId: tableProduct.id,
     timerStatus: TableProductTimerStatuses.stop,
     pausedTimerCount: 0,
     pausedAt: null,

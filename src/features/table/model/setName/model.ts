@@ -8,11 +8,11 @@ export const setName = createEvent<ISetTableNameParams>();
 export const $isLoading = createStore<TablesLoadingType>({});
 
 $isLoading
-  .on(tablesModel.setNameFx.finally, (state, { params: { id: tableId } }) => ({
+  .on(tablesModel.setNameFx.finally, (state, { params: { tableId } }) => ({
     ...state,
     [tableId]: false,
   }))
-  .on(tablesModel.setNameFx, (state, { id: tableId }) => ({
+  .on(tablesModel.setNameFx, (state, { tableId }) => ({
     ...state,
     [tableId]: true,
   }));

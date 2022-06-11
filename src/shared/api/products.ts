@@ -24,8 +24,8 @@ export const createProduct = async (product: IProduct): Promise<void> => {
   await setProducts(products);
 };
 
-export const removeProduct = async ({ id }: IRemoveProductParams) => {
+export const removeProduct = async ({ productId }: IRemoveProductParams) => {
   const products = await getProducts();
-  delete products[id];
+  delete products[productId];
   await setProducts(products);
 };

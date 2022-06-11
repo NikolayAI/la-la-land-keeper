@@ -38,11 +38,11 @@ getTablesFx.use(async () => {
 createTableFx.use(async () => {
   await TablesAPI.createTable();
 });
-removeTableFx.use(async ({ id }) => {
-  await TablesAPI.removeTable({ id });
+removeTableFx.use(async ({ tableId }) => {
+  await TablesAPI.removeTable({ tableId });
 });
-setNameFx.use(async ({ id, text }) => {
-  await TablesAPI.setTableName({ id, text });
+setNameFx.use(async ({ tableId, text }) => {
+  await TablesAPI.setTableName({ tableId, text });
 });
 addProductFx.use(async ({ productId, tableId }) => {
   await TablesAPI.addProductToTable({ productId, tableId });

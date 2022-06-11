@@ -36,15 +36,15 @@ export const createTable = async (): Promise<void> => {
   await setTables(tables);
 };
 
-export const removeTable = async ({ id }: IRemoveTableParams): Promise<void> => {
+export const removeTable = async ({ tableId }: IRemoveTableParams): Promise<void> => {
   const tables = await getTables();
-  delete tables[id];
+  delete tables[tableId];
   await setTables(tables);
 };
 
-export const setTableName = async ({ id, text }: ISetTableNameParams): Promise<void> => {
+export const setTableName = async ({ tableId, text }: ISetTableNameParams): Promise<void> => {
   const tables = await getTables();
-  tables[id].name = text;
+  tables[tableId].name = text;
   await setTables(tables);
 };
 

@@ -64,16 +64,16 @@ export interface IIncreaseTableProductParams extends IAddProductToTableParams {
 export interface IRemoveProductToTableParams extends IAddProductToTableParams {}
 
 export interface ISetTableNameParams {
-  id: TableIdType;
+  tableId: TableIdType;
   text: string;
 }
 
 export interface IRemoveTableParams {
-  id: TableIdType;
+  tableId: TableIdType;
 }
 
 export interface IRemoveProductParams {
-  id: ProductIdType;
+  productId: ProductIdType;
 }
 
 export interface IProduct {

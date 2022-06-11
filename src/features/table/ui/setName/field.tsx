@@ -16,7 +16,7 @@ export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => (
     text={tableName}
     isLoading={useStore($isLoading)?.[tableId]}
     setTableName={(text: string) => {
-      setName({ id: tableId, text });
+      setName({ tableId, text });
     }}
   />
 );
