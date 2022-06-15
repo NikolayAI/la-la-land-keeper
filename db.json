@@ -3,7 +3,21 @@
     "53c34ac5-d936-4ab2-8ac7-cb0886b53e33": {
       "id": "53c34ac5-d936-4ab2-8ac7-cb0886b53e33",
       "name": "неизвестный стол",
-      "products": {}
+      "products": {
+        "8f4051a6-af49-4048-98b8-d8ebc533fe81": {
+          "id": "8f4051a6-af49-4048-98b8-d8ebc533fe81",
+          "name": "Кальян",
+          "price": 600,
+          "isPiece": true,
+          "needTimer": true,
+          "eachProductUnitMinutesTimer": 90,
+          "units": 1,
+          "createdAt": "2022-06-15T15:35:41.668Z",
+          "timerStatus": "play",
+          "pausedAt": "2022-06-15T15:35:55.047Z",
+          "pausedTimerCount": 6621
+        }
+      }
     }
   },
   "products": {

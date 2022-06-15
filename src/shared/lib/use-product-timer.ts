@@ -48,7 +48,7 @@ export const useProductTimer = ({
     pausedAt: null,
     pausedTimerCount: 0,
   });
-  console.log('HELLO');
+
   ref.current.isTimerPlay = isTimerPlay;
 
   const calculateTimerCount = () => {
@@ -66,7 +66,6 @@ export const useProductTimer = ({
   useEffect(() => {
     ref.current.pausedAt = pausedAt ?? new Date();
     ref.current.pausedTimerCount = pausedTimerCount;
-    console.log('HELLO 2');
 
     setTimer({
       tableId,
@@ -74,14 +73,13 @@ export const useProductTimer = ({
       value: calculateTimerCount() ?? 0,
     });
 
-    if (!ref.current.isTimerPlay && ref.current.intervalId) {
-      console.log('HELLO 3');
-      clearInterval(ref.current.intervalId);
-      ref.current.intervalId = null;
-    }
+    // should verify
+    // if (!ref.current.isTimerPlay && ref.current.intervalId) {
+    //   clearInterval(ref.current.intervalId);
+    //   ref.current.intervalId = null;
+    // }
 
     if (ref.current.isTimerPlay && !ref.current.intervalId) {
-      console.log('HELLO 4');
       ref.current.intervalId = setInterval(() => {
         setTimer({
           tableId,
