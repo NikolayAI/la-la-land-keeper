@@ -1,24 +1,27 @@
 import React from 'react';
 
-import { useProductTimer } from '@/shared';
+import * as lib from '@/shared/lib/use-product-timer';
 
 import { table, tableProduct } from '../../__mocks__/fixtures';
 
 jest.useFakeTimers();
-jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb());
-jest.spyOn(React, 'useRef').mockReturnValueOnce({
-  current: {
-    intervalId: 1,
-    isTimerPlay: false,
-    pausedAt: null,
-    pausedTimerCount: 0,
-  },
+
+beforeEach(() => {
+  jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb());
+  jest.spyOn(React, 'useRef').mockReturnValueOnce({
+    current: {
+      intervalId: null,
+      isTimerPlay: false,
+      pausedAt: null,
+      pausedTimerCount: 0,
+    },
+  });
 });
 
 test(`should call set timer`, () => {
   const fn = jest.fn();
 
-  useProductTimer({
+  lib.useProductTimer({
     tableId: table.id,
     productId: tableProduct.id,
     createdAt: tableProduct.createdAt,
@@ -32,5 +35,25 @@ test(`should call set timer`, () => {
 
   jest.runOnlyPendingTimers();
 
-  expect(fn).toHaveBeenCalledTimes(1);
+  expect(fn).toHaveBeenCalledTimes(2);
+});
+
+test(`should call calculateTimerCount`, () => {
+  const mockedCalculateTimerCount = jest.spyOn(lib, 'calculateTimerCount');
+
+  lib.useProductTimer({
+    tableId: table.id,
+    productId: tableProduct.id,
+    createdAt: tableProduct.createdAt,
+    pausedAt: tableProduct.pausedAt,
+    timerStatus: tableProduct.timerStatus,
+    pausedTimerCount: tableProduct.pausedTimerCount,
+    isTimerPlay: true,
+    interval: 1000,
+    setTimer: () => {},
+  });
+
+  jest.runOnlyPendingTimers();
+
+  expect(mockedCalculateTimerCount).toHaveBeenCalledTimes(2);
 });

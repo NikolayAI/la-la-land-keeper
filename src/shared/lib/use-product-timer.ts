@@ -28,7 +28,7 @@ export interface ITableProductTimerRef {
   intervalId: NodeJS.Timer | null;
   isTimerPlay: boolean;
   pausedAt: TableProductPausedAtType;
-  pausedTimerCount: number;
+  pausedTimerCount: TableProductPausedTimerCountType;
 }
 
 export const useProductTimer = ({
@@ -51,18 +51,6 @@ export const useProductTimer = ({
 
   ref.current.isTimerPlay = isTimerPlay;
 
-  const calculateTimerCount = () => {
-    if (ref.current.isTimerPlay) {
-      return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - ref.current.pausedTimerCount);
-    }
-    if (!ref.current.isTimerPlay) {
-      return dateToSeconds(
-        // @ts-ignore
-        Number(new Date(ref.current.pausedAt)) - Number(new Date(createdAt)) - ref.current.pausedTimerCount
-      );
-    }
-  };
-
   useEffect(() => {
     ref.current.pausedAt = pausedAt ?? new Date();
     ref.current.pausedTimerCount = pausedTimerCount;
@@ -70,21 +58,27 @@ export const useProductTimer = ({
     setTimer({
       tableId,
       productId,
-      value: calculateTimerCount() ?? 0,
+      value:
+        calculateTimerCount({
+          createdAt,
+          pausedAt: ref.current.pausedAt,
+          isTimerPlay: ref.current.isTimerPlay,
+          pausedTimerCount: ref.current.pausedTimerCount,
+        }) ?? 0,
     });
-
-    // should verify
-    // if (!ref.current.isTimerPlay && ref.current.intervalId) {
-    //   clearInterval(ref.current.intervalId);
-    //   ref.current.intervalId = null;
-    // }
 
     if (ref.current.isTimerPlay && !ref.current.intervalId) {
       ref.current.intervalId = setInterval(() => {
         setTimer({
           tableId,
           productId,
-          value: calculateTimerCount() ?? 0,
+          value:
+            calculateTimerCount({
+              createdAt,
+              pausedAt: ref.current.pausedAt,
+              isTimerPlay: ref.current.isTimerPlay,
+              pausedTimerCount: ref.current.pausedTimerCount,
+            }) ?? 0,
         });
       }, interval);
     }
@@ -96,4 +90,28 @@ export const useProductTimer = ({
       }
     };
   }, [timerStatus]);
+};
+
+interface ICalculateTimerCountParams {
+  isTimerPlay: boolean;
+  createdAt: TableProductCreatedAtType;
+  pausedAt: TableProductPausedAtType;
+  pausedTimerCount: TableProductPausedTimerCountType;
+}
+
+export const calculateTimerCount = ({
+  isTimerPlay,
+  createdAt,
+  pausedAt,
+  pausedTimerCount,
+}: ICalculateTimerCountParams) => {
+  if (isTimerPlay) {
+    return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - pausedTimerCount);
+  }
+  if (!isTimerPlay) {
+    return dateToSeconds(
+      // @ts-ignore
+      Number(new Date(pausedAt)) - Number(new Date(createdAt)) - pausedTimerCount
+    );
+  }
 };

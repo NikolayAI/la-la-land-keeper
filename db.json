@@ -12,10 +12,10 @@
           "needTimer": true,
           "eachProductUnitMinutesTimer": 90,
           "units": 1,
-          "createdAt": "2022-06-15T15:35:41.668Z",
-          "timerStatus": "play",
-          "pausedAt": "2022-06-15T15:35:55.047Z",
-          "pausedTimerCount": 6621
+          "createdAt": "2022-06-16T12:50:45.808Z",
+          "timerStatus": "stop",
+          "pausedAt": "2022-06-16T12:57:39.550Z",
+          "pausedTimerCount": 394202
         }
       }
     }
