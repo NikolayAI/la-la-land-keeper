@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as lib from '@/shared/lib/use-product-timer';
+import * as timer from '@/shared/lib/use-product-timer';
 
 import { table, tableProduct } from '../../__mocks__/fixtures';
 
@@ -18,10 +18,10 @@ beforeEach(() => {
   });
 });
 
-test(`should call set timer`, () => {
+test('should call set timer', () => {
   const fn = jest.fn();
 
-  lib.useProductTimer({
+  timer.useProductTimer({
     tableId: table.id,
     productId: tableProduct.id,
     createdAt: tableProduct.createdAt,
@@ -36,24 +36,4 @@ test(`should call set timer`, () => {
   jest.runOnlyPendingTimers();
 
   expect(fn).toHaveBeenCalledTimes(2);
-});
-
-test(`should call calculateTimerCount`, () => {
-  const mockedCalculateTimerCount = jest.spyOn(lib, 'calculateTimerCount');
-
-  lib.useProductTimer({
-    tableId: table.id,
-    productId: tableProduct.id,
-    createdAt: tableProduct.createdAt,
-    pausedAt: tableProduct.pausedAt,
-    timerStatus: tableProduct.timerStatus,
-    pausedTimerCount: tableProduct.pausedTimerCount,
-    isTimerPlay: true,
-    interval: 1000,
-    setTimer: () => {},
-  });
-
-  jest.runOnlyPendingTimers();
-
-  expect(mockedCalculateTimerCount).toHaveBeenCalledTimes(2);
 });
