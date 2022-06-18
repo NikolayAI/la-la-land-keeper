@@ -8,7 +8,7 @@ interface IEditableText {
   text: string;
   setTableName: (text: string) => void;
   isLoading: boolean;
-  role?: string;
+  role: string;
 }
 
 export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading, role }) => {
@@ -25,7 +25,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
   };
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEditableText(e.currentTarget.value);
+    setEditableText(e.target.value);
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
     <>
       {isEditMode ? (
         <TextField
-          role={`editable-text-field-${role}`}
+          inputProps={{ role: `editable-text-field-${role}` }}
           color="primary"
           size="small"
           autoComplete=""

@@ -110,7 +110,6 @@ export const calculateTimerCount = ({
     return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - pausedTimerCount);
   }
   if (!isTimerPlay) {
-    console.log('HELLO: ', isTimerPlay);
     return dateToSeconds(
       // @ts-ignore
       Number(new Date(pausedAt)) - Number(new Date(createdAt)) - pausedTimerCount
