@@ -1,31 +1,38 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { EditableText } from '@/shared';
 
+const mockSetEditableText = jest.fn();
+
 beforeEach(() => {
   jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb());
+  jest.spyOn(React, 'useState').mockImplementation(() => ['', mockSetEditableText]);
 });
-const setEditableText = jest.fn();
-jest.spyOn(React, 'useState').mockImplementation(() => ['', setEditableText]);
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 const elementRole = 'test-editable-text';
 const filedText = 'test-text';
+const newText = '1';
 
-test('should call setState', async () => {
+const selectors = {
+  btn: () => screen.getByRole(`editable-text-button-${elementRole}`),
+  field: () => screen.getByRole(`editable-text-field-${elementRole}`),
+};
+
+test('should set new value', () => {
   render(<EditableText role={elementRole} text={filedText} isLoading={false} setTableName={() => {}} />);
 
   act(() => {
-    fireEvent.click(screen.getByRole(`editable-text-button-${elementRole}`));
+    fireEvent.click(selectors.btn());
   });
 
-  await act(() => {
-    waitFor(() => {
-      fireEvent.change(screen.getByRole(`editable-text-field-${elementRole}`), {
-        target: { value: '1' },
-      });
-    });
+  act(() => {
+    fireEvent.change(selectors.field(), { target: { value: newText } });
   });
 
-  expect(setEditableText).toHaveBeenCalled();
+  expect(selectors.field().textContent).toBe(newText);
 });

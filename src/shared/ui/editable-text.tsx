@@ -26,6 +26,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEditableText(e.target.value);
+    console.log('HELLO: ', e.target.value);
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
