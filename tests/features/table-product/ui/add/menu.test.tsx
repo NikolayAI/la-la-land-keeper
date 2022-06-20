@@ -1,17 +1,12 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { products } from '../../../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const addProductToTableFn = jest.fn();
@@ -23,7 +18,7 @@ describe('events', () => {
   const tableId = '1';
 
   test('should call addProductToTable and setAnchorElFn for add product', async () => {
-    scope = fork({
+    const scope = fork({
       values: [
         [productsModel.$products, products],
         [tableProductModel.$addAnchorEl, { [tableId]: <div /> }],
@@ -31,7 +26,7 @@ describe('events', () => {
     });
 
     render(<TableProductUI.Add.Menu tableId={tableId} />, {
-      wrapper: Wrapper,
+      wrapper: initWrapper(scope),
     });
 
     act(() => {

@@ -1,28 +1,22 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
-
-import { IChildrenOnly } from '@/shared';
+import { fork } from 'effector';
+import React from 'react';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel } from '@/features/table-product';
 import { Table, TablesList } from '@/widgets/table';
 
+import { initWrapper } from '../../__lib__/component-wrapper';
 import { products, table, tableProduct, tables } from '../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 const setAnchorElFn = jest.fn();
 tableProductModel.setAddAnchorEl.watch(setAnchorElFn);
 
 test('should render Table widget', () => {
-  scope = fork();
+  const scope = fork();
 
   render(<Table tableId={table.id} tables={tables} />, {
-    wrapper: Wrapper,
+    wrapper: initWrapper(scope),
   });
 
   const element = screen.getByText(tables['test-table-id'].name);
@@ -43,14 +37,14 @@ test('should render Table from TablesList', () => {
       },
     },
   };
-  scope = fork({
+  const scope = fork({
     values: [
       [tablesModel.$tables, testTables],
       [productsModel.$products, products],
     ],
   });
 
-  render(<TablesList />, { wrapper: Wrapper });
+  render(<TablesList />, { wrapper: initWrapper(scope) });
 
   const element = screen.getByText(tables['test-table-id'].name);
 
@@ -58,10 +52,10 @@ test('should render Table from TablesList', () => {
 });
 
 test('should call setAnchorElFn for open form', async () => {
-  scope = fork();
+  const scope = fork();
 
   render(<Table tableId={table.id} tables={tables} />, {
-    wrapper: Wrapper,
+    wrapper: initWrapper(scope),
   });
 
   act(() => {

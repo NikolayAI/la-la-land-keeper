@@ -1,21 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
 import { App } from '@/app';
-import { IChildrenOnly } from '@/shared';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+import { initWrapper } from '../__lib__/component-wrapper';
 
 test('should render app', () => {
-  scope = fork();
+  const scope = fork();
 
-  render(<App />, { wrapper: Wrapper });
+  render(<App />, { wrapper: initWrapper(scope) });
 
   const linkElement = screen.getByText(/создать стол/i);
 

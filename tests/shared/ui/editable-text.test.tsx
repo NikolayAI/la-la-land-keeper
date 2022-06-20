@@ -3,16 +3,14 @@ import React from 'react';
 
 import { EditableText } from '@/shared';
 
-const mockSetEditableText = jest.fn();
+var mockSetEditableText = jest.fn(); // eslint-disable-line no-var
 
-beforeEach(() => {
-  jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb());
-  jest.spyOn(React, 'useState').mockImplementation(() => ['', mockSetEditableText]);
-});
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: jest.fn().mockReturnValueOnce(['qe', mockSetEditableText]),
+}));
 
-afterEach(() => {
-  jest.clearAllMocks();
-});
+jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb());
 
 const elementRole = 'test-editable-text';
 const filedText = 'test-text';
@@ -23,7 +21,7 @@ const selectors = {
   field: () => screen.getByRole(`editable-text-field-${elementRole}`),
 };
 
-test('should set new value', () => {
+test('should set new value', async () => {
   render(<EditableText role={elementRole} text={filedText} isLoading={false} setTableName={() => {}} />);
 
   act(() => {

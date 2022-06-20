@@ -1,10 +1,9 @@
 import { createEvent, createStore, sample } from 'effector';
 
-import { TableProductTimerStatuses } from '@/shared';
+import { NotificationKinds, TableProductTimerStatuses } from '@/shared';
 
 import { productsModel } from '../../../products';
 import { tablesModel } from '../../../tables';
-import { NotificationKinds } from '../constants';
 import { INotification } from '../types';
 
 export const addNotification = createEvent<INotification>();
@@ -37,7 +36,7 @@ sample({
           result.push({
             tableId,
             productId,
-            kind: NotificationKinds.ERROR,
+            kind: NotificationKinds.error,
             message: `Время для ${products[productId]?.name} на столе ${tables[tableId]?.name} истекло`,
           });
         }

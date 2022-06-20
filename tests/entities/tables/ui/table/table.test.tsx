@@ -1,19 +1,14 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { TablesUI } from '@/entities/tables';
-import { TableUI, tableModel } from '@/features/table';
+import { tableModel, TableUI } from '@/features/table';
 import { TableProductUI } from '@/features/table-product';
 import { ProductCardList } from '@/widgets/product-card';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tables } from '../../../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 describe('events', () => {
   const clearTableFn = jest.fn();
@@ -26,7 +21,7 @@ describe('events', () => {
   tableModel.setName.watch(setTableNameFn);
 
   test('should call removeTableFn', () => {
-    scope = fork();
+    const scope = fork();
 
     render(
       <TablesUI.Table
@@ -39,7 +34,7 @@ describe('events', () => {
         ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {
-        wrapper: Wrapper,
+        wrapper: initWrapper(scope),
       }
     );
 
@@ -51,7 +46,7 @@ describe('events', () => {
   });
 
   test('should call clearTableFn', () => {
-    scope = fork();
+    const scope = fork();
 
     render(
       <TablesUI.Table
@@ -64,7 +59,7 @@ describe('events', () => {
         ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
       />,
       {
-        wrapper: Wrapper,
+        wrapper: initWrapper(scope),
       }
     );
 

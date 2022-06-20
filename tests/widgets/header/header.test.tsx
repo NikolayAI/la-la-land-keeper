@@ -1,16 +1,12 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { productModel } from '@/features/product';
 import { tableModel } from '@/features/table';
 import { Header } from '@/widgets/header';
 
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
+import { initWrapper } from '../../__lib__/component-wrapper';
 
 describe('events', () => {
   const createTableFn = jest.fn();
@@ -19,12 +15,10 @@ describe('events', () => {
   const openCreateProductModalFn = jest.fn();
   productModel.openCreateForm.watch(openCreateProductModalFn);
 
-  beforeEach(() => {
-    scope = fork();
-  });
-
   test('should call createTable', async () => {
-    render(<Header />, { wrapper: Wrapper });
+    const scope = fork();
+
+    render(<Header />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByRole('create-table-button'));
@@ -34,7 +28,9 @@ describe('events', () => {
   });
 
   test('should call openCreateProductModal', async () => {
-    render(<Header />, { wrapper: Wrapper });
+    const scope = fork();
+
+    render(<Header />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByRole('open-create-product-form-header-button'));

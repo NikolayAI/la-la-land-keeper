@@ -1,28 +1,22 @@
 import { render } from '@testing-library/react';
-import { allSettled, fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { allSettled, fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { Dashboard, DashBoardGate } from '@/pages/dashboard';
 
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+import { initWrapper } from '../../__lib__/component-wrapper';
 
 test('when page has mounted should open gate', async () => {
   const fn = jest.fn();
   DashBoardGate.open.watch(fn);
 
-  scope = fork();
+  const scope = fork();
 
   expect(DashBoardGate.status.getState()).toBe(false);
 
-  render(<Dashboard />, { wrapper: Wrapper });
+  render(<Dashboard />, { wrapper: initWrapper(scope) });
 
   expect(fn).toHaveBeenCalledTimes(1);
 });

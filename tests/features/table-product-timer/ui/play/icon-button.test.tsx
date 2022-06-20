@@ -1,21 +1,16 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
-import { TableProductTimerUI, tableProductTimerModel } from '@/features/table-product-timer';
+import { tableProductTimerModel, TableProductTimerUI } from '@/features/table-product-timer';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 test('should call play timer', () => {
   const fn = jest.fn();
   tableProductTimerModel.play.watch(fn);
-  scope = fork();
+  const scope = fork();
 
   render(
     <TableProductTimerUI.Play.IconBtn
@@ -24,7 +19,7 @@ test('should call play timer', () => {
       pausedTimerCount={tableProduct.pausedTimerCount}
       pausedAt={tableProduct.pausedAt}
     />,
-    { wrapper: Wrapper }
+    { wrapper: initWrapper(scope) }
   );
 
   act(() => {

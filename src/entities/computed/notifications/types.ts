@@ -1,5 +1,4 @@
-import { NotificationMessageType, ProductIdType, TableIdType } from '@/shared';
-import { NotificationKinds } from './constants';
+import { NotificationKinds, NotificationMessageType, ProductIdType, TableIdType } from '@/shared';
 
 export interface INotification {
   kind: NotificationKinds;

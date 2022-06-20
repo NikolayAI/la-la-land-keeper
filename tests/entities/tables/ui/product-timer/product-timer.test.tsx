@@ -1,20 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
+import { TableProductTimerStatuses } from '@/shared';
 import { TablesUI } from '@/entities/tables';
 import { TableProductTimerUI } from '@/features/table-product-timer';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tableProduct, tablesProductsTimers } from '../../../../__mocks__/fixtures';
 
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
-
 test('should render stop timer button', () => {
-  scope = fork();
+  const scope = fork();
 
   render(
     <TablesUI.ProductTimer
@@ -40,7 +36,7 @@ test('should render stop timer button', () => {
         />
       }
     />,
-    { wrapper: Wrapper }
+    { wrapper: initWrapper(scope) }
   );
 
   const element = screen.getByRole(`stop-timer-button-${table.id}-${tableProduct.id}`);
@@ -49,7 +45,7 @@ test('should render stop timer button', () => {
 });
 
 test('should render play timer button', () => {
-  scope = fork();
+  const scope = fork();
 
   render(
     <TablesUI.ProductTimer
@@ -75,7 +71,7 @@ test('should render play timer button', () => {
         />
       }
     />,
-    { wrapper: Wrapper }
+    { wrapper: initWrapper(scope) }
   );
 
   const element = screen.getByRole(`play-timer-button-${table.id}-${tableProduct.id}`);

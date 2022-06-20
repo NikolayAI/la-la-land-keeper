@@ -1,4 +1,4 @@
-import { TableProductTimerStatuses } from '@/shared';
+import { TableProductTimerStatuses, NotificationKinds } from '@/shared';
 
 export const product = {
   id: 'test-product-id',
@@ -45,4 +45,11 @@ export const tablesProductsTimers = {
   [table.id]: {
     [tableProduct.id]: 0,
   },
+};
+
+export const notification = {
+  tableId: table.id,
+  productId: tableProduct.id,
+  kind: NotificationKinds.error,
+  message: 'notifications test',
 };

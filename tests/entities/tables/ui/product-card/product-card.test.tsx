@@ -1,21 +1,17 @@
 import { render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly, TableProductTimerStatuses } from '@/shared';
+import { TableProductTimerStatuses } from '@/shared';
 import { TablesUI } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
-
 test('if product is not is piece should call removeProductFromTable', () => {
-  scope = fork();
+  const scope = fork();
   const testTableProduct = {
     ...tableProduct,
     isPiece: false,
@@ -48,7 +44,7 @@ test('if product is not is piece should call removeProductFromTable', () => {
         />
       }
     />,
-    { wrapper: Wrapper }
+    { wrapper: initWrapper(scope) }
   );
 
   const element = screen.getByRole(`remove-table-product-button-${table.id}-${testTableProduct.id}`);
@@ -57,7 +53,7 @@ test('if product is not is piece should call removeProductFromTable', () => {
 });
 
 test('product card should display timer if product need timer', () => {
-  scope = fork();
+  const scope = fork();
   const testTableProduct = {
     ...tableProduct,
     units: 2,
@@ -91,7 +87,7 @@ test('product card should display timer if product need timer', () => {
         />
       }
     />,
-    { wrapper: Wrapper }
+    { wrapper: initWrapper(scope) }
   );
 
   const element = screen.getByRole(`product-timer-${table.id}-${tableProduct.id}`);

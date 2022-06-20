@@ -1,23 +1,20 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
-import { TableProductUI, tableProductModel } from '@/features/table-product';
+import { tableProductModel, TableProductUI } from '@/features/table-product';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 test('should call remove when button clicked', () => {
   const fn = jest.fn();
   tableProductModel.remove.watch(fn);
-  scope = fork();
+  const scope = fork();
 
-  render(<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />, { wrapper: Wrapper });
+  render(<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />, {
+    wrapper: initWrapper(scope),
+  });
 
   act(() => {
     fireEvent.click(screen.getByRole(`remove-table-product-button-${table.id}-${tableProduct.id}`));

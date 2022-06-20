@@ -1,24 +1,19 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { tableModel, TableUI } from '@/features/table';
 
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table } from '../../../../__mocks__/fixtures';
-
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
 
 test('should call setName', async () => {
   const fn = jest.fn();
   tableModel.setName.watch(fn);
-  scope = fork();
+  const scope = fork();
 
   render(<TableUI.SetName.Field tableId={table.id} tableName={table.name} />, {
-    wrapper: Wrapper,
+    wrapper: initWrapper(scope),
   });
 
   fireEvent.click(screen.getByRole(`editable-text-button-editable-table-name-${table.id}`));

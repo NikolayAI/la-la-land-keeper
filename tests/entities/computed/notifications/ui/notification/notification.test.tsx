@@ -1,48 +1,30 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import { fork } from 'effector';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
-import {
-  NotificationKinds,
-  NotificationsUI,
-  notificationsModel,
-} from '@/entities/computed/notifications';
+import { notificationsModel, NotificationsUI } from '@/entities/computed/notifications';
 
-let scope: Scope;
-
-const Wrapper: FC<IChildrenOnly> = ({ children }) => (
-  <Provider value={scope}>{children}</Provider>
-);
+import { initWrapper } from '../../../../../__lib__/component-wrapper';
+import { notification } from '../../../../../__mocks__/fixtures';
 
 test('should render Notifications component', () => {
-  scope = fork({
-    values: [
-      [
-        notificationsModel.$tableProductsTimersNotifications,
-        [
-          {
-            tableId: 'test-table-id',
-            productId: 'test-table-product-id',
-            kind: NotificationKinds.ERROR,
-            message: 'notifications test',
-          },
-        ],
-      ],
-    ],
+  const scope = fork({
+    values: [[notificationsModel.$tableProductsTimersNotifications, [notification]]],
   });
 
-  render(<NotificationsUI.Notifications />, { wrapper: Wrapper });
+  render(<NotificationsUI.Notifications />, { wrapper: initWrapper(scope) });
 
   expect(screen.getByText('notifications test')).toBeDefined();
 });
 
 test('should call handler after onClose click', () => {
+  const scope = fork({
+    values: [[notificationsModel.$tableProductsTimersNotifications, [notification]]],
+  });
   const removeNotificationFn = jest.fn();
   notificationsModel.removeNotification.watch(removeNotificationFn);
 
-  render(<NotificationsUI.Notifications />, { wrapper: Wrapper });
+  render(<NotificationsUI.Notifications />, { wrapper: initWrapper(scope) });
 
   act(() => {
     fireEvent.click(screen.getByTitle('Close'));

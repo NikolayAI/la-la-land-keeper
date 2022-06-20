@@ -1,14 +1,12 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { fork, Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
-import React, { FC } from 'react';
+import React from 'react';
 
-import { IChildrenOnly } from '@/shared';
 import { productModel, ProductUI } from '@/features/product';
 
-let scope: Scope;
+import { initWrapper } from '../../../../__lib__/component-wrapper';
 
-const Wrapper: FC<IChildrenOnly> = ({ children }) => <Provider value={scope}>{children}</Provider>;
+let scope: Scope;
 
 describe('events', () => {
   const createProductFn = jest.fn();
@@ -23,7 +21,7 @@ describe('events', () => {
   });
 
   test('should call createProduct handler', async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByText('Создать'));
@@ -33,7 +31,7 @@ describe('events', () => {
   });
 
   test(`change field "Название товара" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Название товара'), {
@@ -45,7 +43,7 @@ describe('events', () => {
   });
 
   test(`change field "Цена за 1 ед. товара, руб" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Цена за 1 ед. товара, руб'), {
@@ -57,7 +55,7 @@ describe('events', () => {
   });
 
   test(`change field "Штучный товар" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Штучный товар'));
@@ -67,7 +65,7 @@ describe('events', () => {
   });
 
   test(`change field "Нужен таймер товара" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
@@ -77,7 +75,7 @@ describe('events', () => {
   });
 
   test(`change field "Таймер для 1 ед. товара, мин" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: Wrapper });
+    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
