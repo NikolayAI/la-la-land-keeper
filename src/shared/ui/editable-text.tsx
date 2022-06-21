@@ -29,6 +29,8 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
+    console.log('HELLO: ', e.code);
+    console.log('HELLO: ', e.key);
     if (e.code === 'Enter') handleTitleClick();
   };
 
@@ -48,6 +50,7 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
         />
       ) : (
         <Box
+          role={`editable-text-value-${role}`}
           sx={{
             display: 'inline-block',
             opacity: isLoading ? 0.5 : 1.0,
