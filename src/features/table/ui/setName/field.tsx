@@ -10,7 +10,7 @@ interface ISetTableNameProps {
   tableName: TableNameType;
 }
 
-export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => (
+export const Field: FC<ISetTableNameProps> = ({ tableId, tableName = '' }) => (
   <EditableText
     role={`editable-table-name-${tableId}`}
     text={tableName}

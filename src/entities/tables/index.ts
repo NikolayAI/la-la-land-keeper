@@ -19,6 +19,7 @@ import {
 import { ProductCard, ProductTimer, Table } from './ui';
 
 export { calculateTableTotalPrice } from './lib';
+export { backgroundColors } from './constants';
 
 export const tablesModel = {
   removeProductFx,
@@ -44,4 +45,3 @@ export const TablesUI = {
   ProductCard,
   ProductTimer,
 };
-export { backgroundColors } from '@/entities/tables/constants';
