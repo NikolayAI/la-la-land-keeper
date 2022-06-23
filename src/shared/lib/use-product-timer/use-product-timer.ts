@@ -8,9 +8,8 @@ import {
   TableProductPausedAtType,
   TableProductPausedTimerCountType,
   TableProductTimerStatusType,
-} from '../types';
-
-import { dateToSeconds } from './format-date';
+} from '../../types';
+import { calculateTimerCount } from './calculate-product-timer';
 
 interface IUseTimer {
   tableId: TableIdType;
@@ -24,7 +23,7 @@ interface IUseTimer {
   setTimer: (payload: ISetTablesProductsTimersParams) => void;
 }
 
-export interface ITableProductTimerRef {
+interface ITableProductTimerRef {
   // eslint-disable-next-line no-undef
   intervalId: NodeJS.Timer | null;
   isTimerPlay: boolean;
@@ -91,28 +90,4 @@ export const useProductTimer = ({
       }
     };
   }, [timerStatus]);
-};
-
-interface ICalculateTimerCountParams {
-  isTimerPlay: boolean;
-  createdAt: TableProductCreatedAtType;
-  pausedAt: TableProductPausedAtType;
-  pausedTimerCount: TableProductPausedTimerCountType;
-}
-
-export const calculateTimerCount = ({
-  isTimerPlay,
-  createdAt,
-  pausedAt,
-  pausedTimerCount,
-}: ICalculateTimerCountParams) => {
-  if (isTimerPlay) {
-    return dateToSeconds(Number(new Date()) - Number(new Date(createdAt)) - pausedTimerCount);
-  }
-  if (!isTimerPlay) {
-    return dateToSeconds(
-      // @ts-ignore
-      Number(new Date(pausedAt)) - Number(new Date(createdAt)) - pausedTimerCount
-    );
-  }
 };

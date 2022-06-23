@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import { ITableProduct, TableIdType, TableProductTimerStatusType, TablesType } from '@/shared';
+import { ITableProduct, TableIdType, TableProductsType } from '@/shared';
 import { tablesModel, TablesUI } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
@@ -9,16 +9,14 @@ import { ProductTimer } from '@/widgets/product-timer';
 interface IProductCardProps {
   tableId: TableIdType;
   tableProduct: ITableProduct;
-  timerStatus: TableProductTimerStatusType;
 }
 
-export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct, timerStatus }) => {
+export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct }) => {
   const productsTimersOutOfLimit = useStore(tablesModel.$tablesProductsTimersOutOfLimits);
   const isTimerOut = productsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
     <TablesUI.ProductCard
       tableProduct={tableProduct}
-      timerStatus={timerStatus}
       isProductTimerOut={isTimerOut}
       TableProductTimerSlot={
         <ProductTimer
@@ -46,22 +44,14 @@ export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct, time
 };
 
 interface IProductCardListProps {
-  tables: TablesType;
   tableId: TableIdType;
+  products: TableProductsType;
 }
 
-export const ProductCardList: FC<IProductCardListProps> = ({ tables, tableId }) => (
+export const ProductCardList: FC<IProductCardListProps> = ({ products = {}, tableId }) => (
   <>
-    {Object.keys(tables?.[tableId]?.products).map((productId) => {
-      const tableProduct = tables?.[tableId]?.products?.[productId] ?? {};
-      return (
-        <ProductCard
-          key={productId}
-          tableId={tableId}
-          tableProduct={tableProduct}
-          timerStatus={tableProduct?.timerStatus}
-        />
-      );
-    })}
+    {Object.keys(products).map((productId) => (
+      <ProductCard key={productId} tableId={tableId} tableProduct={products?.[productId]} />
+    ))}
   </>
 );

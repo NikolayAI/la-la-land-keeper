@@ -29,8 +29,6 @@ export const EditableText: FC<IEditableText> = ({ text, setTableName, isLoading,
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
-    console.log('HELLO: ', e.code);
-    console.log('HELLO: ', e.key);
     if (e.code === 'Enter') handleTitleClick();
   };
 

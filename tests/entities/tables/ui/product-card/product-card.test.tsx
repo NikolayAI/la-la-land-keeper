@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { fork } from 'effector';
 import React from 'react';
 
-import { TableProductTimerStatuses } from '@/shared';
 import { TablesUI } from '@/entities/tables';
 import { TableProductUI } from '@/features/table-product';
 import { ProductTimer } from '@/widgets/product-timer';
@@ -20,7 +19,6 @@ test('if product is not is piece should call removeProductFromTable', () => {
   render(
     <TablesUI.ProductCard
       tableProduct={testTableProduct}
-      timerStatus={TableProductTimerStatuses.play}
       isProductTimerOut={false}
       TableProductTimerSlot={
         <ProductTimer
@@ -63,7 +61,6 @@ test('product card should display timer if product need timer', () => {
   render(
     <TablesUI.ProductCard
       tableProduct={testTableProduct}
-      timerStatus={TableProductTimerStatuses.play}
       isProductTimerOut={true}
       TableProductTimerSlot={
         <ProductTimer

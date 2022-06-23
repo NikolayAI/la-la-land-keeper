@@ -1,1 +1,1 @@
-export * from './lib';
+export { calculateTableTotalPrice } from './calculate-table-total-price';

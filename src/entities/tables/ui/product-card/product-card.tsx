@@ -1,13 +1,12 @@
 import { Grid, IconButton, Paper, Typography } from '@mui/material';
 import React, { FC, ReactNode } from 'react';
 
-import { ITableProduct, TableProductTimerStatusType } from '@/shared';
+import { ITableProduct } from '@/shared';
 
 import { backgroundColors } from '../../constants';
 
 interface IProductCardProps {
   tableProduct: ITableProduct;
-  timerStatus: TableProductTimerStatusType;
   isProductTimerOut: boolean;
   TableProductTimerSlot: ReactNode;
   IncreaseTableProductSlot: ReactNode;
@@ -17,7 +16,6 @@ interface IProductCardProps {
 
 export const ProductCard: FC<IProductCardProps> = ({
   tableProduct,
-  timerStatus,
   isProductTimerOut,
   TableProductTimerSlot,
   IncreaseTableProductSlot,
@@ -27,7 +25,7 @@ export const ProductCard: FC<IProductCardProps> = ({
   <Paper
     role={`table-product-paper-${tableProduct.id}`}
     elevation={6}
-    sx={{ backgroundColor: isProductTimerOut ? '#d32f2f' : backgroundColors[timerStatus] }}
+    sx={{ backgroundColor: isProductTimerOut ? '#d32f2f' : backgroundColors[tableProduct?.timerStatus] }}
   >
     <Grid container spacing={2} alignItems="center">
       <Grid item xs={3.5}>

@@ -41,7 +41,7 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => (
         <TableProductUI.Add.Menu tableId={tableId} />
       </>
     }
-    ProductCardListSlot={<ProductCardList tables={tables} tableId={tableId} />}
+    ProductCardListSlot={<ProductCardList products={tables?.[tableId].products} tableId={tableId} />}
   />
 );
 
