@@ -20,9 +20,9 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => (
     key={tableId}
     tableId={tableId}
     tables={tables}
-    SetTableNameSlot={<TableUI.SetName.Field tableId={tableId} tableName={tables?.[tableId]?.name} />}
-    ClearTableSlot={<TableUI.Clear.Btn tableId={tableId} />}
-    RemoveTableSlot={<TableUI.Remove.Btn tableId={tableId} />}
+    SetTableNameSlot={<TableUI.SetNameField tableId={tableId} tableName={tables?.[tableId]?.name} />}
+    ClearTableSlot={<TableUI.ClearBtn tableId={tableId} />}
+    RemoveTableSlot={<TableUI.RemoveBtn tableId={tableId} />}
     AddProductToTableSlot={
       <>
         <IconButton
@@ -38,10 +38,10 @@ export const Table: FC<ITableProps> = ({ tables, tableId }) => (
         >
           <AddIcon />
         </IconButton>
-        <TableProductUI.Add.Menu tableId={tableId} />
+        <TableProductUI.AddMenu tableId={tableId} />
       </>
     }
-    ProductCardListSlot={<ProductCardList products={tables?.[tableId].products} tableId={tableId} />}
+    ProductCardListSlot={<ProductCardList products={tables?.[tableId]?.products} tableId={tableId} />}
   />
 );
 

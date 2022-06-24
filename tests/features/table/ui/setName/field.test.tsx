@@ -12,7 +12,7 @@ test('should call setName', async () => {
   tableModel.setName.watch(fn);
   const scope = fork();
 
-  render(<TableUI.SetName.Field tableId={table.id} tableName={table.name} />, {
+  render(<TableUI.SetNameField tableId={table.id} tableName={table.name} />, {
     wrapper: initWrapper(scope),
   });
 

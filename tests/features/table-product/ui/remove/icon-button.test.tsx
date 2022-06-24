@@ -12,7 +12,7 @@ test('should call remove when button clicked', () => {
   tableProductModel.remove.watch(fn);
   const scope = fork();
 
-  render(<TableProductUI.Remove.IconBtn tableId={table.id} productId={tableProduct.id} />, {
+  render(<TableProductUI.RemoveIconBtn tableId={table.id} productId={tableProduct.id} />, {
     wrapper: initWrapper(scope),
   });
 

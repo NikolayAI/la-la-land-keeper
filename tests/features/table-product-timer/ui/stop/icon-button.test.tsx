@@ -13,7 +13,7 @@ test('should call stop timer', () => {
   const scope = fork();
 
   render(
-    <TableProductTimerUI.Stop.IconBtn
+    <TableProductTimerUI.StopIconBtn
       tableId={table.id}
       productId={tableProduct.id}
       pausedTimerCount={tableProduct.pausedTimerCount}

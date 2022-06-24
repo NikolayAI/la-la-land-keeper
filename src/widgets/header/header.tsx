@@ -17,7 +17,7 @@ export const Header = () => {
               '& button': { marginRight: '1rem', border: '1px solid #fff' },
             }}
           >
-            <TableUI.Create.Btn />
+            <TableUI.CreateBtn />
             <LoadingButton
               role="open-create-product-form-header-button"
               variant="contained"
@@ -38,7 +38,7 @@ export const Header = () => {
             >
               Удалить товар
             </LoadingButton>
-            <ProductUI.Remove.Menu />
+            <ProductUI.RemoveMenu />
           </Box>
         </Toolbar>
       </Container>

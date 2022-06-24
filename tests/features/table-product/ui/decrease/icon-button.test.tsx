@@ -13,11 +13,7 @@ test('should call decrease when button clicked', () => {
   const scope = fork();
 
   render(
-    <TableProductUI.Decrease.IconBtn
-      tableId={table.id}
-      productId={tableProduct.id}
-      productUnits={tableProduct.units}
-    />,
+    <TableProductUI.DecreaseIconBtn tableId={table.id} productId={tableProduct.id} productUnits={tableProduct.units} />,
     { wrapper: initWrapper(scope) }
   );
 

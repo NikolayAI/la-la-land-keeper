@@ -25,10 +25,10 @@ test('should render stop timer button', () => {
       minutesLimit={20}
       productUnits={1}
       StopTimerSlot={
-        <TableProductTimerUI.Stop.IconBtn tableId={table.id} productId={tableProduct.id} pausedTimerCount={0} />
+        <TableProductTimerUI.StopIconBtn tableId={table.id} productId={tableProduct.id} pausedTimerCount={0} />
       }
       PlayTimerSlot={
-        <TableProductTimerUI.Play.IconBtn
+        <TableProductTimerUI.PlayIconBtn
           tableId={table.id}
           productId={tableProduct.id}
           pausedTimerCount={0}
@@ -60,10 +60,10 @@ test('should render play timer button', () => {
       minutesLimit={20}
       productUnits={1}
       StopTimerSlot={
-        <TableProductTimerUI.Stop.IconBtn tableId={table.id} productId={tableProduct.id} pausedTimerCount={0} />
+        <TableProductTimerUI.StopIconBtn tableId={table.id} productId={tableProduct.id} pausedTimerCount={0} />
       }
       PlayTimerSlot={
-        <TableProductTimerUI.Play.IconBtn
+        <TableProductTimerUI.PlayIconBtn
           tableId={table.id}
           productId={tableProduct.id}
           pausedTimerCount={0}

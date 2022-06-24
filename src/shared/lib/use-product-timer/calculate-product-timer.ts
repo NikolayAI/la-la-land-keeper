@@ -1,5 +1,4 @@
-import { TableProductCreatedAtType, TableProductPausedAtType, TableProductPausedTimerCountType } from '@/shared';
-
+import { TableProductCreatedAtType, TableProductPausedAtType, TableProductPausedTimerCountType } from '../../types';
 import { dateToSeconds } from '../format-date';
 
 interface ICalculateTimerCountParams {

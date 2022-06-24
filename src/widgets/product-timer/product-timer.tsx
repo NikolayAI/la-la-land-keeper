@@ -50,10 +50,10 @@ export const ProductTimer: FC<IProductTimerProps> = ({
       setTimer={tablesModel.setTablesProductsTimers}
       tablesProductsTimers={tablesProductsTimers}
       StopTimerSlot={
-        <TableProductTimerUI.Stop.IconBtn tableId={tableId} productId={productId} pausedTimerCount={pausedTimerCount} />
+        <TableProductTimerUI.StopIconBtn tableId={tableId} productId={productId} pausedTimerCount={pausedTimerCount} />
       }
       PlayTimerSlot={
-        <TableProductTimerUI.Play.IconBtn
+        <TableProductTimerUI.PlayIconBtn
           tableId={tableId}
           productId={productId}
           pausedTimerCount={pausedTimerCount}

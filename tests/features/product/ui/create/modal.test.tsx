@@ -21,7 +21,7 @@ describe('events', () => {
   });
 
   test('should call createProduct handler', async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByText('Создать'));
@@ -31,7 +31,7 @@ describe('events', () => {
   });
 
   test(`change field "Название товара" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Название товара'), {
@@ -43,7 +43,7 @@ describe('events', () => {
   });
 
   test(`change field "Цена за 1 ед. товара, руб" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.change(screen.getByLabelText('Цена за 1 ед. товара, руб'), {
@@ -55,7 +55,7 @@ describe('events', () => {
   });
 
   test(`change field "Штучный товар" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Штучный товар'));
@@ -65,7 +65,7 @@ describe('events', () => {
   });
 
   test(`change field "Нужен таймер товара" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));
@@ -75,7 +75,7 @@ describe('events', () => {
   });
 
   test(`change field "Таймер для 1 ед. товара, мин" should call productsModel.setProductProperty event`, async () => {
-    render(<ProductUI.Create.Modal />, { wrapper: initWrapper(scope) });
+    render(<ProductUI.CreateModal />, { wrapper: initWrapper(scope) });
 
     act(() => {
       fireEvent.click(screen.getByLabelText('Нужен таймер товара'));

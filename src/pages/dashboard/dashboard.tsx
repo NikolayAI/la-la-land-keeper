@@ -17,7 +17,7 @@ export const Dashboard: FC<IDashboardProps> = ({ className }) => (
     <div className={className}>
       <Header />
       <TablesList />
-      <ProductUI.Create.Modal />
+      <ProductUI.CreateModal />
     </div>
   </>
 );

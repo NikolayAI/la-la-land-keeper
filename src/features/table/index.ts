@@ -2,10 +2,10 @@ import { clear, $isLoading as $isClearLoading } from './model/clear';
 import { create, $isLoading as $isCreateLoading } from './model/create';
 import { remove, $isLoading as $isRemoveLoading } from './model/remove';
 import { setName, $isLoading as $isSetNameLoading } from './model/setName';
-import * as Clear from './ui/clear';
-import * as Create from './ui/create';
-import * as Remove from './ui/remove';
-import * as SetName from './ui/setName';
+import { Btn as ClearBtn } from './ui/clear';
+import { Btn as CreateBtn } from './ui/create';
+import { Btn as RemoveBtn } from './ui/remove';
+import { Field as SetNameField } from './ui/setName';
 
 export const tableModel = {
   clear,
@@ -19,8 +19,8 @@ export const tableModel = {
 };
 
 export const TableUI = {
-  Clear,
-  Create,
-  Remove,
-  SetName,
+  ClearBtn,
+  CreateBtn,
+  RemoveBtn,
+  SetNameField,
 };

@@ -32,10 +32,10 @@ test('if product is not is piece should call removeProductFromTable', () => {
           productUnits={testTableProduct.units}
         />
       }
-      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      IncreaseTableProductSlot={<TableProductUI.IncreaseIconBtn tableId={table.id} productId={testTableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.RemoveIconBtn tableId={table.id} productId={testTableProduct.id} />}
       DecreaseTableProductSlot={
-        <TableProductUI.Decrease.IconBtn
+        <TableProductUI.DecreaseIconBtn
           tableId={table.id}
           productId={testTableProduct.id}
           productUnits={testTableProduct.units}
@@ -74,10 +74,10 @@ test('product card should display timer if product need timer', () => {
           productUnits={testTableProduct.units}
         />
       }
-      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={table.id} productId={testTableProduct.id} />}
-      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={table.id} productId={testTableProduct.id} />}
+      IncreaseTableProductSlot={<TableProductUI.IncreaseIconBtn tableId={table.id} productId={testTableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.RemoveIconBtn tableId={table.id} productId={testTableProduct.id} />}
       DecreaseTableProductSlot={
-        <TableProductUI.Decrease.IconBtn
+        <TableProductUI.DecreaseIconBtn
           tableId={table.id}
           productId={testTableProduct.id}
           productUnits={testTableProduct.units}

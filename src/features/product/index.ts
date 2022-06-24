@@ -8,8 +8,8 @@ import {
   setProperty,
 } from './model/create';
 import { $isLoading as $isRemoveLoading, removeProduct, setRemoveAnchorEl } from './model/remove';
-import * as Create from './ui/create';
-import * as Remove from './ui/remove';
+import { Modal as CreateModal } from './ui/create';
+import { Menu as RemoveMenu } from './ui/remove';
 
 export const productModel = {
   setProperty,
@@ -25,6 +25,6 @@ export const productModel = {
 };
 
 export const ProductUI = {
-  Create,
-  Remove,
+  CreateModal,
+  RemoveMenu,
 };

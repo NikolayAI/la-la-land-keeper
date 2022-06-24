@@ -25,7 +25,7 @@ describe('events', () => {
       ],
     });
 
-    render(<TableProductUI.Add.Menu tableId={tableId} />, {
+    render(<TableProductUI.AddMenu tableId={tableId} />, {
       wrapper: initWrapper(scope),
     });
 

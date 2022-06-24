@@ -7,10 +7,10 @@ import {
 import { decrease, $isLoading as $isDecreaseLoading } from './model/decrease';
 import { increase } from './model/increase';
 import { remove, $isLoading as $isRemoveLoading } from './model/remove';
-import * as Add from './ui/add';
-import * as Decrease from './ui/decrease';
-import * as Increase from './ui/increase';
-import * as Remove from './ui/remove';
+import { Menu as AddMenu } from './ui/add';
+import { IconBtn as DecreaseIconBtn } from './ui/decrease';
+import { IconBtn as IncreaseIconBtn } from './ui/increase';
+import { IconBtn as RemoveIconBtn } from './ui/remove';
 
 export const tableProductModel = {
   add,
@@ -25,8 +25,8 @@ export const tableProductModel = {
 };
 
 export const TableProductUI = {
-  Add,
-  Increase,
-  Decrease,
-  Remove,
+  AddMenu,
+  IncreaseIconBtn,
+  DecreaseIconBtn,
+  RemoveIconBtn,
 };

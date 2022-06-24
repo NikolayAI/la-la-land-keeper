@@ -30,10 +30,10 @@ export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct }) =>
           productUnits={tableProduct.units}
         />
       }
-      IncreaseTableProductSlot={<TableProductUI.Increase.IconBtn tableId={tableId} productId={tableProduct.id} />}
-      RemoveTableProductSlot={<TableProductUI.Remove.IconBtn tableId={tableId} productId={tableProduct.id} />}
+      IncreaseTableProductSlot={<TableProductUI.IncreaseIconBtn tableId={tableId} productId={tableProduct.id} />}
+      RemoveTableProductSlot={<TableProductUI.RemoveIconBtn tableId={tableId} productId={tableProduct.id} />}
       DecreaseTableProductSlot={
-        <TableProductUI.Decrease.IconBtn
+        <TableProductUI.DecreaseIconBtn
           tableId={tableId}
           productId={tableProduct.id}
           productUnits={tableProduct.units}

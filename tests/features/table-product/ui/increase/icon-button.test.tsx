@@ -12,7 +12,7 @@ test('should call increase when button clicked', () => {
   tableProductModel.increase.watch(fn);
   const scope = fork();
 
-  render(<TableProductUI.Increase.IconBtn tableId={table.id} productId={tableProduct.id} />, {
+  render(<TableProductUI.IncreaseIconBtn tableId={table.id} productId={tableProduct.id} />, {
     wrapper: initWrapper(scope),
   });
 

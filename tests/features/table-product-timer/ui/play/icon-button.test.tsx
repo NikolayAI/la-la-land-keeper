@@ -4,6 +4,7 @@ import React from 'react';
 
 import { tableProductTimerModel, TableProductTimerUI } from '@/features/table-product-timer';
 
+import { IconBtn as PlayIconBtn } from '../../../../../src/features/table-product-timer/ui/play';
 import { initWrapper } from '../../../../__lib__/component-wrapper';
 import { table, tableProduct } from '../../../../__mocks__/fixtures';
 
@@ -13,7 +14,7 @@ test('should call play timer', () => {
   const scope = fork();
 
   render(
-    <TableProductTimerUI.Play.IconBtn
+    <TableProductTimerUI.PlayIconBtn
       tableId={table.id}
       productId={tableProduct.id}
       pausedTimerCount={tableProduct.pausedTimerCount}

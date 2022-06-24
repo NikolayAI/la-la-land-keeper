@@ -27,11 +27,11 @@ describe('events', () => {
       <TablesUI.Table
         tableId={table.id}
         tables={tables}
-        SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
-        ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
-        RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={<TableProductUI.Add.Menu tableId={table.id} />}
-        ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
+        SetTableNameSlot={<TableUI.SetNameField tableId={table.id} tableName={table.name} />}
+        ClearTableSlot={<TableUI.ClearBtn tableId={table.id} />}
+        RemoveTableSlot={<TableUI.RemoveBtn tableId={table.id} />}
+        AddProductToTableSlot={<TableProductUI.AddMenu tableId={table.id} />}
+        ProductCardListSlot={<ProductCardList products={table.products} tableId={table.id} />}
       />,
       {
         wrapper: initWrapper(scope),
@@ -52,11 +52,11 @@ describe('events', () => {
       <TablesUI.Table
         tableId={table.id}
         tables={tables}
-        SetTableNameSlot={<TableUI.SetName.Field tableId={table.id} tableName={table.name} />}
-        ClearTableSlot={<TableUI.Clear.Btn tableId={table.id} />}
-        RemoveTableSlot={<TableUI.Remove.Btn tableId={table.id} />}
-        AddProductToTableSlot={<TableProductUI.Add.Menu tableId={table.id} />}
-        ProductCardListSlot={<ProductCardList tables={tables} tableId={table.id} />}
+        SetTableNameSlot={<TableUI.SetNameField tableId={table.id} tableName={table.name} />}
+        ClearTableSlot={<TableUI.ClearBtn tableId={table.id} />}
+        RemoveTableSlot={<TableUI.RemoveBtn tableId={table.id} />}
+        AddProductToTableSlot={<TableProductUI.AddMenu tableId={table.id} />}
+        ProductCardListSlot={<ProductCardList products={table.products} tableId={table.id} />}
       />,
       {
         wrapper: initWrapper(scope),
