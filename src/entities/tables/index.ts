@@ -16,7 +16,9 @@ import {
   setProductTimerStatusFx,
   setTablesProductsTimers,
 } from './model';
-import { ProductCard, ProductTimer, Table } from './ui';
+import { ProductCard } from './ui/product-card';
+import { ProductTimer } from './ui/product-timer';
+import { Table } from './ui/table';
 
 export { calculateTableTotalPrice } from './lib';
 export { backgroundColors } from './constants';

@@ -1,4 +1,4 @@
-import { AppBar, Box, Card, CardContent, Grid, Paper, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Card, CardContent, Grid, Toolbar, Typography } from '@mui/material';
 import React, { FC, memo, ReactNode } from 'react';
 
 import { TableIdType, TablesType } from '@/shared';
@@ -28,7 +28,7 @@ export const Table: FC<ITableProps> = memo(
     <Card key={tableId} sx={{ width: 575, margin: 2 }} elevation={6}>
       <CardContent>
         <Box sx={{ flexGrow: 1, borderRadius: 16, marginBottom: 1 }}>
-          <AppBar position="static" sx={{ borderRadius: 1 }}>
+          <AppBar position="static" elevation={12} sx={{ borderRadius: 1 }}>
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {SetTableNameSlot}
@@ -49,7 +49,7 @@ export const Table: FC<ITableProps> = memo(
           }}
         >
           {ProductCardListSlot}
-          <Paper elevation={0}>
+          <Box>
             <Grid container spacing={2}>
               <Grid item xs={10}>
                 <Typography variant="h6" component="div" paddingTop={1} paddingBottom={1}>
@@ -64,8 +64,8 @@ export const Table: FC<ITableProps> = memo(
                 </Typography>
               </Grid>
             </Grid>
-          </Paper>
-          <Paper elevation={0}>
+          </Box>
+          <Box>
             <Grid container spacing={2}>
               <Grid item xs={6}>
                 {RemoveTableSlot}
@@ -74,7 +74,7 @@ export const Table: FC<ITableProps> = memo(
                 {ClearTableSlot}
               </Grid>
             </Grid>
-          </Paper>
+          </Box>
         </Box>
       </CardContent>
     </Card>

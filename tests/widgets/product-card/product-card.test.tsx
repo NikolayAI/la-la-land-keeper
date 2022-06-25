@@ -37,5 +37,5 @@ test('should render empty product card list', () => {
     wrapper: initWrapper(scope),
   });
 
-  expect(result).not.toBeUndefined();
+  expect(result).toBeDefined();
 });

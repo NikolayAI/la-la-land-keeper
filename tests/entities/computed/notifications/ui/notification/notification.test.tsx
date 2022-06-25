@@ -17,6 +17,16 @@ test('should render Notifications component', () => {
   expect(screen.getByText('notifications test')).toBeDefined();
 });
 
+test('should render empty Notifications component', () => {
+  const scope = fork({
+    values: [[notificationsModel.$tableProductsTimersNotifications, []]],
+  });
+
+  const result = render(<NotificationsUI.Notifications />, { wrapper: initWrapper(scope) });
+
+  expect(result).toBeDefined();
+});
+
 test('should call handler after onClose click', () => {
   const scope = fork({
     values: [[notificationsModel.$tableProductsTimersNotifications, [notification]]],

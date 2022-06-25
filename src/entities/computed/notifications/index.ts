@@ -1,5 +1,5 @@
 import { removeNotification, $tableProductsTimersNotifications, addNotification } from './model';
-import { Notifications } from './ui';
+import { Notifications } from './ui/notification';
 
 export * from './types';
 

@@ -4,6 +4,7 @@ import { useStore } from 'effector-react';
 import React from 'react';
 
 import { productModel, ProductUI } from '@/features/product';
+import { SettingUI } from '@/features/settings';
 import { TableUI } from '@/features/table';
 
 export const Header = () => {
@@ -39,6 +40,7 @@ export const Header = () => {
               Удалить товар
             </LoadingButton>
             <ProductUI.RemoveMenu />
+            <SettingUI.ColorThemeSwitch />
           </Box>
         </Toolbar>
       </Container>
