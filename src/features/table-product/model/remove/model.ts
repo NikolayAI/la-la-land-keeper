@@ -1,11 +1,11 @@
 import { createEvent, createStore, forward } from 'effector';
 
-import { IRemoveProductToTableParams, TablesProductLoadingType } from '@/shared';
+import { IRemoveProductToTableParams, TablesProductsLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 export const remove = createEvent<IRemoveProductToTableParams>();
 
-export const $isLoading = createStore<TablesProductLoadingType>({});
+export const $isLoading = createStore<TablesProductsLoadingType>({});
 
 $isLoading
   .on(tablesModel.removeProductFx.finally, (state, { params: { tableId, productId } }) => ({

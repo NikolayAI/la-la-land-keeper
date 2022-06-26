@@ -1,11 +1,11 @@
 import { createEvent, createStore, sample } from 'effector';
 
-import { IDecreaseTableProductParams, TablesProductLoadingType } from '@/shared';
+import { IDecreaseTableProductParams, TablesProductsLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 export const decrease = createEvent<Omit<IDecreaseTableProductParams, 'value'>>();
 
-export const $isLoading = createStore<TablesProductLoadingType>({});
+export const $isLoading = createStore<TablesProductsLoadingType>({});
 
 $isLoading
   .on(tablesModel.decreaseProductFx.finally, (state, { params: { tableId, productId } }) => ({

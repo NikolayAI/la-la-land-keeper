@@ -1,10 +1,30 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled } from '@mui/material/styles';
 import MaterialSwitch from '@mui/material/Switch';
+import { useStore } from 'effector-react';
 import React from 'react';
 
+import { ColorThemes } from '@/shared';
+import { settingsModel } from '@/entities/computed/settings';
+
+import { setColorTheme } from '../../model/change-color-theme';
+
 export const Switch = () => {
-  return <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />} label="" />;
+  const colorTheme = useStore(settingsModel.$colorTheme);
+
+  const handleClick = () => {
+    if (colorTheme === ColorThemes.dark) setColorTheme(ColorThemes.light);
+    if (colorTheme === ColorThemes.light) setColorTheme(ColorThemes.dark);
+  };
+
+  return (
+    <FormControlLabel
+      control={<MaterialUISwitch sx={{ m: 1 }} />}
+      label=""
+      checked={colorTheme === ColorThemes.dark}
+      onClick={handleClick}
+    />
+  );
 };
 
 const MaterialUISwitch = styled(MaterialSwitch)(({ theme }) => ({

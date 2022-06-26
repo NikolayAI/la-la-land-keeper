@@ -1,13 +1,13 @@
 import { createEvent, createStore, forward } from 'effector';
 
-import { TablesProductLoadingType } from '@/shared';
+import { TablesProductsLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
 
 import { IStopProductTableTimerParams } from './types';
 
 export const stop = createEvent<IStopProductTableTimerParams>();
 
-export const $isLoading = createStore<TablesProductLoadingType>({});
+export const $isLoading = createStore<TablesProductsLoadingType>({});
 
 $isLoading
   .on(tablesModel.setProductTimerStatusFx.finally, (state, { params: { tableId, productId } }) => ({
