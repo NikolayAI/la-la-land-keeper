@@ -7,7 +7,7 @@ import React from 'react';
 import { ColorThemes } from '@/shared';
 import { settingsModel } from '@/entities/computed/settings';
 
-import { setColorTheme } from '../../model/change-color-theme';
+import { setColorTheme } from '../../model/set-color-theme';
 
 export const Switch = () => {
   const colorTheme = useStore(settingsModel.$colorTheme);
