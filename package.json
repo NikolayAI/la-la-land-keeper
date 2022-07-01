@@ -32,8 +32,8 @@
     "effector-react": "^22.0.6",
     "patronum": "^1.8.2",
     "react": "^18.1.0",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.1.0",
-    "react-dropzone": "^14.2.1",
     "react-number-format": "^4.9.1",
     "uuid": "^8.3.2"
   },
