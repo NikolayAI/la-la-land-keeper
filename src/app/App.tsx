@@ -1,15 +1,20 @@
 import React from 'react';
 
 import { NotificationsUI } from '@/entities/computed/notifications';
+import { Header } from '@/widgets/header';
 import { Dashboard } from '@/pages/dashboard';
 
+import { ThemeProvider, ScopeProvider, DndProvider } from './providers';
+
 import './styles/App.css';
-import { ThemeProvider, ScopeProvider } from './providers';
 
 export const App = () => (
   <ScopeProvider>
     <ThemeProvider>
-      <Dashboard className="dashboard" />
+      <Header />
+      <DndProvider>
+        <Dashboard className="dashboard" />
+      </DndProvider>
       <NotificationsUI.Notifications />
     </ThemeProvider>
   </ScopeProvider>
