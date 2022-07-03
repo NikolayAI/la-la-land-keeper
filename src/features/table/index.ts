@@ -1,7 +1,8 @@
 import { clear, $isLoading as $isClearLoading } from './model/clear';
 import { create, $isLoading as $isCreateLoading } from './model/create';
+import { dragAndDrop } from './model/drad-and-drop';
 import { remove, $isLoading as $isRemoveLoading } from './model/remove';
-import { setName, $isLoading as $isSetNameLoading } from './model/setName';
+import { setName, $isLoading as $isSetNameLoading } from './model/set-name';
 import { Btn as ClearBtn } from './ui/clear';
 import { Btn as CreateBtn } from './ui/create';
 import { Btn as RemoveBtn } from './ui/remove';
@@ -16,6 +17,7 @@ export const tableModel = {
   $isRemoveLoading,
   setName,
   $isSetNameLoading,
+  dragAndDrop,
 };
 
 export const TableUI = {

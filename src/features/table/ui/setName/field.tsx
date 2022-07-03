@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 import { TableIdType, TableNameType, EditableText } from '@/shared';
 
-import { setName, $isLoading } from '../../model/setName';
+import { setName, $isLoading } from '../../model/set-name';
 
 interface ISetTableNameProps {
   tableId: TableIdType;

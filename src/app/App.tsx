@@ -4,18 +4,18 @@ import { NotificationsUI } from '@/entities/computed/notifications';
 import { Header } from '@/widgets/header';
 import { Dashboard } from '@/pages/dashboard';
 
-import { ThemeProvider, ScopeProvider, DndProvider } from './providers';
+import { DndProvider, ScopeProvider, ThemeProvider } from './providers';
 
 import './styles/App.css';
 
 export const App = () => (
   <ScopeProvider>
     <ThemeProvider>
-      <Header />
       <DndProvider>
+        <Header />
         <Dashboard className="dashboard" />
+        <NotificationsUI.Notifications />
       </DndProvider>
-      <NotificationsUI.Notifications />
     </ThemeProvider>
   </ScopeProvider>
 );

@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 import { ClassNameType } from '@/shared';
 import { ProductUI } from '@/features/product';
 import { TablesList } from '@/widgets/table';

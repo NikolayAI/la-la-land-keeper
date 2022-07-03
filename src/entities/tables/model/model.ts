@@ -13,6 +13,7 @@ import {
   TablesAPI,
   TablesType,
   TableProductsTimersType,
+  TableIdType,
 } from '@/shared';
 
 export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
@@ -30,6 +31,7 @@ export const setProductTimerStatusFx = createEffect<ISetTableProductTimerStatusP
 
 export const $isLoading = createStore<boolean>(false);
 export const $tables = createStore<TablesType>({});
+export const $tablesIds = createStore<TableIdType[]>([]);
 export const $tablesProductsTimers = createStore<TableProductsTimersType>({});
 
 getTablesFx.use(async () => {
@@ -63,7 +65,6 @@ setProductTimerStatusFx.use(async (payload) => {
   await TablesAPI.setTableProductTimerStatus(payload);
 });
 
-export const $tablesIds = combine($tables, (tables) => Object.keys(tables));
 export const $tablesProductsTimersOutOfLimits = combine(
   $tables,
   $tablesProductsTimers,
@@ -101,6 +102,7 @@ $isLoading.on(
   (isLoading) => isLoading
 );
 $tables.on(getTablesFx.doneData, (_, tables) => tables);
+$tablesIds.on($tables, (_, tables) => Object.keys(tables));
 $tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
   ...state,
   [tableId]: {
