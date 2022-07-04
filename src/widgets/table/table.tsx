@@ -125,7 +125,6 @@ export const Table: FC<ITableProps> = ({ tables, tableId, index }) => {
 export const TablesList: FC = () => {
   const tables = useStore(tablesModel.$tables);
   const tablesIds = useStore(tablesModel.$tablesIds);
-
   return (
     <Grid container spacing={0}>
       {tablesIds.map((tableId, index) => (

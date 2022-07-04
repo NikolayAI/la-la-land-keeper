@@ -7,14 +7,16 @@ import {
   IIncreaseTableProductParams,
   IRemoveProductToTableParams,
   IRemoveTableParams,
+  ISetTableNameParams,
   ISetTableProductTimerStatusParams,
   ISetTablesProductsTimersParams,
-  ISetTableNameParams,
+  TableIdType,
+  TableProductsTimersType,
   TablesAPI,
   TablesType,
-  TableProductsTimersType,
-  TableIdType,
 } from '@/shared';
+
+import { sortTablesByOrder } from '../lib';
 
 export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
 
@@ -102,7 +104,7 @@ $isLoading.on(
   (isLoading) => isLoading
 );
 $tables.on(getTablesFx.doneData, (_, tables) => tables);
-$tablesIds.on($tables, (_, tables) => Object.keys(tables));
+$tablesIds.on($tables, (_, tables) => sortTablesByOrder(tables));
 $tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
   ...state,
   [tableId]: {
