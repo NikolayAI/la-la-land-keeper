@@ -1,2 +1,3 @@
 export * from './move-dragged-item';
-export type { IMoveDraggedItemParams } from './types';
+export * from './use-sortable-dnd';
+export type { IMoveDraggedItemParams, IUseSortableDndParams } from './types';
