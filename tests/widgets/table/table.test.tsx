@@ -15,7 +15,7 @@ tableProductModel.setAddAnchorEl.watch(setAnchorElFn);
 test('should render Table widget', () => {
   const scope = fork();
 
-  render(<Table tableId={table.id} tables={tables} />, {
+  render(<Table table={table} index={1} />, {
     wrapper: initWrapper(scope),
   });
 
@@ -54,7 +54,7 @@ test('should render Table from TablesList', () => {
 test('should call setAnchorElFn for open form', async () => {
   const scope = fork();
 
-  render(<Table tableId={table.id} tables={tables} />, {
+  render(<Table table={table} index={1} />, {
     wrapper: initWrapper(scope),
   });
 

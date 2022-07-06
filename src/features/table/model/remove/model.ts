@@ -1,4 +1,4 @@
-import { createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 
 import { IRemoveTableParams, TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
@@ -17,7 +17,7 @@ $isLoading
     [tableId]: true,
   }));
 
-forward({
-  from: remove,
-  to: tablesModel.removeTableFx,
+sample({
+  clock: remove,
+  target: tablesModel.removeTableFx,
 });

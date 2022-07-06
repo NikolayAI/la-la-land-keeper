@@ -1,4 +1,4 @@
-import { combine, createEvent, createStore, forward } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 
 import { IRemoveProductParams } from '@/shared';
 import { productsModel } from '@/entities/products';
@@ -15,7 +15,7 @@ $isLoading.on(
 );
 $anchorEl.on(setRemoveAnchorEl, (_, data) => data);
 
-forward({
-  from: removeProduct,
-  to: productsModel.removeProductFx,
+sample({
+  clock: removeProduct,
+  target: productsModel.removeProductFx,
 });

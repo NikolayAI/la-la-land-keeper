@@ -1,13 +1,12 @@
 import { AppBar, Box, Card, CardContent, Grid, Toolbar, Typography } from '@mui/material';
 import React, { FC, memo, ReactNode } from 'react';
 
-import { TableIdType, TablesType } from '@/shared';
+import { ITable } from '@/shared';
 
 import { calculateTableTotalPrice } from '../../lib';
 
 interface ITableProps {
-  tableId: TableIdType;
-  tables: TablesType;
+  table: ITable;
   SetTableNameSlot: ReactNode;
   ClearTableSlot: ReactNode;
   RemoveTableSlot: ReactNode;
@@ -16,16 +15,8 @@ interface ITableProps {
 }
 
 export const Table: FC<ITableProps> = memo(
-  ({
-    tableId,
-    tables,
-    SetTableNameSlot,
-    ClearTableSlot,
-    RemoveTableSlot,
-    AddProductToTableSlot,
-    ProductCardListSlot,
-  }) => (
-    <Card key={tableId} sx={{ width: 575, margin: 2 }} elevation={6}>
+  ({ table, SetTableNameSlot, ClearTableSlot, RemoveTableSlot, AddProductToTableSlot, ProductCardListSlot }) => (
+    <Card key={table?.id} sx={{ width: 575, margin: 2 }} elevation={6}>
       <CardContent>
         <Box sx={{ flexGrow: 1, borderRadius: 16, marginBottom: 1 }}>
           <AppBar position="static" elevation={12} sx={{ borderRadius: 1 }}>
@@ -58,9 +49,7 @@ export const Table: FC<ITableProps> = memo(
               </Grid>
               <Grid item xs={2}>
                 <Typography variant="h6" component="div" paddingTop={1} paddingBottom={1}>
-                  {calculateTableTotalPrice({
-                    products: tables?.[tableId]?.products,
-                  })}
+                  {calculateTableTotalPrice({ products: table?.products })}
                 </Typography>
               </Grid>
             </Grid>

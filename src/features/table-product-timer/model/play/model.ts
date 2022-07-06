@@ -1,4 +1,4 @@
-import { createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 
 import { TablesProductsLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
@@ -25,7 +25,7 @@ $isLoading
     },
   }));
 
-forward({
-  from: play,
-  to: tablesModel.setProductTimerStatusFx,
+sample({
+  clock: play,
+  target: tablesModel.setProductTimerStatusFx,
 });

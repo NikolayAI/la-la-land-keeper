@@ -8,7 +8,7 @@ import { TableProductUI } from '@/features/table-product';
 import { ProductCardList } from '@/widgets/product-card';
 
 import { initWrapper } from '../../../../__lib__/component-wrapper';
-import { table, tables } from '../../../../__mocks__/fixtures';
+import { table } from '../../../../__mocks__/fixtures';
 
 describe('events', () => {
   const clearTableFn = jest.fn();
@@ -25,8 +25,7 @@ describe('events', () => {
 
     render(
       <TablesUI.Table
-        tableId={table.id}
-        tables={tables}
+        table={table}
         SetTableNameSlot={<TableUI.SetNameField tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.ClearBtn tableId={table.id} />}
         RemoveTableSlot={<TableUI.RemoveBtn tableId={table.id} />}
@@ -50,8 +49,7 @@ describe('events', () => {
 
     render(
       <TablesUI.Table
-        tableId={table.id}
-        tables={tables}
+        table={table}
         SetTableNameSlot={<TableUI.SetNameField tableId={table.id} tableName={table.name} />}
         ClearTableSlot={<TableUI.ClearBtn tableId={table.id} />}
         RemoveTableSlot={<TableUI.RemoveBtn tableId={table.id} />}

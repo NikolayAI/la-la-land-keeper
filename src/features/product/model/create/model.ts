@@ -1,4 +1,4 @@
-import { combine, createEvent, createStore, forward, sample } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 
 import { IProduct, KeyValueType } from '@/shared';
 import { defaultProduct, productsModel } from '@/entities/products';
@@ -24,9 +24,9 @@ $product
   }))
   .reset(productsModel.createProductFx.doneData);
 
-forward({
-  from: productsModel.createProductFx.doneData,
-  to: closeModal,
+sample({
+  clock: productsModel.createProductFx.doneData,
+  target: closeModal,
 });
 
 sample({

@@ -1,4 +1,4 @@
-import { createEffect, createStore, forward } from 'effector';
+import { createEffect, createStore, sample } from 'effector';
 
 import { ColorThemes } from '@/shared';
 
@@ -10,7 +10,7 @@ setColorThemeFx.use((theme) => {
   return theme;
 });
 
-forward({
-  from: setColorThemeFx.doneData,
-  to: $colorTheme,
+sample({
+  clock: setColorThemeFx.doneData,
+  target: $colorTheme,
 });

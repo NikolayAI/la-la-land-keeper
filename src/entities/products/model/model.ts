@@ -1,4 +1,4 @@
-import { combine, createEffect, createStore, forward } from 'effector';
+import { combine, createEffect, createStore, sample } from 'effector';
 
 import { IProduct, IRemoveProductParams, ProductsAPI, ProductsType } from '@/shared';
 
@@ -25,11 +25,11 @@ $isLoading.on(
 );
 $products.on(getProductsFx.doneData, (_, products) => products);
 
-forward({
-  from: createProductFx.doneData,
-  to: getProductsFx,
+sample({
+  clock: createProductFx.doneData,
+  target: getProductsFx,
 });
-forward({
-  from: removeProductFx.doneData,
-  to: getProductsFx,
+sample({
+  clock: removeProductFx.doneData,
+  target: getProductsFx,
 });

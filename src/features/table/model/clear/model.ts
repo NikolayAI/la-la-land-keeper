@@ -1,4 +1,4 @@
-import { createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 
 import { IClearTableParams, TablesLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
@@ -17,7 +17,7 @@ $isLoading
     [tableId]: true,
   }));
 
-forward({
-  from: clear,
-  to: tablesModel.clearTableFx,
+sample({
+  clock: clear,
+  target: tablesModel.clearTableFx,
 });

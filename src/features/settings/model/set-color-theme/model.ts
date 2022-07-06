@@ -1,11 +1,11 @@
-import { createEvent, forward } from 'effector';
+import { createEvent, sample } from 'effector';
 
 import { ColorThemes } from '@/shared';
 import { settingsModel } from '@/entities/computed/settings';
 
 export const setColorTheme = createEvent<ColorThemes>();
 
-forward({
-  from: setColorTheme,
-  to: settingsModel.setColorThemeFx,
+sample({
+  clock: setColorTheme,
+  target: settingsModel.setColorThemeFx,
 });

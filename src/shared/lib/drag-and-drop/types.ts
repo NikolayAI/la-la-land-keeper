@@ -8,7 +8,11 @@ export interface IUseSortableDndParams {
   itemId: string | number;
   itemIndex: number;
   itemTargetType: string;
-  itemFnReturnIdPropertyName: string;
-  itemFnReturnIndexPropertyName: string;
   onDragDataHandler: ({ dragItemIndex, hoverItemIndex }: Omit<IMoveDraggedItemParams, 'items'>) => void;
+}
+
+export interface IDropItem<T> {
+  item: T;
+  id: number | string;
+  index: number;
 }

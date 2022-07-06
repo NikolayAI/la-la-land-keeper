@@ -2,25 +2,23 @@ import { Identifier } from 'dnd-core';
 import { useRef } from 'react';
 import { useDrag, useDrop, XYCoord } from 'react-dnd';
 
-import { IUseSortableDndParams } from './types';
+import { IUseSortableDndParams, IDropItem } from './types';
 
-export const useSortableDnd = <T extends { index: number }, R extends HTMLElement>({
+export const useSortableDnd = <T, R extends HTMLElement>({
   itemId,
   itemIndex,
   itemTargetType,
-  itemFnReturnIdPropertyName,
-  itemFnReturnIndexPropertyName,
   onDragDataHandler,
 }: IUseSortableDndParams) => {
   const ref = useRef<R>(null);
-  const [{ handlerId }, drop] = useDrop<T, void, { handlerId: Identifier | null }>({
+  const [{ handlerId }, drop] = useDrop<IDropItem<T>, void, { handlerId: Identifier | null }>({
     accept: itemTargetType,
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
       };
     },
-    hover(item: T, monitor) {
+    hover(item: IDropItem<T>, monitor) {
       if (!ref.current) {
         return;
       }
@@ -72,7 +70,7 @@ export const useSortableDnd = <T extends { index: number }, R extends HTMLElemen
   const [{ isDragging }, drag] = useDrag({
     type: itemTargetType,
     item: () => {
-      return { [itemFnReturnIdPropertyName]: itemId, [itemFnReturnIndexPropertyName]: itemIndex };
+      return { id: itemId, index: itemIndex };
     },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging(),

@@ -26,6 +26,10 @@
     "node_modules/(?!(",
     "@mui",
     "@babel/runtime",
+    "@react-dnd",
+    "react-dnd",
+    "dnd-core",
+    "react-dnd-html5-backend",
     "uuid",
     ")/)"
   ],

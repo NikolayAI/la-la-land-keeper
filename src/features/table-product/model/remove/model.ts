@@ -1,4 +1,4 @@
-import { createEvent, createStore, forward } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 
 import { IRemoveProductToTableParams, TablesProductsLoadingType } from '@/shared';
 import { tablesModel } from '@/entities/tables';
@@ -23,7 +23,7 @@ $isLoading
     },
   }));
 
-forward({
-  from: remove,
-  to: tablesModel.removeProductFx,
+sample({
+  clock: remove,
+  target: tablesModel.removeProductFx,
 });

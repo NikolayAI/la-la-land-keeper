@@ -1,4 +1,4 @@
-import { combine, createEffect, createEvent, createStore, forward } from 'effector';
+import { combine, createEffect, createEvent, createStore, sample } from 'effector';
 
 import {
   IAddProductToTableParams,
@@ -113,8 +113,8 @@ $tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, 
   },
 }));
 
-forward({
-  from: [
+sample({
+  clock: [
     createTableFx.doneData,
     removeTableFx.doneData,
     setNameFx.doneData,
@@ -125,5 +125,5 @@ forward({
     decreaseProductFx.doneData,
     setProductTimerStatusFx.doneData,
   ],
-  to: getTablesFx,
+  target: getTablesFx,
 });

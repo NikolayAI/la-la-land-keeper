@@ -3,7 +3,7 @@ import { Grid, IconButton } from '@mui/material';
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
-import { TableIdType, TablesType, useSortableDnd } from '@/shared';
+import { DndItems, ITable, useSortableDnd } from '@/shared';
 import { tablesModel, TablesUI } from '@/entities/tables';
 import { tableModel, TableUI } from '@/features/table';
 import { tableProductModel, TableProductUI } from '@/features/table-product';
@@ -11,48 +11,44 @@ import { tableProductModel, TableProductUI } from '@/features/table-product';
 import { ProductCardList } from '../product-card';
 
 interface ITableProps {
-  tables: TablesType;
-  tableId: TableIdType;
+  table: ITable;
   index: number;
 }
 
-export const Table: FC<ITableProps> = ({ tables, tableId, index }) => {
+export const Table: FC<ITableProps> = ({ table, index }) => {
   const { ref, handlerId, opacity } = useSortableDnd<ITableProps, HTMLDivElement>({
-    itemId: tableId,
+    itemId: table?.id,
     itemIndex: index,
-    itemTargetType: 'table',
-    itemFnReturnIdPropertyName: 'tableId',
-    itemFnReturnIndexPropertyName: 'index',
+    itemTargetType: DndItems.table,
     onDragDataHandler: tableModel.dragAndDrop,
   });
 
   return (
-    <div ref={ref} key={tableId} style={{ opacity }} data-handler-id={handlerId}>
+    <div ref={ref} key={table?.id} style={{ opacity }} data-handler-id={handlerId}>
       <TablesUI.Table
-        tableId={tableId}
-        tables={tables}
-        SetTableNameSlot={<TableUI.SetNameField tableId={tableId} tableName={tables?.[tableId]?.name} />}
-        ClearTableSlot={<TableUI.ClearBtn tableId={tableId} />}
-        RemoveTableSlot={<TableUI.RemoveBtn tableId={tableId} />}
+        table={table}
+        SetTableNameSlot={<TableUI.SetNameField tableId={table?.id} tableName={table?.name} />}
+        ClearTableSlot={<TableUI.ClearBtn tableId={table?.id} />}
+        RemoveTableSlot={<TableUI.RemoveBtn tableId={table?.id} />}
         AddProductToTableSlot={
           <>
             <IconButton
-              role={`add-product-to-table-button-${tableId}`}
+              role={`add-product-to-table-button-${table?.id}`}
               color="inherit"
-              disabled={useStore(tableProductModel.$isAddLoading)?.[tableId]}
+              disabled={useStore(tableProductModel.$isAddLoading)?.[table?.id]}
               onClick={(event) =>
                 tableProductModel.setAddAnchorEl({
-                  tableId,
+                  tableId: table?.id,
                   element: event.currentTarget,
                 })
               }
             >
               <AddIcon />
             </IconButton>
-            <TableProductUI.AddMenu tableId={tableId} />
+            <TableProductUI.AddMenu tableId={table?.id} />
           </>
         }
-        ProductCardListSlot={<ProductCardList products={tables?.[tableId]?.products} tableId={tableId} />}
+        ProductCardListSlot={<ProductCardList products={table?.products} tableId={table?.id} />}
       />
     </div>
   );
@@ -64,7 +60,7 @@ export const TablesList: FC = () => {
   return (
     <Grid container spacing={0}>
       {tablesIds.map((tableId, index) => (
-        <Table key={tableId} tables={tables} tableId={tableId} index={index} />
+        <Table key={tableId} table={tables?.[tableId]} index={index} />
       ))}
     </Grid>
   );

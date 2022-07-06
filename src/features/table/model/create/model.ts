@@ -1,4 +1,4 @@
-import { combine, createEvent, createStore, forward } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 
 import { tablesModel } from '@/entities/tables';
 
@@ -11,7 +11,7 @@ $isLoading.on(
   (isLoading) => isLoading
 );
 
-forward({
-  from: create,
-  to: tablesModel.createTableFx,
+sample({
+  clock: create,
+  target: tablesModel.createTableFx,
 });
