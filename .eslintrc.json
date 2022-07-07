@@ -50,7 +50,7 @@
   "rules": {
     "prefer-template": "off",
     "no-var": 1,
-    "no-unused-vars": "off",
+    "no-unused-vars": "error",
     "camelcase": 1,
     "no-nested-ternary": 1,
     "no-console": 1,
@@ -58,6 +58,7 @@
     "no-self-compare": 1,
     "import/prefer-default-export": 0,
     "arrow-body-style": 0,
+    "no-shadow": "error",
     "import/no-extraneous-dependencies": [
       "off",
       {
