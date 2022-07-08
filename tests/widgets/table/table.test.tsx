@@ -46,7 +46,7 @@ test('should render Table from TablesList', () => {
 
   render(<TablesList />, { wrapper: initWrapper(scope) });
 
-  const element = screen.getByText(tables['test-table-id'].name);
+  const element = screen.getByText(testTables['test-table-id'].name);
 
   expect(element).toBeDefined();
 });
