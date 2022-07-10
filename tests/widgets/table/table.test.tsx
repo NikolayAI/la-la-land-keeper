@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { fork } from 'effector';
 import React from 'react';
+
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
 import { tableProductModel } from '@/features/table-product';
@@ -40,6 +41,7 @@ test('should render Table from TablesList', () => {
   const scope = fork({
     values: [
       [tablesModel.$tables, testTables],
+      [tablesModel.$tablesIds, Object.keys(testTables)],
       [productsModel.$products, products],
     ],
   });

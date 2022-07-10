@@ -1,15 +1,19 @@
-import { localStorageGetItem, LocalStorageKeys, TableIdType, TablesType } from '@/shared';
+import { TableIdType, TablesType } from '@/shared';
 
-export const sortTablesByOrder = (tables: TablesType) => {
+interface ISortTablesByOrderParams {
+  items: TablesType;
+  itemsIdsOrder: (string | number)[];
+}
+
+export const sortTablesByOrder = ({ items, itemsIdsOrder }: ISortTablesByOrderParams) => {
   const orderedItemsIds: TableIdType[] = [];
-  const itemsIdsOrder = localStorageGetItem({ key: LocalStorageKeys.tablesIdsOrder });
-  if (!itemsIdsOrder) return Object.keys(tables);
+  if (!itemsIdsOrder) return Object.keys(items);
   for (const itemId of itemsIdsOrder) {
-    const id = tables[itemId]?.id;
+    const id = items[itemId]?.id;
     if (!id) continue;
     orderedItemsIds.push(id);
   }
-  const itemsIds = Object.keys(tables);
+  const itemsIds = Object.keys(items);
   if (orderedItemsIds.length >= itemsIds.length) return orderedItemsIds;
   const addedTables = itemsIds.filter((id) => !orderedItemsIds.includes(id));
   return [...orderedItemsIds, ...addedTables];

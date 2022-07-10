@@ -16,8 +16,6 @@ import {
   TablesType,
 } from '@/shared';
 
-import { sortTablesByOrder } from '../lib';
-
 export const setTablesProductsTimers = createEvent<ISetTablesProductsTimersParams>();
 
 export const getTablesFx = createEffect<void, TablesType, Error>();
@@ -104,7 +102,6 @@ $isLoading.on(
   (isLoading) => isLoading
 );
 $tables.on(getTablesFx.doneData, (_, tables) => tables);
-$tablesIds.on($tables, (_, tables) => sortTablesByOrder(tables));
 $tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
   ...state,
   [tableId]: {
