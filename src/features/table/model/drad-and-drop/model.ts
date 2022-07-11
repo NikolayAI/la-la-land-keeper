@@ -12,10 +12,7 @@ $orderedTablesIds.on(dragAndDrop, (state, { dragItemIndex, hoverItemIndex }) => 
   return getMovedDragItems({ items: state, dragItemIndex, hoverItemIndex });
 });
 
-persist({
-  store: $orderedTablesIds,
-  key: LocalStorageKeys.tablesIdsOrder,
-});
+persist({ store: $orderedTablesIds, key: LocalStorageKeys.tablesIdsOrder });
 
 sample({
   source: $orderedTablesIds,
