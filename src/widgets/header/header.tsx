@@ -4,7 +4,7 @@ import { useStore } from 'effector-react';
 import React from 'react';
 
 import { productModel, ProductUI } from '@/features/product';
-import { SettingUI } from '@/features/settings';
+import { SettingUI } from '@/features/setting';
 import { TableUI } from '@/features/table';
 
 export const Header = () => {

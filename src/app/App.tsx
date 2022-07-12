@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NotificationsUI } from '@/entities/computed/notifications';
+import { Drawer } from '@/widgets/drawer';
 import { Header } from '@/widgets/header';
 import { Dashboard } from '@/pages/dashboard';
 
@@ -12,8 +13,10 @@ export const App = () => (
   <ScopeProvider>
     <ThemeProvider>
       <DndProvider>
-        <Header />
-        <Dashboard className="dashboard" />
+        <Drawer>
+          <Header />
+          <Dashboard className="dashboard" />
+        </Drawer>
         <NotificationsUI.Notifications />
       </DndProvider>
     </ThemeProvider>
