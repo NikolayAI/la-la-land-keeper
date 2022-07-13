@@ -1,49 +1,95 @@
+import MenuIcon from '@mui/icons-material/Menu';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { AppBar, Box, Container, Toolbar } from '@mui/material';
+import { Box, Toolbar } from '@mui/material';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { productModel, ProductUI } from '@/features/product';
 import { SettingUI } from '@/features/setting';
 import { TableUI } from '@/features/table';
 
-export const Header = () => {
+const drawerWidth = 240;
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+interface IHeaderProps {
+  open: boolean;
+  handleDrawerOpen: () => void;
+}
+
+export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => {
   return (
-    <AppBar position="static" sx={{ marginBottom: 2 }}>
-      <Container maxWidth="xl">
-        <Toolbar>
-          <Box
+    <AppBar position="fixed" sx={{ marginBottom: 2 }} open={open}>
+      <Toolbar>
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            '& button:not(:first-child)': { marginRight: '1rem', border: `1px solid #fff` },
+          }}
+        >
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
             sx={{
-              display: 'flex',
-              '& button': { marginRight: '1rem', border: '1px solid #fff' },
+              marginRight: 5,
+              ...(open && { display: 'none' }),
             }}
           >
-            <TableUI.CreateBtn />
-            <LoadingButton
-              role="open-create-product-form-header-button"
-              variant="contained"
-              loading={useStore(productModel.$isCreateLoading)}
-              onClick={() => {
-                productModel.openCreateForm();
-              }}
-            >
-              Создать товар
-            </LoadingButton>
-            <LoadingButton
-              role="open-remove-product-form-button"
-              variant="contained"
-              loading={useStore(productModel.$isRemoveLoading)}
-              onClick={(event) => {
-                productModel.setRemoveAnchorEl(event.currentTarget);
-              }}
-            >
-              Удалить товар
-            </LoadingButton>
-            <ProductUI.RemoveMenu />
+            <MenuIcon />
+          </IconButton>
+          <TableUI.CreateBtn />
+          <LoadingButton
+            role="open-create-product-form-header-button"
+            variant="contained"
+            loading={useStore(productModel.$isCreateLoading)}
+            onClick={() => {
+              productModel.openCreateForm();
+            }}
+          >
+            Создать товар
+          </LoadingButton>
+          <LoadingButton
+            role="open-remove-product-form-button"
+            variant="contained"
+            loading={useStore(productModel.$isRemoveLoading)}
+            onClick={(event) => {
+              productModel.setRemoveAnchorEl(event.currentTarget);
+            }}
+          >
+            Удалить товар
+          </LoadingButton>
+          <ProductUI.RemoveMenu />
+          <Box sx={{ marginLeft: 'auto' }}>
             <SettingUI.ColorThemeSwitch />
           </Box>
-        </Toolbar>
-      </Container>
+        </Box>
+      </Toolbar>
     </AppBar>
   );
 };
