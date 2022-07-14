@@ -1,6 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 
 import { IRemoveProductToTableParams } from '@/shared';
@@ -14,7 +14,7 @@ export const IconBtn: FC<IIconButtonProps> = ({ tableId, productId }) => (
     role={`remove-table-product-button-${tableId}-${productId}`}
     color="primary"
     size="small"
-    disabled={useStore($isLoading)?.[tableId]?.[productId]}
+    disabled={useUnit($isLoading)?.[tableId]?.[productId]}
     onClick={() => {
       remove({ tableId, productId });
     }}

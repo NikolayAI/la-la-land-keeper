@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import MaterialMenu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 
 import { IAddProductToTableParams } from '@/shared';
@@ -12,8 +12,8 @@ import { $anchorEl, add, setAnchorEl } from '../../model/add';
 interface IAddProductToTableProps extends Omit<IAddProductToTableParams, 'productId'> {}
 
 export const Menu: FC<IAddProductToTableProps> = ({ tableId }) => {
-  const products = useStore(productsModel.$products);
-  const anchorEl = useStore($anchorEl)[tableId];
+  const products = useUnit(productsModel.$products);
+  const anchorEl = useUnit($anchorEl)[tableId];
 
   const open = Boolean(anchorEl);
 

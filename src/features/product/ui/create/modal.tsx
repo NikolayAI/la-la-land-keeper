@@ -1,15 +1,15 @@
 import { Button, Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import MaterialModal from '@mui/material/Modal';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
 import { $isModalOpen, closeModal, create, $product, setProperty } from '../../model/create/model';
 
 export const Modal: FC = () => {
-  const isOpen = useStore($isModalOpen);
-  const product = useStore($product);
+  const isOpen = useUnit($isModalOpen);
+  const product = useUnit($product);
   return (
     <div>
       <MaterialModal

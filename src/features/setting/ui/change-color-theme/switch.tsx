@@ -1,7 +1,7 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled } from '@mui/material/styles';
 import MaterialSwitch from '@mui/material/Switch';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React from 'react';
 
 import { ColorThemes } from '@/shared';
@@ -10,7 +10,7 @@ import { settingsModel } from '@/entities/computed/settings';
 import { setColorTheme } from '../../model/set-color-theme';
 
 export const Switch = () => {
-  const colorTheme = useStore(settingsModel.$colorTheme);
+  const colorTheme = useUnit(settingsModel.$colorTheme);
 
   const handleClick = () => {
     if (colorTheme === ColorThemes.dark) setColorTheme(ColorThemes.light);

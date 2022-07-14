@@ -4,7 +4,7 @@ import { Box, Toolbar } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 
 import { productModel, ProductUI } from '@/features/product';
@@ -67,7 +67,7 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
           <LoadingButton
             role="open-create-product-form-header-button"
             variant="contained"
-            loading={useStore(productModel.$isCreateLoading)}
+            loading={useUnit(productModel.$isCreateLoading)}
             onClick={() => {
               productModel.openCreateForm();
             }}
@@ -77,7 +77,7 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
           <LoadingButton
             role="open-remove-product-form-button"
             variant="contained"
-            loading={useStore(productModel.$isRemoveLoading)}
+            loading={useUnit(productModel.$isRemoveLoading)}
             onClick={(event) => {
               productModel.setRemoveAnchorEl(event.currentTarget);
             }}

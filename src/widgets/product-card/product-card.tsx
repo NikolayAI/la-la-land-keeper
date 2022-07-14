@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 
 import { ITableProduct, TableIdType, TableProductsType } from '@/shared';
@@ -12,7 +12,7 @@ interface IProductCardProps {
 }
 
 export const ProductCard: FC<IProductCardProps> = ({ tableId, tableProduct }) => {
-  const productsTimersOutOfLimit = useStore(tablesModel.$tablesProductsTimersOutOfLimits);
+  const productsTimersOutOfLimit = useUnit(tablesModel.$tablesProductsTimersOutOfLimits);
   const isTimerOut = productsTimersOutOfLimit[tableId]?.[tableProduct?.id];
   return (
     <TablesUI.ProductCard

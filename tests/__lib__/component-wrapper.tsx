@@ -1,5 +1,5 @@
 import { Scope } from 'effector';
-import { Provider } from 'effector-react/ssr';
+import { Provider } from 'effector-react/scope';
 import React, { FC } from 'react';
 
 import { DndProvider } from '@/app';
