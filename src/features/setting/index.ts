@@ -1,8 +1,8 @@
-import { setColorTheme } from './model/set-color-theme';
+import { toggleColorTheme } from './model/toggle-color-theme';
 import { Switch as ColorThemeSwitch } from './ui/change-color-theme';
 
 export const settingModel = {
-  setColorTheme,
+  setColorTheme: toggleColorTheme,
 };
 
 export const SettingUI = {

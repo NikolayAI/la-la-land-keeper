@@ -7,22 +7,16 @@ import React from 'react';
 import { ColorThemes } from '@/shared';
 import { settingsModel } from '@/entities/computed/settings';
 
-import { setColorTheme } from '../../model/set-color-theme';
+import { toggleColorTheme } from '../../model/toggle-color-theme';
 
 export const Switch = () => {
   const colorTheme = useUnit(settingsModel.$colorTheme);
-
-  const handleClick = () => {
-    if (colorTheme === ColorThemes.dark) setColorTheme(ColorThemes.light);
-    if (colorTheme === ColorThemes.light) setColorTheme(ColorThemes.dark);
-  };
-
   return (
     <FormControlLabel
       control={<MaterialUISwitch sx={{ m: 1 }} />}
       label=""
       checked={colorTheme === ColorThemes.dark}
-      onClick={handleClick}
+      onClick={() => toggleColorTheme()}
     />
   );
 };
