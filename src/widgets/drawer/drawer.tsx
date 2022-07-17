@@ -1,9 +1,7 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MailIcon from '@mui/icons-material/Mail';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
 import Divider from '@mui/material/Divider';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -13,10 +11,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
-import React, { FC, useState } from 'react';
-
-import { IChildrenOnly } from '@/shared';
-import { Header } from '@/widgets/header';
+import React, { FC } from 'react';
 
 const drawerWidth = 240;
 
@@ -41,7 +36,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
@@ -65,58 +60,50 @@ const MaterialDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !==
   }),
 }));
 
-export const Drawer: FC<IChildrenOnly> = ({ children }) => {
+const navItems = [
+  { text: 'Столы', icon: <DashboardRoundedIcon /> },
+  { text: 'Продукты', icon: <FastfoodRoundedIcon /> },
+];
+
+interface IDrawerProps {
+  open: boolean;
+  handleDrawerClose: () => void;
+}
+
+export const Drawer: FC<IDrawerProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <Header open={open} handleDrawerOpen={handleDrawerOpen} />
-      <MaterialDrawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+    <MaterialDrawer variant="permanent" open={open}>
+      <DrawerHeader>
+        <IconButton onClick={handleDrawerClose}>
+          {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+        </IconButton>
+      </DrawerHeader>
+      <Divider />
+      <List>
+        {navItems.map(({ text, icon }) => (
+          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </MaterialDrawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        {children}
-      </Box>
-    </Box>
+                {icon}
+              </ListItemIcon>
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </MaterialDrawer>
   );
 };

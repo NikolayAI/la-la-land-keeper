@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NotificationsUI } from '@/entities/computed/notifications';
-import { Drawer } from '@/widgets/drawer';
+import { Layout } from '@/widgets/layout';
 import { Dashboard } from '@/pages/dashboard';
 
 import { DndProvider, ScopeProvider, ThemeProvider } from './providers';
@@ -12,9 +12,9 @@ export const App = () => (
   <ScopeProvider>
     <ThemeProvider>
       <DndProvider>
-        <Drawer>
+        <Layout>
           <Dashboard className="dashboard" />
-        </Drawer>
+        </Layout>
         <NotificationsUI.Notifications />
       </DndProvider>
     </ThemeProvider>
