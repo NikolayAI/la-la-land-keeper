@@ -4,7 +4,7 @@ import React from 'react';
 
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
-import { Dashboard, DashBoardGate } from '@/pages/dashboard';
+import { TablesPage, DashBoardGate } from '@/pages/tables';
 
 import { initWrapper } from '../../__lib__/component-wrapper';
 
@@ -16,7 +16,7 @@ test('when page has mounted should open gate', async () => {
 
   expect(DashBoardGate.status.getState()).toBe(false);
 
-  render(<Dashboard />, { wrapper: initWrapper(scope) });
+  render(<TablesPage />, { wrapper: initWrapper(scope) });
 
   expect(fn).toHaveBeenCalledTimes(1);
 });

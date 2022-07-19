@@ -11,7 +11,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
+import { Link } from 'atomic-router-react';
 import React, { FC } from 'react';
+import { productsRoute } from '@/pages/products';
+import { tablesRoute } from '@/pages/tables';
 
 const drawerWidth = 240;
 
@@ -61,8 +64,8 @@ const MaterialDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !==
 }));
 
 const navItems = [
-  { text: 'Столы', icon: <DashboardRoundedIcon /> },
-  { text: 'Продукты', icon: <FastfoodRoundedIcon /> },
+  { text: 'Столы', icon: <DashboardRoundedIcon />, route: tablesRoute },
+  { text: 'Продукты', icon: <FastfoodRoundedIcon />, route: productsRoute },
 ];
 
 interface IDrawerProps {
@@ -81,27 +84,29 @@ export const Drawer: FC<IDrawerProps> = ({ open, handleDrawerClose }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {navItems.map(({ text, icon }) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+        {navItems.map(({ text, icon, route }) => (
+          <Link to={route} activeClassName="font-semibold text-red-400" inactiveClassName="opacity-80">
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
                 }}
               >
-                {icon}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {icon}
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </MaterialDrawer>
