@@ -1,15 +1,12 @@
 import React, { FC } from 'react';
 import { ProductUI } from '@/features/product';
+import { TableUI } from '@/features/table';
 import { TablesList } from '@/widgets/table';
 
-import { DashBoardGate } from './model';
-
 export const TablesPage: FC = () => (
-  <>
-    <DashBoardGate />
-    <div className="dashboard">
-      <TablesList />
-      <ProductUI.CreateModal />
-    </div>
-  </>
+  <div className="dashboard">
+    <TableUI.CreateBtn />
+    <TablesList />
+    <ProductUI.CreateModal />
+  </div>
 );

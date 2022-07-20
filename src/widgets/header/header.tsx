@@ -9,7 +9,6 @@ import React, { FC } from 'react';
 
 import { productModel, ProductUI } from '@/features/product';
 import { SettingUI } from '@/features/setting';
-import { TableUI } from '@/features/table';
 
 const drawerWidth = 240;
 
@@ -63,7 +62,6 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
           >
             <MenuIcon />
           </IconButton>
-          <TableUI.CreateBtn />
           <LoadingButton
             role="open-create-product-form-header-button"
             variant="contained"

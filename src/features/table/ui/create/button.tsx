@@ -6,6 +6,7 @@ import { $isLoading, create } from '../../model/create';
 
 export const Btn = () => (
   <LoadingButton
+    sx={{ margin: '1rem' }}
     role="create-table-button"
     variant="contained"
     loading={useUnit($isLoading)}
