@@ -1,13 +1,10 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import LoadingButton from '@mui/lab/LoadingButton';
 import { Box, Toolbar } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
-import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 
-import { productModel, ProductUI } from '@/features/product';
 import { SettingUI } from '@/features/setting';
 
 const drawerWidth = 240;
@@ -62,27 +59,6 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
           >
             <MenuIcon />
           </IconButton>
-          <LoadingButton
-            role="open-create-product-form-header-button"
-            variant="contained"
-            loading={useUnit(productModel.$isCreateLoading)}
-            onClick={() => {
-              productModel.openCreateForm();
-            }}
-          >
-            Создать товар
-          </LoadingButton>
-          <LoadingButton
-            role="open-remove-product-form-button"
-            variant="contained"
-            loading={useUnit(productModel.$isRemoveLoading)}
-            onClick={(event) => {
-              productModel.setRemoveAnchorEl(event.currentTarget);
-            }}
-          >
-            Удалить товар
-          </LoadingButton>
-          <ProductUI.RemoveMenu />
           <Box sx={{ marginLeft: 'auto' }}>
             <SettingUI.ColorThemeSwitch />
           </Box>

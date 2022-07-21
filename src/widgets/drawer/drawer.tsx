@@ -85,8 +85,8 @@ export const Drawer: FC<IDrawerProps> = ({ open, handleDrawerClose }) => {
       <Divider />
       <List>
         {navItems.map(({ text, icon, route }) => (
-          <Link to={route} activeClassName="font-semibold text-red-400" inactiveClassName="opacity-80">
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          <Link key={text} to={route} activeClassName="font-semibold text-red-400" inactiveClassName="opacity-80">
+            <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
