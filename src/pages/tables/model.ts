@@ -7,7 +7,7 @@ import { tablesModel } from '@/entities/tables';
 export const tablesRoute = createRoute();
 
 sample({
-  clock: tablesRoute.$isOpened,
-  fn: () => tablesRoute.$isOpened,
+  source: tablesRoute.$isOpened,
+  filter: tablesRoute.$isOpened,
   target: [productsModel.getProductsFx, tablesModel.getTablesFx],
 });

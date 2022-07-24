@@ -33,7 +33,7 @@ describe('events', () => {
     render(<Header />, { wrapper: initWrapper(scope) });
 
     act(() => {
-      fireEvent.click(screen.getByRole('open-create-product-form-header-button'));
+      fireEvent.click(screen.getByRole('open-create-product-form-button'));
     });
 
     expect(openCreateProductModalFn).toHaveBeenCalledTimes(1);

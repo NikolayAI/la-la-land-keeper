@@ -40,13 +40,7 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
   return (
     <AppBar position="fixed" sx={{ marginBottom: 2 }} open={open}>
       <Toolbar>
-        <Box
-          sx={{
-            display: 'flex',
-            width: '100%',
-            '& button:not(:first-child)': { marginRight: '1rem', border: `1px solid #fff` },
-          }}
-        >
+        <Box sx={{ display: 'flex', width: '100%' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
