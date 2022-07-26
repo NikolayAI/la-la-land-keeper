@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 
 import { IChildrenOnly } from '@/shared';
 
-import { routes } from '../routes';
+import { routes } from '../../shared/configs/routes';
 
 const router = createHistoryRouter({ routes });
 const history = createBrowserHistory();

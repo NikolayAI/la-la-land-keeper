@@ -46,7 +46,7 @@ export const ProductTimer: FC<IProductTimer> = memo(
     StopTimerSlot,
     PlayTimerSlot,
   }) => {
-    const timerCount = tablesProductsTimers[tableId]?.[productId];
+    const timerCount = tablesProductsTimers[tableId]?.[productId] ?? 0;
     const isTimerPlay = timerStatus === TableProductTimerStatuses.play;
 
     useProductTimer({

@@ -40,9 +40,9 @@
       "needTimer": true,
       "eachProductUnitMinutesTimer": 90
     },
-    "80ea92d3-96b6-492b-b6db-9b8501cd1670": {
-      "id": "80ea92d3-96b6-492b-b6db-9b8501cd1670",
-      "name": "Чай",
+    "8e8c706b-086f-43fd-bfab-0a98c8ba552c": {
+      "id": "8e8c706b-086f-43fd-bfab-0a98c8ba552c",
+      "name": "чай",
       "price": 23,
       "isPiece": true,
       "needTimer": false,

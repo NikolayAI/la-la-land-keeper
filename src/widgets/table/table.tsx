@@ -58,7 +58,7 @@ export const TablesList: FC = () => {
   const tables = useUnit(tablesModel.$tables);
   const tablesIds = useUnit(tablesModel.$tablesIds);
   return (
-    <Grid container spacing={0}>
+    <Grid gap={2} container spacing={0}>
       {tablesIds.map((tableId, index) => (
         <Table key={tableId} table={tables?.[tableId]} index={index} />
       ))}

@@ -30,6 +30,7 @@ export type ProductIdType = string;
 export type ProductNameType = string;
 export type ProductPriceType = number;
 export type ProductUnitMinutesTimerType = number;
+export type ProductsLoadingType = Record<ProductIdType, boolean>;
 
 export type ClassNameType = string;
 

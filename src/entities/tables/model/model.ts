@@ -102,13 +102,25 @@ $isLoading.on(
   (isLoading) => isLoading
 );
 $tables.on(getTablesFx.doneData, (_, tables) => tables);
-$tablesProductsTimers.on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
-  ...state,
-  [tableId]: {
-    ...state[tableId],
-    [productId]: value,
-  },
-}));
+$tablesProductsTimers
+  .on(setTablesProductsTimers, (state, { tableId, productId, value }) => ({
+    ...state,
+    [tableId]: {
+      ...state[tableId],
+      [productId]: value,
+    },
+  }))
+  .on(removeProductFx.done, (state, { params: { tableId, productId } }) => ({
+    ...state,
+    [tableId]: {
+      ...state[tableId],
+      [productId]: 0,
+    },
+  }))
+  .on([clearTableFx.done, removeTableFx.done], (state, { params: { tableId } }) => ({
+    ...state,
+    [tableId]: {},
+  }));
 
 sample({
   clock: [

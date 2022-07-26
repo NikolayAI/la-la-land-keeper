@@ -1,10 +1,8 @@
-import { createRoute } from 'atomic-router';
 import { sample } from 'effector';
 
+import { tablesRoute } from '@/shared';
 import { productsModel } from '@/entities/products';
 import { tablesModel } from '@/entities/tables';
-
-export const tablesRoute = createRoute();
 
 sample({
   source: tablesRoute.$isOpened,

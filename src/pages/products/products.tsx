@@ -10,8 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import { useStore } from 'effector-react';
 import React from 'react';
 
-import { productsModel } from '@/entities/products';
 import { productModel, ProductUI } from '@/features/product';
+
+import { $productsTableRows } from './model';
 
 const columns: (TableCellProps & { headerName: string })[] = [
   { headerName: 'Название' },
@@ -23,12 +24,12 @@ const columns: (TableCellProps & { headerName: string })[] = [
 
 const ProductsTable = ({ rows }: { rows: any[] }) => {
   return (
-    <TableContainer sx={{ marginTop: '1.5rem' }} component={Paper}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
         <TableHead>
           <TableRow>
             {columns.map((column) => (
-              <TableCell key={column.headerName} align={column.align}>
+              <TableCell sx={{ fontWeight: 'bold' }} key={column.headerName} align={column.align}>
                 {column.headerName}
               </TableCell>
             ))}
@@ -40,8 +41,8 @@ const ProductsTable = ({ rows }: { rows: any[] }) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.isPiece ? 'true' : 'false'}</TableCell>
-              <TableCell align="right">{row.needTimer ? 'true' : 'false'}</TableCell>
+              <TableCell align="right">{row.isPiece ? 'Да' : 'Нет'}</TableCell>
+              <TableCell align="right">{row.needTimer ? 'Да' : 'Нет'}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="center">{row.actions}</TableCell>
             </TableRow>
@@ -53,31 +54,12 @@ const ProductsTable = ({ rows }: { rows: any[] }) => {
 };
 
 export const ProductsPage = () => {
-  const products = useStore(productsModel.$products);
-  const isRemoveLoading = useStore(productModel.$isRemoveLoading);
-
-  const rows = Object.values(products).map((product) => ({
-    ...product,
-    actions: [
-      <LoadingButton
-        key={`remove-${product.id}`}
-        role="open-remove-product-form-button"
-        variant="contained"
-        loading={isRemoveLoading}
-        onClick={(event) => {
-          productModel.setRemoveAnchorEl(event.currentTarget);
-        }}
-      >
-        Удалить
-      </LoadingButton>,
-      <ProductUI.RemoveMenu key={`remove-menu-${product.id}`} />,
-    ],
-  }));
+  const productsTableRows = useStore($productsTableRows);
 
   return (
     <>
       <LoadingButton
-        sx={{ marginRight: '1rem' }}
+        sx={{ marginRight: '1rem', marginBottom: '1.5rem' }}
         role="open-create-product-form-button"
         variant="contained"
         loading={useStore(productModel.$isCreateLoading)}
@@ -87,7 +69,7 @@ export const ProductsPage = () => {
       >
         Создать товар
       </LoadingButton>
-      <ProductsTable rows={rows} />
+      <ProductsTable rows={productsTableRows} />
       <ProductUI.CreateModal />
     </>
   );

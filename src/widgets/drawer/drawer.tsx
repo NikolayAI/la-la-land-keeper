@@ -13,8 +13,8 @@ import ListItemText from '@mui/material/ListItemText';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
 import { Link } from 'atomic-router-react';
 import React, { FC } from 'react';
-import { productsRoute } from '@/pages/products';
-import { tablesRoute } from '@/pages/tables';
+
+import { productsRoute, tablesRoute } from '@/shared';
 
 const drawerWidth = 240;
 
@@ -65,7 +65,7 @@ const MaterialDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !==
 
 const navItems = [
   { text: 'Столы', icon: <DashboardRoundedIcon />, route: tablesRoute },
-  { text: 'Продукты', icon: <FastfoodRoundedIcon />, route: productsRoute },
+  { text: 'Товары', icon: <FastfoodRoundedIcon />, route: productsRoute },
 ];
 
 interface IDrawerProps {

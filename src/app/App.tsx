@@ -1,10 +1,11 @@
 import { Route } from 'atomic-router-react';
 import React from 'react';
 
+import { productsRoute, tablesRoute } from '@/shared';
 import { NotificationsUI } from '@/entities/computed/notifications';
 import { Layout } from '@/widgets/layout';
-import { productsRoute, ProductsPage } from '@/pages/products';
-import { tablesRoute, TablesPage } from '@/pages/tables';
+import { ProductsPage } from '@/pages/products';
+import { TablesPage } from '@/pages/tables';
 
 import { Providers } from './providers';
 
