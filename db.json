@@ -47,6 +47,14 @@
       "isPiece": true,
       "needTimer": false,
       "eachProductUnitMinutesTimer": 0
+    },
+    "08278b67-8ee3-47b1-aa3a-2770400ec5da": {
+      "id": "08278b67-8ee3-47b1-aa3a-2770400ec5da",
+      "name": "сахар",
+      "price": 12,
+      "isPiece": true,
+      "needTimer": false,
+      "eachProductUnitMinutesTimer": 0
     }
   }
 }

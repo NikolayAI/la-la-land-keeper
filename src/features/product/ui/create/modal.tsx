@@ -5,7 +5,7 @@ import { useUnit } from 'effector-react';
 import React, { FC } from 'react';
 import NumberFormat, { NumberFormatValues } from 'react-number-format';
 
-import { $isModalOpen, closeModal, create, $product, setProperty } from '../../model/create/model';
+import { $isModalOpen, closeCreateForm, create, $product, setProperty } from '../../model/create/model';
 
 export const Modal: FC = () => {
   const isOpen = useUnit($isModalOpen);
@@ -14,7 +14,7 @@ export const Modal: FC = () => {
     <div>
       <MaterialModal
         open={isOpen}
-        onClose={() => closeModal()}
+        onClose={() => closeCreateForm()}
         aria-labelledby="modal-modal-label"
         aria-describedby="modal-modal-description"
         title="modal-modal-title"
