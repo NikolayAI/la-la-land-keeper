@@ -1,6 +1,6 @@
 import { combine, createEffect, createStore, sample } from 'effector';
 
-import { IProduct, IRemoveProductParams, ProductsAPI, ProductsType } from '@/shared';
+import { IProduct, IRemoveProductParams, ProductIdType, ProductsAPI, ProductsType } from '@/shared';
 
 export const getProductsFx = createEffect<void, ProductsType, Error>();
 export const createProductFx = createEffect<IProduct, void, Error>();
@@ -8,6 +8,7 @@ export const removeProductFx = createEffect<IRemoveProductParams, void, Error>()
 
 export const $isLoading = createStore<boolean>(false);
 export const $products = createStore<ProductsType>({});
+export const $productsIds = createStore<ProductIdType[]>([]);
 
 getProductsFx.use(async () => {
   return await ProductsAPI.getProducts();

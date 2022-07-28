@@ -1,27 +1,27 @@
 import { createEvent, createStore, sample } from 'effector';
-
 import { persist } from 'effector-storage/local';
-import { getMovedDragItems, IMoveDraggedItemParams, LocalStorageKeys, TableIdType } from '@/shared';
-import { tablesModel, sortTablesByOrder } from '@/entities/tables';
+
+import { getMovedDragItems, IMoveDraggedItemParams, LocalStorageKeys, ProductIdType } from '@/shared';
+import { productsModel, sortProductsByOrder } from '@/entities/products';
 
 export const dragAndDrop = createEvent<Omit<IMoveDraggedItemParams, 'items'>>();
 
-export const $orderedTablesIds = createStore<TableIdType[]>([]);
+export const $orderedProductsIds = createStore<ProductIdType[]>([]);
 
-$orderedTablesIds.on(dragAndDrop, (state, { dragItemIndex, hoverItemIndex }) => {
+$orderedProductsIds.on(dragAndDrop, (state, { dragItemIndex, hoverItemIndex }) => {
   return getMovedDragItems({ items: state, dragItemIndex, hoverItemIndex });
 });
 
-persist({ store: $orderedTablesIds, key: LocalStorageKeys.tablesIdsOrder });
+persist({ store: $orderedProductsIds, key: LocalStorageKeys.productsIdsOrder });
 
 sample({
-  source: $orderedTablesIds,
-  target: tablesModel.$tablesIds,
+  source: $orderedProductsIds,
+  target: productsModel.$productsIds,
 });
 
 sample({
-  clock: tablesModel.$tables,
-  source: { tables: tablesModel.$tables, tablesIdsOrder: $orderedTablesIds },
-  fn: ({ tables, tablesIdsOrder }) => sortTablesByOrder({ items: tables, itemsIdsOrder: tablesIdsOrder }),
-  target: tablesModel.$tablesIds,
+  clock: productsModel.$products,
+  source: { products: productsModel.$products, productsIdsOrder: $orderedProductsIds },
+  fn: ({ products, productsIdsOrder }) => sortProductsByOrder({ items: products, itemsIdsOrder: productsIdsOrder }),
+  target: productsModel.$productsIds,
 });

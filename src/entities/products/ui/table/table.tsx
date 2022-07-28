@@ -5,9 +5,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import MaterialTableRow from '@mui/material/TableRow';
+import { useStore } from 'effector-react';
 import React, { FC, ReactNode } from 'react';
 
 import { DndItems, IProduct, useSortableDnd } from '@/shared';
+import { productsModel } from '@/entities/products';
 import { tableModel } from '@/features/table';
 
 import { columns } from './constants';
@@ -46,23 +48,26 @@ interface ITableProps {
   rows: ITableRow[];
 }
 
-export const Table: FC<ITableProps> = ({ rows }) => (
-  <TableContainer component={Paper}>
-    <MaterialTable sx={{ minWidth: 650 }} aria-label="caption table">
-      <TableHead>
-        <MaterialTableRow>
-          {columns.map((column) => (
-            <TableCell sx={{ fontWeight: 'bold' }} key={column.headerName} align={column.align}>
-              {column.headerName}
-            </TableCell>
+export const Table: FC<ITableProps> = ({ rows }) => {
+  const productsIds = useStore(productsModel.$productsIds);
+  return (
+    <TableContainer component={Paper}>
+      <MaterialTable sx={{ minWidth: 650 }} aria-label="caption table">
+        <TableHead>
+          <MaterialTableRow>
+            {columns.map((column) => (
+              <TableCell sx={{ fontWeight: 'bold' }} key={column.headerName} align={column.align}>
+                {column.headerName}
+              </TableCell>
+            ))}
+          </MaterialTableRow>
+        </TableHead>
+        <TableBody>
+          {productsIds.map((productId, index) => (
+            <TableRow key={productId} row={rows.find((row) => row.id === productId)! ?? {}} index={index} />
           ))}
-        </MaterialTableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row, index) => (
-          <TableRow row={row} index={index} />
-        ))}
-      </TableBody>
-    </MaterialTable>
-  </TableContainer>
-);
+        </TableBody>
+      </MaterialTable>
+    </TableContainer>
+  );
+};

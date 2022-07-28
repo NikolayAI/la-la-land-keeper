@@ -7,6 +7,7 @@ import {
   openCreateForm,
   setProperty,
 } from './model/create';
+import { dragAndDrop } from './model/drad-and-drop';
 import { $isLoading as $isRemoveLoading, removeProduct, setRemoveAnchorEl } from './model/remove';
 import { Modal as CreateModal } from './ui/create';
 import { Menu as RemoveMenu } from './ui/remove';
@@ -22,6 +23,7 @@ export const productModel = {
   setRemoveAnchorEl,
   $isCreateLoading,
   $isRemoveLoading,
+  dragAndDrop,
 };
 
 export const ProductUI = {

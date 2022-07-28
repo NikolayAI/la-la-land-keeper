@@ -1,6 +1,7 @@
-import { $isLoading, $products, createProductFx, getProductsFx, removeProductFx } from './model';
+import { $isLoading, $products, createProductFx, getProductsFx, removeProductFx, $productsIds } from './model';
 import { Table } from './ui/table';
 
+export { sortProductsByOrder } from './lib';
 export * from './constants';
 
 export const productsModel = {
@@ -9,6 +10,7 @@ export const productsModel = {
   getProductsFx,
   removeProductFx,
   $isLoading,
+  $productsIds,
 };
 
 export const ProductsUI = {
