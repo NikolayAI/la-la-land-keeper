@@ -15,7 +15,7 @@ export const $productsTableRows = combine(
       actions: [
         <LoadingButton
           key={`remove-${product.id}`}
-          role="open-remove-product-form-button"
+          role={`open-remove-product-form-button-${product.id}`}
           variant="contained"
           loading={isRemoveLoading[product.id]}
           onClick={() => {

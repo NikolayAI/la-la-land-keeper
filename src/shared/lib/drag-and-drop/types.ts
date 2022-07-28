@@ -8,7 +8,7 @@ export interface IUseSortableDndParams {
   itemId: string | number;
   itemIndex: number;
   itemTargetType: string;
-  onDragDataHandler: ({ dragItemIndex, hoverItemIndex }: Omit<IMoveDraggedItemParams, 'items'>) => void;
+  onDragDataHandler: (payload: Omit<IMoveDraggedItemParams, 'items'>) => void;
 }
 
 export interface IDropItem<T> {

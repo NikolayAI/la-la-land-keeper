@@ -4,40 +4,63 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import MaterialTableRow from '@mui/material/TableRow';
 import React, { FC, ReactNode } from 'react';
 
-import { IProduct } from '@/shared';
+import { DndItems, IProduct, useSortableDnd } from '@/shared';
+import { tableModel } from '@/features/table';
 
 import { columns } from './constants';
 
+interface ITableRow extends IProduct {
+  actions: ReactNode[];
+}
+
+interface ITableRowProps {
+  row: ITableRow;
+  index: number;
+}
+
+export const TableRow: FC<ITableRowProps> = ({ row, index }) => {
+  const { ref, handlerId, opacity } = useSortableDnd<ITableRowProps, HTMLTableRowElement>({
+    itemId: row?.id,
+    itemIndex: index,
+    itemTargetType: DndItems.productsTableRow,
+    onDragDataHandler: tableModel.dragAndDrop,
+  });
+
+  return (
+    <MaterialTableRow ref={ref} key={row.name} style={{ opacity }} data-handler-id={handlerId}>
+      <TableCell component="th" scope="row">
+        {row.name}
+      </TableCell>
+      <TableCell align="right">{row.isPiece ? 'Да' : 'Нет'}</TableCell>
+      <TableCell align="right">{row.needTimer ? 'Да' : 'Нет'}</TableCell>
+      <TableCell align="right">{row.price}</TableCell>
+      <TableCell align="center">{row.actions}</TableCell>
+    </MaterialTableRow>
+  );
+};
+
 interface ITableProps {
-  rows: (IProduct & { actions: ReactNode[] })[];
+  rows: ITableRow[];
 }
 
 export const Table: FC<ITableProps> = ({ rows }) => (
   <TableContainer component={Paper}>
     <MaterialTable sx={{ minWidth: 650 }} aria-label="caption table">
       <TableHead>
-        <TableRow>
+        <MaterialTableRow>
           {columns.map((column) => (
             <TableCell sx={{ fontWeight: 'bold' }} key={column.headerName} align={column.align}>
               {column.headerName}
             </TableCell>
           ))}
-        </TableRow>
+        </MaterialTableRow>
       </TableHead>
       <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.name}>
-            <TableCell component="th" scope="row">
-              {row.name}
-            </TableCell>
-            <TableCell align="right">{row.isPiece ? 'Да' : 'Нет'}</TableCell>
-            <TableCell align="right">{row.needTimer ? 'Да' : 'Нет'}</TableCell>
-            <TableCell align="right">{row.price}</TableCell>
-            <TableCell align="center">{row.actions}</TableCell>
-          </TableRow>
+        {rows.map((row, index) => (
+          <TableRow row={row} index={index} />
         ))}
       </TableBody>
     </MaterialTable>

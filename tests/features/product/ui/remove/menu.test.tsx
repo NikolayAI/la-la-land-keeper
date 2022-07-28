@@ -7,7 +7,7 @@ import { productModel } from '@/features/product';
 import { Header } from '@/widgets/header';
 
 import { initWrapper } from '../../../../__lib__/component-wrapper';
-import { products } from '../../../../__mocks__/fixtures';
+import { products, product } from '../../../../__mocks__/fixtures';
 
 describe('events', () => {
   const setAnchorElementFn = jest.fn();
@@ -27,7 +27,7 @@ describe('events', () => {
 
     render(<Header />, { wrapper: initWrapper(scope) });
 
-    fireEvent.click(screen.getByRole('open-remove-product-form-button'));
+    fireEvent.click(screen.getByRole(`open-remove-product-form-button-${product.id}`));
 
     expect(setAnchorElementFn).toHaveBeenCalledTimes(1);
   });
