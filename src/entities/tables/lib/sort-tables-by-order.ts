@@ -7,7 +7,7 @@ interface ISortTablesByOrderParams {
 
 export const sortTablesByOrder = ({ items, itemsIdsOrder }: ISortTablesByOrderParams) => {
   const orderedItemsIds: TableIdType[] = [];
-  if (!itemsIdsOrder) return Object.keys(items);
+  if (itemsIdsOrder?.length < 1) return Object.keys(items);
   for (const itemId of itemsIdsOrder) {
     const id = items[itemId]?.id;
     if (!id) continue;

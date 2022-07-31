@@ -1,4 +1,4 @@
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import {
@@ -45,7 +45,7 @@ export const ProductTimer: FC<IProductTimerProps> = ({
     minutesLimit={minutesLimit}
     productUnits={productUnits}
     setTimer={tablesModel.setTablesProductsTimers}
-    tablesProductsTimers={useUnit(tablesModel.$tablesProductsTimers)}
+    tablesProductsTimers={useStore(tablesModel.$tablesProductsTimers)}
     StopTimerSlot={
       <TableProductTimerUI.StopIconBtn tableId={tableId} productId={productId} pausedTimerCount={pausedTimerCount} />
     }

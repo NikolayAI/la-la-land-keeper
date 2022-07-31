@@ -1,7 +1,7 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled } from '@mui/material/styles';
 import MaterialSwitch from '@mui/material/Switch';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React from 'react';
 
 import { ColorThemes } from '@/shared';
@@ -10,7 +10,7 @@ import { settingsModel } from '@/entities/computed/settings';
 import { toggleColorTheme } from '../../model/toggle-color-theme';
 
 export const Switch = () => {
-  const colorTheme = useUnit(settingsModel.$colorTheme);
+  const colorTheme = useStore(settingsModel.$colorTheme);
   return (
     <FormControlLabel
       control={<MaterialUISwitch sx={{ m: 1 }} />}

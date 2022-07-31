@@ -1,6 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType } from '@/shared';
@@ -15,7 +15,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
   <LoadingButton
     role={`remove-table-button-${tableId}`}
     startIcon={<DeleteIcon />}
-    loading={useUnit($isLoading)?.[tableId]}
+    loading={useStore($isLoading)?.[tableId]}
     onClick={() => {
       remove({ tableId });
     }}

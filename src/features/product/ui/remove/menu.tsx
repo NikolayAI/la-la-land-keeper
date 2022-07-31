@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { alpha, Box, MenuItem } from '@mui/material';
 import MaterialMenu, { MenuProps } from '@mui/material/Menu/Menu';
 import { styled } from '@mui/material/styles';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { productsModel } from '@/entities/products';
@@ -10,8 +10,8 @@ import { productsModel } from '@/entities/products';
 import { $anchorEl, removeProduct, setRemoveAnchorEl } from '../../model/remove/model';
 
 export const Menu: FC = () => {
-  const products = useUnit(productsModel.$products);
-  const anchorEl = useUnit($anchorEl);
+  const products = useStore(productsModel.$products);
+  const anchorEl = useStore($anchorEl);
 
   const open = Boolean(anchorEl);
 

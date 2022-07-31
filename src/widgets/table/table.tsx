@@ -1,6 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Grid, IconButton } from '@mui/material';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { DndItems, ITable, useSortableDnd } from '@/shared';
@@ -24,7 +24,7 @@ export const Table: FC<ITableProps> = ({ table, index }) => {
   });
 
   return (
-    <div ref={ref} key={table?.id} style={{ opacity }} data-handler-id={handlerId}>
+    <div ref={ref} style={{ opacity }} data-handler-id={handlerId}>
       <TablesUI.Table
         table={table}
         SetTableNameSlot={<TableUI.SetNameField tableId={table?.id} tableName={table?.name} />}
@@ -35,7 +35,7 @@ export const Table: FC<ITableProps> = ({ table, index }) => {
             <IconButton
               role={`add-product-to-table-button-${table?.id}`}
               color="inherit"
-              disabled={useUnit(tableProductModel.$isAddLoading)?.[table?.id]}
+              disabled={useStore(tableProductModel.$isAddLoading)?.[table?.id]}
               onClick={(event) =>
                 tableProductModel.setAddAnchorEl({
                   tableId: table?.id,
@@ -55,8 +55,8 @@ export const Table: FC<ITableProps> = ({ table, index }) => {
 };
 
 export const TablesList: FC = () => {
-  const tables = useUnit(tablesModel.$tables);
-  const tablesIds = useUnit(tablesModel.$tablesIds);
+  const tables = useStore(tablesModel.$tables);
+  const tablesIds = useStore(tablesModel.$tablesIds);
   return (
     <Grid gap={2} container spacing={0}>
       {tablesIds.map((tableId, index) => (

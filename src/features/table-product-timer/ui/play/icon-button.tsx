@@ -1,6 +1,6 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { IconButton } from '@mui/material';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import {
@@ -24,7 +24,7 @@ export const IconBtn: FC<IconBtnProps> = ({ tableId, productId, pausedAt, paused
   <IconButton
     role={`play-timer-button-${tableId}-${productId}`}
     size="small"
-    disabled={useUnit($isLoading)?.[tableId]?.[productId]}
+    disabled={useStore($isLoading)?.[tableId]?.[productId]}
     onClick={() =>
       play({
         tableId,

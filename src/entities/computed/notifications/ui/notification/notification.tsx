@@ -1,19 +1,20 @@
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC, forwardRef, memo } from 'react';
 
-import * as notificationsModel from '../../model/model';
+import { $tableProductsTimersNotifications, removeNotification } from '../../model/model';
 
 export const Notifications: FC = memo(() => {
-  const tableProductsTimersNotifications = useUnit(notificationsModel.$tableProductsTimersNotifications);
+  const tableProductsTimersNotifications = useStore($tableProductsTimersNotifications);
   return (
-    <Stack spacing={2} sx={{ width: '100%', position: 'absolute', bottom: 0 }}>
+    <Stack className="notifications" spacing={2} sx={{ width: '100%', position: 'absolute', bottom: 0 }}>
       {tableProductsTimersNotifications.map(({ kind, message, tableId, productId }) => (
         <Alert
+          className="notifications__message"
           key={`${tableId}-${productId}-${kind}-${message}`}
           onClose={() => {
-            notificationsModel.removeNotification({
+            removeNotification({
               kind,
               message,
               tableId,

@@ -1,6 +1,6 @@
 import PauseIcon from '@mui/icons-material/Pause';
 import { IconButton } from '@mui/material';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType, TableProductIdType, TableProductPausedTimerCountType, TableProductTimerStatuses } from '@/shared';
@@ -17,7 +17,7 @@ export const IconBtn: FC<IconBtnProps> = ({ tableId, productId, pausedTimerCount
   <IconButton
     role={`stop-timer-button-${tableId}-${productId}`}
     size="small"
-    disabled={useUnit($isLoading)?.[tableId]?.[productId]}
+    disabled={useStore($isLoading)?.[tableId]?.[productId]}
     onClick={() =>
       stop({
         tableId,

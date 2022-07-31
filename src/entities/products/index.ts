@@ -1,6 +1,7 @@
 import { $isLoading, $products, createProductFx, getProductsFx, removeProductFx, $productsIds } from './model';
-import { Table } from './ui/table';
+import { SpreadSheetRow } from './ui/spreadsheet';
 
+export type { ISpreadSheetRow } from './ui/spreadsheet';
 export { sortProductsByOrder } from './lib';
 export * from './constants';
 
@@ -14,5 +15,5 @@ export const productsModel = {
 };
 
 export const ProductsUI = {
-  Table,
+  SpreadSheetRow,
 };

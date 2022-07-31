@@ -1,12 +1,12 @@
 import { createTheme, ThemeProvider as MaterialThemeProvider } from '@mui/material/styles';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC, useMemo } from 'react';
 
 import { ColorThemes, IChildrenOnly } from '@/shared';
 import { settingsModel } from '@/entities/computed/settings';
 
 export const ThemeProvider: FC<IChildrenOnly> = ({ children }) => {
-  const colorTheme = useUnit(settingsModel.$colorTheme);
+  const colorTheme = useStore(settingsModel.$colorTheme);
 
   const theme = useMemo(
     () =>

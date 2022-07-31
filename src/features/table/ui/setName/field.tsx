@@ -1,4 +1,4 @@
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType, TableNameType, EditableText } from '@/shared';
@@ -14,7 +14,7 @@ export const Field: FC<ISetTableNameProps> = ({ tableId, tableName }) => (
   <EditableText
     role={`editable-table-name-${tableId}`}
     text={tableName}
-    isLoading={useUnit($isLoading)?.[tableId]}
+    isLoading={useStore($isLoading)?.[tableId]}
     setTableName={(text: string) => {
       setName({ tableId, text });
     }}

@@ -16,7 +16,7 @@ interface ITableProps {
 
 export const Table: FC<ITableProps> = memo(
   ({ table, SetTableNameSlot, ClearTableSlot, RemoveTableSlot, AddProductToTableSlot, ProductCardListSlot }) => (
-    <Card key={table?.id} sx={{ width: 575 }} elevation={6}>
+    <Card sx={{ width: 575 }} elevation={6}>
       <CardContent>
         <Box sx={{ flexGrow: 1, borderRadius: 16, marginBottom: 1 }}>
           <AppBar position="static" elevation={12} sx={{ borderRadius: 1 }}>

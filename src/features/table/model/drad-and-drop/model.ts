@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from 'effector';
-
 import { persist } from 'effector-storage/local';
+
 import { getMovedDragItems, IMoveDraggedItemParams, LocalStorageKeys, TableIdType } from '@/shared';
 import { tablesModel, sortTablesByOrder } from '@/entities/tables';
 
@@ -23,5 +23,5 @@ sample({
   clock: tablesModel.$tables,
   source: { tables: tablesModel.$tables, tablesIdsOrder: $orderedTablesIds },
   fn: ({ tables, tablesIdsOrder }) => sortTablesByOrder({ items: tables, itemsIdsOrder: tablesIdsOrder }),
-  target: tablesModel.$tablesIds,
+  target: [tablesModel.$tablesIds, $orderedTablesIds],
 });

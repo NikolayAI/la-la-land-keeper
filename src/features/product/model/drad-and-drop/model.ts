@@ -23,5 +23,5 @@ sample({
   clock: productsModel.$products,
   source: { products: productsModel.$products, productsIdsOrder: $orderedProductsIds },
   fn: ({ products, productsIdsOrder }) => sortProductsByOrder({ items: products, itemsIdsOrder: productsIdsOrder }),
-  target: productsModel.$productsIds,
+  target: [productsModel.$productsIds, $orderedProductsIds],
 });

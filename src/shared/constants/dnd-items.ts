@@ -1,4 +1,4 @@
 export enum DndItems {
   table = 'table',
-  productsTableRow = 'productsTableRow',
+  productsSpreadSheetRow = 'productsSpreadSheetRow',
 }

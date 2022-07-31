@@ -1,11 +1,9 @@
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useStore } from 'effector-react';
 import React from 'react';
-
-import { ProductsUI } from '@/entities/products';
 import { productModel, ProductUI } from '@/features/product';
 
-import { $productsTableRows } from './model';
+import { ProductsSpreadsheet } from '@/widgets/products-spreadsheet';
 
 export const ProductsPage = () => (
   <>
@@ -20,7 +18,7 @@ export const ProductsPage = () => (
     >
       Создать товар
     </LoadingButton>
-    <ProductsUI.Table rows={useStore($productsTableRows)} />
+    <ProductsSpreadsheet />
     <ProductUI.CreateModal />
   </>
 );

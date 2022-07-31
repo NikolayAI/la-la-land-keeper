@@ -1,6 +1,6 @@
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useUnit } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { FC } from 'react';
 
 import { TableIdType } from '@/shared';
@@ -16,7 +16,7 @@ export const Btn: FC<IBtnProps> = ({ tableId }) => (
     role={`clear-table-button-${tableId}`}
     variant="contained"
     startIcon={<CleaningServicesIcon />}
-    loading={useUnit($isLoading)?.[tableId]}
+    loading={useStore($isLoading)?.[tableId]}
     onClick={() => {
       clear({ tableId });
     }}
