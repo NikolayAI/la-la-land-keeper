@@ -8,17 +8,17 @@ import { productModel } from '@/features/product';
 
 import { $productsTableRows } from './model';
 
-interface ISpreadSheetRow extends IProduct {
+interface IProductsSpreadSheetRow extends IProduct {
   actions: ReactNode[];
 }
 
-interface ISpreadSheetRowProps {
-  row: ISpreadSheetRow;
+interface IProductsSpreadSheetRowProps {
+  row: IProductsSpreadSheetRow;
   index: number;
 }
 
-export const SpreadSheetRow: FC<ISpreadSheetRowProps> = ({ row, index }) => {
-  const { ref, handlerId, opacity } = useSortableDnd<ISpreadSheetRowProps, HTMLTableRowElement>({
+export const ProductsSpreadSheetRow: FC<IProductsSpreadSheetRowProps> = ({ row, index }) => {
+  const { ref, handlerId, opacity } = useSortableDnd<IProductsSpreadSheetRowProps, HTMLTableRowElement>({
     itemId: row?.id,
     itemIndex: index,
     itemTargetType: DndItems.productsSpreadSheetRow,
@@ -28,18 +28,28 @@ export const SpreadSheetRow: FC<ISpreadSheetRowProps> = ({ row, index }) => {
   return <ProductsUI.SpreadSheetRow tableRowRef={ref} row={row} style={{ opacity }} data-handler-id={handlerId} />;
 };
 
-export const ProductsSpreadsheet: FC = () => {
+interface IProductsSpreadsheetProps {
+  className?: string;
+}
+
+export const ProductsSpreadsheet: FC<IProductsSpreadsheetProps> = ({ className }) => {
   const rows = useStore($productsTableRows);
   const productsIds = useStore(productsModel.$productsIds);
   return (
     <SpreadSheetBase
+      className={`products-spreadsheet ${className}`}
       HeadSlot={columns.map((column) => (
-        <TableCell sx={{ fontWeight: 'bold' }} key={column.headerName} align={column.align}>
+        <TableCell
+          className="products-spreadsheet__cell"
+          sx={{ fontWeight: 'bold' }}
+          key={column.headerName}
+          align={column.align}
+        >
           {column.headerName}
         </TableCell>
       ))}
       BodySlot={productsIds.map((productId, index) => (
-        <SpreadSheetRow key={productId} row={rows[productId]} index={index} />
+        <ProductsSpreadSheetRow key={productId} row={rows[productId]} index={index} />
       ))}
     />
   );

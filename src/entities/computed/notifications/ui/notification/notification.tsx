@@ -11,7 +11,7 @@ export const Notifications: FC = memo(() => {
     <Stack className="notifications" spacing={2} sx={{ width: '100%', position: 'absolute', bottom: 0 }}>
       {tableProductsTimersNotifications.map(({ kind, message, tableId, productId }) => (
         <Alert
-          className="notifications__message"
+          className="notifications__alert"
           key={`${tableId}-${productId}-${kind}-${message}`}
           onClose={() => {
             removeNotification({

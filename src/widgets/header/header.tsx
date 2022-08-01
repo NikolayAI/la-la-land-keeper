@@ -38,10 +38,11 @@ interface IHeaderProps {
 
 export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => {
   return (
-    <AppBar position="fixed" sx={{ marginBottom: 2 }} open={open}>
-      <Toolbar>
-        <Box sx={{ display: 'flex', width: '100%' }}>
+    <AppBar className="header" position="fixed" sx={{ marginBottom: 2 }} open={open}>
+      <Toolbar className="header__toolbar">
+        <Box className="header__actions" sx={{ display: 'flex', width: '100%' }}>
           <IconButton
+            className="header__button header__button_menu"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -53,7 +54,7 @@ export const Header: FC<IHeaderProps> = ({ open = false, handleDrawerOpen }) => 
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ marginLeft: 'auto' }}>
+          <Box className="header__switch header__switch_theme" sx={{ marginLeft: 'auto' }}>
             <SettingUI.ColorThemeSwitch />
           </Box>
         </Box>

@@ -76,18 +76,25 @@ interface IDrawerProps {
 export const Drawer: FC<IDrawerProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
   return (
-    <MaterialDrawer variant="permanent" open={open}>
-      <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
+    <MaterialDrawer className="drawer" variant="permanent" open={open}>
+      <DrawerHeader className="drawer__header">
+        <IconButton className="drawer__button drawer__button_open-close" onClick={handleDrawerClose}>
           {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </DrawerHeader>
       <Divider />
       <List>
         {navItems.map(({ text, icon, route }) => (
-          <Link key={text} to={route} activeClassName="font-semibold text-red-400" inactiveClassName="opacity-80">
-            <ListItem disablePadding sx={{ display: 'block' }}>
+          <Link
+            className="nav-item drawer__nav-item"
+            key={text}
+            to={route}
+            activeClassName="font-semibold text-red-400"
+            inactiveClassName="opacity-80"
+          >
+            <ListItem className="list-item nav-item__list-item" disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                className="list-item__button"
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -95,6 +102,7 @@ export const Drawer: FC<IDrawerProps> = ({ open, handleDrawerClose }) => {
                 }}
               >
                 <ListItemIcon
+                  className="list-item__icon"
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',

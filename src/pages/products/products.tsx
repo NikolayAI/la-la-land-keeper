@@ -7,18 +7,21 @@ import { ProductsSpreadsheet } from '@/widgets/products-spreadsheet';
 
 export const ProductsPage = () => (
   <>
-    <LoadingButton
-      sx={{ marginRight: '1rem', marginBottom: '1.5rem' }}
-      role="open-create-product-form-button"
-      variant="contained"
-      loading={useStore(productModel.$isCreateLoading)}
-      onClick={() => {
-        productModel.openCreateForm();
-      }}
-    >
-      Создать товар
-    </LoadingButton>
-    <ProductsSpreadsheet />
-    <ProductUI.CreateModal />
+    <div className="products-page__actions">
+      <LoadingButton
+        className="products-page__button products-page__button_create"
+        sx={{ marginRight: '1rem', marginBottom: '1.5rem' }}
+        role="open-create-product-form-button"
+        variant="contained"
+        loading={useStore(productModel.$isCreateLoading)}
+        onClick={() => {
+          productModel.openCreateForm();
+        }}
+      >
+        Создать товар
+      </LoadingButton>
+    </div>
+    <ProductsSpreadsheet className="products-page__spreadsheet" />
+    <ProductUI.CreateModal className="products-page__create-product-modal" />
   </>
 );

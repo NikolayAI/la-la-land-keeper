@@ -21,12 +21,12 @@ export const Layout: FC<ILayoutProps> = ({ children }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box className="layout" sx={{ display: 'flex' }}>
       <CssBaseline />
       <Header open={open} handleDrawerOpen={handleDrawerOpen} />
       <Drawer open={open} handleDrawerClose={handleDrawerClose} />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box className="layout__header-margin-container" component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader className="layout__header-margin" />
         {children}
       </Box>
     </Box>

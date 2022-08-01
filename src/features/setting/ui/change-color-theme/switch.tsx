@@ -13,6 +13,7 @@ export const Switch = () => {
   const colorTheme = useStore(settingsModel.$colorTheme);
   return (
     <FormControlLabel
+      className="color-theme-switch"
       control={<MaterialUISwitch sx={{ m: 1 }} />}
       label=""
       checked={colorTheme === ColorThemes.dark}

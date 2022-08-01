@@ -17,13 +17,21 @@ interface ISpreadSheetRowProps {
 }
 
 export const SpreadSheetRow: FC<ISpreadSheetRowProps> = ({ row, tableRowRef, style, handlerId }) => (
-  <MaterialTableRow ref={tableRowRef} style={style} data-handler-id={handlerId}>
-    <TableCell component="th" scope="row">
+  <MaterialTableRow className="products-spreadsheet__row" ref={tableRowRef} style={style} data-handler-id={handlerId}>
+    <TableCell className="products-spreadsheet__cell" component="th" scope="row">
       {row.name}
     </TableCell>
-    <TableCell align="right">{row.isPiece ? 'Да' : 'Нет'}</TableCell>
-    <TableCell align="right">{row.needTimer ? 'Да' : 'Нет'}</TableCell>
-    <TableCell align="right">{row.price}</TableCell>
-    <TableCell align="center">{row.actions}</TableCell>
+    <TableCell className="products-spreadsheet__cell" align="right">
+      {row.isPiece ? 'Да' : 'Нет'}
+    </TableCell>
+    <TableCell className="products-spreadsheet__cell" align="right">
+      {row.needTimer ? 'Да' : 'Нет'}
+    </TableCell>
+    <TableCell className="products-spreadsheet__cell" align="right">
+      {row.price}
+    </TableCell>
+    <TableCell className="products-spreadsheet__cell" align="center">
+      {row.actions}
+    </TableCell>
   </MaterialTableRow>
 );

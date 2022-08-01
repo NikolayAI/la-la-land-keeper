@@ -15,16 +15,17 @@ interface IBaseSpreadSheetProps {
    * The content of the HeadSlot component, normally `TableRow`.
    */
   BodySlot: ReactNode;
+  className?: string;
 }
 
-export const SpreadSheetBase: FC<IBaseSpreadSheetProps> = ({ HeadSlot, BodySlot }) => {
+export const SpreadSheetBase: FC<IBaseSpreadSheetProps> = ({ HeadSlot, BodySlot, className }) => {
   return (
-    <TableContainer component={Paper}>
-      <MaterialTable sx={{ minWidth: 650 }} aria-label="caption table">
-        <TableHead>
-          <MaterialTableRow>{HeadSlot}</MaterialTableRow>
+    <TableContainer className={`spreadsheet-base-container ${className}`} component={Paper}>
+      <MaterialTable className="spreadsheet-base" sx={{ minWidth: 650 }} aria-label="caption table">
+        <TableHead className="spreadsheet-base__head">
+          <MaterialTableRow className="spreadsheet-base__row">{HeadSlot}</MaterialTableRow>
         </TableHead>
-        <TableBody>{BodySlot}</TableBody>
+        <TableBody className="spreadsheet-base__body">{BodySlot}</TableBody>
       </MaterialTable>
     </TableContainer>
   );
