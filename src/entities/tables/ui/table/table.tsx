@@ -12,11 +12,20 @@ interface ITableProps {
   RemoveTableSlot: ReactNode;
   AddProductToTableSlot: ReactNode;
   ProductCardListSlot: ReactNode;
+  className?: string;
 }
 
 export const Table: FC<ITableProps> = memo(
-  ({ table, SetTableNameSlot, ClearTableSlot, RemoveTableSlot, AddProductToTableSlot, ProductCardListSlot }) => (
-    <Card sx={{ width: 575 }} elevation={6}>
+  ({
+    table,
+    SetTableNameSlot,
+    ClearTableSlot,
+    RemoveTableSlot,
+    AddProductToTableSlot,
+    ProductCardListSlot,
+    className,
+  }) => (
+    <Card className={`table ${className}`} sx={{ width: 575 }} elevation={6}>
       <CardContent>
         <Box sx={{ flexGrow: 1, borderRadius: 16, marginBottom: 1 }}>
           <AppBar position="static" elevation={12} sx={{ borderRadius: 1 }}>

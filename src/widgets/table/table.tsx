@@ -13,9 +13,10 @@ import { ProductCardList } from '../product-card';
 interface ITableProps {
   table: ITable;
   index: number;
+  className?: string;
 }
 
-export const Table: FC<ITableProps> = ({ table, index }) => {
+export const Table: FC<ITableProps> = ({ table, index, className }) => {
   const { ref, handlerId, opacity } = useSortableDnd<ITableProps, HTMLDivElement>({
     itemId: table?.id,
     itemIndex: index,
@@ -24,7 +25,7 @@ export const Table: FC<ITableProps> = ({ table, index }) => {
   });
 
   return (
-    <div ref={ref} style={{ opacity }} data-handler-id={handlerId}>
+    <div className={`table-container ${className}`} ref={ref} style={{ opacity }} data-handler-id={handlerId}>
       <TablesUI.Table
         table={table}
         SetTableNameSlot={<TableUI.SetNameField tableId={table?.id} tableName={table?.name} />}
@@ -54,13 +55,17 @@ export const Table: FC<ITableProps> = ({ table, index }) => {
   );
 };
 
-export const TablesList: FC = () => {
+interface ITablesListProps {
+  className?: string;
+}
+
+export const TablesList: FC<ITablesListProps> = ({ className }) => {
   const tables = useStore(tablesModel.$tables);
   const tablesIds = useStore(tablesModel.$tablesIds);
   return (
-    <Grid gap={2} container spacing={0}>
+    <Grid className={`tables-list ${className}`} gap={2} container spacing={0}>
       {tablesIds.map((tableId, index) => (
-        <Table key={tableId} table={tables?.[tableId]} index={index} />
+        <Table className="tables-list__item" key={tableId} table={tables?.[tableId]} index={index} />
       ))}
     </Grid>
   );

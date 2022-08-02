@@ -5,7 +5,9 @@ import { TablesList } from '@/widgets/table';
 
 export const TablesPage: FC = () => (
   <>
-    <TableUI.CreateBtn />
-    <TablesList />
+    <div className="tables-page__actions">
+      <TableUI.CreateBtn className="tables-page__button tables-page__button_create" />
+    </div>
+    <TablesList className="tables-page__tables-list" />
   </>
 );
